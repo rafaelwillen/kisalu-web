@@ -1,5 +1,7 @@
+import { Header } from "@/components/pages/home";
 import { DM_Sans } from "next/font/google";
 
+// TODO: Need to find a better place for this. Probably create a layout component
 const mainFont = DM_Sans({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
@@ -9,7 +11,8 @@ const mainFont = DM_Sans({
 export default function Home() {
   return (
     <main className={`${mainFont.variable} font-main`}>
-      <h1>Hello World</h1>
+      {/* TODO: Refactor this to a component */}
+      <Header />
     </main>
   );
 }
