@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Kisalu
 
-First, run the development server:
+This platform is designed to connect service providers with clients looking for their services in Angola 🇦🇴. The app allows these providers to create profiles, showcase their skills and expertise, and bid on project proposals posted by clients.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This repository corresponds to the **web application (Frontend only)**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Other Apps
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can check the mobile and the backend apps with the following links:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [Mobile]()
+- [Server]()
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Demo
 
-## Learn More
+You can visit the web app with the following link: https://kisalu-web.vercel.app/
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+🏗️ WIP 🏗️
 
-## Deploy on Vercel
+## Tech Stack (Web Only)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [NextJS](https://nextjs.org/)
+- [ReactJS](https://react.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Installation
+
+You can install and run the project by following the steps
+
+1. Clone the repository;
+2. Install the dependencies with `npm install` or `yarn` if you are using yarn;
+3. Finally run the project with `npm run dev` or `yarn dev` if you are using yarn.
+## Feedback
+
+If you have any feedback, please reach out to us at rafaelpadre@gmail.com or you could create an issue.
+
