@@ -8,6 +8,11 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      bold: 700,
+    },
     colors: {
       black,
       white,
