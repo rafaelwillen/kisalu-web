@@ -6,10 +6,20 @@ body {
     @apply text-text-100 bg-white;
 }
 
+/* TODO: Add animated underline for the links */
+.debug {
+    border: 1px solid #f00;
+}
+
 .header-bg::after {
     content: "";
     /* TODO: Replace the placeholder image with an actual image*/
     background: linear-gradient(0deg, rgba(34,34,34,0.3) 0%, rgba(34,34,34,0.8) 100%), url("https://placehold.co/428x500") ;
     height: 100%;
     @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center bg-no-repeat;
+}
+
+.category-bg-icon::after {
+    content: "";
+    @apply absolute right-0 bottom-0 bg-primary-100 w-10 h-10 rounded-full debug;
 }

@@ -1,4 +1,5 @@
-import { Header } from "@/components/pages/home";
+import { Container } from "@/components/pages/common";
+import { CommonCategoriesList, Header } from "@/components/pages/home";
 import { DM_Sans } from "next/font/google";
 
 // TODO: Need to find a better place for this. Probably create a layout component
@@ -13,6 +14,9 @@ export default function Home() {
     <main className={`${mainFont.variable} font-main`}>
       {/* TODO: Refactor this to a component */}
       <Header />
+      <Container>
+        <CommonCategoriesList />
+      </Container>
     </main>
   );
 }
