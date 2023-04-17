@@ -6,6 +6,13 @@ import {
 } from "@phosphor-icons/react";
 
 export default function CoreFeatures() {
+
+  const formatQuantity = (quantity: number) =>
+    new Intl.NumberFormat("pt-AO", {
+      notation: "compact",
+      compactDisplay: "long",
+    }).format(quantity);
+
   return (
     <section className="mt-10">
       <h2 className="font-bold text-2xl text-center mb-12">
@@ -47,6 +54,24 @@ export default function CoreFeatures() {
           <p className="leading-7">
             Qualquer dúvida, não hesite em nos contactar
           </p>
+        </div>
+      </article>
+      <article className="py-10 border-t border-b border-neutral-200 mt-8 grid grid-cols-2 gap-4">
+        <div>
+          <p className="font-bold text-4xl mb-1">{formatQuantity(2_000)}</p>
+          <p className="leading-7">Total de Prestadores</p>
+        </div>
+        <div>
+          <p className="font-bold text-4xl mb-1">{formatQuantity(800)}</p>
+          <p className="leading-7">Recomendações Positivas</p>
+        </div>
+        <div>
+          <p className="font-bold text-4xl mb-1">{formatQuantity(900)}</p>
+          <p className="leading-7">Serviços Criados</p>
+        </div>
+        <div>
+          <p className="font-bold text-4xl mb-1">{formatQuantity(800)}</p>
+          <p className="leading-7">Projetos Completados</p>
         </div>
       </article>
     </section>
