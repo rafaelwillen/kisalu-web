@@ -3,6 +3,7 @@ import {
   CommonCategoriesList,
   CoreFeatures,
   Header,
+  NewProvidersSection,
 } from "@/components/pages/home";
 import TrendingServiceList from "@/components/pages/home/TrendingServiceList";
 import { DM_Sans } from "next/font/google";
@@ -29,6 +30,11 @@ export default function Home() {
       <Container>
         <CoreFeatures />
       </Container>
+      <div className="mt-28 bg-primary-50 pt-10">
+        <Container>
+          <NewProvidersSection />
+        </Container>
+      </div>
     </main>
   );
 }
