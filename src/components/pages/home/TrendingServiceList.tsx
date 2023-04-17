@@ -1,5 +1,6 @@
 import { trendingService } from "@/mock/projects";
 import Link from "next/link";
+import { v4 as uuid } from "uuid";
 import TrendingServiceCard from "./TrendingServiceCard";
 
 export default function TrendingServiceList() {
@@ -13,7 +14,7 @@ export default function TrendingServiceList() {
       </Link>
       <article className="mt-7 flex overflow-auto gap-2 pb-4">
         {trendingService.map((service) => (
-          <TrendingServiceCard {...service} />
+          <TrendingServiceCard key={uuid()} {...service} />
         ))}
       </article>
     </section>
