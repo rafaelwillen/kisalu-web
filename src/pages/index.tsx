@@ -1,12 +1,7 @@
 import { Container } from "@/components/pages/common";
-import {
-  CommonCategoriesList,
-  Header,
-  TrendingServiceCard,
-} from "@/components/pages/home";
-import { trendingService } from "@/mock/projects";
+import { CommonCategoriesList, Header } from "@/components/pages/home";
+import TrendingServiceList from "@/components/pages/home/TrendingServiceList";
 import { DM_Sans } from "next/font/google";
-import Link from "next/link";
 
 // TODO: Need to find a better place for this. Probably create a layout component
 const mainFont = DM_Sans({
@@ -24,19 +19,7 @@ export default function Home() {
       </Container>
       <div className="mt-20 bg-primary-50 py-10">
         <Container>
-          <section>
-            <h2 className="text-3xl font-bold mb-1">Serviços em destaque</h2>
-            <p className="mb-5">Os serviços mais requisitados</p>
-            {/* TODO: Replace with actual link */}
-            <Link href="#" className="font-bold">
-              Todos os serviços →
-            </Link>
-            <article className="mt-7 flex overflow-auto gap-2 pb-4">
-              {trendingService.map((service) => (
-                <TrendingServiceCard {...service} />
-              ))}
-            </article>
-          </section>
+          <TrendingServiceList />
         </Container>
       </div>
     </main>
