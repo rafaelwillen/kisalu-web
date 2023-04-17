@@ -18,8 +18,3 @@ body {
     height: 100%;
     @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center bg-no-repeat;
 }
-
-.category-bg-icon::after {
-    content: "";
-    @apply absolute right-0 bottom-0 bg-primary-100 w-10 h-10 rounded-full debug;
-}
