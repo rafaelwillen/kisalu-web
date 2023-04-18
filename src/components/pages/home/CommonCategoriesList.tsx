@@ -14,7 +14,7 @@ export default function CommonCategoriesList() {
       </Link>
       <article className="mt-5 flex overflow-auto gap-2">
         {homeBrowseByCategory.map((category) => (
-          <CommonCategoryCard {...category} />
+          <CommonCategoryCard {...category} key={category.id} />
         ))}
       </article>
     </section>
