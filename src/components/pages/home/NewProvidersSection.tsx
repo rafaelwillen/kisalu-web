@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "@phosphor-icons/react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function NewProvidersSection() {
@@ -17,11 +18,10 @@ export default function NewProvidersSection() {
       >
         Começar <ArrowUpRight size={24} color="#ffffff" weight="thin" />
       </Link>
-      {/* TODO: Replace with normal image */}
-      <img
-        src="http://placehold.co/224x237"
-        className="mt-12 self-center"
-        alt="Alt text"
+      <Image
+        src="/business.jpg"
+        className="mt-12 self-center h-60 w-60 object-cover object-left "
+        alt="Cadastre como prestador"
         width={224}
         height={237}
       />
