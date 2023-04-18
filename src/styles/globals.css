@@ -13,7 +13,6 @@ body {
 
 .header-bg::after {
     content: "";
-    /* TODO: Replace the placeholder image with an actual image*/
     background: linear-gradient(0deg, rgba(34,34,34,0.3) 0%, rgba(34,34,34,0.8) 100%), url("/header-background.jpg") ;
     height: 100%;
     @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center bg-no-repeat;

@@ -22,8 +22,6 @@ export default function TrendingServiceCard({
 
   return (
     <div className="min-w-[300px] flex flex-col rounded-lg shadow-md">
-      {/* TODO: Replace with Next/Image */}
-      {/* TODO: Use real image */}
       <div className="relative">
         <Image
           src={imageUrl}
