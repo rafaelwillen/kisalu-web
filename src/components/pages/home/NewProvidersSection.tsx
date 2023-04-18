@@ -20,12 +20,11 @@ export default function NewProvidersSection() {
       {/* TODO: Replace with normal image */}
       <img
         src="http://placehold.co/224x237"
-        className="mt-12 self-center static z-10"
+        className="mt-12 self-center"
         alt="Alt text"
         width={224}
         height={237}
       />
-      <div className="w-80 h-80 absolute bg-primary-200 rounded-full -bottom-1/2 -translate-y-1/2" />
     </section>
   );
 }
