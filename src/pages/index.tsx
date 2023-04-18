@@ -1,4 +1,4 @@
-import { Container } from "@/components/pages/common";
+import { Container, Footer } from "@/components/pages/common";
 import {
   CommonCategoriesList,
   CoreFeatures,
@@ -33,6 +33,11 @@ export default function Home() {
       <div className="mt-28 bg-primary-50 pt-10">
         <Container>
           <NewProvidersSection />
+        </Container>
+      </div>
+      <div className="bg-secondary-950 static z-90 py-5">
+        <Container>
+          <Footer />
         </Container>
       </div>
     </main>
