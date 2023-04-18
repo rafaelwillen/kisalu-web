@@ -1,5 +1,6 @@
 import { trendingService } from "@/mock/projects";
 import { Heart, Star } from "@phosphor-icons/react";
+import Image from "next/image";
 
 type Props = typeof trendingService[0];
 
@@ -7,7 +8,8 @@ export default function TrendingServiceCard({
   meanReview,
   name,
   numReviews,
-  ownerName,
+  owner,
+  imageUrl,
   projectName,
   startingPrice,
 }: Props) {
@@ -23,10 +25,10 @@ export default function TrendingServiceCard({
       {/* TODO: Replace with Next/Image */}
       {/* TODO: Use real image */}
       <div className="relative">
-        <img
-          src="https://placehold.co/330x245"
-          alt="Lorem"
-          className="w-full overflow-hidden"
+        <Image
+          src={imageUrl}
+          alt={projectName}
+          className="rounded-t-lg h-60 object-cover"
           width={330}
           height={245}
         />
@@ -50,16 +52,16 @@ export default function TrendingServiceCard({
         <div className="pt-4 mt-2 border-t border-neutral-200 flex justify-between items-center">
           <div className="flex gap-2 items-center justify-between">
             <div className="relative">
-              <img
+              <Image
                 className="rounded-full relative online-dot"
-                src="https://placehold.co/30"
-                alt="lorem"
+                src={owner.avatarUrl}
+                alt={owner.name}
                 width={30}
                 height={30}
               />
               <div className="w-[9px] h-[9px] bg-[#5BBB7B] rounded-full absolute top-0 right-0"></div>
             </div>
-            <p className="text-sm">{ownerName}</p>
+            <p className="text-sm">{owner.name}</p>
           </div>
           <p className="text-sm">{formatToMoney()}</p>
         </div>
