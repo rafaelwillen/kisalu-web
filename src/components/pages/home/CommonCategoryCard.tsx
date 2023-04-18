@@ -3,15 +3,7 @@ import { Placeholder } from "@phosphor-icons/react";
 
 type Props = typeof homeBrowseByCategory[0];
 
-export default function CommonCategoryCard({
-  field,
-  freelancersCount,
-  id,
-  name,
-}: Props) {
-  const formatNumberToLocale = () =>
-    new Intl.NumberFormat().format(freelancersCount);
-
+export default function CommonCategoryCard({ field, freelancersCount, id, name }: Props) {
   return (
     <div
       key={id}
@@ -25,7 +17,9 @@ export default function CommonCategoryCard({
         <div className="absolute -z-10 -right-3 -bottom-2 bg-primary-100 w-10 h-10 rounded-full" />
       </div>
       <div className="space-y-1">
-        <p>{formatNumberToLocale()} prestadores</p>
+        <p>
+          {new Intl.NumberFormat("pt-AO").format(freelancersCount)} prestadores
+        </p>
         <p className="text-lg font-regular min-w-[200px]">{name}</p>
         <p className="text-neutral-500 min-w-[200px]">{field}</p>
       </div>

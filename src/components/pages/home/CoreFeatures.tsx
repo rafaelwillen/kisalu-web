@@ -4,14 +4,17 @@ import {
   Question,
   ShieldChevron,
 } from "@phosphor-icons/react";
+import { useCallback } from "react";
 
 export default function CoreFeatures() {
-
-  const formatQuantity = (quantity: number) =>
-    new Intl.NumberFormat("pt-AO", {
-      notation: "compact",
-      compactDisplay: "long",
-    }).format(quantity);
+  const formatQuantity = useCallback(
+    (quantity: number) =>
+      new Intl.NumberFormat("pt-AO", {
+        notation: "compact",
+        compactDisplay: "long",
+      }).format(quantity),
+    []
+  );
 
   return (
     <section className="mt-10">
@@ -58,19 +61,39 @@ export default function CoreFeatures() {
       </article>
       <article className="py-10 border-t border-b border-neutral-200 mt-8 grid grid-cols-2 gap-4">
         <div>
-          <p className="font-bold text-4xl mb-1">{formatQuantity(2_000)}</p>
+          <p className="font-bold text-4xl mb-1">
+            {new Intl.NumberFormat("pt-AO", {
+              notation: "compact",
+              compactDisplay: "long",
+            }).format(2_000)}
+          </p>
           <p className="leading-7">Total de Prestadores</p>
         </div>
         <div>
-          <p className="font-bold text-4xl mb-1">{formatQuantity(800)}</p>
+          <p className="font-bold text-4xl mb-1">
+            {new Intl.NumberFormat("pt-AO", {
+              notation: "compact",
+              compactDisplay: "long",
+            }).format(800)}
+          </p>
           <p className="leading-7">Recomendações Positivas</p>
         </div>
         <div>
-          <p className="font-bold text-4xl mb-1">{formatQuantity(900)}</p>
+          <p className="font-bold text-4xl mb-1">
+            {new Intl.NumberFormat("pt-AO", {
+              notation: "compact",
+              compactDisplay: "long",
+            }).format(900)}
+          </p>
           <p className="leading-7">Serviços Criados</p>
         </div>
         <div>
-          <p className="font-bold text-4xl mb-1">{formatQuantity(800)}</p>
+          <p className="font-bold text-4xl mb-1">
+            {new Intl.NumberFormat("pt-AO", {
+              notation: "compact",
+              compactDisplay: "long",
+            }).format(700)}
+          </p>
           <p className="leading-7">Projetos Completados</p>
         </div>
       </article>
