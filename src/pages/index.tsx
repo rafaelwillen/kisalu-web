@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className={`${mainFont.variable} font-main`}>
       <Header />
-      <Container>
+      <Container small>
         <CommonCategoriesList />
       </Container>
       <div className="mt-20 bg-primary-50 py-10">

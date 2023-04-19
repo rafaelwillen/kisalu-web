@@ -5,9 +5,10 @@ type Props = typeof homeBrowseByCategory[0];
 
 export default function CommonCategoryCard({ field, freelancersCount, id, name }: Props) {
   return (
+    // TODO: Replace with actual link
     <div
       key={id}
-      className="px-7 py-10 space-y-7 flex-1 border border-neutral-200"
+      className="px-7 py-10 space-y-7 flex-1 border border-neutral-200 lg:border-neutral-50 lg:shadow-lg hover:bg-neutral-200/40 duration-300 cursor-pointer"
     >
       <div className="relative  inline-block">
         <Placeholder
