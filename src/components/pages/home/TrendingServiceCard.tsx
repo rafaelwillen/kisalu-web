@@ -1,7 +1,6 @@
 import { trendingService } from "@/mock/projects";
 import { Heart, Star } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useCallback } from "react";
 
 type Props = typeof trendingService[0];
 
@@ -14,17 +13,8 @@ export default function TrendingServiceCard({
   projectName,
   startingPrice,
 }: Props) {
-  const formatToMoney = useCallback(
-    () =>
-      new Intl.NumberFormat("pt-AO", {
-        style: "currency",
-        currency: "AOA",
-      }).format(startingPrice * 500),
-    []
-  );
-
   return (
-    <div className="min-w-[300px] flex flex-col rounded-lg shadow-md">
+    <div className="min-w-[300px] lg:min-w-[350px] flex flex-col rounded-lg shadow-md">
       <div className="relative">
         <Image
           src={imageUrl}

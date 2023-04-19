@@ -23,9 +23,7 @@ export default function Home() {
         <CommonCategoriesList />
       </Container>
       <div className="mt-20 bg-primary-50 py-10">
-        <Container>
-          <TrendingServiceList />
-        </Container>
+        <TrendingServiceList />
       </div>
       <Container>
         <CoreFeatures />
