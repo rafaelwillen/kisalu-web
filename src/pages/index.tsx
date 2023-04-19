@@ -1,4 +1,8 @@
-import { Container, Footer } from "@/components/pages/common";
+import {
+  Container,
+  Footer,
+  ScrollToTopButton,
+} from "@/components/pages/common";
 import {
   CommonCategoriesList,
   CoreFeatures,
@@ -36,6 +40,7 @@ export default function Home() {
           <Footer />
         </Container>
       </div>
+      <ScrollToTopButton />
     </main>
   );
 }
