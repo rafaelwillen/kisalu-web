@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className="relative header-bg text-white pb-16">
       <Navbar />
-      <Container>
+      <Container small>
         <h1 className="mt-24 mb-10 text-3xl font-bold ">
           Contrate os melhores prestadores para qualquer trabalho, online
         </h1>

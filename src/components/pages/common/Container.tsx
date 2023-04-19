@@ -1,5 +1,17 @@
+import classnames from "classnames";
 import { PropsWithChildren } from "react";
 
-export default function Container({ children }: PropsWithChildren) {
-  return <div className="px-5">{children}</div>;
+type Props = {
+  small?: boolean;
+};
+
+export default function Container({
+  children,
+  small = false,
+}: PropsWithChildren<Props>) {
+  return (
+    <div className={classnames("px-5", small ? "lg:mx-auto lg:container" : "")}>
+      {children}
+    </div>
+  );
 }
