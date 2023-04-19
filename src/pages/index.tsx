@@ -26,8 +26,8 @@ export default function Home() {
         <TrendingServiceList />
       </div>
       <CoreFeatures />
-      <div className="mt-28 bg-primary-50 pt-10">
-        <Container>
+      <div className="mt-28 bg-primary-50 pt-10 lg:mt-64 lg:py-24">
+        <Container small>
           <NewProvidersSection />
         </Container>
       </div>
