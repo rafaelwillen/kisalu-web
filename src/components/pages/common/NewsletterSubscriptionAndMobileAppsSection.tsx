@@ -7,8 +7,7 @@ export default function NewsletterSubscriptionAndMobileAppsSection() {
         <label htmlFor="newsletter-subscribe" className="text-lg font-medium">
           Subscrever
         </label>
-        {/* FIXME: This is causing the button to overflow - #1 */}
-        <div className="rounded flex py-4 px-5 bg-white/5 mt-4 gap-2 justify-between">
+        <div className="rounded flex py-4 px-5 bg-white/5 mt-4 gap-2 justify-between flex-wrap">
           <input
             className="bg-white/0 outline-none flex-1"
             type="email"
@@ -16,7 +15,7 @@ export default function NewsletterSubscriptionAndMobileAppsSection() {
             id="subscribe"
             name="newsletter-subscribe"
           />
-          <button className="py-1 px-2 hover:bg-white/20 duration-300 rounded">
+          <button className="py-1 px-2 hover:bg-white/20 duration-300 rounded mx-auto">
             Enviar
           </button>
         </div>
