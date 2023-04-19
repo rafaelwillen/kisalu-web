@@ -1,6 +1,7 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { Container } from "../common";
 import Navbar from "../common/Navbar";
+import HomeSelectRole from "./HomeSelectRole";
 
 export default function Header() {
   return (
@@ -41,14 +42,9 @@ export default function Header() {
                 placeholder="O que está procurando?"
               />
             </div>
-            {/* TODO: Add radix select */}
-            <select name="" id="">
-              <option value="1">Selecione a categoria de pesquisa</option>
-              <option value="2">Lorem ipsum dolor sit.</option>
-              <option value="3">Lorem ipsum dolor sit.</option>
-              <option value="4">Lorem ipsum dolor sit.</option>
-              <option value="5">Lorem ipsum dolor sit.</option>
-            </select>
+            <div className="flex-1">
+              <HomeSelectRole />
+            </div>
             {/* TODO: Refactor this to be a component */}
             <button className="bg-primary-600 font-bold text-sm py-4 rounded duration-300 hover:bg-primary-500 px-9 text-white">
               Pesquisar
