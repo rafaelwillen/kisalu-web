@@ -20,10 +20,9 @@ export default function NewProvidersSection() {
           Começar <ArrowUpRight size={24} color="#ffffff" weight="thin" />
         </Link>
       </div>
-      {/* FIXME: On md screen size this is hiding the text #1 */}
       <Image
         src="/business.jpg"
-        className="mt-12 self-center h-60 w-60 object-cover object-left lg:absolute right-0 -bottom-24 lg:h-[520px] lg:w-auto lg:object-center"
+        className="mt-12 self-center h-60 w-60 object-cover object-left lg:absolute right-0 2xl:-bottom-24 lg:bottom-0  2xl:h-[520px] lg:w-auto lg:object-center "
         alt="Cadastre como prestador"
         width={492}
         height={520}
