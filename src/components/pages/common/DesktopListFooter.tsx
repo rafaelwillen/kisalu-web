@@ -7,12 +7,12 @@ export default function DesktopListFooter() {
       <ul className="space-y-4 text-white/70">
         <li className="font-medium text-white">Sobre Nós</li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Termos de Serviço
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Política de Privacidade
           </Link>
         </li>
@@ -20,22 +20,22 @@ export default function DesktopListFooter() {
       <ul className="space-y-4 text-white/70">
         <li className="font-medium text-white">Categorias</li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Gráficos e Design
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Marketing Digital
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Limpeza e Trabalho Domésticos
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Estilo de Vida
           </Link>
         </li>
@@ -43,12 +43,12 @@ export default function DesktopListFooter() {
       <ul className="space-y-4 text-white/70">
         <li className="font-medium text-white">Ajuda</li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Ajuda e Suporte
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">
+          <Link href="#" className="animated-underline">
             Segurança e Confiança
           </Link>
         </li>

@@ -6,7 +6,6 @@ body {
     @apply text-text-100 bg-white;
 }
 
-/* TODO: Add animated underline for the links */
 .debug {
     outline: 1px dashed #f00;
 }
@@ -16,4 +15,26 @@ body {
     background: linear-gradient(0deg, rgba(34,34,34,0.3) 0%, rgba(34,34,34,0.8) 100%), url("/header-background.jpg") no-repeat;
     height: 100%;
     @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center;
+}
+
+a.animated-underline {
+    position: relative;
+}
+
+a.animated-underline::after {
+    content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.animated-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
