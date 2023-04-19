@@ -55,7 +55,7 @@ export default function FooterAccordion() {
       </Accordion.Item>
       <Accordion.Item value="item-3">
         <AccordionHeader>
-          <span className="font-medium">Sobre nós</span>
+          <span className="font-medium">Ajuda</span>
         </AccordionHeader>
         <AccordionContent>
           <ul className="py-4 px-5 space-y-4 bg-white/5 text-neutral-200">

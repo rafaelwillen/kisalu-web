@@ -1,4 +1,8 @@
-import { Container, Footer } from "@/components/pages/common";
+import {
+  Container,
+  Footer,
+  ScrollToTopButton,
+} from "@/components/pages/common";
 import {
   CommonCategoriesList,
   CoreFeatures,
@@ -19,27 +23,24 @@ export default function Home() {
   return (
     <main className={`${mainFont.variable} font-main`}>
       <Header />
-      <Container>
+      <Container small>
         <CommonCategoriesList />
       </Container>
-      <div className="mt-20 bg-primary-50 py-10">
-        <Container>
-          <TrendingServiceList />
-        </Container>
+      <div className="mt-20 bg-primary-50 py-10 lg:py-28">
+        <TrendingServiceList />
       </div>
-      <Container>
-        <CoreFeatures />
-      </Container>
-      <div className="mt-28 bg-primary-50 pt-10">
-        <Container>
+      <CoreFeatures />
+      <div className="mt-28 bg-primary-50 pt-10 lg:mt-64 lg:py-24">
+        <Container small>
           <NewProvidersSection />
         </Container>
       </div>
       <div className="bg-secondary-950 static z-90 py-5">
-        <Container>
+        <Container small>
           <Footer />
         </Container>
       </div>
+      <ScrollToTopButton />
     </main>
   );
 }
