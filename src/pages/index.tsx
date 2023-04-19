@@ -32,7 +32,7 @@ export default function Home() {
         </Container>
       </div>
       <div className="bg-secondary-950 static z-90 py-5">
-        <Container>
+        <Container small>
           <Footer />
         </Container>
       </div>
