@@ -1,4 +1,5 @@
-import { MagnifyingGlass } from "@phosphor-icons/react";
+import { SearchButton } from "@/components/buttons";
+import { SearchInput } from "@/components/form";
 import { Container } from "../common";
 import Navbar from "../common/Navbar";
 import HomeSelectRole from "./HomeSelectRole";
@@ -14,19 +15,8 @@ export default function Header() {
           </h1>
           {/* Probably will replace this with react hook form or just keep with the default form */}
           <form className="flex flex-col gap-2 ">
-            <div className="relative bg-white rounded flex p-2 items-center gap-2">
-              <MagnifyingGlass size={20} color="#000" />
-              {/* TODO: Refactor this to be a component */}
-              <input
-                type="search"
-                className="flex-1 py-2 text-text-200 font-regular"
-                placeholder="Procurar na plataforma"
-              />
-            </div>
-            {/* TODO: Refactor this to be a component */}
-            <button className="bg-primary-600 font-bold text-sm py-4 rounded duration-300 hover:bg-primary-500">
-              Pesquisar
-            </button>
+            <SearchInput type="search" placeholder="Procurar na plataforma" />
+            <SearchButton>Pesquisar</SearchButton>
           </form>
         </div>
         <div className="hidden lg:block pt-52 pb-64 max-w-3xl">
@@ -34,21 +24,11 @@ export default function Header() {
             Contrate os melhores prestadores para qualquer trabalho, online
           </h1>
           <form className="flex items-center text-text-200 bg-white pl-7 pr-2 py-2 rounded gap-7">
-            <div className="flex items-center flex-1 border-r pr-2 border-neutral-200 gap-2">
-              <MagnifyingGlass size={20} />
-              <input
-                type="search"
-                className="flex-1 placeholder:font-regular text-base py-1 px-1 outline-none border-b border-neutral-200/0 focus:border-neutral-500 duration-300"
-                placeholder="Procurar na plataforma"
-              />
-            </div>
+            <SearchInput placeholder="Procurar na plataforma" />
             <div className="flex-1">
               <HomeSelectRole />
             </div>
-            {/* TODO: Refactor this to be a component */}
-            <button className="bg-primary-600 font-bold text-sm py-4 rounded duration-300 hover:bg-primary-500 px-9 text-white">
-              Pesquisar
-            </button>
+            <SearchButton>Pesquisar</SearchButton>
           </form>
         </div>
       </Container>

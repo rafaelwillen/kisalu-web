@@ -8,14 +8,19 @@ export default function Navbar() {
     <nav className="py-5 border-b border-b-white border-opacity-20">
       <Container>
         <ul className="flex justify-between items-center">
-          <li className="flex items-center gap-2 text-2xl font-bold pr-7 border-r border-white/20">
-            <Image
-              src="/kisalu-logo.png"
-              height={40}
-              width={40}
-              alt="Kisalu Logo"
-            />
-            <span className="select-none">Kisalu</span>
+          <li>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-2xl font-bold pr-7 border-r border-white/20"
+            >
+              <Image
+                src="/kisalu-logo.png"
+                height={40}
+                width={40}
+                alt="Kisalu Logo"
+              />
+              <span className="select-none">Kisalu</span>
+            </Link>
           </li>
           <li className="hidden lg:flex gap-7 items-center  text-white text-sm font-regular">
             {/* TODO: Replace with actual link */}
