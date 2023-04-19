@@ -20,7 +20,7 @@ export default function Header() {
               <input
                 type="search"
                 className="flex-1 py-2 text-text-200 font-regular"
-                placeholder="Está a procura de um serviço?"
+                placeholder="Procurar na plataforma"
               />
             </div>
             {/* TODO: Refactor this to be a component */}
@@ -39,7 +39,7 @@ export default function Header() {
               <input
                 type="search"
                 className="flex-1 placeholder:font-regular text-base py-1 px-1 outline-none border-b border-neutral-200/0 focus:border-neutral-500 duration-300"
-                placeholder="O que está procurando?"
+                placeholder="Procurar na plataforma"
               />
             </div>
             <div className="flex-1">
