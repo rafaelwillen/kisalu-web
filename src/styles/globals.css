@@ -8,7 +8,7 @@ body {
 
 /* TODO: Add animated underline for the links */
 .debug {
-    border: 1px solid #f00;
+    outline: 1px dashed #f00;
 }
 
 .header-bg::after {
