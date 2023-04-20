@@ -1,28 +1,16 @@
-import {
-  Container,
-  Footer,
-  ScrollToTopButton,
-} from "@/components/pages/common";
+import { HomeLayout } from "@/components/layouts";
+import { Container } from "@/components/pages/common";
 import {
   CommonCategoriesList,
   CoreFeatures,
-  Header,
   NewProvidersSection,
 } from "@/components/pages/home";
 import TrendingServiceList from "@/components/pages/home/TrendingServiceList";
-import { DM_Sans } from "next/font/google";
+import { NextPageWithLayout } from "./_app";
 
-// TODO: Need to find a better place for this. Probably create a layout component
-const mainFont = DM_Sans({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  variable: "--font-main",
-});
-
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
-    <main className={`${mainFont.variable} font-main`}>
-      <Header />
+    <main>
       <Container small>
         <CommonCategoriesList />
       </Container>
@@ -35,12 +23,10 @@ export default function Home() {
           <NewProvidersSection />
         </Container>
       </div>
-      <div className="bg-secondary-950 static z-90 py-5">
-        <Container small>
-          <Footer />
-        </Container>
-      </div>
-      <ScrollToTopButton />
     </main>
   );
-}
+};
+
+Home.getLayout = (page) => <HomeLayout>{page}</HomeLayout>;
+
+export default Home;

@@ -47,7 +47,7 @@ export default function Navbar() {
             {/* TODO: Replace with an actual link */}
             <Link
               href="/"
-              className="text-white text-sm lg:bg-white lg:text-text-200 lg:px-7 lg:py-1 lg:rounded lg:hover:bg-neutral-300 duration-300 animated-underline mr-12"
+              className="text-white text-sm lg:bg-white lg:text-text-200 lg:px-7 lg:py-1 lg:rounded lg:hover:bg-neutral-300 duration-300 mr-12"
             >
               Entrar
             </Link>
