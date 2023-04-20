@@ -8,7 +8,7 @@ type Props = {
 export default function AsideMenu({ visible }: Props) {
   return (
     <aside
-      data-isActive={visible}
+      data-is-active={visible}
       className={classNames(
         "transition-transform ease-in-out duration-300 lg:hidden bg-white text-text-200 absolute inset-0 min-h-screen overflow-hidden z-10 border-b",
         visible ? "-translate-y-0" : "-translate-y-full"
