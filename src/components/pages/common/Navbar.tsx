@@ -1,8 +1,8 @@
 import { HamburgerMenuButton } from "@/components/buttons";
-import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import AsideMenu from "./AsideMenu";
 import Container from "./Container";
 
 export default function Navbar() {
@@ -33,7 +33,7 @@ export default function Navbar() {
             </Link>
             {/* TODO: Replace with an actual link */}
             <Link href="/" className="animated-underline">
-              Tornar um prestador
+              Tornar-se um prestador
             </Link>
           </li>
           <li className="flex items-center gap-7 pl-7 lg:border-l border-white/20 py-1">
@@ -58,15 +58,7 @@ export default function Navbar() {
             />
           </li>
         </ul>
-        <aside
-          data-isActive={showSidebarMenu}
-          className={classNames(
-            "transition-transform ease-in-out duration-500 lg:hidden bg-white text-text-200 absolute inset-0 min-h-screen overflow-hidden z-10 pt-16 px-5",
-            showSidebarMenu ? "-translate-y-0" : "-translate-y-full"
-          )}
-        >
-          <div className="debug">Hello</div>
-        </aside>
+        <AsideMenu visible={showSidebarMenu} />
       </Container>
     </nav>
   );
