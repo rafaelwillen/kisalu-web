@@ -1,17 +1,21 @@
-import { List } from "@phosphor-icons/react";
+import { HamburgerMenuButton } from "@/components/buttons";
+import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import Container from "./Container";
 
 export default function Navbar() {
+  const [showSidebarMenu, setShowSidebarMenu] = useState(false);
+
   return (
-    <nav className="py-5 border-b border-b-white border-opacity-20">
+    <nav className="py-5 border-b border-b-white border-opacity-20 relative">
       <Container>
         <ul className="flex justify-between items-center">
           <li>
             <Link
               href="/"
-              className="flex items-center gap-2 text-2xl font-bold pr-7 border-r border-white/20"
+              className="flex items-center gap-2 text-2xl font-bold pr-7 lg:border-r border-white/20"
             >
               <Image
                 src="/kisalu-logo.png"
@@ -32,7 +36,7 @@ export default function Navbar() {
               Tornar um prestador
             </Link>
           </li>
-          <li className="flex items-center gap-7 pl-7 border-l border-white/20 py-1">
+          <li className="flex items-center gap-7 pl-7 lg:border-l border-white/20 py-1">
             {/* TODO: Replace with an actual link */}
             <Link
               href="/"
@@ -43,16 +47,26 @@ export default function Navbar() {
             {/* TODO: Replace with an actual link */}
             <Link
               href="/"
-              className="text-white text-sm lg:bg-white lg:text-text-200 lg:px-7 lg:py-1 lg:rounded lg:hover:bg-neutral-300 duration-300 animated-underline"
+              className="text-white text-sm lg:bg-white lg:text-text-200 lg:px-7 lg:py-1 lg:rounded lg:hover:bg-neutral-300 duration-300 animated-underline mr-12"
             >
               Entrar
             </Link>
-            {/* TODO: Implement the mobile menu */}
-            <button className="lg:hidden">
-              <List size={40} color="#fff" />
-            </button>
+            <HamburgerMenuButton
+              darkBackground={!showSidebarMenu}
+              onChange={setShowSidebarMenu}
+              isChecked={showSidebarMenu}
+            />
           </li>
         </ul>
+        <aside
+          data-isActive={showSidebarMenu}
+          className={classNames(
+            "transition-transform ease-in-out duration-500 lg:hidden bg-white text-text-200 absolute inset-0 min-h-screen overflow-hidden z-10 pt-16 px-5",
+            showSidebarMenu ? "-translate-y-0" : "-translate-y-full"
+          )}
+        >
+          <div className="debug">Hello</div>
+        </aside>
       </Container>
     </nav>
   );

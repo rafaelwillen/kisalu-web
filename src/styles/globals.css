@@ -2,27 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bar-width: 30px;
+  --bar-height: 2px;
+  --bar-gap: 8px;
+  --hamburger-menu-animation-timing: 200ms ease-in-out;
+  --hamburger-menu-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
+}
+
 body {
-    @apply text-text-100 bg-white;
+  @apply text-text-100 bg-white;
+}
+
+body:has(aside[data-isActive="true"]) {
+  @apply overflow-hidden;
 }
 
 .debug {
-    outline: 1px dashed #f00;
+  outline: 1px dashed #f00;
 }
 
 .header-bg::after {
-    content: "";
-    background: linear-gradient(0deg, rgba(34,34,34,0.3) 0%, rgba(34,34,34,0.8) 100%), url("/header-background.jpg") no-repeat;
-    height: 100%;
-    @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center;
+  content: "";
+  background: linear-gradient(
+      0deg,
+      rgba(34, 34, 34, 0.3) 0%,
+      rgba(34, 34, 34, 0.8) 100%
+    ),
+    url("/header-background.jpg") no-repeat;
+  height: 100%;
+  @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center;
 }
 
 a.animated-underline {
-    position: relative;
+  position: relative;
 }
 
 a.animated-underline::after {
-    content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -35,6 +52,47 @@ a.animated-underline::after {
 }
 
 .animated-underline:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hamburger-menu {
+  --x-width: calc(var(--hamburger-menu-height) * 1.4142);
+}
+
+.hamburger-menu input,
+.hamburger-menu::after,
+.hamburger-menu::before {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  transform-origin: right center;
+  transition: opacity var(--hamburger-menu-animation-timing),
+    width var(--hamburger-menu-animation-timing),
+    rotate var(--hamburger-menu-animation-timing),
+    translate var(--hamburger-menu-animation-timing);
+  @apply rounded-full;
+}
+
+.hamburger-menu input {
+  appearance: none;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::after {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu:has(input:checked)::before {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
 }
