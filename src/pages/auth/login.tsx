@@ -1,3 +1,4 @@
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Input, SecureInput } from "@/components/form";
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
@@ -34,7 +35,7 @@ const LoginPage: NextPageWithLayout = () => {
             />
             <div className="my-3" />
             {/* TODO: Refactor to component */}
-            <SecureInput label="Palavra Passe" />
+            <SecureInput label="Palavra Passe" required />
             <p className="my-7">
               Não possui uma conta?{" "}
               <Link
@@ -44,9 +45,9 @@ const LoginPage: NextPageWithLayout = () => {
                 Registe-se já!
               </Link>
             </p>
-            <button className="mt-5 py-2 lg:py-4 bg-primary-600 text-white w-full flex gap-2 justify-center rounded hover:bg-primary-400 active:bg-primary-300 duration-300 ease-in-out">
+            <PrimaryButton>
               Entrar <ArrowUpRight size={24} />
-            </button>
+            </PrimaryButton>
           </form>
           {/* TODO: Replace with other providers: google and facebook */}
         </section>

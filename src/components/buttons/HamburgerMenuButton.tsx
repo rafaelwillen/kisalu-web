@@ -1,16 +1,11 @@
 import classNames from "classnames";
-
-type Props = {
-  darkBackground?: boolean;
-  isChecked?: boolean;
-  onChange?: (value: boolean) => void;
-};
+import { HamburgerMenuProps } from "./types";
 
 export default function HamburgerMenuButton({
   darkBackground = false,
   isChecked = false,
   onChange,
-}: Props) {
+}: HamburgerMenuProps) {
   return (
     <label
       className={classNames(
