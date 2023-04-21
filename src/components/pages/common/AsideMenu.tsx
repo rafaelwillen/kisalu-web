@@ -1,3 +1,4 @@
+import { Routes } from "@/utils/constants/linksPaths";
 import { Cards, House, Package, UserPlus } from "@phosphor-icons/react";
 import classNames from "classnames";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export default function AsideMenu({ visible }: Props) {
         <li>
           <Link
             className="h-16 px-5 flex gap-7 items-center hover:bg-primary-300 active:bg-primary-300"
-            href="/"
+            href={Routes.home}
           >
             <House size={30} /> Página Inicial
           </Link>
@@ -27,7 +28,7 @@ export default function AsideMenu({ visible }: Props) {
         <li>
           <Link
             className="h-16 px-5 flex gap-7 items-center hover:bg-primary-300 active:bg-primary-300"
-            href="/"
+            href={Routes.categories}
           >
             <Cards size={30} /> Categorias
           </Link>
@@ -35,7 +36,7 @@ export default function AsideMenu({ visible }: Props) {
         <li>
           <Link
             className="h-16 px-5 flex gap-7 items-center hover:bg-primary-300 active:bg-primary-300"
-            href="/"
+            href={Routes.becomeProvider}
           >
             <Package size={30} /> Tornar-se um prestador
           </Link>
@@ -43,7 +44,7 @@ export default function AsideMenu({ visible }: Props) {
         <li>
           <Link
             className="h-16 px-5 flex gap-7 items-center hover:bg-primary-300 active:bg-primary-300"
-            href="/"
+            href={Routes.register}
           >
             <UserPlus size={30} /> Criar Conta
           </Link>

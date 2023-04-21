@@ -1,4 +1,5 @@
 import { homeBrowseByCategory } from "@/mock/category";
+import { Routes } from "@/utils/constants/linksPaths";
 import { ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import CommonCategoryCard from "./CommonCategoryCard";
@@ -10,8 +11,10 @@ export default function CommonCategoriesList() {
         <h2 className="text-3xl font-bold mb-14 lg:mb-0">
           Procurar prestadores por categoria
         </h2>
-        {/* TODO: Replace with actual link */}
-        <Link href="#" className="font-bold group flex items-center gap-2">
+        <Link
+          href={Routes.categories}
+          className="font-bold group flex items-center gap-2"
+        >
           Todas as categorias
           <ArrowRight className="group-hover:translate-x-2 duration-300" />
         </Link>

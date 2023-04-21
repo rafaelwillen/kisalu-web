@@ -1,12 +1,14 @@
 import { homeBrowseByCategory } from "@/mock/category";
+import { Routes } from "@/utils/constants/linksPaths";
 import { Placeholder } from "@phosphor-icons/react";
+import Link from "next/link";
 
 type Props = typeof homeBrowseByCategory[0];
 
 export default function CommonCategoryCard({ field, freelancersCount, id, name }: Props) {
   return (
-    // TODO: Replace with actual link
-    <div
+    <Link
+      href={Routes.singleCategory.replace(":id", String(id))}
       key={id}
       className="px-7 py-10 space-y-7 flex-1 border border-neutral-200 lg:border-neutral-50 lg:shadow-lg hover:bg-neutral-200/40 duration-300 cursor-pointer"
     >
@@ -24,6 +26,6 @@ export default function CommonCategoryCard({ field, freelancersCount, id, name }
         <p className="text-lg font-regular min-w-[200px]">{name}</p>
         <p className="text-neutral-500 min-w-[200px]">{field}</p>
       </div>
-    </div>
+    </Link>
   );
 }
