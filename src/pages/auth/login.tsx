@@ -7,7 +7,7 @@ import { NextPageWithLayout } from "../_app";
 
 const LoginPage: NextPageWithLayout = () => {
   return (
-    <main className="bg-secondary-100 py-10">
+    <main className="bg-secondary-100 py-10 lg:py-32">
       <Container>
         <section className="mx-auto max-w-2xl space-y-14">
           <div className="text-center space-y-2">
@@ -65,7 +65,7 @@ const LoginPage: NextPageWithLayout = () => {
                 />
               </div>
             </div>
-            <button className="mt-5 py-2 bg-primary-600 text-white w-full flex gap-2 justify-center rounded hover:bg-primary-400 active:bg-primary-300 duration-300 ease-in-out">
+            <button className="mt-5 py-2 lg:py-4 bg-primary-600 text-white w-full flex gap-2 justify-center rounded hover:bg-primary-400 active:bg-primary-300 duration-300 ease-in-out">
               Entrar <ArrowUpRight size={24} />
             </button>
           </form>
