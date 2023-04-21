@@ -1,7 +1,8 @@
+import { Input } from "@/components/form";
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
 import { Routes } from "@/utils/constants/linksPaths";
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUpRight, EnvelopeSimple } from "@phosphor-icons/react";
 import Link from "next/link";
 import { NextPageWithLayout } from "../_app";
 
@@ -25,19 +26,11 @@ const LoginPage: NextPageWithLayout = () => {
             className="bg-white rounded p-12"
           >
             {/* TODO: Refactor to component */}
-            <div className="flex-1 space-y-1">
-              <label htmlFor="email" className="text-sm font-medium leading-7">
-                Endereço de Email
-              </label>
-              <div className="p-2 border border-neutral-200 rounded flex focus-within:border-primary-400 duration-150">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="flex-1 outline-none "
-                />
-              </div>
-            </div>
+            <Input
+              label="Endereço de Email"
+              type="email"
+              icon={<EnvelopeSimple className="text-text-200" size={20} />}
+            />
             <div className="my-3" />
             {/* TODO: Refactor to component */}
             <div className="flex-1 space-y-1">
