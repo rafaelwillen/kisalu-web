@@ -1,4 +1,4 @@
-import { Input } from "@/components/form";
+import { Input, SecureInput } from "@/components/form";
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
 import { Routes } from "@/utils/constants/linksPaths";
@@ -29,26 +29,12 @@ const LoginPage: NextPageWithLayout = () => {
             <Input
               label="Endereço de Email"
               type="email"
+              placeholder="exemplo@email.com"
               icon={<EnvelopeSimple className="text-text-200" size={20} />}
             />
             <div className="my-3" />
             {/* TODO: Refactor to component */}
-            <div className="flex-1 space-y-1">
-              <label
-                htmlFor="password"
-                className="text-sm font-medium leading-7"
-              >
-                Palavra Passe
-              </label>
-              <div className="p-2 border border-neutral-200 rounded flex focus-within:border-primary-400 duration-150">
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  className="flex-1 outline-none "
-                />
-              </div>
-            </div>
+            <SecureInput label="Palavra Passe" />
             <p className="my-7">
               Não possui uma conta?{" "}
               <Link
