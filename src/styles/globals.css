@@ -51,6 +51,14 @@ a.animated-underline::after {
   transition: transform 0.25s ease-out;
 }
 
+a.animated-underline.dark::after {
+  @apply bg-text-200;
+}
+
+a.animated-underline.primary::after {
+  @apply bg-primary-600;
+}
+
 .animated-underline:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
