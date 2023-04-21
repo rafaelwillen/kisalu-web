@@ -11,7 +11,7 @@ export default function PrimaryButton({
     <button
       {...props}
       className={classNames(
-        "mt-5 py-2 lg:py-4  w-full flex gap-2 justify-center rounded duration-300 ease-in-out disabled:opacity-30",
+        "mt-5 py-2 lg:py-4  w-full flex gap-2 justify-center rounded duration-300 ease-in-out disabled:opacity-30 items-center",
         variant === "solid" &&
           "bg-primary-600 text-white hover:bg-primary-400 active:bg-primary-300",
         variant === "outline" &&
