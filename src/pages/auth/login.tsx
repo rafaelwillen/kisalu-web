@@ -11,28 +11,19 @@ const LoginPage: NextPageWithLayout = () => {
       <Container>
         <section className="mx-auto max-w-2xl space-y-14">
           <div className="text-center space-y-2">
-            <h1 className="text-3xl font-bold">Efetuar o Login</h1>
-            {/* TODO: Replace with real text */}
+            <h1 className="text-3xl font-bold">Iniciar Sessão</h1>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque,
-              assumenda!
+              Olá! Bem-vindo de volta. Por favor, faça login para acessar a sua
+              conta.
             </p>
           </div>
-          <form className="bg-white rounded p-12">
-            {/* TODO: Replace with real text */}
-            <p className="text-lg font-medium mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Molestias, aliquam.
-            </p>
-            <p className="mb-7">
-              Não possui uma conta?{" "}
-              <Link
-                className="animated-underline primary text-primary-600"
-                href={Routes.register}
-              >
-                Registe-se já!
-              </Link>
-            </p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Haha, you can't login yet! :D");
+            }}
+            className="bg-white rounded p-12"
+          >
             {/* TODO: Refactor to component */}
             <div className="flex-1 space-y-1">
               <label htmlFor="email" className="text-sm font-medium leading-7">
@@ -65,6 +56,15 @@ const LoginPage: NextPageWithLayout = () => {
                 />
               </div>
             </div>
+            <p className="my-7">
+              Não possui uma conta?{" "}
+              <Link
+                className="animated-underline primary text-primary-600"
+                href={Routes.register}
+              >
+                Registe-se já!
+              </Link>
+            </p>
             <button className="mt-5 py-2 lg:py-4 bg-primary-600 text-white w-full flex gap-2 justify-center rounded hover:bg-primary-400 active:bg-primary-300 duration-300 ease-in-out">
               Entrar <ArrowUpRight size={24} />
             </button>
