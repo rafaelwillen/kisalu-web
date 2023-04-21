@@ -6,7 +6,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex-1 space-y-1">
         <label htmlFor={name} className="text-sm font-medium leading-7">
-          {label}
+          {label} {props.required && "*"}
         </label>
         <div className="p-2 border border-neutral-200 rounded flex items-center focus-within:border-primary-400 duration-150 gap-2">
           {icon}

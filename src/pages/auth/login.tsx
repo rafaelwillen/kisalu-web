@@ -28,6 +28,7 @@ const LoginPage: NextPageWithLayout = () => {
           >
             {/* TODO: Refactor to component */}
             <Input
+              required
               label="Endereço de Email"
               type="email"
               placeholder="exemplo@email.com"
@@ -45,6 +46,9 @@ const LoginPage: NextPageWithLayout = () => {
                 Registe-se já!
               </Link>
             </p>
+            <small className="text-sm text-text-100">
+              * - Campos obrigatórios
+            </small>
             <PrimaryButton>
               Entrar <ArrowUpRight size={24} />
             </PrimaryButton>
