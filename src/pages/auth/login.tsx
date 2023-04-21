@@ -26,7 +26,6 @@ const LoginPage: NextPageWithLayout = () => {
             }}
             className="bg-white rounded p-12"
           >
-            {/* TODO: Refactor to component */}
             <Input
               required
               label="Endereço de Email"
@@ -35,7 +34,6 @@ const LoginPage: NextPageWithLayout = () => {
               icon={<EnvelopeSimple className="text-text-200" size={20} />}
             />
             <div className="my-3" />
-            {/* TODO: Refactor to component */}
             <SecureInput label="Palavra Passe" required />
             <p className="my-7">
               Não possui uma conta?{" "}
