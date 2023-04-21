@@ -1,4 +1,5 @@
 import { trendingService } from "@/mock/projects";
+import { Routes } from "@/utils/constants/linksPaths";
 import { ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { v4 as uuid } from "uuid";
@@ -14,8 +15,10 @@ export default function TrendingServiceList() {
             <h2 className="text-3xl font-bold mb-1">Serviços em destaque</h2>
             <p className="mb-5">Os serviços mais requisitados</p>
           </div>
-          {/* TODO: Replace with actual link */}
-          <Link href="#" className="font-bold group flex items-center gap-2">
+          <Link
+            href={Routes.services}
+            className="font-bold group flex items-center gap-2"
+          >
             Todos os serviços{" "}
             <ArrowRight className="group-hover:translate-x-2 duration-300" />
           </Link>

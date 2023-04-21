@@ -1,6 +1,8 @@
 import { trendingService } from "@/mock/projects";
+import { Routes } from "@/utils/constants/linksPaths";
 import { Heart, Star } from "@phosphor-icons/react";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = typeof trendingService[0];
 
@@ -14,7 +16,10 @@ export default function TrendingServiceCard({
   startingPrice,
 }: Props) {
   return (
-    <div className="min-w-[300px] lg:min-w-[350px] flex flex-col rounded-lg shadow-md">
+    <Link
+      href={Routes.singleService.replace(":id", projectName)}
+      className="min-w-[300px] lg:min-w-[350px] flex flex-col rounded-lg shadow-md"
+    >
       <div className="relative">
         <Image
           src={imageUrl}
@@ -62,6 +67,6 @@ export default function TrendingServiceCard({
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
