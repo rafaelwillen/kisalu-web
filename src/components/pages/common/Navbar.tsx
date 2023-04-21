@@ -50,10 +50,22 @@ export default function Navbar({ whiteBackground = false }: Props) {
               whiteBackground ? "text-text-200" : "text-white"
             )}
           >
-            <Link href={Routes.categories} className="animated-underline">
+            <Link
+              href={Routes.categories}
+              className={classNames(
+                "animated-underline",
+                whiteBackground && "dark"
+              )}
+            >
               Categorias
             </Link>
-            <Link href={Routes.becomeProvider} className="animated-underline">
+            <Link
+              href={Routes.becomeProvider}
+              className={classNames(
+                "animated-underline",
+                whiteBackground && "dark"
+              )}
+            >
               Tornar-se um prestador
             </Link>
           </li>
@@ -62,7 +74,7 @@ export default function Navbar({ whiteBackground = false }: Props) {
               href={Routes.register}
               className={classNames(
                 "text-sm hidden lg:inline animated-underline",
-                whiteBackground ? "text-text-200" : "text-white"
+                whiteBackground ? "text-text-200 dark" : "text-white"
               )}
             >
               Criar Conta
