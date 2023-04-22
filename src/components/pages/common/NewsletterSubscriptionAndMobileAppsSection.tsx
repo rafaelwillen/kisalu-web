@@ -9,14 +9,16 @@ export default function NewsletterSubscriptionAndMobileAppsSection() {
         <h2 className="text-lg">Baixe o nosso aplicativo</h2>
         <a
           href="https://www.apple.com/app-store/"
-          className="flex gap-3 items-center hover:underline"
+          target="_blank"
+          className="flex gap-3 items-center hover:underline w-fit"
         >
           <AppleLogo weight="fill" />
           <span className="text-white/70"> iOS App</span>
         </a>
         <a
           href="https://play.google.com/"
-          className="flex gap-3 items-center hover:underline"
+          target="_blank"
+          className="flex gap-3 items-center hover:underline w-fit"
         >
           <AndroidLogo weight="fill" />
           <span className="text-white/70">Android App</span>

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const newsletterSchema = z.object({
-  email: z
+  newsletterEmail: z
     .string({ required_error: "Campo obrigatório" })
     .nonempty("Campo obrigatório")
     .email("Email inválido"),
