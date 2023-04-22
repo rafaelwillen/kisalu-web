@@ -71,7 +71,7 @@ export default function Navbar({ whiteBackground = false }: Props) {
           </li>
           <li className="flex items-center gap-7 py-1">
             <Link
-              href={Routes.register}
+              href={Routes.clientRegister}
               className={classNames(
                 "text-sm hidden lg:inline animated-underline",
                 whiteBackground ? "text-text-200 dark" : "text-white"
@@ -82,7 +82,7 @@ export default function Navbar({ whiteBackground = false }: Props) {
             <Link
               href={Routes.login}
               className={classNames(
-                "lg:px-7 lg:py-2 lg:rounded  duration-300 mr-12",
+                "lg:px-7 lg:py-2 lg:rounded  duration-300 mr-16 lg:mr-0",
                 whiteBackground
                   ? "lg:bg-primary-600 lg:hover:bg-primary-500 text-text-200 lg:text-white"
                   : "text-white text-sm lg:bg-white lg:text-text-200 lg:hover:bg-neutral-300"

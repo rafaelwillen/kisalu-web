@@ -39,7 +39,7 @@ const LoginPage: NextPageWithLayout = () => {
               Não possui uma conta?{" "}
               <Link
                 className="animated-underline primary text-primary-600"
-                href={Routes.register}
+                href={Routes.clientRegister}
               >
                 Registe-se já!
               </Link>
