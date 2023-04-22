@@ -3,7 +3,7 @@ export const Routes = {
   login: "/auth/login",
   categories: "/categories",
   becomeProvider: "/become-provider",
-  register: "/auth/register",
+  clientRegister: "/auth/register/client",
   singleCategory: "/categories/:id",
   singleService: "/services/:id",
   services: "/services",
