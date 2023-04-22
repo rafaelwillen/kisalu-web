@@ -33,6 +33,9 @@ const SecureInput = forwardRef<HTMLInputElement, SecureInputProps>(
             />
           )}
         </div>
+        {errorMessage && (
+          <span className="text-sm text-danger">{errorMessage}</span>
+        )}
       </div>
     );
   }
