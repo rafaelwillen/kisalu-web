@@ -2,7 +2,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
 import { NotFoundSVG } from "@/components/svg";
-import { Routes } from "@/utils/constants/linksPaths";
+import { Routes } from "@/utils/constants/routes";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { NextPageWithLayout } from "./_app";
