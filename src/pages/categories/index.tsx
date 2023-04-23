@@ -1,3 +1,4 @@
+import { Pagination } from "@/components/elements";
 import MainLayout from "@/components/layouts/MainLayout";
 import CategoryCard from "@/components/pages/categories/CategoryCard";
 import { Container } from "@/components/pages/common";
@@ -13,7 +14,7 @@ const CategoriesPage: NextPageWithLayout = () => {
           <CategoryCard key={category.name} />
         ))}
       </section>
-      {/* TODO: Add the pagination here */}
+      <Pagination />
     </Container>
   );
 };
