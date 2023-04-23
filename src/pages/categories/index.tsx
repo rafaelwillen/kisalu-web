@@ -1,4 +1,3 @@
-import { Pagination } from "@/components/elements";
 import MainLayout from "@/components/layouts/MainLayout";
 import CategoryCard from "@/components/pages/categories/CategoryCard";
 import { Container } from "@/components/pages/common";
@@ -7,8 +6,8 @@ import { NextPageWithLayout } from "../_app";
 
 const CategoriesPage: NextPageWithLayout = () => {
   return (
-    <main>
-      <section className="py-10">
+    <main className="py-10 lg:py-32">
+      <section className="mb-10">
         <Container small>
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
             Categorias Disponíveis
@@ -21,12 +20,13 @@ const CategoriesPage: NextPageWithLayout = () => {
         </Container>
       </section>
       <Container small>
-        <section className="grid grid-cols-1 gap-5">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7 mb-5">
           {categoriesPageResult.map((category) => (
             <CategoryCard key={category.name} {...category} />
           ))}
         </section>
-        <Pagination />
+        {/* TODO: Implement the pagination */}
+        {/* <Pagination /> */}
       </Container>
     </main>
   );

@@ -1,18 +1,21 @@
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+
 export default function MobilePagination() {
   return (
     <section className="flex flex-1 justify-between sm:hidden">
-      <a
-        href="#"
-        className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+      <button
+        type="button"
+        className="inline-flex items-center rounded-full border border-neutral-500 p-4 text-text-200 hover:bg-accent-700 hover:text-white duration-300 ease-in-out"
       >
-        Previous
-      </a>
-      <a
-        href="#"
-        className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        <CaretLeft />
+      </button>
+      <div></div>
+      <button
+        type="button"
+        className="inline-flex items-center rounded-full border border-neutral-500 p-4 text-text-200 hover:bg-accent-700 hover:text-white duration-300 ease-in-out"
       >
-        Next
-      </a>
+        <CaretRight />
+      </button>
     </section>
   );
 }
