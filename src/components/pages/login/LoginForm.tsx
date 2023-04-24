@@ -1,6 +1,6 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Input, SecureInput } from "@/components/form";
-import { Routes } from "@/utils/constants/linksPaths";
+import { Routes } from "@/utils/constants/routes";
 import { LoginFormType, loginSchema } from "@/utils/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, EnvelopeSimple } from "@phosphor-icons/react";

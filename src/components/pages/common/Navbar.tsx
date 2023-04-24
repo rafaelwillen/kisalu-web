@@ -1,5 +1,5 @@
 import { HamburgerMenuButton } from "@/components/buttons";
-import { Routes } from "@/utils/constants/linksPaths";
+import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,4 +1,4 @@
-import { Routes } from "@/utils/constants/linksPaths";
+import { Routes } from "@/utils/constants/routes";
 import { Cards, House, Package, UserPlus } from "@phosphor-icons/react";
 import classNames from "classnames";
 import Link from "next/link";

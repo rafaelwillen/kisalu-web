@@ -1,5 +1,5 @@
 import { trendingService } from "@/mock/projects";
-import { Routes } from "@/utils/constants/linksPaths";
+import { Routes } from "@/utils/constants/routes";
 import { Heart, Star } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";

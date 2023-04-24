@@ -1,5 +1,5 @@
 import { trendingService } from "@/mock/projects";
-import { Routes } from "@/utils/constants/linksPaths";
+import { Routes } from "@/utils/constants/routes";
 import { ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { v4 as uuid } from "uuid";
