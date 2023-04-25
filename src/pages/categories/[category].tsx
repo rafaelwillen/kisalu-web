@@ -1,12 +1,25 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
 import { Banner, ServiceCard } from "@/components/pages/services";
+import { categoriesPageResult } from "@/mock/category";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
+import { ParsedUrlQuery } from "querystring";
 import { NextPageWithLayout } from "../_app";
 
-const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
+type Props = {
+  category: (typeof categoriesPageResult)[0];
+};
+
+interface Params extends ParsedUrlQuery {
+  category: string;
+}
+
+const ServicesFromSingleCategoryPage: NextPageWithLayout<Props> = ({
+  category,
+}) => {
   return (
     <main className="pb-10">
       <Container small>
@@ -19,8 +32,11 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
             Categorias
           </Link>
           <span>/</span>
-          <Link className="animated-underline dark text-text-200" href="#">
-            Lorem, ipsum.
+          <Link
+            className="animated-underline dark text-text-200"
+            href={category.slug}
+          >
+            {category.name}
           </Link>
         </section>
       </Container>
@@ -63,6 +79,30 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
       </Container>
     </main>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
+  const categorySlug = context.params?.category!;
+  const category = categoriesPageResult.find(
+    ({ slug }) => slug === categorySlug
+  )!;
+  return {
+    props: {
+      category,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const categories = categoriesPageResult;
+  return {
+    paths: categories.map((category) => ({
+      params: { category: category.slug },
+    })),
+    fallback: false,
+  };
 };
 
 ServicesFromSingleCategoryPage.getLayout = (page) => (

@@ -4,60 +4,70 @@ export const homeBrowseByCategory = [
     name: "Web Development",
     field: "Software Development",
     freelancersCount: 2000,
+    slug: "web-development",
   },
   {
     id: 2,
     name: "Mobile Development",
     field: "Software Development",
     freelancersCount: 1500,
+    slug: "mobile-development",
   },
   {
     id: 3,
     name: "Graphic Design",
     field: "Design",
     freelancersCount: 1200,
+    slug: "graphic-design",
   },
   {
     id: 4,
     name: "Copywriting",
     field: "Writing",
     freelancersCount: 1000,
+    slug: "copywriting",
   },
   {
     id: 5,
     name: "Content Creation",
     field: "Writing",
     freelancersCount: 800,
+    slug: "content-creation",
   },
   {
     id: 6,
     name: "Video Editing",
     field: "Media Production",
     freelancersCount: 700,
+    slug: "video-editing",
   },
   {
     id: 7,
     name: "Social Media Management",
     field: "Marketing",
     freelancersCount: 600,
+    slug: "social-media-management",
   },
   {
     id: 8,
     name: "Photography",
     field: "Media Production",
     freelancersCount: 500,
+    slug: "photography",
   },
   {
     id: 9,
     name: "Translation",
     field: "Language Services",
     freelancersCount: 400,
+    slug: "translation",
   },
   {
     id: 10,
     name: "Data Analysis",
     field: "Business Intelligence",
     freelancersCount: 300,
+    slug: "data-analysis",
   },
 ];
 
@@ -68,6 +78,7 @@ export const categoriesPageResult = [
     banner: "Get Your Website Built by Top Web Developers",
     meanReview: 4.6,
     numFreelancers: 10000,
+    slug: "web-development",
   },
   {
     name: "Graphic Design",
@@ -75,13 +86,16 @@ export const categoriesPageResult = [
     banner: "Create Stunning Visuals with Top Designers",
     meanReview: 4.8,
     numFreelancers: 8500,
+    slug: "graphic-design",
   },
+
   {
     name: "Writing & Translation",
     image: "https://example.com/writing-translation.png",
     banner: "Write Your Way to Success with Expert Writers",
     meanReview: 4.4,
     numFreelancers: 12000,
+    slug: "writing-translation",
   },
   {
     name: "Digital Marketing",
@@ -89,6 +103,7 @@ export const categoriesPageResult = [
     banner: "Boost Your Online Presence with Top Marketers",
     meanReview: 4.7,
     numFreelancers: 7000,
+    slug: "digital-marketing",
   },
   {
     name: "Mobile App Development",
@@ -96,6 +111,7 @@ export const categoriesPageResult = [
     banner: "Build Your Own App with Top Developers",
     meanReview: 4.5,
     numFreelancers: 6500,
+    slug: "mobile-app-development",
   },
   {
     name: "Video & Animation",
@@ -103,6 +119,7 @@ export const categoriesPageResult = [
     banner: "Create Stunning Videos with Top Animators",
     meanReview: 4.3,
     numFreelancers: 9000,
+    slug: "video-animation",
   },
   {
     name: "Music & Audio",
@@ -110,6 +127,7 @@ export const categoriesPageResult = [
     banner: "Create Beautiful Music with Top Musicians",
     meanReview: 4.2,
     numFreelancers: 5000,
+    slug: "music-audio",
   },
   {
     name: "Photography & Videography",
@@ -117,6 +135,7 @@ export const categoriesPageResult = [
     banner: "Capture Your Memories with Top Photographers",
     meanReview: 4.6,
     numFreelancers: 7500,
+    slug: "photography-videography",
   },
   {
     name: "Business Consulting",
@@ -124,6 +143,7 @@ export const categoriesPageResult = [
     banner: "Get Expert Business Advice from Top Consultants",
     meanReview: 4.9,
     numFreelancers: 4000,
+    slug: "business-consulting",
   },
   {
     name: "Virtual Assistance",
@@ -131,6 +151,7 @@ export const categoriesPageResult = [
     banner: "Get Professional Help with Virtual Assistants",
     meanReview: 4.0,
     numFreelancers: 10000,
+    slug: "virtual-assistance",
   },
   {
     name: "Programming & Tech",
@@ -138,6 +159,7 @@ export const categoriesPageResult = [
     banner: "Get Expert Programming & Tech Services",
     meanReview: 4.5,
     numFreelancers: 11000,
+    slug: "programming-tech",
   },
   {
     name: "Data Entry & Admin",
@@ -145,5 +167,6 @@ export const categoriesPageResult = [
     banner: "Get Fast and Accurate Data Entry & Admin Services",
     meanReview: 4.2,
     numFreelancers: 6000,
+    slug: "data-entry-admin",
   },
 ];

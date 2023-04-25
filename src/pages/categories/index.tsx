@@ -2,9 +2,16 @@ import MainLayout from "@/components/layouts/MainLayout";
 import CategoryCard from "@/components/pages/categories/CategoryCard";
 import { Container } from "@/components/pages/common";
 import { categoriesPageResult } from "@/mock/category";
+import { GetStaticProps } from "next";
 import { NextPageWithLayout } from "../_app";
 
-const CategoriesPage: NextPageWithLayout = () => {
+type Props = {
+  categories: typeof categoriesPageResult;
+};
+
+const CategoriesPage: NextPageWithLayout<Props> = ({ categories }) => {
+  console.log(categories);
+
   return (
     <main className="py-10 lg:py-32">
       <section className="mb-10">
@@ -20,8 +27,8 @@ const CategoriesPage: NextPageWithLayout = () => {
         </Container>
       </section>
       <Container small>
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7 mb-5">
-          {categoriesPageResult.map((category) => (
+        <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-5 lg:gap-7 mb-5">
+          {categories.map((category) => (
             <CategoryCard key={category.name} {...category} />
           ))}
         </section>
@@ -30,6 +37,12 @@ const CategoriesPage: NextPageWithLayout = () => {
       </Container>
     </main>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  return {
+    props: { categories: categoriesPageResult },
+  };
 };
 
 CategoriesPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;

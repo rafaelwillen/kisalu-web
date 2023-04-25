@@ -4,7 +4,9 @@ export const Routes = {
   categories: "/categories",
   becomeProvider: "/become-provider",
   clientRegister: "/auth/register/client",
-  singleCategory: "/categories/:id",
+  /** Params: :categorySlug */
+  singleCategory: "/categories/:categorySlug",
+  /** Params: :id */
   singleService: "/services/:id",
   services: "/services",
 };
