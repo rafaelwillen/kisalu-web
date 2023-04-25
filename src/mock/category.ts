@@ -75,24 +75,29 @@ export const categoriesPageResult = [
   {
     name: "Web Development",
     image: "https://example.com/web-development.png",
-    banner: "Get Your Website Built by Top Web Developers",
+    banner:
+      "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     meanReview: 4.6,
     numFreelancers: 10000,
     slug: "web-development",
+    description:
+      "Com extensa experiência em uma variedade de linguagens de programação, nossos desenvolvedores web estão preparados para lidar com qualquer projeto, desde páginas de destino simples até sites de comércio eletrónico complexos.",
   },
   {
     name: "Graphic Design",
     image: "https://example.com/graphic-design.png",
-    banner: "Create Stunning Visuals with Top Designers",
     meanReview: 4.8,
     numFreelancers: 8500,
+    banner:
+      "https://images.unsplash.com/photo-1613479205646-c0dc1ee8511f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     slug: "graphic-design",
+    description:
+      "Nossos talentosos designers têm experiência em criar logótipos chamativos e materiais de impressão bonitos. Com nossa seleção diversificada de designers gráficos, você com certeza encontrará o profissional perfeito para o seu projeto.",
   },
 
   {
     name: "Writing & Translation",
     image: "https://example.com/writing-translation.png",
-    banner: "Write Your Way to Success with Expert Writers",
     meanReview: 4.4,
     numFreelancers: 12000,
     slug: "writing-translation",
@@ -100,7 +105,6 @@ export const categoriesPageResult = [
   {
     name: "Digital Marketing",
     image: "https://example.com/digital-marketing.png",
-    banner: "Boost Your Online Presence with Top Marketers",
     meanReview: 4.7,
     numFreelancers: 7000,
     slug: "digital-marketing",
@@ -108,7 +112,6 @@ export const categoriesPageResult = [
   {
     name: "Mobile App Development",
     image: "https://example.com/mobile-app-development.png",
-    banner: "Build Your Own App with Top Developers",
     meanReview: 4.5,
     numFreelancers: 6500,
     slug: "mobile-app-development",
@@ -116,7 +119,6 @@ export const categoriesPageResult = [
   {
     name: "Video & Animation",
     image: "https://example.com/video-animation.png",
-    banner: "Create Stunning Videos with Top Animators",
     meanReview: 4.3,
     numFreelancers: 9000,
     slug: "video-animation",
@@ -124,7 +126,6 @@ export const categoriesPageResult = [
   {
     name: "Music & Audio",
     image: "https://example.com/music-audio.png",
-    banner: "Create Beautiful Music with Top Musicians",
     meanReview: 4.2,
     numFreelancers: 5000,
     slug: "music-audio",
@@ -132,7 +133,6 @@ export const categoriesPageResult = [
   {
     name: "Photography & Videography",
     image: "https://example.com/photography-videography.png",
-    banner: "Capture Your Memories with Top Photographers",
     meanReview: 4.6,
     numFreelancers: 7500,
     slug: "photography-videography",
@@ -140,7 +140,6 @@ export const categoriesPageResult = [
   {
     name: "Business Consulting",
     image: "https://example.com/business-consulting.png",
-    banner: "Get Expert Business Advice from Top Consultants",
     meanReview: 4.9,
     numFreelancers: 4000,
     slug: "business-consulting",
@@ -148,7 +147,6 @@ export const categoriesPageResult = [
   {
     name: "Virtual Assistance",
     image: "https://example.com/virtual-assistance.png",
-    banner: "Get Professional Help with Virtual Assistants",
     meanReview: 4.0,
     numFreelancers: 10000,
     slug: "virtual-assistance",
@@ -156,7 +154,6 @@ export const categoriesPageResult = [
   {
     name: "Programming & Tech",
     image: "https://example.com/programming-tech.png",
-    banner: "Get Expert Programming & Tech Services",
     meanReview: 4.5,
     numFreelancers: 11000,
     slug: "programming-tech",
@@ -164,7 +161,6 @@ export const categoriesPageResult = [
   {
     name: "Data Entry & Admin",
     image: "https://example.com/data-entry-admin.png",
-    banner: "Get Fast and Accurate Data Entry & Admin Services",
     meanReview: 4.2,
     numFreelancers: 6000,
     slug: "data-entry-admin",

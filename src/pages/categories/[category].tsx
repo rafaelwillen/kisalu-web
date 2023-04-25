@@ -21,7 +21,7 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout<Props> = ({
   category,
 }) => {
   return (
-    <main className="pb-10">
+    <main className="pb-10 pt-10 lg:pt-0">
       <Container small>
         <section className="space-x-2 my-5 hidden lg:block text-text-200/60">
           <Link className="animated-underline dark" href={Routes.home}>
@@ -41,7 +41,11 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout<Props> = ({
         </section>
       </Container>
       <Container>
-        <Banner />
+        <Banner
+          name={category.name}
+          description={category.description}
+          imageUrl={category?.banner}
+        />
       </Container>
       <Container small>
         <section>
