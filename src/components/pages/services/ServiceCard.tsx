@@ -1,4 +1,4 @@
-import { Star } from "@phosphor-icons/react";
+import { ReviewStarIcon } from "@/components/elements";
 import Image from "next/image";
 import { ServiceCardProps } from "./types";
 
@@ -28,7 +28,7 @@ export default function ServiceCard({
           </h2>
           <div className="flex items-center gap-3">
             <p className="flex items-center gap-1">
-              <Star className="fill-[#E1C03F]" weight="fill" /> {meanReview}{" "}
+              <ReviewStarIcon /> {meanReview}{" "}
             </p>
             <span className="text-text-100">
               {numReviews} {numReviews === 1 ? "nota" : "notas"}
