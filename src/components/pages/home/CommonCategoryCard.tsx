@@ -5,10 +5,16 @@ import Link from "next/link";
 
 type Props = typeof homeBrowseByCategory[0];
 
-export default function CommonCategoryCard({ field, freelancersCount, id, name }: Props) {
+export default function CommonCategoryCard({
+  field,
+  freelancersCount,
+  id,
+  name,
+  slug,
+}: Props) {
   return (
     <Link
-      href={Routes.singleCategory.replace(":id", String(id))}
+      href={Routes.singleCategory.replace(":categorySlug", slug)}
       key={id}
       className="px-7 py-10 space-y-7 flex-1 border border-neutral-200 lg:border-neutral-50 lg:shadow-lg hover:bg-neutral-200/40 duration-300 cursor-pointer"
     >

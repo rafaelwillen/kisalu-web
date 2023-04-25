@@ -1,14 +1,51 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
 import { Banner, ServiceCard } from "@/components/pages/services";
+import { categoriesPageResult } from "@/mock/category";
 import { trendingService } from "@/mock/projects";
+import { Routes } from "@/utils/constants/routes";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
+import { ParsedUrlQuery } from "querystring";
 import { NextPageWithLayout } from "../_app";
 
-const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
+type Props = {
+  category: (typeof categoriesPageResult)[0];
+};
+
+interface Params extends ParsedUrlQuery {
+  category: string;
+}
+
+const ServicesFromSingleCategoryPage: NextPageWithLayout<Props> = ({
+  category,
+}) => {
   return (
-    <main className="py-10 lg:py-32">
+    <main className="pb-10 pt-10 lg:pt-0">
+      <Container small>
+        <section className="space-x-2 my-5 hidden lg:block text-text-200/60">
+          <Link className="animated-underline dark" href={Routes.home}>
+            Página Inicial
+          </Link>
+          <span>/</span>
+          <Link className="animated-underline dark" href={Routes.categories}>
+            Categorias
+          </Link>
+          <span>/</span>
+          <Link
+            className="animated-underline dark text-text-200"
+            href={category.slug}
+          >
+            {category.name}
+          </Link>
+        </section>
+      </Container>
       <Container>
-        <Banner />
+        <Banner
+          name={category.name}
+          description={category.description}
+          imageUrl={category?.banner}
+        />
       </Container>
       <Container small>
         <section>
@@ -37,7 +74,7 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
             </select>
           </div>
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7 mt-5 mb-7">
+        <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-5 lg:gap-7 mt-5 mb-7">
           {trendingService.map((service) => (
             <ServiceCard key={service.name} {...service} />
           ))}
@@ -46,6 +83,30 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
       </Container>
     </main>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
+  const categorySlug = context.params?.category!;
+  const category = categoriesPageResult.find(
+    ({ slug }) => slug === categorySlug
+  )!;
+  return {
+    props: {
+      category,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const categories = categoriesPageResult;
+  return {
+    paths: categories.map((category) => ({
+      params: { category: category.slug },
+    })),
+    fallback: false,
+  };
 };
 
 ServicesFromSingleCategoryPage.getLayout = (page) => (
