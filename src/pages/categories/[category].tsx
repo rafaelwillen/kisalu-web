@@ -54,7 +54,7 @@ const ServicesFromSingleCategoryPage: NextPageWithLayout = () => {
             </select>
           </div>
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7 mt-5 mb-7">
+        <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-5 lg:gap-7 mt-5 mb-7">
           {trendingService.map((service) => (
             <ServiceCard key={service.name} {...service} />
           ))}

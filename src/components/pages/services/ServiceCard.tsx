@@ -13,28 +13,30 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   return (
     // TODO: Change this to be a link to the service page
-    <article className="space-y-5 border-b border-neutral-200">
-      <div className="flex gap-4">
+    <article className="space-y-5 border-b border-neutral-200 lg:flex-col lg:border-0 lg:shadow-lg rounded lg:py-2 group duration-700 ease-in-out hover:scale-105">
+      <div className="flex gap-4 lg:flex-col">
         <Image
-          className="w-36 h-28 rounded"
+          className="w-36 h-28 rounded lg:w-full lg:h-60 object-cover object-center rounded-b-none"
           src={imageUrl}
           alt={projectName}
           width={330}
           height={245}
         />
-        <div className="flex-1 flex flex-col gap-3">
-          <h2 className="font-medium flex-1">{name}</h2>
+        <div className="flex-1 flex flex-col gap-3 lg:mt-5 lg:mx-7">
+          <h2 className="font-medium flex-1 group-hover:text-primary-600 duration-300">
+            {name}
+          </h2>
           <div className="flex items-center gap-3">
             <p className="flex items-center gap-1">
               <Star className="fill-[#E1C03F]" weight="fill" /> {meanReview}{" "}
             </p>
             <span className="text-text-100">
-              {meanReview} {numReviews === 1 ? "nota" : "notas"}
+              {numReviews} {numReviews === 1 ? "nota" : "notas"}
             </span>
           </div>
         </div>
       </div>
-      <div className="flex justify-between pb-5">
+      <div className="flex justify-between pb-5 lg:mb-5 lg:mx-7 lg:border-t border-neutral-300 lg:pt-4 lg:mt-2">
         <div className="flex gap-2 items-center">
           <Image
             className="rounded-full"
