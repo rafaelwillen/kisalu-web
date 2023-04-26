@@ -1,6 +1,10 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
-import { ServiceProductBanner } from "@/components/pages/services";
+import {
+  LocationAndDurationInfo,
+  ProviderQuickInfo,
+  ServiceProductBanner,
+} from "@/components/pages/services";
 import { NextPageWithLayout } from "@/pages/_app";
 import { Routes } from "@/utils/constants/routes";
 import Link from "next/link";
@@ -25,6 +29,9 @@ const ServicePage: NextPageWithLayout = () => {
       </Container>
       <Container>
         <ServiceProductBanner />
+        <LocationAndDurationInfo />
+        {/* TODO: Implement the slick with preview */}
+        <ProviderQuickInfo />
       </Container>
     </main>
   );
