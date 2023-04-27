@@ -1,9 +1,9 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { ReviewStarIcon } from "@/components/elements";
-import { Input } from "@/components/form";
+import { ProgressBar, ReviewStarIcon } from "@/components/elements";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
+import ReviewForm from "./ReviewForm";
 
 // TODO: Add props
 
@@ -21,29 +21,29 @@ export default function UserReviews() {
         <p>{new Intl.NumberFormat("pt-AO").format(3014)} notas</p>
       </article>
       <article className="mt-5 space-y-2">
-        <div className="flex gap-2">
+        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
           <p className="font-medium text-sm">5 estrelas</p>
-          <progress className="flex-1" max={100} value={58 / 100}></progress>
+          <ProgressBar progress={58} max={100} />
           <p className="text-sm">58</p>
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
           <p className="font-medium text-sm">4 estrelas</p>
-          <progress className="flex-1" max={100} value={20 / 100}></progress>
+          <ProgressBar progress={20} max={100} />
           <p className="text-sm">20</p>
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
           <p className="font-medium text-sm">3 estrelas</p>
-          <progress className="flex-1" max={100} value={15 / 100}></progress>
+          <ProgressBar progress={15} max={100} />
           <p className="text-sm">15</p>
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
           <p className="font-medium text-sm">2 estrelas</p>
-          <progress className="flex-1" max={100} value={2 / 100}></progress>
+          <ProgressBar progress={2} max={100} />
           <p className="text-sm">2</p>
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
           <p className="font-medium text-sm">1 estrelas</p>
-          <progress className="flex-1" max={100} value={1 / 100}></progress>
+          <ProgressBar progress={1} max={100} />
           <p className="text-sm">1</p>
         </div>
       </article>
@@ -84,17 +84,7 @@ export default function UserReviews() {
       <article>
         <h2>Comentar sobre o serviço</h2>
         <p>O seu endereço de email não será visível</p>
-        {/* TODO: Refactor this form */}
-        <form>
-          {/* TODO: Add star rating */}
-          {/* TODO: Implement textarea component */}
-          <Input label="Nome" />
-          <Input label="Email" type="email" />
-          {/* TODO: Add checkbox from radix */}
-          <PrimaryButton type="submit">
-            Enviar comentário <ArrowUpRight />
-          </PrimaryButton>
-        </form>
+        <ReviewForm />
       </article>
     </section>
   );
