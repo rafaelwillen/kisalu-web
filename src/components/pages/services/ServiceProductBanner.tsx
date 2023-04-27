@@ -2,8 +2,7 @@ import { ReviewStarIcon } from "@/components/elements";
 import { Eye, Files } from "@phosphor-icons/react";
 import Image from "next/image";
 
-// TODO: Add props: banner image, name, user (name and avatar), rating, orders, views
-
+// TODO: Add props
 export default function ServiceProductBanner() {
   return (
     <section className="relative rounded-2xl py-12 px-8 mb-5 text-white">

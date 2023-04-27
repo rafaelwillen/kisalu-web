@@ -84,6 +84,7 @@ export default function UserReviews() {
       <article>
         <h2>Comentar sobre o serviço</h2>
         <p>O seu endereço de email não será visível</p>
+        {/* TODO: Refactor this form */}
         <form>
           {/* TODO: Add star rating */}
           {/* TODO: Implement textarea component */}

@@ -1,4 +1,4 @@
-// TODO: Add service info prop
+// TODO: Add prop
 // TODO: In the future, add rich text support
 
 export default function ServiceInfo() {

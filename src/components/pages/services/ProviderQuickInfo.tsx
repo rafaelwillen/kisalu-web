@@ -4,7 +4,7 @@ import { ArrowUpRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
-// TODO: Add simple provider props
+// TODO: Add props
 
 export default function ProviderQuickInfo() {
   return (
@@ -20,7 +20,6 @@ export default function ProviderQuickInfo() {
         />
         <div className="flex-1">
           <p className="text-lg font-medium">Robert Fox</p>
-          <p className="text-sm text-text-100">Lorem, ipsum.</p>
           <div className="flex gap-1 text-sm">
             <ReviewStarIcon />
             <p className="font-medium">4.9</p>

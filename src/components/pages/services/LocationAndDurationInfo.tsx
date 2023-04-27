@@ -1,6 +1,6 @@
 import { CalendarCheck, NavigationArrow } from "@phosphor-icons/react";
 
-// TODO: Add props: location and duration
+// TODO: Add props
 
 export default function LocationAndDurationInfo() {
   return (
