@@ -1,4 +1,5 @@
 import { ReviewStarIcon } from "@/components/elements";
+import { useCurrencyFormatter } from "@/hooks/intl";
 import Image from "next/image";
 import { ServiceCardProps } from "./types";
 
@@ -11,6 +12,7 @@ export default function ServiceCard({
   projectName,
   startingPrice,
 }: ServiceCardProps) {
+  const formatToCurrency = useCurrencyFormatter();
   return (
     // TODO: Change this to be a link to the service page
     <article className="space-y-5 border-b border-neutral-200 lg:flex-col lg:border-0 lg:shadow-lg rounded lg:py-2 group duration-700 ease-in-out hover:scale-105">
@@ -50,10 +52,7 @@ export default function ServiceCard({
         <p className="text-sm text-text-100">
           Começando em <br />
           <span className="text-text-200 font-medium text-base">
-            {new Intl.NumberFormat("pt-AO", {
-              style: "currency",
-              currency: "AOA",
-            }).format(startingPrice * 500)}
+            {formatToCurrency(startingPrice * 500)}
           </span>
         </p>
       </div>

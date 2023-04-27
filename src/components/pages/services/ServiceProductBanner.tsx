@@ -1,9 +1,11 @@
 import { ReviewStarIcon } from "@/components/elements";
+import { useCompactNumberFormatter } from "@/hooks/intl";
 import { Eye, Files } from "@phosphor-icons/react";
 import Image from "next/image";
 
 // TODO: Add props
 export default function ServiceProductBanner() {
+  const formatToCompactNumber = useCompactNumberFormatter();
   return (
     <section className="relative rounded-2xl py-12 px-8 mb-5 text-white">
       <Image
@@ -31,11 +33,7 @@ export default function ServiceProductBanner() {
             <ReviewStarIcon />
             <p>4.82</p>
             <p className="font-regular text-neutral-300">
-              {new Intl.NumberFormat("pt-AO", {
-                compactDisplay: "short",
-                notation: "compact",
-              }).format(94)}{" "}
-              notas
+              {formatToCompactNumber(94)} notas
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -44,13 +42,7 @@ export default function ServiceProductBanner() {
           </div>
           <div className="flex items-center gap-3">
             <Eye size={30} />
-            <p>
-              {new Intl.NumberFormat("pt-AO", {
-                compactDisplay: "short",
-                notation: "compact",
-              }).format(902)}{" "}
-              visualizações
-            </p>
+            <p>{formatToCompactNumber(902)} visualizações</p>
           </div>
         </div>
       </div>

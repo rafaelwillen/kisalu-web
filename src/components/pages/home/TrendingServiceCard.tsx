@@ -1,10 +1,11 @@
+import { useCurrencyFormatter } from "@/hooks/intl";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
 import { Heart, Star } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = typeof trendingService[0];
+type Props = (typeof trendingService)[0];
 
 export default function TrendingServiceCard({
   meanReview,
@@ -15,6 +16,7 @@ export default function TrendingServiceCard({
   projectName,
   startingPrice,
 }: Props) {
+  const formatToCurrency = useCurrencyFormatter();
   return (
     <Link
       href={Routes.singleService.replace(":id", projectName)}
@@ -59,12 +61,7 @@ export default function TrendingServiceCard({
             </div>
             <p className="text-sm">{owner.name}</p>
           </div>
-          <p className="text-sm">
-            {new Intl.NumberFormat("pt-AO", {
-              style: "currency",
-              currency: "AOA",
-            }).format(startingPrice * 500)}
-          </p>
+          <p className="text-sm">{formatToCurrency(startingPrice * 500)}</p>
         </div>
       </div>
     </Link>

@@ -1,3 +1,4 @@
+import { useCompactNumberFormatter } from "@/hooks/intl";
 import { categoriesPageResult } from "@/mock/category";
 import { Routes } from "@/utils/constants/routes";
 import { Star } from "@phosphor-icons/react";
@@ -13,6 +14,7 @@ export default function CategoryCard({
   numFreelancers,
   slug,
 }: Props) {
+  const formatToCompactNumber = useCompactNumberFormatter();
   const numberOfReviews = (Math.random() * 20 + 1).toFixed(0);
   return (
     <Link
@@ -35,13 +37,7 @@ export default function CategoryCard({
               {numberOfReviews} {numberOfReviews === "1" ? "nota" : "notas"}{" "}
             </span>
           </p>
-          <span>
-            {new Intl.NumberFormat("pt-AO", {
-              notation: "compact",
-              compactDisplay: "long",
-            }).format(numFreelancers)}{" "}
-            prestadores
-          </span>
+          <span>{formatToCompactNumber(numFreelancers)} prestadores</span>
         </div>
       </div>
     </Link>
