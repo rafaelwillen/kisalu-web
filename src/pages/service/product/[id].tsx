@@ -3,7 +3,9 @@ import { Container } from "@/components/pages/common";
 import {
   LocationAndDurationInfo,
   ProviderQuickInfo,
+  ServiceInfo,
   ServiceProductBanner,
+  UserReviews,
 } from "@/components/pages/services";
 import { NextPageWithLayout } from "@/pages/_app";
 import { Routes } from "@/utils/constants/routes";
@@ -32,6 +34,8 @@ const ServicePage: NextPageWithLayout = () => {
         <LocationAndDurationInfo />
         {/* TODO: Implement the slick with preview */}
         <ProviderQuickInfo />
+        <ServiceInfo />
+        <UserReviews />
       </Container>
     </main>
   );
