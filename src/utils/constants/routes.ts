@@ -6,7 +6,6 @@ export const Routes = {
   clientRegister: "/auth/register/client",
   /** Params: :categorySlug */
   singleCategory: "/categories/:categorySlug",
-  /** Params: :id */
-  singleService: "/services/:id",
-  services: "/services",
+  /** Params: :id - service id */
+  singleService: "/service/product/:id",
 };

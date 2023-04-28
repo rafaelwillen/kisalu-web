@@ -1,6 +1,8 @@
 import { ReviewStarIcon } from "@/components/elements";
 import { useCurrencyFormatter } from "@/hooks/intl";
+import { Routes } from "@/utils/constants/routes";
 import Image from "next/image";
+import Link from "next/link";
 import { ServiceCardProps } from "./types";
 
 export default function ServiceCard({
@@ -14,8 +16,11 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   const formatToCurrency = useCurrencyFormatter();
   return (
-    // TODO: Change this to be a link to the service page
-    <article className="space-y-5 border-b border-neutral-200 lg:flex-col lg:border-0 lg:shadow-lg rounded lg:py-2 group duration-700 ease-in-out hover:scale-105">
+    // TODO: Add the service id
+    <Link
+      href={Routes.singleService.replace(":id", name)}
+      className="space-y-5 border-b border-neutral-200 lg:flex-col lg:border-0 lg:shadow-lg rounded lg:py-2 group duration-700 ease-in-out hover:scale-105"
+    >
       <div className="flex gap-4 lg:flex-col">
         <Image
           className="w-36 h-28 rounded lg:w-full lg:h-60 object-cover object-center rounded-b-none"
@@ -56,6 +61,6 @@ export default function ServiceCard({
           </span>
         </p>
       </div>
-    </article>
+    </Link>
   );
 }
