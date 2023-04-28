@@ -1,5 +1,6 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Checkbox, Input, Rating, TextArea } from "@/components/form";
+import { useReviewStorage } from "@/hooks";
 import {
   ServiceReviewFormType,
   TEXT_AREA_MAX_LENGTH,
@@ -10,6 +11,7 @@ import { ArrowUpRight } from "@phosphor-icons/react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function ReviewForm() {
+  const { saveToStorage, storedData } = useReviewStorage();
   const {
     control,
     register,
@@ -17,9 +19,24 @@ export default function ReviewForm() {
     formState: { errors },
   } = useForm<ServiceReviewFormType>({
     resolver: zodResolver(serviceReviewSchema),
+    defaultValues: {
+      rating: 0,
+      saveData: false,
+    },
+    values: storedData
+      ? {
+          email: storedData.email,
+          name: storedData.name,
+          rating: 0,
+          review: "",
+          saveData: false,
+        }
+      : undefined,
   });
 
-  function onSubmit(data: ServiceReviewFormType) {
+  function onSubmit(formData: ServiceReviewFormType) {
+    const { saveData, ...data } = formData;
+    if (saveData) saveToStorage({ email: data.email, name: data.name });
     console.log(data);
   }
 
@@ -28,12 +45,17 @@ export default function ReviewForm() {
       <Controller
         control={control}
         name="rating"
-        render={({ field, fieldState: { error } }) => (
+        render={({
+          field: { name, onChange, value },
+          fieldState: { error },
+        }) => (
           <Rating
             label="A sua avaliação"
             required
             errorMessage={error?.message}
-            {...field}
+            name={name}
+            onChange={onChange}
+            value={value}
           />
         )}
       />
