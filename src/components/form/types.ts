@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode } from "react";
+import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
 
 interface CustomInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "className"> {}
@@ -30,3 +30,10 @@ export type LabelProps = {
   htmlFor?: string;
   required?: boolean;
 };
+
+export interface TextAreaInputProps
+  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "className"> {
+  label: string;
+  errorMessage?: string;
+  icon?: ReactNode;
+}

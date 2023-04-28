@@ -1,6 +1,5 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { Input } from "@/components/form";
-import Rating from "@/components/form/Rating";
+import { Input, Rating, TextArea } from "@/components/form";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { useState } from "react";
 
@@ -15,7 +14,7 @@ export default function ReviewForm() {
         value={rating}
         required
       />
-      {/* TODO: Implement textarea component */}
+      <TextArea label="Comentário" />
       <Input label="Nome" />
       <Input label="Email" type="email" />
       {/* TODO: Add checkbox from radix */}
