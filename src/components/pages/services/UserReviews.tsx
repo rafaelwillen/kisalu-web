@@ -88,9 +88,12 @@ export default function UserReviews() {
           </PrimaryButton>
         </Link>
       </article>
-      <article>
-        <h2>Comentar sobre o serviço</h2>
-        <p>O seu endereço de email não será visível</p>
+      <article className="mt-8">
+        <h2 className="text-xl font-medium mb-5">Comentar sobre o serviço</h2>
+        <p>
+          O seu endereço de email não será visível. Campos obrigatórios estão
+          marcados com *
+        </p>
         <ReviewForm />
       </article>
     </section>
