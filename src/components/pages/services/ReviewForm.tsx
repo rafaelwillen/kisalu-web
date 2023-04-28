@@ -65,17 +65,19 @@ export default function ReviewForm() {
         {...register("review")}
         errorMessage={errors.review?.message}
       />
-      <Input
-        label="Nome"
-        {...register("name")}
-        errorMessage={errors.name?.message}
-      />
-      <Input
-        label="Email"
-        type="email"
-        {...register("email")}
-        errorMessage={errors.email?.message}
-      />
+      <div className="md:grid grid-cols-2 gap-4">
+        <Input
+          label="Nome"
+          {...register("name")}
+          errorMessage={errors.name?.message}
+        />
+        <Input
+          label="Email"
+          type="email"
+          {...register("email")}
+          errorMessage={errors.email?.message}
+        />
+      </div>
       <Controller
         control={control}
         name="saveData"
