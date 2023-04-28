@@ -75,8 +75,8 @@ export default function ServiceImagesSlider({
             <CaretLeft size={20} />
           </button>
         )}
-        {imagesUrl.map((url) => (
-          <div className={` keen-slider__slide`}>
+        {imagesUrl.map((url, index) => (
+          <div key={index} className={` keen-slider__slide`}>
             <Image
               src={url}
               className="rounded"
@@ -98,8 +98,8 @@ export default function ServiceImagesSlider({
         )}
       </div>
       <div ref={thumbnailRef} className="keen-slider thumbnail">
-        {imagesUrl.map((url) => (
-          <div className={`keen-slider__slide`}>
+        {imagesUrl.map((url, index) => (
+          <div key={index} className={`keen-slider__slide`}>
             <Image
               src={url}
               className="rounded"
