@@ -5,6 +5,7 @@ import {
   ProviderQuickInfo,
   ServiceImageSlider,
   ServiceInfo,
+  ServicePrice,
   ServiceProductBanner,
   UserReviews,
 } from "@/components/pages/services";
@@ -45,6 +46,7 @@ const ServicePage: NextPageWithLayout = () => {
         />
         <ProviderQuickInfo />
         <ServiceInfo />
+        <ServicePrice />
         <UserReviews />
       </Container>
     </main>
