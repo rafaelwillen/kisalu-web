@@ -67,6 +67,9 @@ module.exports = {
       main: ["var(--font-main)"],
     },
     extend: {
+      backgroundImage: {
+        providerGradient: "linear-gradient(180deg, #032751 0%, #114c50 60%)",
+      },
       keyframes: {
         slideDown: {
           from: { height: 0 },
