@@ -1,4 +1,5 @@
 import {
+  Code,
   FacebookLogo,
   InstagramLogo,
   LinkedinLogo,
@@ -36,9 +37,21 @@ export default function Footer() {
         <FooterAccordion />
         <NewsletterSubscriptionAndMobileAppsSection />
       </div>
-      <p className="text-white/70 text-sm">
-        © Kisalu. {new Date().getFullYear()} Todos os direitos reservados.
-      </p>
+      <div className="flex justify-between items-center text-white/70 text-sm">
+        <p>
+          © Kisalu. {new Date().getFullYear()} Todos os direitos reservados.
+        </p>
+        <div className="flex gap-2 items-center">
+          <Code /> Feito por
+          <a
+            target="_blank"
+            className="animated-underline"
+            href="https://github.com/rafaelwillen"
+          >
+            Rafael Padre
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }

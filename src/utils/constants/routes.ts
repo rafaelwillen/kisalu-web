@@ -8,4 +8,7 @@ export const Routes = {
   singleCategory: "/categories/:categorySlug",
   /** Params: :id - service id */
   singleService: "/service/product/:id",
+  providers: "/providers",
+  /** Params: :id - provider id */
+  singleProvider: "/providers/:id",
 };
