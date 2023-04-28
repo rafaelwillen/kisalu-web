@@ -6,11 +6,15 @@ import {
   NewProvidersSection,
 } from "@/components/pages/home";
 import TrendingServiceList from "@/components/pages/home/TrendingServiceList";
+import Head from "next/head";
 import { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
   return (
     <main>
+      <Head>
+        <title>Kisalu | Página Inicial</title>
+      </Head>
       <Container small>
         <CommonCategoriesList />
       </Container>

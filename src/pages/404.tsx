@@ -4,12 +4,16 @@ import { Container } from "@/components/pages/common";
 import { NotFoundSVG } from "@/components/svg";
 import { Routes } from "@/utils/constants/routes";
 import { ArrowUpRight } from "@phosphor-icons/react";
+import Head from "next/head";
 import Link from "next/link";
 import { NextPageWithLayout } from "./_app";
 
 const NotFountPage: NextPageWithLayout = () => {
   return (
     <Container>
+      <Head>
+        <title>Kisalu | Página Não Encontrada</title>
+      </Head>
       <main className="py-10 lg:py-32 flex flex-col lg:flex-row mx-auto max-w-4xl lg:gap-36 lg:items-center">
         <NotFoundSVG
           className="w-3/4 max-w-md self-center lg:max-w-2xl"

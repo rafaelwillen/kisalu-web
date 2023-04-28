@@ -11,11 +11,15 @@ import {
 } from "@/components/pages/services";
 import { NextPageWithLayout } from "@/pages/_app";
 import { Routes } from "@/utils/constants/routes";
+import Head from "next/head";
 import Link from "next/link";
 
 const ServicePage: NextPageWithLayout = () => {
   return (
     <main className="py-10 lg:pt-0">
+      <Head>
+        <title>Kisalu | Lorem ipsum dolor sit amet.</title>
+      </Head>
       <Container small>
         <section className="space-x-2 my-5 hidden lg:block text-text-200/60">
           <Link className="animated-underline dark" href={Routes.home}>

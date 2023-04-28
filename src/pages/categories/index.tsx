@@ -3,6 +3,7 @@ import CategoryCard from "@/components/pages/categories/CategoryCard";
 import { Container } from "@/components/pages/common";
 import { categoriesPageResult } from "@/mock/category";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import { NextPageWithLayout } from "../_app";
 
 type Props = {
@@ -10,10 +11,11 @@ type Props = {
 };
 
 const CategoriesPage: NextPageWithLayout<Props> = ({ categories }) => {
-  console.log(categories);
-
   return (
     <main className="py-10 lg:py-32">
+      <Head>
+        <title>Kisalu | Categorias</title>
+      </Head>
       <section className="mb-10">
         <Container small>
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">

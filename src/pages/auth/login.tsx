@@ -1,11 +1,15 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
 import { LoginForm } from "@/components/pages/login";
+import Head from "next/head";
 import { NextPageWithLayout } from "../_app";
 
 const LoginPage: NextPageWithLayout = () => {
   return (
     <main className="bg-secondary-100 py-10 lg:py-32">
+      <Head>
+        <title>Kisalu | Iniciar Sessão</title>
+      </Head>
       <Container>
         <section className="mx-auto max-w-2xl space-y-14">
           <div className="text-center space-y-2">
