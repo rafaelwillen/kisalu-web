@@ -46,7 +46,7 @@ export interface TextAreaInputProps
 export interface CheckboxProps {
   label: string;
   name?: string;
-  checked?: boolean;
+  value?: boolean;
   onChange?: (checked: boolean) => void;
   onBlur?: FocusEventHandler<HTMLInputElement>;
   errorMessage?: string;

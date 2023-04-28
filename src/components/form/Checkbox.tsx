@@ -7,7 +7,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     {
       label,
       name,
-      checked,
+      value: value,
       onChange,
       errorMessage,
       required,
@@ -22,7 +22,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           id={name}
           name={name}
-          checked={checked}
+          checked={value}
           onChange={(e) => onChange && onChange(e.target.checked)}
           onBlur={onBlur}
           ref={ref}
