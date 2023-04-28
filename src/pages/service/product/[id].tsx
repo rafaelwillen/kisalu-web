@@ -31,7 +31,7 @@ const ServicePage: NextPageWithLayout = () => {
           </Link>
         </section>
       </Container>
-      <Container>
+      <Container small>
         <ServiceProductBanner />
         {/* MOBILE ONLY */}
         <div className="block xl:hidden">

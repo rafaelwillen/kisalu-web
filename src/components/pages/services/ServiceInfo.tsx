@@ -3,7 +3,7 @@
 
 export default function ServiceInfo() {
   return (
-    <section className="mt-6 space-y-5">
+    <section className="mt-6 space-y-5 xl:mt-16">
       <h2 className="font-medium text-xl">Sobre o Serviço</h2>
       <div className="space-y-4">
         <p>
