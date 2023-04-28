@@ -4,7 +4,7 @@ import { CalendarCheck, NavigationArrow } from "@phosphor-icons/react";
 
 export default function LocationAndDurationInfo() {
   return (
-    <section className="flex justify-between">
+    <section className="flex justify-between max-w-lg mx-auto">
       <div className="flex items-center gap-4">
         <CalendarCheck size={30} className="text-accent-800" />
         <div className="flex flex-col">
