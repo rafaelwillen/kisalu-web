@@ -23,38 +23,40 @@ export default function UserReviews() {
         A avaliação de desempenho é feita por outros utilizadores que
         contrataram o prestador.
       </p>
-      <article className="flex flex-col py-12 bg-primary-200 rounded-lg items-center mt-4">
-        <p className="text-primary-700 font-bold text-6xl">4.96</p>
-        <p className="font-medium text-lg">Excelente</p>
-        <p>{formatNumber(3014)} notas</p>
-      </article>
-      <article className="mt-5 space-y-2">
-        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
-          <p className="font-medium text-sm">5 estrelas</p>
-          <ProgressBar progress={58} max={100} />
-          <p className="text-sm">{formatToCompactNumber(58)}</p>
-        </div>
-        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
-          <p className="font-medium text-sm">4 estrelas</p>
-          <ProgressBar progress={20} max={100} />
-          <p className="text-sm">{formatToCompactNumber(20)}</p>
-        </div>
-        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
-          <p className="font-medium text-sm">3 estrelas</p>
-          <ProgressBar progress={15} max={100} />
-          <p className="text-sm">{formatToCompactNumber(15)}</p>
-        </div>
-        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
-          <p className="font-medium text-sm">2 estrelas</p>
-          <ProgressBar progress={2} max={100} />
-          <p className="text-sm">{formatToCompactNumber(2)}</p>
-        </div>
-        <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
-          <p className="font-medium text-sm">1 estrelas</p>
-          <ProgressBar progress={1} max={100} />
-          <p className="text-sm">{formatToCompactNumber(1)}</p>
-        </div>
-      </article>
+      <div className="md:flex gap-5">
+        <article className="flex flex-1 flex-col py-12 bg-primary-200 rounded-lg items-center mt-4">
+          <p className="text-primary-700 font-bold text-6xl">4.96</p>
+          <p className="font-medium text-lg">Excelente</p>
+          <p>{formatNumber(3014)} notas</p>
+        </article>
+        <article className="mt-5 flex-[2] space-y-2">
+          <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
+            <p className="font-medium text-sm">5 estrelas</p>
+            <ProgressBar progress={58} max={100} />
+            <p className="text-sm">{formatToCompactNumber(58)}</p>
+          </div>
+          <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
+            <p className="font-medium text-sm">4 estrelas</p>
+            <ProgressBar progress={20} max={100} />
+            <p className="text-sm">{formatToCompactNumber(20)}</p>
+          </div>
+          <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
+            <p className="font-medium text-sm">3 estrelas</p>
+            <ProgressBar progress={15} max={100} />
+            <p className="text-sm">{formatToCompactNumber(15)}</p>
+          </div>
+          <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
+            <p className="font-medium text-sm">2 estrelas</p>
+            <ProgressBar progress={2} max={100} />
+            <p className="text-sm">{formatToCompactNumber(2)}</p>
+          </div>
+          <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">
+            <p className="font-medium text-sm">1 estrelas</p>
+            <ProgressBar progress={1} max={100} />
+            <p className="text-sm">{formatToCompactNumber(1)}</p>
+          </div>
+        </article>
+      </div>
       <article className="mt-8 space-y-8 pb-8 border-b border-neutral-200">
         <div className="space-y-5">
           <div className="flex gap-5 items-center">

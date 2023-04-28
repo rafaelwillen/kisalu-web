@@ -17,7 +17,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref
   ) => (
     <div>
-      <div className="flex items-start gap-3 justify-between">
+      <div className="flex items-start gap-3">
         <input
           type="checkbox"
           id={name}

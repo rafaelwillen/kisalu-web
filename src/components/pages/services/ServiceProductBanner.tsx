@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function ServiceProductBanner() {
   const formatToCompactNumber = useCompactNumberFormatter();
   return (
-    <section className="relative rounded-2xl py-12 px-8 mb-5 text-white">
+    <section className="relative rounded-2xl py-12 px-8 mb-5 text-white lg:px-36 lg:py-24 shadow-lg">
       <Image
         src="https://placehold.co/1920x1280.png"
         alt="Category Banner"
@@ -18,7 +18,7 @@ export default function ServiceProductBanner() {
         <h1 className="font-bold text-3xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dicta?
         </h1>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-sm font-medium lg:flex lg:gap-8">
           <div className="flex items-center gap-3">
             <Image
               src="https://randomuser.me/api/portraits/women/89.jpg"
