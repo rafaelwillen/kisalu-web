@@ -1,12 +1,12 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { Input, Rating, TextArea } from "@/components/form";
+import { Checkbox, Input, Rating, TextArea } from "@/components/form";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { useState } from "react";
 
 export default function ReviewForm() {
   const [rating, setRating] = useState(0);
   return (
-    <form className="mt-5">
+    <form className="mt-5 space-y-4">
       <Rating
         label="A sua avaliação"
         name="rating"
@@ -17,7 +17,7 @@ export default function ReviewForm() {
       <TextArea label="Comentário" />
       <Input label="Nome" />
       <Input label="Email" type="email" />
-      {/* TODO: Add checkbox from radix */}
+      <Checkbox label="Salvar o meu nome e email para os próximos comentários" />
       <PrimaryButton type="submit">
         Enviar comentário <ArrowUpRight />
       </PrimaryButton>

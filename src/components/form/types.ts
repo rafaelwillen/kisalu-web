@@ -1,4 +1,9 @@
-import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
+import {
+  FocusEventHandler,
+  InputHTMLAttributes,
+  ReactNode,
+  TextareaHTMLAttributes,
+} from "react";
 
 interface CustomInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "className"> {}
@@ -36,4 +41,15 @@ export interface TextAreaInputProps
   label: string;
   errorMessage?: string;
   icon?: ReactNode;
+}
+
+export interface CheckboxProps {
+  label: string;
+  name?: string;
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  errorMessage?: string;
+  required?: boolean;
+  defaultChecked?: boolean;
 }
