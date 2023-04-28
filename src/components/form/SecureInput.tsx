@@ -1,5 +1,7 @@
 import { Eye, EyeClosed } from "@phosphor-icons/react";
 import { forwardRef, useState } from "react";
+import ErrorMessage from "./ErrorMessage";
+import Label from "./Label";
 import { SecureInputProps } from "./types";
 
 const SecureInput = forwardRef<HTMLInputElement, SecureInputProps>(
@@ -7,9 +9,8 @@ const SecureInput = forwardRef<HTMLInputElement, SecureInputProps>(
     const [showText, setShowText] = useState(false);
     return (
       <div className="flex-1 space-y-1">
-        <label htmlFor={name} className="text-sm font-medium leading-7">
-          {label} {props.required && "*"}
-        </label>
+        <Label htmlFor={name} label={label} required={props.required} />
+
         <div className="p-2 border border-neutral-200 rounded flex items-center focus-within:border-primary-400 duration-150 gap-2">
           <input
             {...props}
@@ -33,9 +34,7 @@ const SecureInput = forwardRef<HTMLInputElement, SecureInputProps>(
             />
           )}
         </div>
-        {errorMessage && (
-          <span className="text-sm text-danger">{errorMessage}</span>
-        )}
+        {errorMessage && <ErrorMessage message={errorMessage} />}
       </div>
     );
   }

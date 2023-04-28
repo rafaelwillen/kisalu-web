@@ -11,3 +11,22 @@ export interface InputProps extends CustomInputProps {
 }
 
 export interface SecureInputProps extends Omit<InputProps, "type" | "icon"> {}
+
+export type RatingProps = {
+  value: number;
+  onChange: (value: number) => void;
+  label: string;
+  errorMessage?: string;
+  name: string;
+  required?: boolean;
+};
+
+export type ErrorMessageProps = {
+  message: string;
+};
+
+export type LabelProps = {
+  label: string;
+  htmlFor?: string;
+  required?: boolean;
+};
