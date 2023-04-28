@@ -89,9 +89,11 @@ export default function ReviewForm() {
           />
         )}
       />
-      <PrimaryButton type="submit">
-        Enviar comentário <ArrowUpRight />
-      </PrimaryButton>
+      <div className="xl:w-1/3">
+        <PrimaryButton type="submit">
+          Enviar comentário <ArrowUpRight />
+        </PrimaryButton>
+      </div>
     </form>
   );
 }

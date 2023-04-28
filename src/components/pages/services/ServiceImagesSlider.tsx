@@ -63,7 +63,7 @@ export default function ServiceImagesSlider({
     [ThumbnailPlugin(instanceRef)]
   );
   return (
-    <section className="mt-5 space-y-2 md:w-1/2 md:mt-0">
+    <section className="mt-5 space-y-2 md:w-1/2 md:mt-0 xl:mt-8 xl:w-full">
       <div ref={sliderRef} className="keen-slider relative ">
         {instanceRef.current && (
           <button

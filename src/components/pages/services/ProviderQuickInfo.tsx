@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function ProviderQuickInfo() {
   return (
-    <section className="border border-neutral-200 rounded-lg shadow-lg p-8 mt-7 md:flex-1 md:mt-0">
+    <section className="border border-neutral-200 rounded-lg bg-white shadow-lg p-8 mt-7 md:flex-1 md:mt-0 xl:w-1/2 xl:mx-auto">
       <h2 className="font-medium text-xl">Sobre o prestador</h2>
       <article className="flex gap-5 items-center mt-8">
         <Image

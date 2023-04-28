@@ -53,7 +53,7 @@ const ServicePage: NextPageWithLayout = () => {
           <ServicePrice />
           <UserReviews />
         </div>
-        <div className="hidden xl:grid grid-cols-2">
+        <div className="hidden xl:grid grid-cols-2 pl-20">
           <div>
             <LocationAndDurationInfo />
             <ServiceImageSlider
@@ -69,7 +69,7 @@ const ServicePage: NextPageWithLayout = () => {
             <ServiceInfo />
             <UserReviews />
           </div>
-          <aside>
+          <aside className="-mt-16 z-20">
             <ProviderQuickInfo />
             <ServicePrice />
           </aside>
