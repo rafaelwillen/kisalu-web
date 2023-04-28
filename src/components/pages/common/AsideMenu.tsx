@@ -1,5 +1,11 @@
 import { Routes } from "@/utils/constants/routes";
-import { Cards, House, Package, UserPlus } from "@phosphor-icons/react";
+import {
+  Cards,
+  House,
+  Package,
+  UserList,
+  UserPlus,
+} from "@phosphor-icons/react";
 import classNames from "classnames";
 import Link from "next/link";
 type Props = {
@@ -39,6 +45,14 @@ export default function AsideMenu({ visible }: Props) {
             href={Routes.becomeProvider}
           >
             <Package size={30} /> Tornar-se um prestador
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="h-16 px-5 flex gap-7 items-center hover:bg-primary-300 active:bg-primary-300"
+            href={Routes.providers}
+          >
+            <UserList size={30} /> Prestadores
           </Link>
         </li>
         <li>
