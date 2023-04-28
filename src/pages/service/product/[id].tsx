@@ -33,21 +33,47 @@ const ServicePage: NextPageWithLayout = () => {
       </Container>
       <Container>
         <ServiceProductBanner />
-        <LocationAndDurationInfo />
-        <ServiceImageSlider
-          imagesUrl={[
-            "https://placehold.co/388x288.png?text=1",
-            "https://placehold.co/388x288.png?text=2",
-            "https://placehold.co/388x288.png?text=3",
-            "https://placehold.co/388x288.png?text=4",
-            "https://placehold.co/388x288.png?text=5",
-            "https://placehold.co/388x288.png?text=6",
-          ]}
-        />
-        <ProviderQuickInfo />
-        <ServiceInfo />
-        <ServicePrice />
-        <UserReviews />
+        {/* MOBILE ONLY */}
+        <div className="block xl:hidden">
+          <LocationAndDurationInfo />
+          <div className="md:flex items-start gap-4 mt-7">
+            <ServiceImageSlider
+              imagesUrl={[
+                "https://placehold.co/896x665.png?text=1",
+                "https://placehold.co/896x665.png?text=2",
+                "https://placehold.co/896x665.png?text=3",
+                "https://placehold.co/896x665.png?text=4",
+                "https://placehold.co/896x665.png?text=5",
+                "https://placehold.co/896x665.png?text=6",
+              ]}
+            />
+            <ProviderQuickInfo />
+          </div>
+          <ServiceInfo />
+          <ServicePrice />
+          <UserReviews />
+        </div>
+        <div className="hidden xl:grid grid-cols-2">
+          <div>
+            <LocationAndDurationInfo />
+            <ServiceImageSlider
+              imagesUrl={[
+                "https://placehold.co/150x111.png?text=1",
+                "https://placehold.co/150x111.png?text=2",
+                "https://placehold.co/150x111.png?text=3",
+                "https://placehold.co/150x111.png?text=4",
+                "https://placehold.co/150x111.png?text=5",
+                "https://placehold.co/150x111.png?text=6",
+              ]}
+            />
+            <ServiceInfo />
+            <UserReviews />
+          </div>
+          <aside>
+            <ProviderQuickInfo />
+            <ServicePrice />
+          </aside>
+        </div>
       </Container>
     </main>
   );

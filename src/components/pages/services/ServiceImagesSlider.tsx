@@ -63,8 +63,8 @@ export default function ServiceImagesSlider({
     [ThumbnailPlugin(instanceRef)]
   );
   return (
-    <section className="mt-5 space-y-2">
-      <div ref={sliderRef} className="keen-slider relative">
+    <section className="mt-5 space-y-2 md:w-1/2 md:mt-0">
+      <div ref={sliderRef} className="keen-slider relative ">
         {instanceRef.current && (
           <button
             type="button"
@@ -76,13 +76,13 @@ export default function ServiceImagesSlider({
           </button>
         )}
         {imagesUrl.map((url, index) => (
-          <div key={index} className={` keen-slider__slide`}>
+          <div key={index} className={`keen-slider__slide`}>
             <Image
               src={url}
-              className="rounded"
+              className="rounded w-full h-auto max-w-4xl"
               alt=""
-              width={388}
-              height={288}
+              width={896}
+              height={665}
             />
           </div>
         ))}
@@ -97,15 +97,15 @@ export default function ServiceImagesSlider({
           </button>
         )}
       </div>
-      <div ref={thumbnailRef} className="keen-slider thumbnail">
+      <div ref={thumbnailRef} className="keen-slider thumbnail flex">
         {imagesUrl.map((url, index) => (
           <div key={index} className={`keen-slider__slide`}>
             <Image
               src={url}
-              className="rounded"
+              className="rounded w-full h-auto max-w-[150px]"
               alt=""
-              width={80}
-              height={60}
+              width={150}
+              height={111}
             />
           </div>
         ))}
