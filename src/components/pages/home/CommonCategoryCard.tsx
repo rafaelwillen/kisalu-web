@@ -1,9 +1,10 @@
+import { useNumberFormatter } from "@/hooks/intl";
 import { homeBrowseByCategory } from "@/mock/category";
 import { Routes } from "@/utils/constants/routes";
 import { Placeholder } from "@phosphor-icons/react";
 import Link from "next/link";
 
-type Props = typeof homeBrowseByCategory[0];
+type Props = (typeof homeBrowseByCategory)[0];
 
 export default function CommonCategoryCard({
   field,
@@ -12,6 +13,7 @@ export default function CommonCategoryCard({
   name,
   slug,
 }: Props) {
+  const formatNumber = useNumberFormatter();
   return (
     <Link
       href={Routes.singleCategory.replace(":categorySlug", slug)}
@@ -26,9 +28,7 @@ export default function CommonCategoryCard({
         <div className="absolute -z-10 -right-3 -bottom-2 bg-primary-100 w-10 h-10 rounded-full" />
       </div>
       <div className="space-y-1">
-        <p>
-          {new Intl.NumberFormat("pt-AO").format(freelancersCount)} prestadores
-        </p>
+        <p>{formatNumber(freelancersCount)} prestadores</p>
         <p className="text-lg font-regular min-w-[200px]">{name}</p>
         <p className="text-neutral-500 min-w-[200px]">{field}</p>
       </div>

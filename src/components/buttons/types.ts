@@ -12,4 +12,5 @@ export interface PrimaryButtonProps
     "name" | "onClick" | "type" | "disabled"
   > {
   variant?: "solid" | "text" | "outline";
+  fitContent?: boolean;
 }
