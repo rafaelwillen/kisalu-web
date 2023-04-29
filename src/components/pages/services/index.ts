@@ -5,5 +5,4 @@ export { default as ServiceImageSlider } from "./ServiceImagesSlider";
 export { default as ServiceInfo } from "./ServiceInfo";
 export { default as ServicePrice } from "./ServicePrice";
 export { default as ServiceProductBanner } from "./ServiceProductBanner";
-export { default as UserReviews } from "./UserReviews";
 

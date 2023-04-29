@@ -1,5 +1,5 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import { Container } from "@/components/pages/common";
+import { Container, UserReviews } from "@/components/pages/common";
 import {
   LocationAndDurationInfo,
   ProviderQuickInfo,
@@ -7,7 +7,6 @@ import {
   ServiceInfo,
   ServicePrice,
   ServiceProductBanner,
-  UserReviews,
 } from "@/components/pages/services";
 import { NextPageWithLayout } from "@/pages/_app";
 import { Routes } from "@/utils/constants/routes";

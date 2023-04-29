@@ -1,5 +1,5 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import { Container } from "@/components/pages/common";
+import { Container, UserReviews } from "@/components/pages/common";
 import {
   ProviderBasicPortfolio,
   ProviderDescription,
@@ -17,7 +17,7 @@ const ProviderPage: NextPageWithLayout = () => {
   return (
     <main className="py-10 lg:pt-0">
       <Head>
-        <title>Kisalu | Perfil Provedor - Lorem, ipsum.</title>
+        <title>Kisalu | Perfil Prestador - Lorem, ipsum.</title>
       </Head>
       <Container small>
         <section className="space-x-2 my-5 hidden lg:block text-text-200/60">
@@ -38,6 +38,7 @@ const ProviderPage: NextPageWithLayout = () => {
         <ProviderDescription />
         <ProviderBasicPortfolio />
         <TrendingServices services={trendingService} />
+        <UserReviews showLinkToService />
       </Container>
     </main>
   );
