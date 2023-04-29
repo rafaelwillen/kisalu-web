@@ -4,4 +4,5 @@ export { default as ProviderCard } from "./ProviderCard";
 export { default as ProviderDescription } from "./ProviderDescription";
 export { default as QuickInfo } from "./QuickInfo";
 export { default as SingleProviderBanner } from "./SingleProviderBanner";
+export { default as TrendingServices } from "./TrendingServices";
 

@@ -5,7 +5,9 @@ import {
   ProviderDescription,
   QuickInfo,
   SingleProviderBanner,
+  TrendingServices,
 } from "@/components/pages/providers";
+import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
 import Head from "next/head";
 import Link from "next/link";
@@ -35,6 +37,7 @@ const ProviderPage: NextPageWithLayout = () => {
         <QuickInfo />
         <ProviderDescription />
         <ProviderBasicPortfolio />
+        <TrendingServices services={trendingService} />
       </Container>
     </main>
   );
