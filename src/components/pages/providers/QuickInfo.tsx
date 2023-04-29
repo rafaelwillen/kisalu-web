@@ -5,7 +5,7 @@ export default function QuickInfo() {
   const formatToCompact = useCompactNumberFormatter();
   return (
     <section>
-      <ul className="flex flex-wrap justify-center items-center gap-4">
+      <ul className="flex flex-wrap justify-center items-center gap-4 xl:gap-16">
         <li className="flex flex-col items-center">
           <div className="relative mb-3">
             <Target size={40} className="text-accent-700" />

@@ -1,10 +1,12 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container, UserReviews } from "@/components/pages/common";
 import {
+  ContactMe,
   ProviderBasicPortfolio,
   ProviderDescription,
   QuickInfo,
   SingleProviderBanner,
+  Skills,
   TrendingServices,
 } from "@/components/pages/providers";
 import { trendingService } from "@/mock/projects";
@@ -34,11 +36,26 @@ const ProviderPage: NextPageWithLayout = () => {
           </Link>
         </section>
         <SingleProviderBanner />
-        <QuickInfo />
-        <ProviderDescription />
-        <ProviderBasicPortfolio />
-        <TrendingServices services={trendingService} />
-        <UserReviews showLinkToService />
+        <div className="block xl:hidden">
+          <QuickInfo />
+          <ProviderDescription />
+          <ProviderBasicPortfolio />
+          <TrendingServices services={trendingService} />
+          <UserReviews showLinkToService />
+        </div>
+        <div className="hidden xl:grid grid-cols-[auto,35%] gap-8">
+          <div>
+            <QuickInfo />
+            <ProviderDescription />
+            <ProviderBasicPortfolio />
+            <TrendingServices services={trendingService} />
+            <UserReviews showLinkToService />
+          </div>
+          <aside className="-mt-16 z-20 mr-9 space-y-4">
+            <ContactMe />
+            <Skills />
+          </aside>
+        </div>
       </Container>
     </main>
   );

@@ -15,7 +15,7 @@ export default function SingleProviderBanner() {
           height={120}
           alt="Lorem ipsum profile picture"
         />
-        <h1 className="font-bold text-xl">Lorem, ipsum.</h1>
+        <h1 className="font-bold text-xl self-end">Lorem, ipsum.</h1>
         <ul className="flex items-center gap-5 text-sm flex-col md:flex-row">
           <li className="flex items-center gap-2">
             <ReviewStarIcon />
@@ -29,7 +29,10 @@ export default function SingleProviderBanner() {
           <li className="flex items-center gap-2">
             <Calendar />
             Membro desde{" "}
-            {new Date().toLocaleDateString("pt-AO")}
+            {new Date().toLocaleDateString("pt-AO", {
+              month: "long",
+              year: "numeric",
+            })}
           </li>
         </ul>
       </div>
