@@ -48,7 +48,10 @@ export default function ProviderCard() {
           <p>90%</p>
         </div>
       </div>
-      <Link legacyBehavior href={Routes.singleProvider.replace(":id", "lorem")}>
+      <Link
+        legacyBehavior
+        href={Routes.singleProvider.replace(":username", "lorem")}
+      >
         <PrimaryButton variant="solid">
           Ver Perfil <ArrowUpRight size={20} />
         </PrimaryButton>
