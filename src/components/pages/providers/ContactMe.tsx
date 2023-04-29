@@ -1,4 +1,5 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { useRelativeTimeFormatter } from "@/hooks/intl";
 import {
   ArrowUpRight,
   Calendar,
@@ -9,6 +10,7 @@ import {
 import Link from "next/link";
 
 export default function ContactMe() {
+  const formatRelativeDate = useRelativeTimeFormatter();
   return (
     <section className="p-8 bg-white rounded-xl shadow-md">
       <div className="flex justify-between items-center pb-2 border-b border-neutral-300 mb-3 ">
@@ -32,7 +34,9 @@ export default function ContactMe() {
         <p className="flex gap-2 items-center">
           <CalendarCheck size={25} className="text-accent-400" /> Última Entrega
         </p>
-        <p className="font-medium">5 dias</p>
+        <p className="font-medium">
+          {formatRelativeDate(new Date(2023, 1, 11))}
+        </p>
       </div>
       <div className="flex justify-between items-center pb-2 border-b border-neutral-300 mb-3 ">
         <p className="flex gap-2 items-center">

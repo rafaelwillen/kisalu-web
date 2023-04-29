@@ -39,6 +39,7 @@ const ProviderPage: NextPageWithLayout = () => {
         <div className="block xl:hidden">
           <QuickInfo />
           <ProviderDescription />
+          <Skills />
           <ProviderBasicPortfolio />
           <TrendingServices services={trendingService} />
           <UserReviews showLinkToService />
