@@ -30,6 +30,16 @@ const ServicePage: NextPageWithLayout = () => {
             Categorias
           </Link>
           <span>/</span>
+          <Link
+            className="animated-underline dark"
+            href={Routes.singleCategory.replace(
+              ":categorySlug",
+              "web-development"
+            )}
+          >
+            Categoria aleatória
+          </Link>
+          <span>/</span>
           <Link className="animated-underline dark text-text-200" href="#">
             Lorem, ipsum dolor.
           </Link>

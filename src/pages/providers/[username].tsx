@@ -1,6 +1,11 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import { Container } from "@/components/pages/common";
-import { SingleProviderBanner } from "@/components/pages/providers";
+import {
+  ProviderBasicPortfolio,
+  ProviderDescription,
+  QuickInfo,
+  SingleProviderBanner,
+} from "@/components/pages/providers";
 import { Routes } from "@/utils/constants/routes";
 import Head from "next/head";
 import Link from "next/link";
@@ -27,6 +32,9 @@ const ProviderPage: NextPageWithLayout = () => {
           </Link>
         </section>
         <SingleProviderBanner />
+        <QuickInfo />
+        <ProviderDescription />
+        <ProviderBasicPortfolio />
       </Container>
     </main>
   );

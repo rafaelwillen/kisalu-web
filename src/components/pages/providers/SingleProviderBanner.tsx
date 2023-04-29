@@ -1,8 +1,10 @@
 import { ReviewStarIcon } from "@/components/elements";
+import { useCompactNumberFormatter } from "@/hooks/intl";
 import { Calendar, MapPin } from "@phosphor-icons/react";
 import Image from "next/image";
 
 export default function SingleProviderBanner() {
+  const formatToCompact = useCompactNumberFormatter();
   return (
     <section className="rounded-2xl py-14 md:py-28 md:px-36 px-10 mb-5 text-white shadow-xl bg-providerGradient">
       <div className="flex flex-col max-lg:items-center md:grid grid-cols-[auto,1fr] lg:gap-x-5  max-lg:gap-5 grid-rows-2">
@@ -18,7 +20,7 @@ export default function SingleProviderBanner() {
           <li className="flex items-center gap-2">
             <ReviewStarIcon />
             <p className="font-medium">4.82</p>
-            <p>94 avaliações</p>
+            <p>{formatToCompact(98)} avaliações</p>
           </li>
           <li className="flex items-center gap-2">
             <MapPin />
@@ -26,7 +28,8 @@ export default function SingleProviderBanner() {
           </li>
           <li className="flex items-center gap-2">
             <Calendar />
-            Membro desde {new Date().toLocaleDateString()}
+            Membro desde{" "}
+            {new Date().toLocaleDateString("pt-AO")}
           </li>
         </ul>
       </div>
