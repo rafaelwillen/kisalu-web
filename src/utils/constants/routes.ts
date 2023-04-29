@@ -10,5 +10,5 @@ export const Routes = {
   singleService: "/service/product/:id",
   providers: "/providers",
   /** Params: :id - provider id */
-  singleProvider: "/providers/:id",
+  singleProvider: "/providers/:username",
 };

@@ -1,6 +1,6 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import { Container } from "@/components/pages/common";
-import { Banner, ServiceCard } from "@/components/pages/services";
+import { Container, ServiceCard } from "@/components/pages/common";
+import { Banner } from "@/components/pages/services";
 import { categoriesPageResult } from "@/mock/category";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";

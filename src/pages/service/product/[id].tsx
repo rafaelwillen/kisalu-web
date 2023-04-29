@@ -1,5 +1,5 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import { Container } from "@/components/pages/common";
+import { Container, UserReviews } from "@/components/pages/common";
 import {
   LocationAndDurationInfo,
   ProviderQuickInfo,
@@ -7,7 +7,6 @@ import {
   ServiceInfo,
   ServicePrice,
   ServiceProductBanner,
-  UserReviews,
 } from "@/components/pages/services";
 import { NextPageWithLayout } from "@/pages/_app";
 import { Routes } from "@/utils/constants/routes";
@@ -28,6 +27,16 @@ const ServicePage: NextPageWithLayout = () => {
           <span>/</span>
           <Link className="animated-underline dark" href={Routes.categories}>
             Categorias
+          </Link>
+          <span>/</span>
+          <Link
+            className="animated-underline dark"
+            href={Routes.singleCategory.replace(
+              ":categorySlug",
+              "web-development"
+            )}
+          >
+            Categoria aleatória
           </Link>
           <span>/</span>
           <Link className="animated-underline dark text-text-200" href="#">

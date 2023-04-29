@@ -1,9 +1,11 @@
 import { ReviewStarIcon } from "@/components/elements";
 import { useCurrencyFormatter } from "@/hooks/intl";
+import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
 import Image from "next/image";
 import Link from "next/link";
-import { ServiceCardProps } from "./types";
+
+export type ServiceCardProps = (typeof trendingService)[0];
 
 export default function ServiceCard({
   imageUrl,

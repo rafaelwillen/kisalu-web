@@ -5,14 +5,18 @@ import {
   useNumberFormatter,
   useRelativeTimeFormatter,
 } from "@/hooks/intl";
+import { Routes } from "@/utils/constants/routes";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
-import ReviewForm from "./ReviewForm";
+import ReviewForm from "../services/ReviewForm";
 
 // TODO: Add props
+type Props = {
+  showLinkToService?: boolean;
+};
 
-export default function UserReviews() {
+export default function UserReviews({ showLinkToService = false }: Props) {
   const formatToCompactNumber = useCompactNumberFormatter();
   const formatToRelativeDate = useRelativeTimeFormatter();
   const formatNumber = useNumberFormatter();
@@ -83,6 +87,17 @@ export default function UserReviews() {
             blanditiis sint alias quia laborum odio eligendi consectetur atque
             ipsam, sapiente repudiandae.
           </p>
+          {showLinkToService && (
+            <p className="mt-2">
+              Serviço referido -{" "}
+              <Link
+                className=" animated-underline text-primary-700"
+                href={Routes.singleService.replace(":id", "lorem")}
+              >
+                Lorem, ipsum dolor.
+              </Link>
+            </p>
+          )}
         </div>
         <Link legacyBehavior href="#">
           <PrimaryButton variant="text" fitContent>

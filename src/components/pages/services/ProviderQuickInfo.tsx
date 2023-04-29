@@ -1,5 +1,6 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { ReviewStarIcon } from "@/components/elements";
+import { Routes } from "@/utils/constants/routes";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +39,10 @@ export default function ProviderQuickInfo() {
         </div>
       </article>
       {/* TODO: Go to provider page */}
-      <Link href="#" legacyBehavior>
+      <Link
+        href={Routes.singleProvider.replace(":id", "lorem 2")}
+        legacyBehavior
+      >
         <PrimaryButton variant="outline">
           Contactar-me
           <ArrowUpRight />
