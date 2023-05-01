@@ -60,15 +60,6 @@ export default function Navbar({ whiteBackground = false }: Props) {
               Categorias
             </Link>
             <Link
-              href={Routes.becomeProvider}
-              className={classNames(
-                "animated-underline",
-                whiteBackground && "dark"
-              )}
-            >
-              Tornar-se um prestador
-            </Link>
-            <Link
               href={Routes.providers}
               className={classNames(
                 "animated-underline",
@@ -80,7 +71,7 @@ export default function Navbar({ whiteBackground = false }: Props) {
           </li>
           <li className="flex items-center gap-7 py-1">
             <Link
-              href={Routes.clientRegister}
+              href={Routes.register}
               className={classNames(
                 "text-sm hidden lg:inline animated-underline",
                 whiteBackground ? "text-text-200 dark" : "text-white"

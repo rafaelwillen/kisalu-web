@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { angolanPhoneNumberRegex } from "../constants/regex";
 
-export const clientRegisterSchema = z
+export const registerSchema = z
   .object({
     firstName: z
       .string({ required_error: "Campo obrigatório" })
@@ -33,4 +33,4 @@ export const clientRegisterSchema = z
     path: ["confirmPassword"],
   });
 
-export type ClientRegisterFormType = z.infer<typeof clientRegisterSchema>;
+export type RegisterFormType = z.infer<typeof registerSchema>;

@@ -2,8 +2,9 @@ export const Routes = {
   home: "/",
   login: "/auth/login",
   categories: "/categories",
-  becomeProvider: "/become-provider",
+  register: "/auth/register",
   clientRegister: "/auth/register/client",
+  providerRegister: "/auth/register/provider",
   /** Params: :categorySlug */
   singleCategory: "/categories/:categorySlug",
   /** Params: :id - service id */
