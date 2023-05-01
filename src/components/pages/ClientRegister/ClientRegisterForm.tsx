@@ -85,7 +85,7 @@ export default function ClientRegisterForm() {
         Já possui uma conta?{" "}
         <Link
           className="animated-underline primary text-primary-600"
-          href={Routes.clientRegister}
+          href={Routes.login}
         >
           Faça o login.
         </Link>

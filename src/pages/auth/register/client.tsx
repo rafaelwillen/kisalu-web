@@ -15,8 +15,8 @@ const ClientRegisterPage: NextPageWithLayout = () => {
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-bold">Registrar</h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim,
-              explicabo.
+              Comece a usar o Kisalu para requisitar os serviços agora mesmo. É
+              rápido e fácil.
             </p>
           </div>
           <ClientRegisterForm />
