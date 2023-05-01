@@ -1,4 +1,5 @@
-import MainLayout from "@/components/layouts/MainLayout";
+import RegisterLayout from "@/components/layouts/RegisterLayout";
+import { Container } from "@/components/pages/common";
 import { NextPageWithLayout } from "@/pages/_app";
 import Head from "next/head";
 
@@ -8,11 +9,11 @@ const RegisterPage: NextPageWithLayout = () => {
       <Head>
         <title>Kisalu | Cadastro</title>
       </Head>
-      <h1>Registro</h1>
+      <Container small></Container>
     </main>
   );
 };
 
-RegisterPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+RegisterPage.getLayout = (page) => <RegisterLayout>{page}</RegisterLayout>;
 
 export default RegisterPage;
