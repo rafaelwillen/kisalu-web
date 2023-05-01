@@ -1,7 +1,7 @@
 export default function ProviderEducation() {
   return (
     <section>
-      <article className="my-7 pt-7 border-t border-neutral-300">
+      <article className="my-7 xl:my-10 pt-7 border-t border-neutral-300">
         <h2 className="text-xl font-medium">Educação</h2>
         <ul className="flex flex-col mt-4 gap-5">
           <li className="grid grid-cols-[auto,1fr] grid-rows-[repeat(4,auto)] gap-x-4 gap-y-2">
