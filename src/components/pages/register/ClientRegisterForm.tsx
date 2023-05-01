@@ -2,8 +2,8 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Input, SecureInput } from "@/components/form";
 import { Routes } from "@/utils/constants/routes";
 import {
-  ClientRegisterFormType,
-  clientRegisterSchema,
+  RegisterFormType,
+  registerSchema,
 } from "@/utils/schemas/clientRegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, EnvelopeSimple, Phone } from "@phosphor-icons/react";
@@ -15,11 +15,11 @@ export default function ClientRegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ClientRegisterFormType>({
-    resolver: zodResolver(clientRegisterSchema),
+  } = useForm<RegisterFormType>({
+    resolver: zodResolver(registerSchema),
   });
 
-  function handleFormSubmit(data: ClientRegisterFormType) {
+  function handleFormSubmit(data: RegisterFormType) {
     console.log(data);
     alert("Haha, you can't create an account yet! :D");
   }
