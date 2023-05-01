@@ -46,8 +46,9 @@ export default function LoginForm() {
       <p className="my-7">
         Não possui uma conta?{" "}
         <Link
+
           className="animated-underline primary text-primary-600"
-          href={Routes.clientRegister}
+          href={Routes.register}
         >
           Registe-se já!
         </Link>

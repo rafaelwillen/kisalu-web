@@ -3,7 +3,8 @@ import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import AsideMenu from "./AsideMenu";
 import Container from "./Container";
 
@@ -13,7 +14,10 @@ type Props = {
 
 export default function Navbar({ whiteBackground = false }: Props) {
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
-
+  const { pathname } = useRouter();
+  useEffect(() => {
+    setShowSidebarMenu(false);
+  }, [pathname]);
   return (
     <nav
       className={classNames(
