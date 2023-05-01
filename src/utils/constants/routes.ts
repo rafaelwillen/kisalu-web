@@ -2,7 +2,7 @@ export const Routes = {
   home: "/",
   login: "/auth/login",
   categories: "/categories",
-  becomeProvider: "/become-provider",
+  register: "/auth/register",
   clientRegister: "/auth/register/client",
   /** Params: :categorySlug */
   singleCategory: "/categories/:categorySlug",
