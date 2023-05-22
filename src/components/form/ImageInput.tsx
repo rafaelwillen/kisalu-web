@@ -33,8 +33,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
         >
           {!image ? (
             <>
-              <ImageSquare size={20} /> Clique aqui para adicionar o banner da
-              categoria
+              <ImageSquare size={20} /> {label}
             </>
           ) : (
             <img
