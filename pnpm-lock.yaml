@@ -5,8 +5,8 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(react-hook-form@7.43.9)
   '@phosphor-icons/react':
-    specifier: ^2.0.8
-    version: 2.0.8(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.0.9
+    version: 2.0.9(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-accordion':
     specifier: ^1.1.1
     version: 1.1.1(react-dom@18.2.0)(react@18.2.0)
@@ -254,8 +254,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@phosphor-icons/react@2.0.8(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-VWACI+MkRGpol4htOcVtWKaDCosrcuCg8toJfPS0osgVjxM8i/KoSZSPxQvG5XYPCI8iyJoHKRpSfzOISAXFyg==}
+  /@phosphor-icons/react@2.0.9(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/dtQ0M9MXAr35wy8zPlwF684EvYRvGWZPAv+Bd0BR4vzIhjzfLBdHSovFxSP1rj3UOHvVR08qgRL04Kv90oqHA==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>= 16.8'

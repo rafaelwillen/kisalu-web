@@ -29,18 +29,20 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
         />
         <label
           htmlFor={props.name}
-          className="relative flex flex-col justify-center items-center border border-dashed border-neutral-400 text-xs rounded-md hover:opacity-70 text-text-100 px-6 text-center h-64 w-full gap-2"
+          className="relative cursor-pointer flex flex-col justify-center items-center border border-dashed border-neutral-400 text-xs rounded-md hover:opacity-70 text-text-100 px-6 text-center h-64 w-full gap-2"
         >
           {!image ? (
             <>
-              <ImageSquare size={20} /> {label}
+              <ImageSquare size={20} /> {label} {props.required && "*"}
             </>
           ) : (
-            <img
-              src={image}
-              className="object-cover absolute inset-0 scale-95 rounded-md w-full h-full"
-              alt=""
-            />
+            <>
+              <img
+                src={image}
+                className="object-cover absolute inset-0 scale-95 rounded-md w-full h-full"
+                alt=""
+              />
+            </>
           )}
         </label>
         {errorMessage && (
