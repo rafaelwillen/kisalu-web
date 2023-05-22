@@ -14,4 +14,7 @@ export const Routes = {
   singleProvider: "/providers/:username",
   adminLogin: "/admin/login",
   adminDashboard: "/admin/dashboard",
+  adminCategories: "/admin/category",
+  adminActivities: "/admin/activity",
+  adminDisputes: "/admin/dispute",
 };

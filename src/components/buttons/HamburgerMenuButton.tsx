@@ -5,6 +5,7 @@ export default function HamburgerMenuButton({
   darkBackground = false,
   isChecked = false,
   onChange,
+  className,
 }: HamburgerMenuProps) {
   return (
     <label
@@ -12,7 +13,8 @@ export default function HamburgerMenuButton({
         "hamburger-menu lg:hidden flex flex-col gap-[var(--bar-gap)] w-max absolute z-20 cursor-pointer right-6",
         darkBackground
           ? "after:bg-white before:bg-white"
-          : "after:bg-text-200 before:bg-text-200"
+          : "after:bg-text-200 before:bg-text-200",
+        className
       )}
     >
       <input
@@ -27,5 +29,3 @@ export default function HamburgerMenuButton({
     </label>
   );
 }
-
-// -translate-y-full -translate-x-full
