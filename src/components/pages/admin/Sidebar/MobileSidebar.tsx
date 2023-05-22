@@ -19,6 +19,7 @@ export default function MobileSidebar({ user }: SidebarProps) {
           isChecked={showSidebarMenu}
         />
         <aside
+          data-is-active={showSidebarMenu}
           className={classNames(
             "transition-transform ease-in-out duration-300 lg:hidden bg-primary-100 text-text-200 absolute inset-0 min-h-screen overflow-hidden z-10 border-b py-16 px-8 flex flex-col gap-4",
             !showSidebarMenu ? "-translate-x-full" : "-translate-x-0"

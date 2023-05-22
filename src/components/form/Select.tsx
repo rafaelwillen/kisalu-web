@@ -10,7 +10,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="flex-1 space-y-1">
         <Label htmlFor={name} label={label} required={props.required} />
-        <div className="p-1 border border-neutral-200 rounded flex items-center focus-within:border-primary-400 duration-150 gap-2">
+        <div className="p-px  border border-neutral-200 rounded flex items-center focus-within:border-primary-400 duration-150 gap-2">
           {icon}
           <select
             {...props}
