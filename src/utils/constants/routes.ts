@@ -12,4 +12,6 @@ export const Routes = {
   providers: "/providers",
   /** Params: :id - provider id */
   singleProvider: "/providers/:username",
+  adminLogin: "/admin/login",
+  adminDashboard: "/admin/dashboard",
 };
