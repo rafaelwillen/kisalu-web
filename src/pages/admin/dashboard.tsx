@@ -2,7 +2,7 @@ import { AdminDashboardLayout } from "@/components/layouts";
 import { NextPageWithLayout } from "../_app";
 
 const AdminDashboardPage: NextPageWithLayout = () => {
-  return <div className=" h-[3000px]">AdminDashboardPage</div>;
+  return <section>AdminDashboardPage</section>;
 };
 
 AdminDashboardPage.getLayout = (page) => (

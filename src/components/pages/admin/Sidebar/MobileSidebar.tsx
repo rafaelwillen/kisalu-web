@@ -6,8 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Container } from "../../common";
+import { SidebarProps } from "./type";
 
-export default function MobileSidebar() {
+export default function MobileSidebar({ user }: SidebarProps) {
+  const { email, name } = user;
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
   return (
     <>
@@ -25,8 +27,8 @@ export default function MobileSidebar() {
           <div className="flex items-center gap-4">
             <Image src={KisaluLogo} className="rounded-full" alt="" />
             <div className="text-sm">
-              <p className="font-bold text-lg">Rafael Padre</p>
-              <p>rafaelpadre20@gmail.com</p>
+              <p className="font-bold text-lg">{name}</p>
+              <p>{email}</p>
             </div>
           </div>
           <nav className="flex-1">

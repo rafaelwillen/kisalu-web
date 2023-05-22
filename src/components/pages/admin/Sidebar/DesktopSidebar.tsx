@@ -2,15 +2,17 @@ import { KisaluLogo } from "@/assets/images";
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
 import Image from "next/image";
 import Link from "next/link";
+import { SidebarProps } from "./type";
 
-export default function DesktopSidebar() {
+export default function DesktopSidebar({ user }: SidebarProps) {
+  const { name, email } = user;
   return (
     <aside className="hidden lg:flex flex-col bg-primary-100 overflow-hidden p-8">
       <div className="flex items-center gap-4">
         <Image src={KisaluLogo} className="rounded-full" alt="" />
         <div className="text-sm">
-          <p className="font-bold text-lg">Rafael Padre</p>
-          <p>rafaelpadre20@gmail.com</p>
+          <p className="font-bold text-lg">{name}</p>
+          <p>{email}</p>
         </div>
       </div>
       <nav className="flex-1">
