@@ -5,7 +5,7 @@ import { CategoryCard } from "@/components/pages/admin";
 import { Routes } from "@/utils/constants/routes";
 import { MagnifyingGlass, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
-import { NextPageWithLayout } from "../_app";
+import { NextPageWithLayout } from "../../_app";
 
 const selectOrderOptions: SelectOption[] = [
   {

@@ -11,7 +11,10 @@ export type SelectOption = {
 };
 
 interface CustomInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "className"> {}
+  extends Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    "type" | "className" | "id"
+  > {}
 
 interface CustomSelectProps
   extends Omit<InputHTMLAttributes<HTMLSelectElement>, "className" | "id"> {
@@ -69,4 +72,11 @@ export interface SelectProps extends CustomSelectProps {
   errorMessage?: string;
   icon?: ReactNode;
   placeholder?: string;
+}
+
+export interface ImageInputProps extends CustomInputProps {
+  label: string;
+  errorMessage?: string;
+  selectedImage?: File;
+  onImageSelect?: (image: File) => void;
 }
