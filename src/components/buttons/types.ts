@@ -13,4 +13,5 @@ export interface PrimaryButtonProps
   > {
   variant?: "solid" | "text" | "outline";
   fitContent?: boolean;
+  isLoading?: boolean;
 }

@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<AdminLoginFormType>({
     resolver: zodResolver(adminLoginSchema),
   });
@@ -67,7 +67,9 @@ export default function AdminLoginPage() {
               label="Password"
               placeholder="Insira a sua palavra passe"
             />
-            <PrimaryButton type="submit">Login</PrimaryButton>
+            <PrimaryButton disabled={!isValid} type="submit">
+              Login
+            </PrimaryButton>
           </form>
           <p className="text-center text-sm text-text-100">
             Esta página é apenas para utilizadores autorizados.{" "}
