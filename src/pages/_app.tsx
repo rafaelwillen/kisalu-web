@@ -31,6 +31,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         </Hydrate>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
+      <Toaster />
       <Analytics />
       <Toaster />
     </>

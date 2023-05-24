@@ -4,14 +4,17 @@ import { ImageInput, Input, TextArea } from "@/components/form";
 import { AdminDashboardLayout } from "@/components/layouts";
 import { useCreateCategoryMutation } from "@/hooks/mutations";
 import { NextPageWithLayout } from "@/pages/_app";
+import { Routes } from "@/utils/constants/routes";
 import {
   NewCategoryFormType,
   newCategorySchema,
 } from "@/utils/schemas/newCategorySchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/router";
 import { Controller, useForm } from "react-hook-form";
 
 const AdminCreateCategoryPage: NextPageWithLayout = () => {
+  const router = useRouter();
   const { createCategoryMutation, isLoading, uploadFileMutation } =
     useCreateCategoryMutation();
   const {
@@ -39,6 +42,7 @@ const AdminCreateCategoryPage: NextPageWithLayout = () => {
       cardImageUrl: cardResponse.url,
     };
     await createCategoryMutation.mutateAsync(category);
+    router.replace(Routes.adminCategories);
   }
 
   return (

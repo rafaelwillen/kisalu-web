@@ -3,13 +3,14 @@ import CategoryAPI, {
 } from "@/api/admin/category";
 import UploadAPI from "@/api/upload";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 export default function useCreateCategoryMutation() {
   const uploadFileMutation = useMutation(
     (file: File) => UploadAPI.uploadCategoryImage(file),
     {
       onError: (error) => {
-        console.error(error);
+        toast.error((error as Error).message);
       },
     }
   );
@@ -17,11 +18,10 @@ export default function useCreateCategoryMutation() {
     (category: CreateCategoryRequestDataType) => CategoryAPI.create(category),
     {
       onError: (error) => {
-        console.error(error);
+        toast.error((error as Error).message);
       },
       onSuccess: () => {
-        alert("Category created successfully");
-        // TODO: Handle success
+        toast.success("Categoria criada com sucesso");
       },
     }
   );
