@@ -1,6 +1,8 @@
+import { CreateCategoryRequestDataType } from "@/api/admin/category";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { ImageInput, Input, TextArea } from "@/components/form";
 import { AdminDashboardLayout } from "@/components/layouts";
+import { useCreateCategoryMutation } from "@/hooks/mutations";
 import { NextPageWithLayout } from "@/pages/_app";
 import {
   NewCategoryFormType,
@@ -10,6 +12,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 
 const AdminCreateCategoryPage: NextPageWithLayout = () => {
+  const { createCategoryMutation, isLoading, uploadFileMutation } =
+    useCreateCategoryMutation();
   const {
     control,
     register,
@@ -19,8 +23,22 @@ const AdminCreateCategoryPage: NextPageWithLayout = () => {
     resolver: zodResolver(newCategorySchema),
   });
 
-  function createCategory(data: NewCategoryFormType) {
-    console.log(data);
+  async function createCategory(data: NewCategoryFormType) {
+    const { banner, card, description, name } = data;
+    const [bannerResponse, cardResponse] = await Promise.all([
+      uploadFileMutation.mutateAsync(banner),
+      uploadFileMutation.mutateAsync(card),
+    ]);
+    if (!bannerResponse || !cardResponse) {
+      return;
+    }
+    const category: CreateCategoryRequestDataType = {
+      description,
+      name,
+      bannerImageUrl: bannerResponse.url,
+      cardImageUrl: cardResponse.url,
+    };
+    await createCategoryMutation.mutateAsync(category);
   }
 
   return (
@@ -79,7 +97,9 @@ const AdminCreateCategoryPage: NextPageWithLayout = () => {
             required
           />
         </div>
-        <PrimaryButton type="submit">Criar Categoria</PrimaryButton>
+        <PrimaryButton isLoading={isLoading} type="submit">
+          Criar Categoria
+        </PrimaryButton>
       </form>
       <p className="text-sm">* - Campos obrigatórios</p>
     </section>

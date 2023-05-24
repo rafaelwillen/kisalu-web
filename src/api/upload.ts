@@ -12,7 +12,7 @@ async function uploadCategoryImage(
   formData.append("image", image);
   try {
     const response = await api.post<UploadCategoryImageResponseDataType>(
-      "/api/upload/category",
+      "/upload/category",
       formData
     );
     return response.data;
