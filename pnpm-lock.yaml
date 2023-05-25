@@ -4,9 +4,6 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.1.0
     version: 3.1.0(react-hook-form@7.43.9)
-  '@lukemorales/query-key-factory':
-    specifier: ^1.2.0
-    version: 1.2.0(@tanstack/query-core@4.29.7)
   '@phosphor-icons/react':
     specifier: ^2.0.9
     version: 2.0.9(react-dom@18.2.0)(react@18.2.0)
@@ -162,15 +159,6 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
-
-  /@lukemorales/query-key-factory@1.2.0(@tanstack/query-core@4.29.7):
-    resolution: {integrity: sha512-ilUedLpJdpOCMKgxoncRkYEFF7C+K//IK/QWXHs0G6HjmZunT9XcrpWHNc5RjrBBqPhdxYNa7aUoEhjonwl4eQ==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@tanstack/query-core': ^4.0.0
-    dependencies:
-      '@tanstack/query-core': 4.29.7
-    dev: false
 
   /@next/env@13.3.0:
     resolution: {integrity: sha512-AjppRV4uG3No7L1plinoTQETH+j2F10TEnrMfzbTUYwze5sBUPveeeBAPZPm8OkJZ1epq9OyYKhZrvbD6/9HCQ==}

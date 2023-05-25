@@ -7,4 +7,8 @@ const api = axios.create({
       : process.env.NEXT_PUBLIC_API_URL?.concat("/api"),
 });
 
+export const nextServerAPI = axios.create({
+  baseURL: "/api",
+});
+
 export default api;

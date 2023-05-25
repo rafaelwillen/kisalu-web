@@ -1,3 +1,4 @@
+import NextAPI from "@/api/next";
 import { KisaluLogoDark } from "@/assets/images";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Input, SecureInput } from "@/components/form";
@@ -5,19 +6,24 @@ import FontLayout from "@/components/layouts/FontLayout";
 import { Container } from "@/components/pages/common";
 import { Routes } from "@/utils/constants/routes";
 import {
-    AdminLoginFormType,
-    adminLoginSchema,
+  AdminLoginFormType,
+  adminLoginSchema,
 } from "@/utils/schemas/adminLoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { NextPageWithLayout } from "../_app";
 
 const AdminLoginPage: NextPageWithLayout = () => {
-  const routes = useRouter();
+  const router = useRouter();
+  const { isLoading, isError, mutateAsync, error } = useMutation(
+    NextAPI.loginAdmin
+  );
   const {
     register,
     handleSubmit,
@@ -26,10 +32,10 @@ const AdminLoginPage: NextPageWithLayout = () => {
     resolver: zodResolver(adminLoginSchema),
   });
 
-  async function handleFormSubmit({ password, username }: AdminLoginFormType) {
-    console.log({ password, username });
-    // This is a temporary solution until we have a backend
-    routes.push(Routes.adminDashboard);
+  async function handleFormSubmit(formData: AdminLoginFormType) {
+    await mutateAsync(formData);
+    toast.success("Login efetuado com sucesso!");
+    router.push(Routes.adminDashboard);
   }
 
   return (
@@ -63,9 +69,18 @@ const AdminLoginPage: NextPageWithLayout = () => {
             label="Password"
             placeholder="Insira a sua palavra passe"
           />
-          <PrimaryButton disabled={!isValid} type="submit">
+          <PrimaryButton
+            disabled={!isValid}
+            isLoading={isLoading}
+            type="submit"
+          >
             Login
           </PrimaryButton>
+          {isError && (
+            <p className="text-center text-danger">
+              {(error as Error).message}
+            </p>
+          )}
         </form>
         <p className="text-center text-sm text-text-100">
           Esta página é apenas para utilizadores autorizados.{" "}
