@@ -18,9 +18,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             name={name}
             id={name}
             className="border-0 w-full focus:ring-0"
+            defaultValue={options[0].value}
           >
             {options.map(({ label, value }, index) => (
-              <option key={value} value={value} selected={index === 0}>
+              <option key={value} value={value}>
                 {label}
               </option>
             ))}

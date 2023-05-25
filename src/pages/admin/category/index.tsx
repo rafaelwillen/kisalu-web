@@ -1,10 +1,14 @@
+import CategoryAPI, { categoriesQueryKeys } from "@/api/admin/category";
 import { Input, Select } from "@/components/form";
 import { SelectOption } from "@/components/form/types";
 import { AdminDashboardLayout } from "@/components/layouts";
 import { CategoryCard } from "@/components/pages/admin";
 import { Routes } from "@/utils/constants/routes";
-import { MagnifyingGlass, Plus } from "@phosphor-icons/react";
+import { MagnifyingGlass, Plus, XCircle } from "@phosphor-icons/react";
+import { QueryClient, dehydrate, useQuery } from "@tanstack/react-query";
+import { GetServerSideProps } from "next";
 import Link from "next/link";
+import { ClipLoader } from "react-spinners";
 import { NextPageWithLayout } from "../../_app";
 
 const selectOrderOptions: SelectOption[] = [
@@ -35,6 +39,27 @@ const selectOrderOptions: SelectOption[] = [
 ];
 
 const AdminCategoriesPage: NextPageWithLayout = () => {
+  const {
+    data: categories,
+    isLoading,
+    isError,
+    error,
+  } = useQuery([categoriesQueryKeys.getAll], CategoryAPI.getAll);
+
+  const LoadingStateComponent = () => (
+    <div className="py-16 mt-8 text-center">
+      <ClipLoader size={40} color="#114c50" />
+      <p>Carregando as categorias</p>
+    </div>
+  );
+
+  const ErrorStateComponent = () => (
+    <div className="py-16 mt-8 text-center space-y-4">
+      <XCircle size={48} color="#e00000" className="mx-auto" weight="fill" />
+      <p>Ocorreu um erro. {(error as Error).message}</p>
+    </div>
+  );
+
   return (
     <section className="relative">
       <h1 className="font-bold text-xl leading-relaxed">Categorias Criadas</h1>
@@ -51,65 +76,34 @@ const AdminCategoriesPage: NextPageWithLayout = () => {
           <Select label="Ordenar por" options={selectOrderOptions} />
         </div>
       </div>
-      <p className="mt-4">8 categorias encontradas</p>
-      <div className="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 items-center gap-4">
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-        <CategoryCard
-          imageURL="https://placehold.co/1920x1080.png"
-          createdBy="Rafael Padre"
-          name="lorem kscocjioc"
-          numberActivities={10}
-          numberProjects={3}
-          numberServices={1}
-        />
-      </div>
+      {isLoading && <LoadingStateComponent />}
+      {isError && <ErrorStateComponent />}
+      {categories && (
+        <>
+          <p className="mt-4">{categories.length} categorias encontradas</p>
+          <div className="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 items-center gap-4">
+            {categories.map(
+              ({
+                cardImageUrl,
+                id,
+                name,
+                numberOfProjects,
+                numberOfServices,
+              }) => (
+                <CategoryCard
+                  key={id}
+                  imageURL={cardImageUrl}
+                  createdBy="Rafael Padre"
+                  name={name}
+                  numberActivities={0}
+                  numberProjects={numberOfProjects}
+                  numberServices={numberOfServices}
+                />
+              )
+            )}
+          </div>
+        </>
+      )}
       {/* TODO: Add pagination here */}
       <div></div>
       <Link
@@ -121,6 +115,19 @@ const AdminCategoriesPage: NextPageWithLayout = () => {
       </Link>
     </section>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(
+    [categoriesQueryKeys.getAll],
+    CategoryAPI.getAll
+  );
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
 };
 
 AdminCategoriesPage.getLayout = (page) => (
