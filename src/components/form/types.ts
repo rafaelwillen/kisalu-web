@@ -5,8 +5,21 @@ import {
   TextareaHTMLAttributes,
 } from "react";
 
+export type SelectOption = {
+  label: string;
+  value: string;
+};
+
 interface CustomInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "className"> {}
+  extends Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    "type" | "className" | "id"
+  > {}
+
+interface CustomSelectProps
+  extends Omit<InputHTMLAttributes<HTMLSelectElement>, "className" | "id"> {
+  options: SelectOption[];
+}
 
 export interface InputProps extends CustomInputProps {
   label: string;
@@ -52,4 +65,18 @@ export interface CheckboxProps {
   errorMessage?: string;
   required?: boolean;
   defaultChecked?: boolean;
+}
+
+export interface SelectProps extends CustomSelectProps {
+  label: string;
+  errorMessage?: string;
+  icon?: ReactNode;
+  placeholder?: string;
+}
+
+export interface ImageInputProps extends CustomInputProps {
+  label: string;
+  errorMessage?: string;
+  selectedImage?: File;
+  onImageSelect?: (image: File) => void;
 }

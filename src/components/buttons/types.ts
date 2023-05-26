@@ -4,6 +4,7 @@ export type HamburgerMenuProps = {
   darkBackground?: boolean;
   isChecked?: boolean;
   onChange?: (value: boolean) => void;
+  className?: string;
 };
 
 export interface PrimaryButtonProps
@@ -13,4 +14,7 @@ export interface PrimaryButtonProps
   > {
   variant?: "solid" | "text" | "outline";
   fitContent?: boolean;
+  isLoading?: boolean;
 }
+
+export interface DangerButtonProps extends PrimaryButtonProps {}
