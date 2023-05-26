@@ -38,7 +38,7 @@ async function POST(request: NextApiRequest, response: NextApiResponse) {
     response
       .setHeader(
         "set-cookie",
-        `token=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${cookiesExpiresIn}`
+        `kisalu@token=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${cookiesExpiresIn}`
       )
       .end();
   } catch (error) {

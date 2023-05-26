@@ -11,6 +11,7 @@ import {
 } from "@/utils/schemas/adminLoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +20,11 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { NextPageWithLayout } from "../_app";
 
-const AdminLoginPage: NextPageWithLayout = () => {
+type PageProps = {
+  callback: string;
+};
+
+const AdminLoginPage: NextPageWithLayout<PageProps> = ({ callback }) => {
   const router = useRouter();
   const { isLoading, isError, mutateAsync, error } = useMutation(
     NextAPI.loginAdmin
@@ -35,7 +40,7 @@ const AdminLoginPage: NextPageWithLayout = () => {
   async function handleFormSubmit(formData: AdminLoginFormType) {
     await mutateAsync(formData);
     toast.success("Login efetuado com sucesso!");
-    router.push(Routes.adminDashboard);
+    router.push(callback || Routes.adminDashboard);
   }
 
   return (
@@ -94,6 +99,15 @@ const AdminLoginPage: NextPageWithLayout = () => {
       </main>
     </Container>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const callbackURL = ctx.query.callback ?? "";
+  return {
+    props: {
+      callback: Array.isArray(callbackURL) ? callbackURL[0] : callbackURL,
+    },
+  };
 };
 
 AdminLoginPage.getLayout = (page) => <FontLayout>{page}</FontLayout>;
