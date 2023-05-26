@@ -16,7 +16,6 @@ export const newCategorySchema = z.object({
     .string()
     .nonempty("Campo obrigatório")
     .min(3, "Campo obrigatório")
-    .regex(noSymbolRegex, "Valor inválido")
     .max(255, "Valor demasiado grande"),
   banner: z
     .custom<File>((file) => file instanceof File, {
