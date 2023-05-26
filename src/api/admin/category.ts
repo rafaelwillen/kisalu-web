@@ -54,15 +54,37 @@ async function getSingle(id: string) {
   }
 }
 
+async function getBySlug(slug: string) {
+  try {
+    const response = await api.get<GetSingleCategoryResponseDataType>(
+      categoryEndpoints.getBySlug(slug)
+    );
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.status) {
+        case 400:
+          throw new Error("Slug da categoria inválido");
+        case 404:
+          throw new Error("Categoria não encontrada");
+        default:
+          throw new Error("Erro ao buscar categoria");
+      }
+    }
+  }
+}
+
 export const categoriesQueryKeys = {
   getAll: "category/getAll",
   getSingle: (id: string) => [`category/getSingle`, id],
+  getSlug: (slug: string) => [`category/getSlug`, slug],
 };
 
 const CategoryAPI = {
   create,
   getAll,
   getSingle,
+  getBySlug,
 };
 
 export default CategoryAPI;

@@ -10,6 +10,8 @@ type BaseCategoryType = {
   name: string;
   cardImageUrl: string;
   bannerImageUrl: string;
+  slug: string;
+  description: string;
 };
 
 export type GetAllCategoriesResponseDataType = (Omit<

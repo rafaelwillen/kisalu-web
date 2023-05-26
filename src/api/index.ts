@@ -17,6 +17,7 @@ export const endpoints = {
       create: "/admin/category",
       getAll: "/admin/category",
       getSingle: (id: string) => `/admin/category/${id}`,
+      getBySlug: (slug: string) => `/admin/category/slug/${slug}`,
     },
   },
   authentication: {
