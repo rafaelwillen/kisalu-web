@@ -2,7 +2,6 @@ import { useCompactNumberFormatter } from "@/hooks/intl";
 import { Routes } from "@/utils/constants/routes";
 import Image from "next/image";
 import Link from "next/link";
-import slugify from "slugify";
 
 type Props = {
   imageURL: string;
@@ -10,6 +9,7 @@ type Props = {
   numberServices: number;
   numberProjects: number;
   createdBy: string;
+  slug: string;
 };
 
 export default function CategoryCard({
@@ -18,12 +18,12 @@ export default function CategoryCard({
   name,
   numberProjects,
   numberServices,
+  slug,
 }: Props) {
   const formatter = useCompactNumberFormatter();
-  const sluggedName = slugify(name, { lower: true, locale: "pt" });
   return (
     <Link
-      href={Routes.adminSingleCategory(sluggedName)}
+      href={Routes.adminSingleCategory(slug)}
       className="rounded-md overflow-clip flex flex-col shadow hover:opacity-60 hover:scale-105 duration-300"
     >
       <Image

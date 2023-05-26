@@ -66,9 +66,11 @@ const AdminCategoriesPage: NextPageWithLayout = () => {
                   name,
                   numberOfProjects,
                   numberOfServices,
+                  slug,
                 }) => (
                   <CategoryCard
                     key={id}
+                    slug={slug}
                     imageURL={cardImageUrl}
                     createdBy="Rafael Padre"
                     name={name}

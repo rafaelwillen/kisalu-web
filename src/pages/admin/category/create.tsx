@@ -1,4 +1,4 @@
-import { CreateCategoryRequestDataType } from "@/api/admin/category";
+import { CreateCategoryRequestDataType } from "@/api/admin/types";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { ImageInput, Input, TextArea } from "@/components/form";
 import { AdminDashboardLayout } from "@/components/layouts";
