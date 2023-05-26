@@ -17,3 +17,31 @@ export const homeSearchSelectRole: SelectOption[] = [
     label: "Prestador",
   },
 ];
+
+
+export const adminCategoriesSelectOptions: SelectOption[] = [
+  {
+    value: "name-asc",
+    label: "Nome - Asc",
+  },
+  {
+    value: "name-desc",
+    label: "Nome - Desc",
+  },
+  {
+    value: "number-services-asc",
+    label: "Nº de Serviços - Asc",
+  },
+  {
+    value: "number-services-desc",
+    label: "Nº de Serviços - Desc",
+  },
+  {
+    value: "number-activities-asc",
+    label: "Nº de Atividades Ativas - Asc",
+  },
+  {
+    value: "number-activities-desc",
+    label: "Nº de Atividades Ativas - Desc",
+  },
+];
