@@ -16,3 +16,5 @@ export interface PrimaryButtonProps
   fitContent?: boolean;
   isLoading?: boolean;
 }
+
+export interface DangerButtonProps extends PrimaryButtonProps {}

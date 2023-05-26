@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import { PropsWithChildren, forwardRef } from "react";
 import { ClipLoader } from "react-spinners";
-import { PrimaryButtonProps } from "./types";
+import { DangerButtonProps } from "./types";
 
-const PrimaryButton = forwardRef<
+const DangerButton = forwardRef<
   HTMLButtonElement,
-  PropsWithChildren<PrimaryButtonProps>
+  PropsWithChildren<DangerButtonProps>
 >(
   (
     {
@@ -24,11 +24,11 @@ const PrimaryButton = forwardRef<
       className={classNames(
         "mt-5 py-2 flex gap-2 justify-center rounded duration-300 ease-in-out disabled:opacity-30 items-center",
         variant === "solid" &&
-          "bg-primary-600 text-white shadow-md hover:bg-primary-400 active:bg-primary-300",
+          "bg-danger/80 text-white shadow-md hover:bg-danger active:bg-danger/40",
         variant === "outline" &&
-          "border border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white",
+          "border border-danger text-danger hover:bg-danger/80 hover:text-white",
         variant === "text" &&
-          "text-primary-600 hover:bg-primary-50 font-bold hover:text-primary-700",
+          "text-danger/80 hover:bg-danger/80 font-bold hover:text-white",
         fitContent ? "w-fit px-4" : "w-full"
       )}
     >
@@ -37,5 +37,4 @@ const PrimaryButton = forwardRef<
   )
 );
 
-export default PrimaryButton;
-
+export default DangerButton;
