@@ -1,19 +1,11 @@
 import { AdminLoginFormType } from "@/utils/schemas/adminLoginSchema";
-import api from ".";
+import { api, endpoints } from "..";
+import {
+  LoginAdminResponseBodyType,
+  VerifyTokenResponseBodyType,
+} from "./types";
 
-type LoginAdminResponseBodyType = {
-  token: string;
-};
-
-type VerifyTokenResponseBodyType = {
-  message: string;
-  payload: {
-    username: string;
-    email: string;
-    exp: number;
-    iat: number;
-  };
-};
+const authenticationEndpoints = endpoints.authentication;
 
 // This function is used in on the API routes of Next JS
 async function loginAdmin__next({
@@ -25,7 +17,7 @@ async function loginAdmin__next({
   }
   try {
     const response = await api.post<LoginAdminResponseBodyType>(
-      "/admin/login",
+      authenticationEndpoints.loginAdmin,
       {
         password,
         username,
@@ -44,7 +36,7 @@ async function verifyToken__next(token: string) {
   try {
     // Axios does not work in here
     const responseData: VerifyTokenResponseBodyType = await fetch(
-      `${process.env.API_URL}/api/admin/login/verify`,
+      authenticationEndpoints.verifyToken,
       {
         method: "POST",
         headers: {

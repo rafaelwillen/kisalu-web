@@ -1,6 +1,5 @@
-import CategoryAPI, {
-  CreateCategoryRequestDataType,
-} from "@/api/admin/category";
+import CategoryAPI from "@/api/admin/category";
+import { CreateCategoryRequestDataType } from "@/api/admin/types";
 import UploadAPI from "@/api/upload";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";

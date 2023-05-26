@@ -1,35 +1,16 @@
-import { NewCategoryFormType } from "@/utils/schemas/newCategorySchema";
 import { AxiosError } from "axios";
-import api from "..";
+import { api, endpoints } from "..";
+import {
+  CreateCategoryRequestDataType,
+  GetAllCategoriesResponseDataType,
+  GetSingleCategoryResponseDataType,
+} from "./types";
 
-export type CreateCategoryRequestDataType = Pick<
-  NewCategoryFormType,
-  "name" | "description"
-> & { cardImageUrl: string; bannerImageUrl: string };
-
-type BaseCategoryType = {
-  id: string;
-  name: string;
-  cardImageUrl: string;
-  bannerImageUrl: string;
-};
-
-export type GetAllCategoriesResponseDataType = (Omit<
-  BaseCategoryType,
-  "bannerImageUrl"
-> & {
-  numberOfProjects: number;
-  numberOfServices: number;
-})[];
-
-export type GetSingleCategoryResponseDataType = BaseCategoryType & {
-  numberOfProjects: number;
-  numberOfServices: number;
-};
+const categoryEndpoints = endpoints.admin.category;
 
 async function create(category: CreateCategoryRequestDataType) {
   try {
-    await api.post("/admin/category", category);
+    await api.post(categoryEndpoints.create, category);
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.status) {
@@ -45,7 +26,7 @@ async function create(category: CreateCategoryRequestDataType) {
 async function getAll() {
   try {
     const response = await api.get<GetAllCategoriesResponseDataType>(
-      "/admin/category"
+      categoryEndpoints.getAll
     );
     return response.data;
   } catch (error) {
@@ -56,7 +37,7 @@ async function getAll() {
 async function getSingle(id: string) {
   try {
     const response = await api.get<GetSingleCategoryResponseDataType>(
-      `/admin/category/${id}`
+      categoryEndpoints.getSingle(id)
     );
     return response.data;
   } catch (error) {
@@ -75,7 +56,7 @@ async function getSingle(id: string) {
 
 export const categoriesQueryKeys = {
   getAll: "category/getAll",
-  getSingle: (id: string) => [`category/getSingle/${id}`, id],
+  getSingle: (id: string) => [`category/getSingle`, id],
 };
 
 const CategoryAPI = {

@@ -1,9 +1,8 @@
 import { AxiosError } from "axios";
-import api from ".";
+import { api, endpoints } from "..";
+import { UploadCategoryImageResponseDataType } from "./types";
 
-type UploadCategoryImageResponseDataType = {
-  url: string;
-};
+const uploadEndpoints = endpoints.upload;
 
 async function uploadCategoryImage(
   image: File
@@ -12,7 +11,7 @@ async function uploadCategoryImage(
   formData.append("image", image);
   try {
     const response = await api.post<UploadCategoryImageResponseDataType>(
-      "/upload/category",
+      uploadEndpoints.categoryImage,
       formData
     );
     return response.data;

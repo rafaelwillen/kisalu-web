@@ -1,10 +1,12 @@
 import { AdminLoginFormType } from "@/utils/schemas/adminLoginSchema";
 import { AxiosError } from "axios";
-import { nextServerAPI } from ".";
+import { endpoints, nextServerAPI } from ".";
+
+const nextAPIEndpoints = endpoints.nextAPI;
 
 async function loginAdmin(formData: AdminLoginFormType) {
   try {
-    await nextServerAPI.post("/admin/login", formData);
+    await nextServerAPI.post(nextAPIEndpoints.loginAdmin, formData);
   } catch (error) {
     console.log(error);
     if (error instanceof AxiosError) {
