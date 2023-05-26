@@ -8,7 +8,6 @@ type Props = {
   imageURL: string;
   name: string;
   numberServices: number;
-  numberActivities: number;
   numberProjects: number;
   createdBy: string;
 };
@@ -17,7 +16,6 @@ export default function CategoryCard({
   createdBy,
   imageURL,
   name,
-  numberActivities,
   numberProjects,
   numberServices,
 }: Props) {
@@ -30,7 +28,7 @@ export default function CategoryCard({
     >
       <Image
         src={imageURL}
-        alt=""
+        alt={name}
         width={330}
         height={185}
         className="object-cover w-full h-auto max-h-[185px] md:w-[330px] md:h-[185px]"
@@ -38,9 +36,6 @@ export default function CategoryCard({
       <div className="p-4 border border-neutral-300">
         <p className="text-center">{name}</p>
         <div className="grid grid-cols-2 gap-2 my-4 text-sm">
-          <p className="rounded-full bg-secondary-100 text-center leading-relaxed">
-            Atividades: {formatter(numberActivities)}
-          </p>
           <p className="rounded-full bg-secondary-100 text-center leading-relaxed">
             Serviços: {formatter(numberServices)}
           </p>

@@ -1,0 +1,61 @@
+import {
+  BaseCategoryType,
+  GetAllCategoriesResponseDataType,
+} from "@/api/admin/types";
+import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
+import { useMemo, useState } from "react";
+
+type Category = Omit<BaseCategoryType, "bannerImageUrl"> & {
+  numberOfProjects: number;
+  numberOfServices: number;
+};
+
+export default function useAdminCategoryFilter(
+  categories: GetAllCategoriesResponseDataType
+) {
+  const [searchName, setSearchName] = useState("");
+  const [selectedOrderBy, setSelectedOrderBy] = useState(
+    adminCategoriesSelectOptions[0].value
+  );
+
+  const filterByName = (category: Category) =>
+    category.name.toLowerCase().includes(searchName.toLowerCase());
+
+  const orderFunction = (a: Category, b: Category) => {
+    if (selectedOrderBy.startsWith("name")) {
+      return selectedOrderBy.includes("asc")
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    }
+    if (selectedOrderBy.startsWith("number-services")) {
+      return selectedOrderBy.includes("asc")
+        ? a.numberOfServices - b.numberOfServices
+        : b.numberOfServices - a.numberOfServices;
+    }
+    if (selectedOrderBy.startsWith("number-projects")) {
+      return selectedOrderBy.includes("asc")
+        ? a.numberOfProjects - b.numberOfProjects
+        : b.numberOfProjects - a.numberOfProjects;
+    }
+    return 0;
+  };
+
+  const filteredCategories = useMemo(
+    () => categories?.filter(filterByName).sort(orderFunction),
+    [categories, searchName, selectedOrderBy]
+  );
+
+  return {
+    filteredCategories,
+    name: {
+      value: searchName,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setSearchName(e.target.value),
+    },
+    orderBy: {
+      value: selectedOrderBy,
+      onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
+        setSelectedOrderBy(e.target.value),
+    },
+  };
+}

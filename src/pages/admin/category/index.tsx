@@ -3,6 +3,7 @@ import { EmptyState, ErrorState, LoadingState } from "@/components/elements";
 import { Input, Select } from "@/components/form";
 import { AdminDashboardLayout } from "@/components/layouts";
 import { CategoryCard } from "@/components/pages/admin";
+import { useAdminCategoryFilter } from "@/hooks/filtering";
 import { Routes } from "@/utils/constants/routes";
 import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { MagnifyingGlass, Plus } from "@phosphor-icons/react";
@@ -19,12 +20,17 @@ const AdminCategoriesPage: NextPageWithLayout = () => {
     error,
   } = useQuery([categoriesQueryKeys.getAll], CategoryAPI.getAll);
 
+  const { filteredCategories, name, orderBy } = useAdminCategoryFilter(
+    categories ?? []
+  );
+
   return (
     <section className="relative">
       <h1 className="font-bold text-xl leading-relaxed">Categorias Criadas</h1>
       <div className="mt-8 space-y-2 lg:flex items-center gap-4">
         <div className="flex-[2]">
           <Input
+            {...name}
             icon={<MagnifyingGlass />}
             autoFocus
             label="Pesquisa"
@@ -32,22 +38,28 @@ const AdminCategoriesPage: NextPageWithLayout = () => {
           />
         </div>
         <div className="flex-1">
-          <Select label="Ordenar por" options={adminCategoriesSelectOptions} />
+          <Select
+            label="Ordenar por"
+            {...orderBy}
+            options={adminCategoriesSelectOptions}
+          />
         </div>
       </div>
       {isLoading && <LoadingState message="Carregando as categorias" />}
       {isError && <ErrorState message={(error as Error).message} />}
-      {categories &&
-        (categories.length === 0 ? (
+      {filteredCategories &&
+        (filteredCategories.length === 0 ? (
           <EmptyState
             heading="Nenhuma categoria encontrada"
             message="Crie uma nova categoria para que ela apareça aqui."
           />
         ) : (
           <>
-            <p className="mt-4">{categories.length} categorias encontradas</p>
+            <p className="mt-4">
+              {filteredCategories.length} categorias encontradas
+            </p>
             <div className="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 items-center gap-4">
-              {categories.map(
+              {filteredCategories.map(
                 ({
                   cardImageUrl,
                   id,
@@ -60,7 +72,6 @@ const AdminCategoriesPage: NextPageWithLayout = () => {
                     imageURL={cardImageUrl}
                     createdBy="Rafael Padre"
                     name={name}
-                    numberActivities={0}
                     numberProjects={numberOfProjects}
                     numberServices={numberOfServices}
                   />

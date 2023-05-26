@@ -5,13 +5,14 @@ export type CreateCategoryRequestDataType = Pick<
   "name" | "description"
 > & { cardImageUrl: string; bannerImageUrl: string };
 
-type BaseCategoryType = {
+export type BaseCategoryType = {
   id: string;
   name: string;
   cardImageUrl: string;
   bannerImageUrl: string;
   slug: string;
   description: string;
+  // TODO: Add the created at
 };
 
 export type GetAllCategoriesResponseDataType = (Omit<
