@@ -15,6 +15,7 @@ export const Routes = {
   adminLogin: "/admin/login",
   adminDashboard: "/admin/dashboard",
   adminCategories: "/admin/category",
+  adminSingleCategory: (slug: string) => `/admin/category/${slug}`,
   adminActivities: "/admin/activity",
   adminDisputes: "/admin/dispute",
   adminCreateCategory: "/admin/category/create",
