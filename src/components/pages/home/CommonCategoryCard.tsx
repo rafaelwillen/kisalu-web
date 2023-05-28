@@ -1,10 +1,17 @@
 import { useNumberFormatter } from "@/hooks/intl";
-import { homeBrowseByCategory } from "@/mock/category";
 import { Routes } from "@/utils/constants/routes";
-import { Placeholder } from "@phosphor-icons/react";
+import { BoxSelect } from "lucide-react";
 import Link from "next/link";
 
-type Props = (typeof homeBrowseByCategory)[0];
+// TODO: Find a way to map the categories to the icons
+
+type Props = {
+  id: number | string;
+  name: string;
+  slug: string;
+  field: string;
+  freelancersCount: number;
+};
 
 export default function CommonCategoryCard({
   field,
@@ -16,12 +23,12 @@ export default function CommonCategoryCard({
   const formatNumber = useNumberFormatter();
   return (
     <Link
-      href={Routes.singleCategory.replace(":categorySlug", slug)}
+      href={Routes.singleCategory(slug)}
       key={id}
       className="px-7 py-10 space-y-7 flex-1 border border-neutral-200 lg:border-neutral-50 lg:shadow-lg hover:bg-neutral-200/40 duration-300 cursor-pointer"
     >
       <div className="relative  inline-block">
-        <Placeholder
+        <BoxSelect
           size={40}
           className="text-primary-600 relative category-bg-icon "
         />

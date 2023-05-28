@@ -1,7 +1,7 @@
 import { useCurrencyFormatter } from "@/hooks/intl";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
-import { Heart, Star } from "@phosphor-icons/react";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,20 +19,17 @@ export default function TrendingServiceCard({
   const formatToCurrency = useCurrencyFormatter();
   return (
     <Link
-      href={Routes.singleService.replace(":id", projectName)}
-      className="min-w-[300px] lg:min-w-[350px] flex flex-col rounded-lg shadow-md"
+      href={Routes.singleService(projectName)}
+      className="min-w-[300px] snap-center lg:min-w-[350px] flex flex-col rounded-lg shadow-md"
     >
       <div className="relative">
         <Image
           src={imageUrl}
           alt={projectName}
-          className="rounded-t-lg h-60 object-cover"
+          className="rounded-t-lg h-60 object-cover w-full"
           width={330}
           height={245}
         />
-        <button className="w-9 h-9 flex items-center justify-center rounded-full absolute bg-white shadow-md top-5 right-5 hover:bg-neutral-100 duration-300">
-          <Heart />
-        </button>
       </div>
       <div className="py-5 px-7 bg-white">
         <p className="text-sm text-text-100">{name}n</p>
@@ -41,10 +38,9 @@ export default function TrendingServiceCard({
         </p>
 
         <div className="flex items-center gap-2 mt-2">
-          <Star size={10} color="#e1c03f" weight="fill" />
+          <Star size={15} color="#e1c03f" />
           <p className="font-medium text-text-200 text-sm">
-            {meanReview}{" "}
-            <span className="text-text-100">{numReviews} revisões</span>
+            {meanReview} <span className="text-text-100">{numReviews} </span>
           </p>
         </div>
         <div className="pt-4 mt-2 border-t border-neutral-200 flex justify-between items-center">
@@ -57,7 +53,6 @@ export default function TrendingServiceCard({
                 width={30}
                 height={30}
               />
-              <div className="w-[9px] h-[9px] bg-[#5BBB7B] rounded-full absolute top-0 right-0"></div>
             </div>
             <p className="text-sm">{owner.name}</p>
           </div>

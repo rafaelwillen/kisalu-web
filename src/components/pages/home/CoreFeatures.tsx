@@ -1,11 +1,6 @@
+import Container from "@/components/common/Container";
 import { useCompactNumberFormatter } from "@/hooks/intl";
-import {
-  Certificate,
-  Laptop,
-  Question,
-  ShieldChevron,
-} from "@phosphor-icons/react";
-import { Container } from "../common";
+import { HelpCircle, Laptop, ScrollText, Shield } from "lucide-react";
 
 export default function CoreFeatures() {
   const formatToCompactNumber = useCompactNumberFormatter();
@@ -17,7 +12,7 @@ export default function CoreFeatures() {
       <Container small>
         <article className="space-y-7 lg:space-y-0 lg:flex gap-16">
           <div>
-            <Certificate size={40} className="text-primary-600" />
+            <ScrollText size={40} className="text-primary-600" />
             <h3 className="mb-4 mt-5 text-lg font-bold">
               Publique um trabalho
             </h3>
@@ -37,7 +32,7 @@ export default function CoreFeatures() {
             </p>
           </div>
           <div>
-            <ShieldChevron size={40} className="text-primary-600" />
+            <Shield size={40} className="text-primary-600" />
             <h3 className="mb-4 mt-5 text-lg font-bold">
               Pagamento de forma segura
             </h3>
@@ -46,7 +41,7 @@ export default function CoreFeatures() {
             </p>
           </div>
           <div>
-            <Question size={40} className="text-primary-600" />
+            <HelpCircle size={40} className="text-primary-600" />
             <h3 className="mb-4 mt-5 text-lg font-bold">
               Estamos aqui para ajudar
             </h3>

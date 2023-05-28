@@ -1,4 +1,6 @@
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { BusinessImage } from "@/assets/images";
+import { Routes } from "@/utils/constants/routes";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,18 +16,16 @@ export default function NewProvidersSection() {
           negócio
         </p>
         <Link
-          href="#"
+          href={Routes.providerRegister}
           className="flex justify-center items-center py-4 px-9 gap-2 bg-primary-600 hover:bg-primary-500 duration-300 rounded text-white w-fit"
         >
-          Começar <ArrowUpRight size={24} color="#ffffff" weight="thin" />
+          Começar <ArrowUpRight size={24} color="#ffffff" />
         </Link>
       </div>
       <Image
-        src="/business.jpg"
+        src={BusinessImage}
         className="mt-12 self-center h-60 w-60 object-cover object-left lg:absolute right-0 2xl:-bottom-24 lg:bottom-0  2xl:h-[520px] lg:w-auto lg:object-center "
         alt="Cadastre como prestador"
-        width={492}
-        height={520}
       />
     </section>
   );

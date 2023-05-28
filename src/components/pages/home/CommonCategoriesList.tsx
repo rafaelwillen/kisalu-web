@@ -1,8 +1,10 @@
 import { homeBrowseByCategory } from "@/mock/category";
 import { Routes } from "@/utils/constants/routes";
-import { ArrowRight } from "@phosphor-icons/react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CommonCategoryCard from "./CommonCategoryCard";
+
+// TODO: Fetch the most popular categories from the API
 
 export default function CommonCategoriesList() {
   return (
