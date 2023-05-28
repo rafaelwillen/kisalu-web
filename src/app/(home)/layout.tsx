@@ -1,0 +1,24 @@
+import ScrollToTopButton from "@/components/buttons/ScrollToTopButton";
+import Container from "@/components/common/Container";
+import Footer from "@/components/common/Footer";
+import Navbar from "@/components/common/Navbar";
+import Hero from "@/components/pages/Home/Hero";
+import { PropsWithChildren } from "react";
+
+export default function HomePageLayout({ children }: PropsWithChildren) {
+  return (
+    <>
+      <header className="relative text-white pb-16 header-bg">
+        <Navbar />
+        <Hero />
+      </header>
+      {children}
+      <div className="bg-secondary-950 static py-5">
+        <Container small>
+          <Footer />
+        </Container>
+      </div>
+      <ScrollToTopButton />
+    </>
+  );
+}

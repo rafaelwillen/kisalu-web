@@ -5,13 +5,10 @@ export const Routes = {
   register: "/auth/register",
   clientRegister: "/auth/register/client",
   providerRegister: "/auth/register/provider",
-  /** Params: :categorySlug */
-  singleCategory: "/categories/:categorySlug",
-  /** Params: :id - service id */
-  singleService: "/service/product/:id",
+  singleCategory: (slug: string) => `/categories/${slug}`,
+  singleService: (id: string) => `/service/product/${id}`,
   providers: "/providers",
-  /** Params: :id - provider id */
-  singleProvider: "/providers/:username",
+  singleProvider: (username: string) => `/providers/${username}`,
   adminLogin: "/admin/login",
   adminDashboard: "/admin/dashboard",
   adminCategories: "/admin/category",

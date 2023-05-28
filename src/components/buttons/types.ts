@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from "react";
 export type HamburgerMenuProps = {
   darkBackground?: boolean;
   isChecked?: boolean;
-  onChange?: (value: boolean) => void;
+  toggle?: () => void;
   className?: string;
 };
 

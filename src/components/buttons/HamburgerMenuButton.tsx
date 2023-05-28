@@ -4,7 +4,7 @@ import { HamburgerMenuProps } from "./types";
 export default function HamburgerMenuButton({
   darkBackground = false,
   isChecked = false,
-  onChange,
+  toggle,
   className,
 }: HamburgerMenuProps) {
   return (
@@ -19,10 +19,10 @@ export default function HamburgerMenuButton({
     >
       <input
         checked={isChecked}
-        onChange={(e) => onChange?.(e.target.checked)}
+        onChange={toggle}
         type="checkbox"
         className={classNames(
-          "hamburger-menu",
+          "hamburger-menu border-white focus:shadow-none focus:ring-0",
           darkBackground ? "bg-white" : "bg-text-200"
         )}
       />

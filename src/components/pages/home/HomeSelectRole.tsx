@@ -1,21 +1,21 @@
 import { homeSearchSelectRole } from "@/utils/constants/selectOptions";
-import { CaretDown, Check } from "@phosphor-icons/react";
 import * as Select from "@radix-ui/react-select";
+import { Check, ChevronDown } from "lucide-react";
 
 export default function HomeSelectRole() {
   return (
     <Select.Root>
-      <Select.Trigger className="flex items-center justify-between w-full outline-none">
-        <Select.Value placeholder="Selecione um papel" />
+      <Select.Trigger className="flex items-center justify-between w-full outline-none bg-white text-text-200 max-lg:px-4 max-lg:py-4 max-lg:rounded-b max-lg:border-t border-neutral-200">
+        <Select.Value placeholder="Selecione uma opção" />
         <Select.Icon>
-          <CaretDown weight="fill" className="text-text-200" size={20} />
+          <ChevronDown className="text-text-200" size={20} />
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
         <Select.Content
           className="overflow-hidden bg-white rounded-md shadow-lg w-[--radix-select-trigger-width]"
           position="popper"
-          sideOffset={30}
+          sideOffset={10}
         >
           <Select.Viewport className="p-1">
             {homeSearchSelectRole.map(({ label, value }) => (
