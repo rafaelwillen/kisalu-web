@@ -1,4 +1,5 @@
-import { DangerButton, PrimaryButton } from "@/components/buttons";
+import DangerButton from "@/components/buttons/DangerButton";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 export default function CategoryActions() {
   return (
