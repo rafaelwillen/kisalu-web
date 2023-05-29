@@ -1,35 +1,25 @@
-import axios from "axios";
-
-export const api = axios.create({
-  baseURL:
-    typeof document === "undefined"
-      ? process.env.API_URL?.concat("/api")
-      : process.env.NEXT_PUBLIC_API_URL?.concat("/api"),
-});
-
-export const nextServerAPI = axios.create({
-  baseURL: "/api",
-});
+export const API_URL =
+  typeof document === "undefined"
+    ? process.env.API_URL?.concat("/api")
+    : process.env.NEXT_PUBLIC_API_URL?.concat("/api");
 
 export const endpoints = {
   admin: {
+    create: "/admin",
     category: {
       create: "/admin/category",
       getAll: "/admin/category",
       getSingle: (id: string) => `/admin/category/${id}`,
       getBySlug: (slug: string) => `/admin/category/slug/${slug}`,
+      delete: (id: string) => `/admin/category/${id}`,
     },
   },
   authentication: {
-    loginAdmin__next: "/admin/login",
+    currentUser: "/auth/me",
     loginAdmin: "/auth/login/admin",
-    verifyToken: `${process.env.API_URL}/api/auth/login/admin/verify`,
-  },
-  nextAPI: {
-    loginAdmin: "/auth/admin/login",
+    verifyToken: `/auth/login/admin/verify`,
   },
   upload: {
     categoryImage: "/upload/category",
   },
 };
-

@@ -22,9 +22,7 @@ export default function AdminCategoriesPage() {
     error,
   } = useQuery(["TEST"], () => Promise.resolve([{ id: 1, name: "Teste" }]));
 
-  const { filteredCategories, name, orderBy } = useAdminCategoryFilter(
-    categories ?? []
-  );
+  const { filteredCategories, name, orderBy } = useAdminCategoryFilter([]);
   return (
     <section className="relative">
       <h1 className="font-bold text-xl leading-relaxed">Categorias Criadas</h1>

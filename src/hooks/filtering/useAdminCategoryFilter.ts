@@ -1,7 +1,5 @@
-import {
-  BaseCategoryType,
-  GetAllCategoriesResponseDataType,
-} from "@/api/admin/types";
+import { BaseCategoryType } from "@/api/types";
+import { GetAllCategoriesResponseDataType } from "@/api/types/queryTypes";
 import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { useMemo, useState } from "react";
 
