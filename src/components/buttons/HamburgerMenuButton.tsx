@@ -17,6 +17,7 @@ export default function HamburgerMenuButton({
         className
       )}
     >
+      {/* TODO: The button does not show on white bg */}
       <input
         checked={isChecked}
         onChange={toggle}

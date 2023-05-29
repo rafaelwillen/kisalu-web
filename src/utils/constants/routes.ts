@@ -10,7 +10,7 @@ export const Routes = {
   providers: "/providers",
   singleProvider: (username: string) => `/providers/${username}`,
   adminLogin: "/admin/login",
-  adminDashboard: "/admin/dashboard",
+  adminDashboard: "/admin",
   adminCategories: "/admin/category",
   adminSingleCategory: (slug: string) => `/admin/category/${slug}`,
   adminActivities: "/admin/activity",

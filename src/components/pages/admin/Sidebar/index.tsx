@@ -1,8 +1,8 @@
-import DesktopSidebar from "./DesktopSidebar";
-import MobileSidebar from "./MobileSidebar";
+import DesktopSidebar from "./Desktop";
+import MobileSidebar from "./Mobile";
 
 export default function Sidebar() {
-
+  // TODO: Fetch user data from API
   const user = {
     email: "rafael@gmail.com",
     name: "Rafael Padre",
