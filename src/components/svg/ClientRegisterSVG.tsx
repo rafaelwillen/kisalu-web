@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgComponent = ({
+const ClientRegisterSVG = ({
   title,
   titleId,
   ...props
@@ -209,4 +209,4 @@ const SvgComponent = ({
     />
   </svg>
 );
-export default SvgComponent;
+export default ClientRegisterSVG;

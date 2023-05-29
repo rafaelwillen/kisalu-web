@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgComponent = ({
+const NotFoundSVG = ({
   title,
   titleId,
   ...props
@@ -121,4 +121,4 @@ const SvgComponent = ({
     />
   </svg>
 );
-export default SvgComponent;
+export default NotFoundSVG;

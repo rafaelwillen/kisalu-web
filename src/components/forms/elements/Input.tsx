@@ -16,7 +16,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={type}
             name={name}
             id={name}
-            className="flex-1 outline-none"
+            className="flex-1 outline-none border-0 focus:ring-0 p-0"
           />
         </div>
         {errorMessage && <ErrorMessage message={errorMessage} />}
