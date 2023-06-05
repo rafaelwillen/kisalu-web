@@ -21,7 +21,7 @@ export default function Newsletter() {
   return (
     <form
       noValidate
-      className="my-7 lg:mt-0"
+      className="my-7 lg:mt-0 col-span-2"
       onSubmit={handleSubmit(handleFormSubmit, (error) =>
         toast.error(`Ocorreu um erro: ${error.newsletterEmail?.message}`, {
           position: "bottom-right",

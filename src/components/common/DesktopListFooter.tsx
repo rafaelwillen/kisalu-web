@@ -18,29 +18,6 @@ export default function DesktopListFooter() {
         </li>
       </ul>
       <ul className="space-y-4 text-white/70">
-        <li className="font-medium text-white">Categorias</li>
-        <li>
-          <Link href="#" className="animated-underline">
-            Gráficos e Design
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="animated-underline">
-            Marketing Digital
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="animated-underline">
-            Limpeza e Trabalho Domésticos
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="animated-underline">
-            Estilo de Vida
-          </Link>
-        </li>
-      </ul>
-      <ul className="space-y-4 text-white/70">
         <li className="font-medium text-white">Ajuda</li>
         <li>
           <Link href="#" className="animated-underline">
