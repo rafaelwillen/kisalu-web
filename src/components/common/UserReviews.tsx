@@ -1,10 +1,10 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import {
-  useCompactNumberFormatter,
-  useNumberFormatter,
-  useRelativeTimeFormatter,
-} from "@/hooks/intl";
 import { Routes } from "@/utils/constants/routes";
+import {
+  formatToCompactNumber,
+  formatToNumber,
+  formatToRelativeDate,
+} from "@/utils/intl";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,9 +18,6 @@ type Props = {
 };
 
 export default function UserReviews({ showLinkToService = false }: Props) {
-  const formatToCompactNumber = useCompactNumberFormatter();
-  const formatToRelativeDate = useRelativeTimeFormatter();
-  const formatNumber = useNumberFormatter();
   return (
     <section className="mt-8">
       <h2 className="font-medium text-xl">Avaliação de Desempenho</h2>
@@ -32,7 +29,7 @@ export default function UserReviews({ showLinkToService = false }: Props) {
         <article className="flex flex-1 flex-col py-12 bg-primary-200 rounded-lg items-center mt-4">
           <p className="text-primary-700 font-bold text-6xl">4.96</p>
           <p className="font-medium text-lg">Excelente</p>
-          <p>{formatNumber(3014)} notas</p>
+          <p>{formatToNumber(3014)} notas</p>
         </article>
         <article className="mt-5 flex-[2] space-y-2">
           <div className="grid grid-cols-[20%,auto,10%] gap-2 items-center">

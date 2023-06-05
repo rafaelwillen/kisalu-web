@@ -1,11 +1,10 @@
 import ReviewStarIcon from "@/components/common/ReviewStarIcon";
-import { useCompactNumberFormatter } from "@/hooks/intl";
+import { formatToCompactNumber } from "@/utils/intl";
 import { Calendar, MapPin, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function SingleProviderBanner() {
-  const formatToCompact = useCompactNumberFormatter();
   return (
     <section className="rounded-2xl relative py-14 md:py-28 md:px-36 px-5 mb-5 text-white shadow-xl bg-providerGradient">
       <Link
@@ -27,7 +26,7 @@ export default function SingleProviderBanner() {
           <li className="flex items-center gap-2">
             <ReviewStarIcon />
             <p className="font-medium">4.82</p>
-            <p>{formatToCompact(98)} avaliações</p>
+            <p>{formatToCompactNumber(98)} avaliações</p>
           </li>
           <li className="flex items-center gap-2 xl:hidden">
             <MapPin />

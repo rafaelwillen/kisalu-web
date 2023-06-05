@@ -1,7 +1,7 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ReviewStarIcon from "@/components/common/ReviewStarIcon";
-import { useCompactNumberFormatter } from "@/hooks/intl";
 import { Routes } from "@/utils/constants/routes";
+import { formatToCompactNumber } from "@/utils/intl";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,6 @@ import Link from "next/link";
 // TODO: Add props
 
 export default function ProviderCard() {
-  const formatToCompact = useCompactNumberFormatter();
   return (
     <article className="py-4 px-0 border-b border-neutral-200 rounded lg:border lg:px-16">
       <div className="flex-col flex items-center">
@@ -24,7 +23,9 @@ export default function ProviderCard() {
         <div className="flex gap-1 text-sm items-center">
           <ReviewStarIcon />
           <p className="font-medium">4.9</p>
-          <p className="text-text-100">({formatToCompact(595)} avaliações)</p>
+          <p className="text-text-100">
+            ({formatToCompactNumber(595)} avaliações)
+          </p>
         </div>
       </div>
       <div className="mt-5 pb-5 border-b border-neutral-300 flex gap-2 items-center justify-center">

@@ -1,11 +1,10 @@
 import ReviewStarIcon from "@/components/common/ReviewStarIcon";
-import { useCompactNumberFormatter } from "@/hooks/intl";
+import { formatToCompactNumber } from "@/utils/intl";
 import { Eye, Files } from "lucide-react";
 import Image from "next/image";
 
 // TODO: Add props
 export default function ServiceProductBanner() {
-  const formatToCompactNumber = useCompactNumberFormatter();
   return (
     <section className="relative rounded-2xl py-12 px-8 mb-5 text-white lg:px-36 lg:py-24 shadow-lg">
       <Image
