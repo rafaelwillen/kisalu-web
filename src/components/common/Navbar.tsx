@@ -70,6 +70,15 @@ export default function Navbar({ whiteBackground }: Props) {
             >
               Prestadores
             </Link>
+            <Link
+              href={Routes.projects}
+              className={classNames(
+                "animated-underline",
+                whiteBackground && "dark"
+              )}
+            >
+              Projectos
+            </Link>
           </li>
           <li className="flex items-center gap-7 py-1">
             <Link

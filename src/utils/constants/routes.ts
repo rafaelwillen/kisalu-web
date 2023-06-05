@@ -3,6 +3,7 @@ export const Routes = {
   login: "/login",
   categories: "/categories",
   register: "/register",
+  projects: "/projects",
   clientRegister: "/register/client",
   providerRegister: "/register/provider",
   singleCategory: (slug: string) => `/categories/${slug}`,

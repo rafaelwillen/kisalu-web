@@ -1,6 +1,6 @@
 import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
-import { Home, ListChecks, User2, UserPlus } from "lucide-react";
+import { FolderGit2, Home, ListChecks, User2, UserPlus } from "lucide-react";
 import Link from "next/link";
 type Props = {
   visible: boolean;
@@ -39,6 +39,14 @@ export default function AsideMenu({ visible }: Props) {
             href={Routes.providers}
           >
             <User2 size={30} /> Prestadores
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="h-16 px-5 flex gap-7 items-center hover:bg-primary-300 active:bg-primary-300"
+            href={Routes.projects}
+          >
+            <FolderGit2 size={30} /> Projectos
           </Link>
         </li>
         <li>
