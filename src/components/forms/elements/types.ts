@@ -72,6 +72,9 @@ export interface SelectProps extends CustomSelectProps {
   errorMessage?: string;
   icon?: ReactNode;
   placeholder?: string;
+  inlineLabel?: boolean;
+  onValueSelect?: (value: string) => void;
+  selectedValue?: string;
 }
 
 export interface ImageInputProps extends CustomInputProps {
