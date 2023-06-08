@@ -1,5 +1,5 @@
-import { useCompactNumberFormatter } from "@/hooks/intl";
 import { Routes } from "@/utils/constants/routes";
+import { formatToCompactNumber } from "@/utils/intl";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,7 +20,6 @@ export default function CategoryCard({
   numberServices,
   slug,
 }: Props) {
-  const formatter = useCompactNumberFormatter();
   return (
     <Link
       href={Routes.adminSingleCategory(slug)}
@@ -37,10 +36,10 @@ export default function CategoryCard({
         <p className="text-center">{name}</p>
         <div className="grid grid-cols-2 gap-2 my-4 text-sm">
           <p className="rounded-full bg-secondary-100 text-center leading-relaxed">
-            Serviços: {formatter(numberServices)}
+            Serviços: {formatToCompactNumber(numberServices)}
           </p>
           <p className="rounded-full bg-secondary-100 text-center leading-relaxed">
-            Projetos: {formatter(numberProjects)}
+            Projetos: {formatToCompactNumber(numberProjects)}
           </p>
         </div>
         <p className="text-center">

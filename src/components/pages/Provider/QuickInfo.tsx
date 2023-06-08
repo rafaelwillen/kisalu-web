@@ -1,8 +1,10 @@
-import { useCompactNumberFormatter } from "@/hooks/intl";
 import { Clock, Radio, Target } from "lucide-react";
 
 export default function QuickInfo() {
-  const formatToCompact = useCompactNumberFormatter();
+  function formatToCompact(arg0: number): import("react").ReactNode {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <section>
       <ul className="flex flex-wrap justify-center items-center gap-4 xl:gap-16">

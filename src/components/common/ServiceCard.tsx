@@ -1,6 +1,6 @@
-import { useCurrencyFormatter } from "@/hooks/intl";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
+import { formatToCurrency } from "@/utils/intl";
 import Image from "next/image";
 import Link from "next/link";
 import ReviewStarIcon from "./ReviewStarIcon";
@@ -16,7 +16,6 @@ export default function ServiceCard({
   projectName,
   startingPrice,
 }: ServiceCardProps) {
-  const formatToCurrency = useCurrencyFormatter();
   return (
     // TODO: Add the service id
     <Link

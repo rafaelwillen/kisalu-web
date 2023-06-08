@@ -1,9 +1,8 @@
 import Container from "@/components/common/Container";
-import { useCompactNumberFormatter } from "@/hooks/intl";
+import { formatToCompactNumber } from "@/utils/intl";
 import { HelpCircle, Laptop, ScrollText, Shield } from "lucide-react";
 
 export default function CoreFeatures() {
-  const formatToCompactNumber = useCompactNumberFormatter();
   return (
     <section className="mt-10 lg:mt-32">
       <h2 className="font-bold text-2xl text-center mb-12 lg:mb-20 lg:text-3xl">

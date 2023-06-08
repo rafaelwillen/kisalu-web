@@ -1,6 +1,6 @@
-import { useCurrencyFormatter } from "@/hooks/intl";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
+import { formatToCurrency } from "@/utils/intl";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +16,6 @@ export default function TrendingServiceCard({
   projectName,
   startingPrice,
 }: Props) {
-  const formatToCurrency = useCurrencyFormatter();
   return (
     <Link
       href={Routes.singleService(projectName)}

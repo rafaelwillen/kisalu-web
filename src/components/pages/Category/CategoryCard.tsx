@@ -1,7 +1,7 @@
 import ReviewStarIcon from "@/components/common/ReviewStarIcon";
-import { useCompactNumberFormatter } from "@/hooks/intl";
 import { categoriesPageResult } from "@/mock/category";
 import { Routes } from "@/utils/constants/routes";
+import { formatToCompactNumber } from "@/utils/intl";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,7 +13,6 @@ export default function CategoryCard({
   numFreelancers,
   slug,
 }: Props) {
-  const formatToCompactNumber = useCompactNumberFormatter();
   const numberOfReviews = (Math.random() * 20 + 1).toFixed(0);
   return (
     <Link
