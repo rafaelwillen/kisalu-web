@@ -3,14 +3,16 @@ import Container from "@/components/common/Container";
 import ProjectListSection from "@/components/pages/Project/ProjectListSection";
 
 export default function ProjectsPage() {
-  const fakeArray = Array.from({ length: 40 });
+  const fakeArray = Array.from({ length: 40 }).map((_, index) => "test");
   return (
     <main className="py-10">
       <Container>
-        <Banner
-          name="Lista de Projectos"
-          description="Todos os projectos que os clientes necessitam de um prestador pode ser encontrado aqui"
-        />
+        <div className="hidden lg:block">
+          <Banner
+            name="Lista de Projectos"
+            description="Todos os projectos que os clientes necessitam de um prestador pode ser encontrado aqui"
+          />
+        </div>
       </Container>
       <Container small>
         <ProjectListSection initialData={fakeArray} />

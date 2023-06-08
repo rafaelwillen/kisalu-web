@@ -25,7 +25,7 @@ function SearchForm({ inputProps, onSubmit }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex bg-white shadow p-2 rounded-md items-center gap-2"
+      className="flex max-md:flex-col bg-white shadow p-2 rounded-md items-center gap-2"
     >
       <div className="p-2 border-b border-primary-400/0 flex flex-1 items-center  duration-150 gap-2">
         <Search size={16} />
@@ -38,7 +38,7 @@ function SearchForm({ inputProps, onSubmit }: Props) {
       </div>
       <button
         type="submit"
-        className="bg-primary-600 py-4 px-9 text-white rounded duration-300 ease-in-out hover:bg-primary-400 active:bg-primary-300"
+        className="max-md:w-full bg-primary-600 py-4 px-9 text-white rounded duration-300 ease-in-out hover:bg-primary-400 active:bg-primary-300"
       >
         Pesquisar
       </button>
