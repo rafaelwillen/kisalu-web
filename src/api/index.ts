@@ -1,7 +1,17 @@
+import axios from "axios";
+
 export const API_URL =
   typeof document === "undefined"
     ? process.env.API_URL?.concat("/api")
     : process.env.NEXT_PUBLIC_API_URL?.concat("/api");
+
+export const api = axios.create({
+  baseURL: API_URL,
+});
+
+export const nextServerAPI = axios.create({
+  baseURL: "/api",
+});
 
 export const endpoints = {
   address: {
