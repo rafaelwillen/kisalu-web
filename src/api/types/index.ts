@@ -9,3 +9,4 @@ export type BaseCategoryType = {
 };
 
 export type Role = "Administrator" | "Provider" | "Client";
+export type Gender = "Male" | "Female";

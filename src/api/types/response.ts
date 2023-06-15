@@ -1,4 +1,4 @@
-import { Role } from ".";
+import { Gender, Role } from ".";
 
 export type AdminAuthenticationResponseBody = {
   token: string;
@@ -10,4 +10,18 @@ export type AdminAuthenticationResponseBody = {
     lastName: string;
     avatarImageURL: string;
   };
+};
+
+export type UserAuthenticationResponseBody = {
+  isActive: boolean;
+  phoneNumber?: string;
+  role: Role;
+  updatedAt: string;
+  createdAt: string;
+  firstName: string;
+  lastName: string;
+  avatarImageURL: string;
+  biography?: string;
+  birthDate?: string;
+  gender: Gender;
 };
