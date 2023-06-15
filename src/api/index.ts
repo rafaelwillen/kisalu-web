@@ -4,20 +4,22 @@ export const API_URL =
     : process.env.NEXT_PUBLIC_API_URL?.concat("/api");
 
 export const endpoints = {
+  address: {
+    allProvinces: "/address/provinces",
+    allCounties: (province: string) => `/address/county/${province}`,
+  },
   admin: {
     create: "/admin",
     category: {
       create: "/admin/category",
       getAll: "/admin/category",
       getSingle: (id: string) => `/admin/category/${id}`,
-      getBySlug: (slug: string) => `/admin/category/slug/${slug}`,
       delete: (id: string) => `/admin/category/${id}`,
     },
   },
   authentication: {
     currentUser: "/auth/me",
     loginAdmin: "/auth/login/admin",
-    verifyToken: `/auth/login/admin/verify`,
   },
   upload: {
     categoryImage: "/upload/category",
