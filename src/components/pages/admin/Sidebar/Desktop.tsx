@@ -1,4 +1,5 @@
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
+import { Routes } from "@/utils/constants/routes";
 import Image from "next/image";
 import Link from "next/link";
 import { SidebarProps } from "./types";
@@ -35,7 +36,7 @@ export default function DesktopSidebar({ user }: SidebarProps) {
         </ul>
       </nav>
       <div>
-        <Link href="#" className="text-danger hover:underline">
+        <Link href={Routes.logoutAdmin} className="text-danger hover:underline">
           Finalizar sessão
         </Link>
       </div>

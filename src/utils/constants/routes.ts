@@ -17,4 +17,6 @@ export const Routes = {
   adminActivities: "/admin/activity",
   adminDisputes: "/admin/dispute",
   adminCreateCategory: "/admin/category/create",
+  logout: "/logout",
+  logoutAdmin: "/admin/logout",
 };
