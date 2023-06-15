@@ -4,3 +4,8 @@ export type CreateCategoryRequestDataType = Pick<
   NewCategoryFormType,
   "name" | "description"
 > & { cardImageUrl: string; bannerImageUrl: string };
+
+export type AuthenticationRequestBody = {
+  email: string;
+  password: string;
+};

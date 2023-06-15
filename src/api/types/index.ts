@@ -7,3 +7,5 @@ export type BaseCategoryType = {
   description: string;
   createdAt: string;
 };
+
+export type Role = "Administrator" | "Provider" | "Client";
