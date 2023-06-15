@@ -1,5 +1,6 @@
 "use client";
 
+import { authenticateAdministratorNextServer } from "@/api/authentication";
 import { Routes } from "@/utils/constants/routes";
 import {
   AdminLoginFormType,
@@ -7,7 +8,7 @@ import {
 } from "@/utils/schemas/adminLoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
@@ -15,14 +16,10 @@ import Input from "./elements/Input";
 import SecureInput from "./elements/SecureInput";
 
 export default function AdminLoginForm() {
-  // TODO: Replace with NextAPI.loginAdmin API call
+  const router = useRouter();
   const { isLoading, isError, mutateAsync, error } = useMutation(
-    // NextAPI.loginAdmin
-    (data: AdminLoginFormType) => {
-      return new Promise((resolve) => {
-        setTimeout(() => resolve({}), 2000);
-      });
-    }
+    (formData: AdminLoginFormType) =>
+      authenticateAdministratorNextServer(formData)
   );
 
   const {
@@ -36,7 +33,6 @@ export default function AdminLoginForm() {
   async function handleFormSubmit(formData: AdminLoginFormType) {
     await mutateAsync(formData);
     toast.success("Login efetuado com sucesso!");
-    // TODO: Add the callback
     router.push(Routes.adminDashboard);
   }
 
@@ -47,10 +43,11 @@ export default function AdminLoginForm() {
       method="POST"
     >
       <Input
-        label="Username"
-        placeholder="Insira o nome do utilizador"
-        errorMessage={errors.username?.message}
-        {...register("username")}
+        label="Email"
+        type="email"
+        placeholder="Insira o email do utilizador"
+        errorMessage={errors.email?.message}
+        {...register("email")}
       />
       <SecureInput
         {...register("password")}
@@ -62,7 +59,9 @@ export default function AdminLoginForm() {
         Login
       </PrimaryButton>
       {isError && (
-        <p className="text-center text-danger">{(error as Error).message}</p>
+        <p className="text-center text-danger capitalize">
+          {(error as Error).message}
+        </p>
       )}
     </form>
   );

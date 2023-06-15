@@ -1,10 +1,7 @@
 import { z } from "zod";
 
 export const adminLoginSchema = z.object({
-  username: z
-    .string()
-    .min(3, "Username inválido")
-    .max(255, "Username inválido"),
+  email: z.string().email("Email inválido"),
   password: z.string().min(3, "Password inválida"),
 });
 

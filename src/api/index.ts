@@ -7,10 +7,12 @@ export const API_URL =
 
 export const api = axios.create({
   baseURL: API_URL,
+  withCredentials: true,
 });
 
 export const nextServerAPI = axios.create({
   baseURL: "/api",
+  withCredentials: true,
 });
 
 export const endpoints = {
@@ -30,6 +32,7 @@ export const endpoints = {
   authentication: {
     currentUser: "/auth/me",
     loginAdmin: "/auth/login/admin",
+    loginAdminNext: "/auth/admin",
   },
   upload: {
     categoryImage: "/upload/category",

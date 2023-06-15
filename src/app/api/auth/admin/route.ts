@@ -1,4 +1,5 @@
 import { authenticateAdministrator } from "@/api/authentication";
+import { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
 import { ZodError, z } from "zod";
 
@@ -17,9 +18,14 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error(error);
     if (error instanceof ZodError) {
       return NextResponse.json({ message: "Invalid data" }, { status: 400 });
+    }
+    if (error instanceof AxiosError) {
+      return NextResponse.json(
+        { message: "Invalid credentials" },
+        { status: 401 }
+      );
     }
   }
 }
