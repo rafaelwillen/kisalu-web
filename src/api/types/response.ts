@@ -23,5 +23,6 @@ export type UserAuthenticationResponseBody = {
   avatarImageURL: string;
   biography?: string;
   birthDate?: string;
+  email: string;
   gender: Gender;
 };

@@ -1,11 +1,16 @@
+import { getAuthenticatedUser } from "@/api/authentication";
+import { cookies } from "next/headers";
 import DesktopSidebar from "./Desktop";
 import MobileSidebar from "./Mobile";
 
-export default function Sidebar() {
-  // TODO: Fetch user data from API
+export default async function Sidebar() {
+  const token = cookies().get("token")?.value!;
+  const { firstName, lastName, avatarImageURL, email } =
+    await getAuthenticatedUser(token);
   const user = {
-    email: "rafael@gmail.com",
-    name: "Rafael Padre",
+    email,
+    name: `${firstName} ${lastName}`,
+    avatarImageURL,
   };
 
   return (

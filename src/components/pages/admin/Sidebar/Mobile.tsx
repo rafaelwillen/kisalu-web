@@ -1,6 +1,5 @@
 "use client";
 
-import { KisaluLogo } from "@/assets/images";
 import HamburgerMenuButton from "@/components/buttons/HamburgerMenuButton";
 import Container from "@/components/common/Container";
 import useToggle from "@/hooks/useToggle";
@@ -11,7 +10,7 @@ import Link from "next/link";
 import { SidebarProps } from "./types";
 
 export default function MobileSidebar({ user }: SidebarProps) {
-  const { email, name } = user;
+  const { email, name, avatarImageURL } = user;
   const { isOpen, toggle, close } = useToggle();
   return (
     <>
@@ -25,7 +24,13 @@ export default function MobileSidebar({ user }: SidebarProps) {
           )}
         >
           <div className="flex items-center gap-4">
-            <Image src={KisaluLogo} className="rounded-full" alt="" />
+            <Image
+              src={avatarImageURL}
+              width={40}
+              height={40}
+              className="rounded-full bg-white"
+              alt=""
+            />
             <div className="text-sm">
               <p className="font-bold text-lg">{name}</p>
               <p>{email}</p>

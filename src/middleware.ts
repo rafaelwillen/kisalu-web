@@ -15,7 +15,6 @@ async function ensureAdminAuthenticated(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
   if (!token) return NextResponse.redirect(loginRedirectURL);
   const userPayload = await getAuthenticatedUser(token);
-  console.log(userPayload);
   if (!userPayload || userPayload.role !== "Administrator")
     return NextResponse.redirect(loginRedirectURL);
   return NextResponse.next();
