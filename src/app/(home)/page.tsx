@@ -1,9 +1,9 @@
 import Container from "@/components/common/Container";
-import CommonCategoriesList from "@/components/pages/Home/CommonCategoriesList";
-import CoreFeatures from "@/components/pages/Home/CoreFeatures";
-import NewProvidersSection from "@/components/pages/Home/NewProvidersSection";
-import TrendingServicesList from "@/components/pages/Home/TrendingServicesList";
 import { Metadata } from "next";
+import CommonCategoriesList from "./_components/CommonCategoriesList";
+import CoreFeatures from "./_components/CoreFeatures";
+import NewProvidersSection from "./_components/NewProvidersSection";
+import TrendingServicesList from "./_components/TrendingServicesList";
 
 export const metadata: Metadata = {
   title: {

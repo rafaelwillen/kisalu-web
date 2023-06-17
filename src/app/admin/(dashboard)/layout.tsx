@@ -1,6 +1,6 @@
 import Container from "@/components/common/Container";
-import Sidebar from "@/components/pages/Admin/Sidebar";
 import { PropsWithChildren } from "react";
+import Sidebar from "./_components/Sidebar";
 
 export default function AdminPageLayout({ children }: PropsWithChildren) {
   return (

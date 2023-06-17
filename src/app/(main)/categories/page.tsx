@@ -1,7 +1,7 @@
 import Container from "@/components/common/Container";
-import CategoryCard from "@/components/pages/Category/CategoryCard";
 import { categoriesPageResult } from "@/mock/category";
 import { Metadata } from "next";
+import CategoryCard from "./_components/CategoryCard";
 
 export const metadata: Metadata = {
   title: "Categorias",

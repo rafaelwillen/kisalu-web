@@ -1,7 +1,7 @@
-import CategoryActions from "@/components/pages/Admin/CategoryActions";
 import { Routes } from "@/utils/constants/routes";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import CategoryActions from "./_components/CategoryActions";
 
 type PageProps = {
   params: {

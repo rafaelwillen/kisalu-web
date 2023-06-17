@@ -1,14 +1,14 @@
 import Container from "@/components/common/Container";
 import UserReviews from "@/components/common/UserReviews";
-import Info from "@/components/pages/Service/Info";
-import LocationAndDurationInfo from "@/components/pages/Service/LocationAndDurationInfo";
-import ProviderQuickInfo from "@/components/pages/Service/ProductQuickInfo";
-import ServicePrice from "@/components/pages/Service/ServicePrice";
-import ServiceProductBanner from "@/components/pages/Service/ServiceProductBanner";
-import ServiceImagesSlider from "@/components/pages/Service/ServicesImagesSlider";
 import { Routes } from "@/utils/constants/routes";
+import { Info } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import LocationAndDurationInfo from "./_components/LocationAndDurationInfo";
+import ProviderQuickInfo from "./_components/ProductQuickInfo";
+import ServicePrice from "./_components/ServicePrice";
+import ServiceProductBanner from "./_components/ServiceProductBanner";
+import ServiceImagesSlider from "./_components/ServicesImagesSlider";
 
 // TODO: Add dynamic metadata
 export const metadata: Metadata = {

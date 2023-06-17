@@ -1,6 +1,6 @@
 import Container from "@/components/common/Container";
-import ProviderCard from "@/components/pages/Provider/ProviderCard";
 import { Metadata } from "next";
+import ProviderCard from "./_components/ProviderCard";
 
 export const metadata: Metadata = {
   title: "Os Nossos Prestadores",

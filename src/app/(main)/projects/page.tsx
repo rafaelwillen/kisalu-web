@@ -1,6 +1,6 @@
 import Banner from "@/components/common/Banner";
 import Container from "@/components/common/Container";
-import ProjectListSection from "@/components/pages/Project/ProjectListSection";
+import ProjectListSection from "./_components/ProjectListSection";
 
 export default function ProjectsPage() {
   const fakeArray = Array.from({ length: 40 }).map((_, index) => "test");

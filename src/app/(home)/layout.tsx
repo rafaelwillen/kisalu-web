@@ -2,8 +2,8 @@ import ScrollToTopButton from "@/components/buttons/ScrollToTopButton";
 import Container from "@/components/common/Container";
 import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
-import Hero from "@/components/pages/Home/Hero";
 import { PropsWithChildren } from "react";
+import Hero from "./_components/Hero";
 
 export default function HomePageLayout({ children }: PropsWithChildren) {
   return (

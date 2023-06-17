@@ -1,15 +1,15 @@
 import Container from "@/components/common/Container";
 import UserReviews from "@/components/common/UserReviews";
-import BasicPortfolio from "@/components/pages/Provider/BasicPortfolio";
-import ProviderDescription from "@/components/pages/Provider/ProviderDescription";
-import QuickInfo from "@/components/pages/Provider/QuickInfo";
-import SingleProviderBanner from "@/components/pages/Provider/SingleProviderBanner";
-import Skills from "@/components/pages/Provider/Skills";
-import TrendingServices from "@/components/pages/Provider/StaredServices";
 import { trendingService } from "@/mock/projects";
 import { Routes } from "@/utils/constants/routes";
 import { Metadata } from "next";
 import Link from "next/link";
+import BasicPortfolio from "./_components/BasicPortfolio";
+import ProviderDescription from "./_components/ProviderDescription";
+import QuickInfo from "./_components/QuickInfo";
+import SingleProviderBanner from "./_components/SingleProviderBanner";
+import Skills from "./_components/Skills";
+import TrendingServices from "./_components/StaredServices";
 
 type PageProps = {
   params: {
