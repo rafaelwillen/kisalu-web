@@ -1,9 +1,9 @@
 import { NewCategoryFormType } from "@/utils/schemas/newCategorySchema";
 
-export type CreateCategoryRequestDataType = Pick<
+export type CreateCategoryRequestBody = Pick<
   NewCategoryFormType,
   "name" | "description"
-> & { cardImageUrl: string; bannerImageUrl: string };
+> & { mainImageURL: string; bannerImageURL: string };
 
 export type AuthenticationRequestBody = {
   email: string;

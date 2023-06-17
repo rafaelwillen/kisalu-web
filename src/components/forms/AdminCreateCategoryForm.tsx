@@ -9,6 +9,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
 import ImageInput from "./elements/ImageInput";
 import Input from "./elements/Input";
@@ -29,22 +30,22 @@ export default function AdminCreateCategoryForm() {
   });
 
   async function createCategory(data: NewCategoryFormType) {
-    // TODO: Add the actual mutation call
     const { banner, card, description, name } = data;
-    // const [bannerResponse, cardResponse] = await Promise.all([
-    //   uploadFileMutation.mutateAsync(banner),
-    //   uploadFileMutation.mutateAsync(card),
-    // ]);
-    // if (!bannerResponse || !cardResponse) {
-    // return;
-    // }
-    // const category = {
-    //   description,
-    //   name,
-    //   bannerImageUrl: bannerResponse.url ,
-    //   cardImageUrl: cardResponse.url,
-    // };
-    // await createCategoryMutation.mutateAsync(category);
+    const [bannerResponse, cardResponse] = await Promise.all([
+      uploadFileMutation.mutateAsync(banner),
+      uploadFileMutation.mutateAsync(card),
+    ]);
+    if (!bannerResponse || !cardResponse) {
+      return;
+    }
+    const category = {
+      description,
+      name,
+      bannerImageURL: bannerResponse.url,
+      mainImageURL: cardResponse.url,
+    };
+    await createCategoryMutation.mutateAsync(category);
+    toast.success("Categoria criada com sucesso");
     router.replace(Routes.adminCategories);
   }
 

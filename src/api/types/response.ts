@@ -1,4 +1,4 @@
-import { Gender, Role } from ".";
+import { BaseCategoryType, Gender, Role } from ".";
 
 export type AdminAuthenticationResponseBody = {
   token: string;
@@ -25,4 +25,21 @@ export type UserAuthenticationResponseBody = {
   birthDate?: string;
   email: string;
   gender: Gender;
+};
+
+export type UploadCategoryImageResponseBody = {
+  url: string;
+};
+
+export type GetAllCategoriesResponseBody = (Omit<
+  BaseCategoryType,
+  "bannerImageUrl"
+> & {
+  numberOfProjects: number;
+  numberOfServices: number;
+})[];
+
+export type GetSingleCategoryResponseBodyType = BaseCategoryType & {
+  numberOfProjects: number;
+  numberOfServices: number;
 };
