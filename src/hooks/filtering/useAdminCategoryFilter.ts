@@ -1,5 +1,5 @@
 import { BaseCategoryType } from "@/api/types";
-import { GetAllCategoriesResponseDataType } from "@/api/types/queryTypes";
+import { GetAllCategoriesResponseBody } from "@/api/types/response";
 import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { useMemo, useState } from "react";
 
@@ -8,9 +8,7 @@ type Category = Omit<BaseCategoryType, "bannerImageUrl"> & {
   numberOfServices: number;
 };
 
-export default function useAdminCategoryFilter(
-  categories: GetAllCategoriesResponseDataType
-) {
+export default function useAdminCategoryFilter(categories: GetAllCategoriesResponseBody) {
   const [searchName, setSearchName] = useState("");
   const [selectedOrderBy, setSelectedOrderBy] = useState(
     adminCategoriesSelectOptions[0].value
