@@ -18,3 +18,7 @@ export interface PrimaryButtonProps
 }
 
 export interface DangerButtonProps extends PrimaryButtonProps {}
+
+export interface LogoutButtonProps {
+  type: "admin" | "user";
+}

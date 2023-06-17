@@ -1,10 +1,10 @@
 "use client";
 
 import HamburgerMenuButton from "@/components/buttons/HamburgerMenuButton";
+import LogoutButton from "@/components/buttons/LogoutButton";
 import Container from "@/components/common/Container";
 import useToggle from "@/hooks/useToggle";
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
-import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,12 +53,7 @@ export default function MobileSidebar({ user }: SidebarProps) {
             </ul>
           </nav>
           <div>
-            <Link
-              href={Routes.logoutAdmin}
-              className="text-danger hover:underline"
-            >
-              Finalizar sessão
-            </Link>
+            <LogoutButton type="admin" />
           </div>
         </aside>
       </Container>
