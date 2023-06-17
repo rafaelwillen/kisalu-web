@@ -51,3 +51,11 @@ export async function getSingleCategoryById(id: string) {
     }
   }
 }
+
+export const categoryQueryKeys = {
+  getAllAdmin: ["admin/category/getAll"],
+  getSingleAdmin: (categoryId: string) => [
+    "admin/category/getSingle",
+    categoryId,
+  ],
+};

@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const cookiesExpiresIn = 60 * 60 * 24 * 1; // 1 day
     return NextResponse.json(user, {
       headers: {
-        "Set-Cookie": `token=${token}; Path=/; HttpOnly; Max-Age=${cookiesExpiresIn}; SameSite=Strict`,
+        "Set-Cookie": `token=${token}; Path=/; HttpOnly; Secure; Max-Age=${cookiesExpiresIn}; SameSite=Strict`,
       },
     });
   } catch (error) {

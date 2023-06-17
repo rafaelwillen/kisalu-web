@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryQueryKeys, getAllCategories } from "@/api/category";
 import EmptyStatus from "@/components/common/status/EmptyStatus";
 import ErrorStatus from "@/components/common/status/ErrorStatus";
 import LoadingStatus from "@/components/common/status/LoadingStatus";
@@ -11,18 +12,20 @@ import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { useQuery } from "@tanstack/react-query";
 import { Plus, Search } from "lucide-react";
 import Link from "next/link";
+import CategoryCard from "./_components/CategoryCard";
 
 export default function AdminCategoriesPage() {
   // TODO: Fetch categories from API
-  // [categoriesQueryKeys.getAll], CategoryAPI.getAll
   const {
     data: categories,
     isLoading,
     isError,
     error,
-  } = useQuery(["TEST"], () => Promise.resolve([{ id: 1, name: "Teste" }]));
+  } = useQuery(categoryQueryKeys.getAllAdmin, getAllCategories);
 
-  const { filteredCategories, name, orderBy } = useAdminCategoryFilter([]);
+  const { filteredCategories, name, orderBy } = useAdminCategoryFilter(
+    categories ?? []
+  );
   return (
     <section className="relative">
       <h1 className="font-bold text-xl leading-relaxed">Categorias Criadas</h1>
@@ -46,7 +49,8 @@ export default function AdminCategoriesPage() {
       </div>
       {isLoading && <LoadingStatus message="Carregando as categorias" />}
       {isError && <ErrorStatus message={(error as Error).message} />}
-      {filteredCategories &&
+      {categories &&
+        filteredCategories &&
         (filteredCategories.length === 0 ? (
           <EmptyStatus
             heading="Nenhuma categoria encontrada"
@@ -58,8 +62,7 @@ export default function AdminCategoriesPage() {
               {filteredCategories.length} categorias encontradas
             </p>
             <div className="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 items-center gap-4">
-              {/* TODO: Add the categories from API */}
-              {/* {filteredCategories.map(
+              {filteredCategories.map(
                 ({
                   cardImageUrl,
                   id,
@@ -78,7 +81,7 @@ export default function AdminCategoriesPage() {
                     numberServices={numberOfServices}
                   />
                 )
-              )} */}
+              )}
             </div>
           </>
         ))}
