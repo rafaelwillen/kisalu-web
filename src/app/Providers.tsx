@@ -1,15 +1,23 @@
 "use client";
 
+type Props = {
+  token?: string;
+};
+
+import { AuthProvider } from "@/context/AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
 import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
-export default function Providers({ children }: PropsWithChildren) {
+export default function Providers({
+  children,
+  token,
+}: PropsWithChildren<Props>) {
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <AuthProvider token={token}>{children}</AuthProvider>
       <Toaster />
     </QueryClientProvider>
   );

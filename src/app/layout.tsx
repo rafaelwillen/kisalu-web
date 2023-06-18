@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import classnames from "classnames";
 import { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import { cookies } from "next/headers";
 import { PropsWithChildren } from "react";
 import "../styles/globals.css";
 import Providers from "./Providers";
@@ -22,12 +23,14 @@ const mainFont = DM_Sans({
 });
 
 export default function RootLayout({ children }: PropsWithChildren) {
+  const token = cookies().get("token")?.value;
+
   return (
     <html lang="pt-AO">
       <body
         className={classnames("text-text-200 font-main", mainFont.variable)}
       >
-        <Providers>{children}</Providers>
+        <Providers token={token}>{children}</Providers>
       </body>
       <Analytics />
     </html>

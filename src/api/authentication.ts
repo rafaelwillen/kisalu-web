@@ -64,3 +64,7 @@ export async function getAuthenticatedUser(token: string) {
     throw new HTTPError(HttpStatusCode.InternalServerError, "Erro no servidor");
   }
 }
+
+export const authenticationQueryKeys = {
+  currentUser: ["currentUser"],
+};
