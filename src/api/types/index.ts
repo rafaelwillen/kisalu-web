@@ -1,11 +1,19 @@
 export type BaseCategoryType = {
   id: string;
   name: string;
-  cardImageUrl: string;
-  bannerImageUrl: string;
+  mainImageURL: string;
+  bannerImageURL: string;
   slug: string;
   description: string;
   createdAt: string;
+};
+
+export type CategoryCreator = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatarImageURL: string;
+  gender: Role;
 };
 
 export type Role = "Administrator" | "Provider" | "Client";

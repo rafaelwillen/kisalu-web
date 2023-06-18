@@ -1,14 +1,12 @@
-import { BaseCategoryType } from "@/api/types";
 import { GetAllCategoriesResponseBody } from "@/api/types/response";
 import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { useMemo, useState } from "react";
 
-type Category = Omit<BaseCategoryType, "bannerImageUrl"> & {
-  numberOfProjects: number;
-  numberOfServices: number;
-};
+type Category = GetAllCategoriesResponseBody[number];
 
-export default function useAdminCategoryFilter(categories: GetAllCategoriesResponseBody) {
+export default function useAdminCategoryFilter(
+  categories: GetAllCategoriesResponseBody
+) {
   const [searchName, setSearchName] = useState("");
   const [selectedOrderBy, setSelectedOrderBy] = useState(
     adminCategoriesSelectOptions[0].value
@@ -25,13 +23,13 @@ export default function useAdminCategoryFilter(categories: GetAllCategoriesRespo
     }
     if (selectedOrderBy.startsWith("number-services")) {
       return selectedOrderBy.includes("asc")
-        ? a.numberOfServices - b.numberOfServices
-        : b.numberOfServices - a.numberOfServices;
+        ? a.totalServices - b.totalServices
+        : b.totalServices - a.totalServices;
     }
     if (selectedOrderBy.startsWith("number-projects")) {
       return selectedOrderBy.includes("asc")
-        ? a.numberOfProjects - b.numberOfProjects
-        : b.numberOfProjects - a.numberOfProjects;
+        ? a.totalProjects - b.totalProjects
+        : b.totalProjects - a.totalProjects;
     }
     return 0;
   };

@@ -6,9 +6,16 @@ import {
   GetSingleCategoryResponseBodyType,
 } from "./types/response";
 
-export async function createCategory(category: CreateCategoryRequestBody) {
+export async function createCategory(
+  category: CreateCategoryRequestBody,
+  token?: string
+) {
   try {
-    await api.post(endpoints.admin.category.create, category);
+    await api.post(endpoints.admin.category.create, category, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.status) {
@@ -21,10 +28,15 @@ export async function createCategory(category: CreateCategoryRequestBody) {
   }
 }
 
-export async function getAllCategories() {
+export async function getAllCategories(token?: string) {
   try {
     const response = await api.get<GetAllCategoriesResponseBody>(
-      endpoints.admin.category.getAll
+      endpoints.admin.category.getAll,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return response.data;
   } catch (error) {
@@ -32,10 +44,15 @@ export async function getAllCategories() {
   }
 }
 
-export async function getSingleCategoryById(id: string) {
+export async function getSingleCategoryById(id: string, token?: string) {
   try {
     const response = await api.get<GetSingleCategoryResponseBodyType>(
-      endpoints.admin.category.getSingle(id)
+      endpoints.admin.category.getSingle(id),
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return response.data;
   } catch (error) {
@@ -51,3 +68,32 @@ export async function getSingleCategoryById(id: string) {
     }
   }
 }
+
+export async function deleteCategory(id: string, token?: string) {
+  try {
+    await api.delete(endpoints.admin.category.delete(id), {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.status) {
+        case 400:
+          throw new Error("ID da categoria inválido");
+        case 404:
+          throw new Error("Categoria não encontrada");
+        default:
+          throw new Error("Erro ao eliminar categoria");
+      }
+    }
+  }
+}
+
+export const categoryQueryKeys = {
+  getAllAdmin: ["admin/category/getAll"],
+  getSingleAdmin: (categoryId: string) => [
+    "admin/category/getSingle",
+    categoryId,
+  ],
+};
