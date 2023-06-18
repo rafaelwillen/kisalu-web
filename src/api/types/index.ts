@@ -2,7 +2,7 @@ export type BaseCategoryType = {
   id: string;
   name: string;
   mainImageURL: string;
-  bannerImageUrl: string;
+  bannerImageURL: string;
   slug: string;
   description: string;
   createdAt: string;

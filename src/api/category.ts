@@ -69,6 +69,27 @@ export async function getSingleCategoryById(id: string, token?: string) {
   }
 }
 
+export async function deleteCategory(id: string, token?: string) {
+  try {
+    await api.delete(endpoints.admin.category.delete(id), {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.status) {
+        case 400:
+          throw new Error("ID da categoria inválido");
+        case 404:
+          throw new Error("Categoria não encontrada");
+        default:
+          throw new Error("Erro ao eliminar categoria");
+      }
+    }
+  }
+}
+
 export const categoryQueryKeys = {
   getAllAdmin: ["admin/category/getAll"],
   getSingleAdmin: (categoryId: string) => [
