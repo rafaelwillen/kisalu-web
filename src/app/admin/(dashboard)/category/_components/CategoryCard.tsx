@@ -9,7 +9,8 @@ type Props = {
   numberServices: number;
   numberProjects: number;
   createdBy: string;
-  slug: string;
+  id: string;
+  createdAt: string | Date;
 };
 
 export default function CategoryCard({
@@ -18,19 +19,21 @@ export default function CategoryCard({
   name,
   numberProjects,
   numberServices,
-  slug,
+  id,
+  createdAt,
 }: Props) {
+  const categoryDateCreation = new Date(createdAt);
   return (
     <Link
-      href={Routes.adminSingleCategory(slug)}
-      className="rounded-md overflow-clip flex flex-col shadow hover:opacity-60 hover:scale-105 duration-300"
+      href={Routes.adminSingleCategory(id)}
+      className="rounded-md overflow-clip flex flex-col shadow hover:opacity-60 duration-300"
     >
       <Image
         src={imageURL}
         alt={name}
         width={330}
         height={185}
-        className="object-cover w-full h-auto max-h-[185px] md:w-[330px] md:h-[185px]"
+        className="object-cover w-auto max-h-[185px] md:w-[330px] md:h-[185px]"
       />
       <div className="p-4 border border-neutral-300">
         <p className="text-center">{name}</p>
@@ -42,8 +45,12 @@ export default function CategoryCard({
             Projetos: {formatToCompactNumber(numberProjects)}
           </p>
         </div>
-        <p className="text-center">
-          Criado por <strong>{createdBy}</strong>
+        <p className="text-center text-sm">
+          Criado por <strong>{createdBy}</strong> em{" "}
+          {categoryDateCreation.toLocaleDateString("pt-AO", {
+            month: "long",
+            year: "numeric",
+          })}
         </p>
       </div>
     </Link>
