@@ -26,3 +26,20 @@ export async function uploadCategoryImage(
     }
   }
 }
+
+export async function deleteCategoryImage(url: string) {
+  try {
+    await api.delete(`/upload/category/${url}`);
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.response?.status) {
+        case 400:
+          throw new Error("Imagem invalida");
+        case 404:
+          throw new Error("Imagem não encontrada");
+        default:
+          throw new Error("Erro ao eliminar a imagem");
+      }
+    }
+  }
+}

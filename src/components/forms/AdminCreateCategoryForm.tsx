@@ -36,6 +36,7 @@ export default function AdminCreateCategoryForm() {
       uploadFileMutation.mutateAsync(card),
     ]);
     if (!bannerResponse || !cardResponse) {
+      toast.error("Ocorreu um erro ao criar a categoria");
       return;
     }
     const category = {
