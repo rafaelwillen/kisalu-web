@@ -22,6 +22,7 @@ export const endpoints = {
   },
   admin: {
     create: "/admin",
+    getAll: "/admin",
     category: {
       create: "/admin/category",
       getAll: "/admin/category",

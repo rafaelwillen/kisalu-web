@@ -1,4 +1,11 @@
-import { BaseCategoryType, CategoryCreator, Gender, Role } from ".";
+import {
+  BaseAdministratorType,
+  BaseAuthType,
+  BaseCategoryType,
+  CategoryCreator,
+  Gender,
+  Role,
+} from ".";
 
 export type AdminAuthenticationResponseBody = {
   token: string;
@@ -46,3 +53,11 @@ export type GetSingleCategoryResponseBodyType = BaseCategoryType & {
   numberOfProjects: number;
   numberOfServices: number;
 };
+
+export type GetAllAdministratorsResponseBody =
+  readonly (BaseAdministratorType & {
+    auth: BaseAuthType;
+    // TODO: Add the correct type
+    disputes: any[];
+    createdCategories: readonly BaseCategoryType[];
+  })[];

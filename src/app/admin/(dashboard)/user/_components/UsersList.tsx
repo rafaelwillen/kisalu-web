@@ -1,12 +1,26 @@
 "use client";
 
+import { administratorQueryKeys, getAllAdministrators } from "@/api/admin";
+import { GetAllAdministratorsResponseBody } from "@/api/types/response";
+import { useAuth } from "@/context/AuthContext";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 type Props = {
-  usersInitialData: any[];
+  usersInitialData: GetAllAdministratorsResponseBody;
 };
 
 export default function UsersList({ usersInitialData }: Props) {
+  const { token } = useAuth();
+  console.log(administratorQueryKeys);
+
+  const {} = useQuery(
+    administratorQueryKeys.getAll,
+    () => getAllAdministrators(token),
+    {
+      initialData: usersInitialData,
+    }
+  );
   return (
     <>
       <form></form>
