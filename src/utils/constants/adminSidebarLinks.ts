@@ -1,6 +1,11 @@
 import { Routes } from "./routes";
 
-const sidebarLinks = [
+type SidebarLink = {
+  title: string;
+  href: string;
+};
+
+const sidebarLinks: ReadonlyArray<SidebarLink> = [
   {
     title: "Página Inicial",
     href: Routes.adminDashboard,
@@ -16,6 +21,10 @@ const sidebarLinks = [
   {
     title: "Disputas",
     href: Routes.adminDisputes,
+  },
+  {
+    title: "Usuários",
+    href: Routes.adminUsers,
   },
 ];
 

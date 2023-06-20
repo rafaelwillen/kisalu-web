@@ -45,3 +45,14 @@ export const adminCategoriesSelectOptions: SelectOption[] = [
     label: "Nº de Atividades Ativas - Desc",
   },
 ];
+
+export const genderSelectOptions: SelectOption[] = [
+  {
+    value: "Male",
+    label: "Masculino",
+  },
+  {
+    value: "Female",
+    label: "Feminino",
+  },
+];

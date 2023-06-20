@@ -22,7 +22,7 @@ const PrimaryButton = forwardRef<
       disabled={isLoading || props.disabled}
       {...props}
       className={classNames(
-        "mt-5 py-2 flex gap-2 justify-center rounded duration-300 ease-in-out disabled:opacity-30 items-center",
+        "py-2 flex gap-2 justify-center rounded duration-300 ease-in-out disabled:opacity-30 items-center",
         variant === "solid" &&
           "bg-primary-600 text-white shadow-md hover:bg-primary-400 active:bg-primary-300",
         variant === "outline" &&
