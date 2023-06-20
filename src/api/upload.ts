@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { AxiosError, HttpStatusCode } from "axios";
 import { api, endpoints } from ".";
 import { UploadCategoryImageResponseBody } from "./types/response";
 
@@ -16,9 +16,9 @@ export async function uploadCategoryImage(
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.response?.status) {
-        case 400:
+        case HttpStatusCode.BadRequest:
           throw new Error("Imagem inválida");
-        case 413:
+        case HttpStatusCode.PayloadTooLarge:
           throw new Error("Imagem muito grande");
         default:
           throw new Error("Erro ao enviar imagem");
@@ -33,9 +33,9 @@ export async function deleteCategoryImage(url: string) {
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.response?.status) {
-        case 400:
+        case HttpStatusCode.BadRequest:
           throw new Error("Imagem invalida");
-        case 404:
+        case HttpStatusCode.NotFound:
           throw new Error("Imagem não encontrada");
         default:
           throw new Error("Erro ao eliminar a imagem");
