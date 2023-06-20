@@ -55,9 +55,11 @@ export type GetSingleCategoryResponseBodyType = BaseCategoryType & {
 };
 
 export type GetAllAdministratorsResponseBody =
-  readonly (BaseAdministratorType & {
-    auth: BaseAuthType;
-    // TODO: Add the correct type
-    disputes: any[];
-    createdCategories: readonly BaseCategoryType[];
-  })[];
+  readonly GetSingleAdministratorResponseBody[];
+
+export type GetSingleAdministratorResponseBody = BaseAdministratorType & {
+  auth: BaseAuthType;
+  // TODO: Add the correct type
+  disputes: readonly any[];
+  createdCategories: readonly BaseCategoryType[];
+};
