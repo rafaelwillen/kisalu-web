@@ -1,23 +1,12 @@
 "use client";
 
-import classNames from "classnames";
 import { UserCircle } from "lucide-react";
 import { ChangeEvent, forwardRef, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
-import { AvatarImageInputProps } from "./types";
+import { ImageInputProps } from "./types";
 
-const AvatarImageInput = forwardRef<HTMLInputElement, AvatarImageInputProps>(
-  (
-    {
-      label,
-      errorMessage,
-      selectedImage,
-      onImageSelect,
-      containerClassName,
-      ...props
-    },
-    ref
-  ) => {
+const AvatarImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
+  ({ label, errorMessage, selectedImage, onImageSelect, ...props }, ref) => {
     const [image, setImage] = useState<null | string>(
       selectedImage ? URL.createObjectURL(selectedImage) : null
     );
@@ -44,10 +33,7 @@ const AvatarImageInput = forwardRef<HTMLInputElement, AvatarImageInputProps>(
         />
         <label
           htmlFor={props.name}
-          className={classNames(
-            "relative flex flex-col items-center justify-center cursor-pointer border border-dashed border-neutral-400  rounded-full hover:opacity-70 px-6",
-            containerClassName ? containerClassName : "w-20 h-20"
-          )}
+          className="relative flex flex-col items-center justify-center cursor-pointer border border-dashed border-neutral-400  rounded-full hover:opacity-70 px-6 w-20 h-20 md:w-36 md:h-36"
         >
           {!image ? (
             <UserCircle size={40} className="text-text-100" />
