@@ -26,7 +26,7 @@ export default function UsersList({ usersInitialData }: Props) {
       <form></form>
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4 mt-8">
         {data.map((admin) => (
-          <UserListItem user={admin} />
+          <UserListItem key={admin.id} user={admin} />
         ))}
       </section>
     </>

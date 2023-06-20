@@ -25,7 +25,6 @@ export default async function SingleAdminPage({ params }: Props) {
   const {
     avatarImageURL,
     createdCategories,
-    disputes,
     firstName,
     lastName,
     gender,
