@@ -12,7 +12,7 @@ export default async function AdminUsersPage() {
   const administrators = await getAllAdministrators(token);
   return (
     <main>
-      <h1>Administradores da Plataforma</h1>
+      <h1 className="text-2xl">Administradores da Plataforma</h1>
       <UsersList usersInitialData={administrators} />
     </main>
   );

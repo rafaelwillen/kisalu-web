@@ -4,7 +4,7 @@ import { administratorQueryKeys, getAllAdministrators } from "@/api/admin";
 import { GetAllAdministratorsResponseBody } from "@/api/types/response";
 import { useAuth } from "@/context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
+import UserListItem from "./UserListItem";
 
 type Props = {
   usersInitialData: GetAllAdministratorsResponseBody;
@@ -12,9 +12,8 @@ type Props = {
 
 export default function UsersList({ usersInitialData }: Props) {
   const { token } = useAuth();
-  console.log(administratorQueryKeys);
 
-  const {} = useQuery(
+  const { data } = useQuery(
     administratorQueryKeys.getAll,
     () => getAllAdministrators(token),
     {
@@ -23,20 +22,12 @@ export default function UsersList({ usersInitialData }: Props) {
   );
   return (
     <>
+      {/* TODO: Add the search bar and the sorting field */}
       <form></form>
-      <section>
-        <article>
-          <Image src="" alt="" width={40} height={40} />
-          <div>
-            <p>Lorem, ipsum.</p>
-            <p>email@gmail.com</p>
-          </div>
-          <div>
-            <p>0 Disputas</p>
-            <p>0 Categorias criadas</p>
-            <p>Desde 11/01/2000</p>
-          </div>
-        </article>
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4 mt-8">
+        {data.map((admin) => (
+          <UserListItem user={admin} />
+        ))}
       </section>
     </>
   );

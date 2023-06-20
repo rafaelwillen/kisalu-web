@@ -18,6 +18,7 @@ export const Routes = {
   adminDisputes: "/admin/dispute",
   adminCreateCategory: "/admin/category/create",
   adminUsers: "/admin/user",
+  adminSingleUser: (id: string) => `/admin/user/${id}`,
   logout: "/logout",
   logoutAdmin: "/admin/logout",
 };
