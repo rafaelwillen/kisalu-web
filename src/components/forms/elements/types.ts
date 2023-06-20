@@ -83,3 +83,7 @@ export interface ImageInputProps extends CustomInputProps {
   selectedImage?: File;
   onImageSelect?: (image: File) => void;
 }
+
+export interface AvatarImageInputProps extends ImageInputProps {
+  containerClassName?: string;
+}

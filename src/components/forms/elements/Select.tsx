@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { forwardRef } from "react";
+import ErrorMessage from "./ErrorMessage";
 import Label from "./Label";
 import { SelectProps } from "./types";
 
@@ -40,6 +41,9 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
               onValueSelect?.(e.target.value);
             }}
           >
+            <option value="" hidden>
+              Selecione um valor
+            </option>
             {options.map(({ label, value }) => (
               <option key={value} value={value}>
                 {label}
@@ -47,6 +51,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ))}
           </select>
         </div>
+        {errorMessage && <ErrorMessage message={errorMessage} />}
       </div>
     );
   }
