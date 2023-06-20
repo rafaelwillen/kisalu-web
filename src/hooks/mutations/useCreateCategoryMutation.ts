@@ -2,6 +2,7 @@ import { createCategory } from "@/api/category";
 import { CreateCategoryRequestBody } from "@/api/types/request";
 import { deleteCategoryImage, uploadCategoryImage } from "@/api/upload";
 import { useAuth } from "@/context/AuthContext";
+import { decodeObjectURL } from "@/utils";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -44,10 +45,4 @@ export default function useCreateCategoryMutation() {
     uploadFileMutation,
     createCategoryMutation,
   };
-}
-
-function decodeObjectURL(objectURL: string) {
-  const path = new URL(objectURL).pathname;
-  const decodedPath = decodeURIComponent(path);
-  return decodedPath;
 }
