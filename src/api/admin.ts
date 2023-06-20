@@ -1,5 +1,6 @@
 import { AxiosError, HttpStatusCode } from "axios";
 import { api, endpoints } from ".";
+import { CreateAdminRequestBody } from "./types/request";
 import {
   GetAllAdministratorsResponseBody,
   GetSingleAdministratorResponseBody,
@@ -43,6 +44,31 @@ export async function getSingleAdministrator(id: string, token?: string) {
         throw new Error("Login inválido");
       else if (error.response?.status === HttpStatusCode.NotFound) return null;
       throw new Error("Erro ao buscar o administrador");
+    }
+    throw error;
+  }
+}
+
+export async function createAdministrator(
+  data: CreateAdminRequestBody,
+  token?: string
+) {
+  try {
+    await api.post(endpoints.admin.create, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.response?.status) {
+        case HttpStatusCode.BadRequest:
+          throw new Error("Dados inválidos");
+        case HttpStatusCode.Conflict:
+          throw new Error("Administrador já existe");
+        default:
+          throw new Error("Erro ao criar administrador");
+      }
     }
     throw error;
   }

@@ -1,12 +1,16 @@
 "use client";
 
+import useCreateAdminMutation from "@/hooks/mutations/useCreateAdminMutation";
+import { Routes } from "@/utils/constants/routes";
 import { genderSelectOptions } from "@/utils/constants/selectOptions";
 import {
   AdminCreationFormType,
   adminCreationSchema,
 } from "@/utils/schemas/adminCreationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
 import AvatarImageInput from "./elements/AvatarImageInput";
 import Input from "./elements/Input";
@@ -14,6 +18,9 @@ import SecureInput from "./elements/SecureInput";
 import Select from "./elements/Select";
 
 export default function NewAdminForm() {
+  const router = useRouter();
+  const { isLoading, createAdminMutation, uploadFileMutation } =
+    useCreateAdminMutation();
   const {
     handleSubmit,
     control,
@@ -23,8 +30,22 @@ export default function NewAdminForm() {
     resolver: zodResolver(adminCreationSchema),
   });
 
-  function createAdmin(data: AdminCreationFormType) {
-    console.log(data);
+  async function createAdmin(data: AdminCreationFormType) {
+    const { avatarImage, confirmPassword: _, ...rest } = data;
+    const avatarUploadResponse = await uploadFileMutation.mutateAsync(
+      avatarImage
+    );
+    if (!avatarUploadResponse) {
+      toast.error("Ocorreu um erro ao criar o administrador");
+      return;
+    }
+    const admin = {
+      ...rest,
+      avatarImageURL: avatarUploadResponse.url,
+    };
+    await createAdminMutation.mutateAsync(admin);
+    toast.success("Administrador criado com sucesso");
+    router.replace(Routes.adminUsers);
   }
 
   return (
@@ -94,7 +115,9 @@ export default function NewAdminForm() {
         errorMessage={errors.confirmPassword?.message}
       />
       <div className="col-span-full justify-self-center md:w-1/3 w-full mt-4">
-        <PrimaryButton type="submit">Criar Administrador</PrimaryButton>
+        <PrimaryButton isLoading={isLoading} type="submit">
+          Criar Administrador
+        </PrimaryButton>
       </div>
     </form>
   );
