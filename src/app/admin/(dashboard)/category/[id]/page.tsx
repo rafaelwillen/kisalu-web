@@ -1,9 +1,6 @@
 import { getSingleCategoryById } from "@/api/category";
-import { Routes } from "@/utils/constants/routes";
-import { ArrowLeft } from "lucide-react";
 import { cookies } from "next/headers";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import CategoryActions from "./_components/CategoryActions";
 
@@ -20,12 +17,6 @@ export default async function AdminCategoryPage({ params: { id } }: PageProps) {
 
   return (
     <main>
-      <Link
-        href={Routes.adminCategories}
-        className="inline-flex items-center gap-2 hover:underline mb-4"
-      >
-        <ArrowLeft /> Voltar
-      </Link>
       <Image
         className="rounded-md w-full object-cover h-auto max-h-[300px] shadow-xl"
         src={category.bannerImageURL}
