@@ -6,6 +6,9 @@ export type BaseCategoryType = {
   slug: string;
   description: string;
   createdAt: string;
+  services: unknown[];
+  projects: unknown[];
+  admin: CategoryCreator;
 };
 
 export type CategoryCreator = {

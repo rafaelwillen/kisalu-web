@@ -18,7 +18,7 @@ export async function createCategory(
     });
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.status) {
+      switch (error.response?.status) {
         case HttpStatusCode.BadRequest:
           throw new Error("Dados inválidos");
         case HttpStatusCode.Conflict:
@@ -59,11 +59,11 @@ export async function getSingleCategoryById(id: string, token?: string) {
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.status) {
+      switch (error.response?.status) {
         case HttpStatusCode.BadRequest:
           throw new Error("ID da categoria inválido");
         case HttpStatusCode.NotFound:
-          throw new Error("Categoria não encontrada");
+          return undefined;
         default:
           throw new Error("Erro ao buscar categoria");
       }
@@ -80,7 +80,7 @@ export async function deleteCategory(id: string, token?: string) {
     });
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.status) {
+      switch (error.response?.status) {
         case HttpStatusCode.BadRequest:
           throw new Error("ID da categoria inválido");
         case HttpStatusCode.NotFound:
