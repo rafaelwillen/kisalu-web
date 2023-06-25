@@ -49,10 +49,7 @@ export type GetAllCategoriesResponseBody = (Omit<
   createdBy: CategoryCreator;
 })[];
 
-export type GetSingleCategoryResponseBodyType = BaseCategoryType & {
-  numberOfProjects: number;
-  numberOfServices: number;
-};
+export type GetSingleCategoryResponseBodyType = BaseCategoryType;
 
 export type GetAllAdministratorsResponseBody =
   readonly GetSingleAdministratorResponseBody[];

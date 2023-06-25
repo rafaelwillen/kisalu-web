@@ -1,7 +1,9 @@
 import { getSingleCategoryById } from "@/api/category";
+import { Routes } from "@/utils/constants/routes";
 import { getPlaceholder } from "@/utils/imagePlaceholder";
 import { cookies } from "next/headers";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import CategoryActions from "./_components/CategoryActions";
 
@@ -34,12 +36,12 @@ export default async function AdminCategoryPage({ params: { id } }: PageProps) {
       <h1 className="font-bold text-xl leading-relaxed text-center my-8">
         {category.name}
       </h1>
-      <div className="md:flex gap-4">
-        <div className="flex-1 max-w-sm mx-auto">
+      <div className="md:flex gap-8">
+        <div className="flex-1 max-w-sm">
           <Image
-            className="rounded-md w-full max-w-xs object-cover h-auto max-h-60 shadow-xl"
+            className="rounded-md w-full object-cover h-auto max-h-60 shadow-xl"
             src={category.mainImageURL}
-            width={330}
+            width={384}
             height={245}
             alt={`${category.name} main image`}
             placeholder="blur"
@@ -47,10 +49,23 @@ export default async function AdminCategoryPage({ params: { id } }: PageProps) {
           />
           <div className="bg-white rounded shadow-xl mt-8 p-4 space-y-2 border border-neutral-100">
             <p className="flex justify-between items-center">
-              Nº de Serviços: <span>{category.numberOfServices}</span>
+              Nº de Serviços: <span>{category.services.length}</span>
             </p>
             <p className="flex justify-between items-center">
-              Nº de Projectos: <span>{category.numberOfProjects}</span>
+              Nº de Projectos: <span>{category.projects.length}</span>
+            </p>
+            <p className="flex justify-between items-center">
+              Criado em:{" "}
+              <span>{new Date(category.createdAt).toLocaleDateString()}</span>
+            </p>
+            <p className="flex justify-between items-center">
+              Criado por:{" "}
+              <Link
+                className="text-primary-400 underline"
+                href={Routes.adminSingleUser(category.admin.id)}
+              >
+                {category.admin.firstName + " " + category.admin.lastName}
+              </Link>
             </p>
           </div>
           <div className="max-md:hidden">
