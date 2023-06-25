@@ -33,7 +33,7 @@ export default function CategoryCard({
         alt={name}
         width={330}
         height={185}
-        className="object-cover w-auto max-h-[185px] md:w-[330px] md:h-[185px]"
+        className="object-cover w-auto max-h-[185px] h-auto"
       />
       <div className="p-4 border border-neutral-300">
         <p className="text-center">{name}</p>
