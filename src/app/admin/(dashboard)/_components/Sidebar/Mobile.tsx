@@ -1,18 +1,21 @@
 "use client";
 
 import HamburgerMenuButton from "@/components/buttons/HamburgerMenuButton";
-import LogoutButton from "@/components/buttons/LogoutButton";
 import Container from "@/components/common/Container";
 import useToggle from "@/hooks/useToggle";
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
+import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
+import { LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SidebarProps } from "./types";
 
 export default function MobileSidebar({ user }: SidebarProps) {
   const { email, name, avatarImageURL } = user;
   const { isOpen, toggle, close } = useToggle();
+  const router = useRouter();
   return (
     <>
       <Container>
@@ -52,9 +55,13 @@ export default function MobileSidebar({ user }: SidebarProps) {
               ))}
             </ul>
           </nav>
-          <div>
-            <LogoutButton type="admin" />
-          </div>
+          <button
+            type="button"
+            onClick={() => router.replace(Routes.logoutAdmin)}
+            className="text-center self-center flex items-center gap-4 text-danger hover:underline"
+          >
+            <LogOutIcon /> Finalizar sessão
+          </button>
         </aside>
       </Container>
     </>
