@@ -3,7 +3,6 @@
 import { categoryQueryKeys, getAllCategories } from "@/api/category";
 import EmptyStatus from "@/components/common/status/EmptyStatus";
 import ErrorStatus from "@/components/common/status/ErrorStatus";
-import LoadingStatus from "@/components/common/status/LoadingStatus";
 import Input from "@/components/forms/elements/Input";
 import Select from "@/components/forms/elements/Select";
 import { useAuth } from "@/context/AuthContext";
@@ -13,6 +12,7 @@ import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { useQuery } from "@tanstack/react-query";
 import { Plus, Search } from "lucide-react";
 import Link from "next/link";
+import CategoriesLoadingSkeleton from "./_components/CategoriesLoadingSkeleton";
 import CategoryCard from "./_components/CategoryCard";
 
 export default function AdminCategoriesPage() {
@@ -48,7 +48,7 @@ export default function AdminCategoriesPage() {
           />
         </div>
       </div>
-      {isLoading && <LoadingStatus message="Carregando as categorias" />}
+      {isLoading && <CategoriesLoadingSkeleton />}
       {isError && <ErrorStatus message={(error as Error).message} />}
       {categories &&
         filteredCategories &&
