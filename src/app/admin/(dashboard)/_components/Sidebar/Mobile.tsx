@@ -20,11 +20,11 @@ export default function MobileSidebar({ user }: SidebarProps) {
         <aside
           data-is-active={isOpen}
           className={classNames(
-            "transition-transform ease-in-out duration-300 lg:hidden bg-primary-100 text-text-200 absolute inset-0 min-h-screen overflow-hidden z-10 border-b py-16 px-8 flex flex-col gap-4",
+            "transition-transform ease-in-out duration-300 lg:hidden bg-primary-200 text-text-200 absolute inset-0 min-h-screen overflow-hidden z-10 border-b py-16 px-8 flex flex-col gap-4",
             !isOpen ? "-translate-x-full" : "-translate-x-0"
           )}
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-col">
             <Image
               src={avatarImageURL}
               width={40}
@@ -32,19 +32,19 @@ export default function MobileSidebar({ user }: SidebarProps) {
               className="rounded-full bg-white"
               alt=""
             />
-            <div className="text-sm">
+            <div className="text-sm text-center">
               <p className="font-bold text-lg">{name}</p>
               <p>{email}</p>
             </div>
           </div>
           <nav className="flex-1">
-            <ul className="flex flex-col mt-12 gap-8 text-sm">
+            <ul className="flex flex-col mt-4 gap-2 text-sm">
               {sidebarLinks.map(({ href, title }) => (
                 <li key={href}>
                   <Link
                     onClick={close}
-                    className="bg-white shadow-sm rounded-md py-3 block hover:bg-white/70 text-center"
                     href={href}
+                    className="text-center py-4 block"
                   >
                     {title}
                   </Link>
