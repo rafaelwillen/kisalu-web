@@ -73,6 +73,7 @@ export default function AdminCreateCategoryForm() {
             onImageSelect={onChange}
             selectedImage={value}
             errorMessage={error?.message}
+            height={288}
             {...props}
             label="Clique aqui para adicionar o banner da
       categoria"
@@ -88,6 +89,8 @@ export default function AdminCreateCategoryForm() {
             fieldState: { error },
           }) => (
             <ImageInput
+              width={330}
+              height={245}
               onImageSelect={onChange}
               selectedImage={value}
               errorMessage={error?.message}

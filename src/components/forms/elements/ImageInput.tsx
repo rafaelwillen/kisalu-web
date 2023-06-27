@@ -5,7 +5,18 @@ import { ChangeEvent, forwardRef, useState } from "react";
 import { ImageInputProps } from "./types";
 
 const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
-  ({ label, errorMessage, selectedImage, onImageSelect, ...props }, ref) => {
+  (
+    {
+      label,
+      errorMessage,
+      selectedImage,
+      onImageSelect,
+      width,
+      height,
+      ...props
+    },
+    ref
+  ) => {
     const [image, setImage] = useState<null | string>(null);
 
     function updateImage(e: ChangeEvent<HTMLInputElement>) {
@@ -31,6 +42,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
         />
         <label
           htmlFor={props.name}
+          style={{ width, height }}
           className="relative cursor-pointer flex flex-col justify-center items-center border border-dashed border-neutral-400 text-xs rounded-md hover:opacity-70 text-text-100 px-6 text-center h-64 w-full gap-2"
         >
           {!image ? (
@@ -40,8 +52,10 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
           ) : (
             <>
               <img
+                width={width}
+                height={height}
                 src={image}
-                className="object-cover absolute inset-0 scale-95 rounded-md w-full h-full"
+                className="object-cover absolute inset-0 rounded-md w-full h-full"
                 alt=""
               />
             </>

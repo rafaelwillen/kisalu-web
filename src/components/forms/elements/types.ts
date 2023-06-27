@@ -82,4 +82,6 @@ export interface ImageInputProps extends CustomInputProps {
   errorMessage?: string;
   selectedImage?: File;
   onImageSelect?: (image: File) => void;
+  width?: number;
+  height?: number;
 }
