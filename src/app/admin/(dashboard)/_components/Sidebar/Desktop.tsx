@@ -1,4 +1,3 @@
-import LogoutButton from "@/components/buttons/LogoutButton";
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
 import {
   BriefcaseIcon,
@@ -7,8 +6,8 @@ import {
   MegaphoneIcon,
   UsersIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import Profile from "../Profile";
 import { SidebarProps } from "./types";
 
 export const sidebarIcons = [
@@ -20,14 +19,13 @@ export const sidebarIcons = [
 ];
 
 export default function DesktopSidebar({ user }: SidebarProps) {
-  const { name, email, avatarImageURL } = user;
-
   if (sidebarIcons.length !== sidebarLinks.length)
     throw new Error("Sidebar icons and links must be the same length");
 
   return (
     <aside className="hidden lg:flex flex-col bg-primary-200 overflow-hidden p-8 shadow-xl">
-      <nav className="flex-1">
+       <Profile {...user} />
+      <nav className="flex-1 mt-8">
         <ul className="flex flex-col text-sm">
           {sidebarLinks.map(({ href, title }, index) => (
             <li key={href}>
@@ -42,22 +40,6 @@ export default function DesktopSidebar({ user }: SidebarProps) {
           ))}
         </ul>
       </nav>
-      <div className="flex items-center gap-4">
-        <Image
-          src={avatarImageURL}
-          width={40}
-          height={40}
-          className="rounded-full bg-white"
-          alt=""
-        />
-        <div className="text-sm">
-          <p className="font-bold text-lg">{name}</p>
-          <p>{email}</p>
-        </div>
-      </div>
-      <div>
-        <LogoutButton type="admin" />
-      </div>
     </aside>
   );
 }
