@@ -28,7 +28,7 @@ const DangerButton = forwardRef<
         variant === "outline" &&
           "border border-danger text-danger hover:bg-danger/80 hover:text-white",
         variant === "text" &&
-          "text-danger/80 hover:bg-danger/80 font-bold hover:text-white",
+          "text-danger/80 hover:bg-danger/80 hover:text-white",
         fitContent ? "w-fit px-4" : "w-full"
       )}
     >

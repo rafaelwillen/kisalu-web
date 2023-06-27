@@ -23,7 +23,7 @@ const sidebarLinks: ReadonlyArray<SidebarLink> = [
     href: Routes.adminDisputes,
   },
   {
-    title: "Usuários",
+    title: "Administradores",
     href: Routes.adminUsers,
   },
 ];
