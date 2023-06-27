@@ -42,7 +42,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
         />
         <label
           htmlFor={props.name}
-          style={{ width, height }}
+          style={{ aspectRatio: `${width}/${height}` }}
           className="relative cursor-pointer flex flex-col justify-center items-center border border-dashed border-neutral-400 text-xs rounded-md hover:opacity-70 text-text-100 px-6 text-center h-64 w-full gap-2"
         >
           {!image ? (
