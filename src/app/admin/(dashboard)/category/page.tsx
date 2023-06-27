@@ -94,10 +94,10 @@ export default function AdminCategoriesPage() {
       <div></div>
       <Link
         href={Routes.adminCreateCategory}
-        className="fixed bottom-4 right-4 bg-primary-400 p-4 lg:p-3 rounded-full lg:rounded-xl flex gap-2 items-center hover:bg-primary-300 hover:duration-200 duration-200"
+        title="Criar categoria"
+        className="fixed bottom-4 right-4 bg-primary-500 hover:bg-primary-600 text-white p-4 rounded-full shadow-lg"
       >
-        <span className="max-lg:hidden">Criar Categoria</span>
-        <Plus />
+        <Plus size={24} />
       </Link>
     </section>
   );
