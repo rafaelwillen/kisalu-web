@@ -11,11 +11,11 @@ import Profile from "../Profile";
 import { SidebarProps } from "./types";
 
 export const sidebarIcons = [
-  <HomeIcon />,
-  <LibraryIcon />,
-  <BriefcaseIcon />,
-  <MegaphoneIcon />,
-  <UsersIcon />,
+  <HomeIcon key="home-icon" />,
+  <LibraryIcon key="library-icon" />,
+  <BriefcaseIcon key="briefcase-icon" />,
+  <MegaphoneIcon key="megaphone-icon" />,
+  <UsersIcon key="users-icon" />,
 ];
 
 export default function DesktopSidebar({ user }: SidebarProps) {
