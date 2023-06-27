@@ -16,8 +16,10 @@ module.exports = {
       black,
       white,
       neutral,
-      danger: "#900",
-      success: "#228b22",
+      danger: "#C8171F",
+      success: "#1A893C",
+      warning: "#DF6421",
+      info: "#0272E3",
       text: {
         100: "#6b7177",
         200: "#222",
