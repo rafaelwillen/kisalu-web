@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { AxiosError, HttpStatusCode } from "axios";
 import { api, endpoints } from ".";
 import { CreateCategoryRequestBody } from "./types/request";
 import {
@@ -18,9 +18,11 @@ export async function createCategory(
     });
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.status) {
-        case 400:
+      switch (error.response?.status) {
+        case HttpStatusCode.BadRequest:
           throw new Error("Dados inválidos");
+        case HttpStatusCode.Conflict:
+          throw new Error("Categoria já existe");
         default:
           throw new Error("Erro ao criar categoria");
       }
@@ -57,11 +59,11 @@ export async function getSingleCategoryById(id: string, token?: string) {
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.status) {
-        case 400:
+      switch (error.response?.status) {
+        case HttpStatusCode.BadRequest:
           throw new Error("ID da categoria inválido");
-        case 404:
-          throw new Error("Categoria não encontrada");
+        case HttpStatusCode.NotFound:
+          return undefined;
         default:
           throw new Error("Erro ao buscar categoria");
       }
@@ -78,10 +80,10 @@ export async function deleteCategory(id: string, token?: string) {
     });
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.status) {
-        case 400:
+      switch (error.response?.status) {
+        case HttpStatusCode.BadRequest:
           throw new Error("ID da categoria inválido");
-        case 404:
+        case HttpStatusCode.NotFound:
           throw new Error("Categoria não encontrada");
         default:
           throw new Error("Erro ao eliminar categoria");

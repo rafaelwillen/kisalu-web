@@ -3,7 +3,6 @@
 import { categoryQueryKeys, getAllCategories } from "@/api/category";
 import EmptyStatus from "@/components/common/status/EmptyStatus";
 import ErrorStatus from "@/components/common/status/ErrorStatus";
-import LoadingStatus from "@/components/common/status/LoadingStatus";
 import Input from "@/components/forms/elements/Input";
 import Select from "@/components/forms/elements/Select";
 import { useAuth } from "@/context/AuthContext";
@@ -13,6 +12,7 @@ import { adminCategoriesSelectOptions } from "@/utils/constants/selectOptions";
 import { useQuery } from "@tanstack/react-query";
 import { Plus, Search } from "lucide-react";
 import Link from "next/link";
+import CategoriesLoadingSkeleton from "./_components/CategoriesLoadingSkeleton";
 import CategoryCard from "./_components/CategoryCard";
 
 export default function AdminCategoriesPage() {
@@ -48,7 +48,7 @@ export default function AdminCategoriesPage() {
           />
         </div>
       </div>
-      {isLoading && <LoadingStatus message="Carregando as categorias" />}
+      {isLoading && <CategoriesLoadingSkeleton />}
       {isError && <ErrorStatus message={(error as Error).message} />}
       {categories &&
         filteredCategories &&
@@ -94,10 +94,10 @@ export default function AdminCategoriesPage() {
       <div></div>
       <Link
         href={Routes.adminCreateCategory}
-        className="fixed bottom-4 right-4 bg-primary-400 p-4 lg:p-3 rounded-full lg:rounded-xl flex gap-2 items-center hover:bg-primary-300 hover:duration-200 duration-200"
+        title="Criar categoria"
+        className="fixed bottom-4 right-4 bg-primary-500 hover:bg-primary-600 text-white p-4 rounded-full shadow-lg"
       >
-        <span className="max-lg:hidden">Criar Categoria</span>
-        <Plus />
+        <Plus size={24} />
       </Link>
     </section>
   );

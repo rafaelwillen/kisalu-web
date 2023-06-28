@@ -36,6 +36,7 @@ export default function AdminCreateCategoryForm() {
       uploadFileMutation.mutateAsync(card),
     ]);
     if (!bannerResponse || !cardResponse) {
+      toast.error("Ocorreu um erro ao criar a categoria");
       return;
     }
     const category = {
@@ -51,16 +52,10 @@ export default function AdminCreateCategoryForm() {
 
   return (
     <form
-      className="my-4 space-y-8"
+      className="my-4 space-y-8 lg:border border-neutral-100 lg:p-8 rounded-md"
       onSubmit={handleSubmit(createCategory)}
       noValidate
     >
-      <Input
-        label="Nome da Categoria"
-        required
-        {...register("name")}
-        errorMessage={errors.name?.message}
-      />
       <Controller
         control={control}
         name="banner"
@@ -72,13 +67,14 @@ export default function AdminCreateCategoryForm() {
             onImageSelect={onChange}
             selectedImage={value}
             errorMessage={error?.message}
+            height={288}
             {...props}
             label="Clique aqui para adicionar o banner da
       categoria"
           />
         )}
       />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8">
         <Controller
           control={control}
           name="card"
@@ -86,26 +82,41 @@ export default function AdminCreateCategoryForm() {
             field: { onChange, value, ...props },
             fieldState: { error },
           }) => (
-            <ImageInput
-              onImageSelect={onChange}
-              selectedImage={value}
-              errorMessage={error?.message}
-              {...props}
-              label="Clique aqui para adicionar a imagem da
+            <div className="max-w-[330px]">
+              <ImageInput
+                width={330}
+                height={245}
+                onImageSelect={onChange}
+                selectedImage={value}
+                errorMessage={error?.message}
+                {...props}
+                label="Clique aqui para adicionar a imagem da
       categoria"
-            />
+              />
+            </div>
           )}
         />
-        <TextArea
-          label="Descrição"
-          {...register("description")}
-          errorMessage={errors.description?.message}
-          required
-        />
+        <div>
+          <Input
+            label="Nome da Categoria"
+            required
+            {...register("name")}
+            errorMessage={errors.name?.message}
+          />
+          <TextArea
+            label="Descrição"
+            {...register("description")}
+            errorMessage={errors.description?.message}
+            required
+          />
+        </div>
       </div>
-      <PrimaryButton isLoading={isLoading} type="submit">
-        Criar Categoria
-      </PrimaryButton>
+      <p className="text-sm text-text-100">* - Campos obrigatórios</p>
+      <div className=" max-w-xs mx-auto">
+        <PrimaryButton isLoading={isLoading} type="submit">
+          Criar Categoria
+        </PrimaryButton>
+      </div>
     </form>
   );
 }

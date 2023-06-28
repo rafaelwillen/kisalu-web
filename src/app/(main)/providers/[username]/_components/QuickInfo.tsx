@@ -1,10 +1,7 @@
+import { formatToCompactNumber } from "@/utils/intl";
 import { Clock, Radio, Target } from "lucide-react";
 
 export default function QuickInfo() {
-  function formatToCompact(arg0: number): import("react").ReactNode {
-    throw new Error("Function not implemented.");
-  }
-
   return (
     <section>
       <ul className="flex flex-wrap justify-center items-center gap-4 xl:gap-16">
@@ -22,7 +19,7 @@ export default function QuickInfo() {
             <div className="absolute w-4/5 h-4/5 rounded-full -z-10 -bottom-2 -right-2 bg-accent-200/40" />
           </div>
           <p className="font-medium">Total de Serviços</p>
-          <p>{formatToCompact(921)}</p>
+          <p>{formatToCompactNumber(921)}</p>
         </li>
         <li className="flex flex-col items-center">
           <div className="relative mb-3">
@@ -30,7 +27,7 @@ export default function QuickInfo() {
             <div className="absolute w-4/5 h-4/5 rounded-full -z-10 -bottom-2 -right-2 bg-accent-200/40" />
           </div>
           <p className="font-medium">Pedidos em Espera</p>
-          <p>{formatToCompact(5)}</p>
+          <p>{formatToCompactNumber(5)}</p>
         </li>
       </ul>
     </section>

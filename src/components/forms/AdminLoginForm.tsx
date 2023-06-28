@@ -33,7 +33,7 @@ export default function AdminLoginForm() {
   async function handleFormSubmit(formData: AdminLoginFormType) {
     await mutateAsync(formData);
     toast.success("Login efetuado com sucesso!");
-    router.push(Routes.adminDashboard);
+    router.push(Routes.adminCategories);
   }
 
   return (

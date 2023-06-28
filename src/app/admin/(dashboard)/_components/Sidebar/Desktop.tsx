@@ -1,43 +1,39 @@
-import LogoutButton from "@/components/buttons/LogoutButton";
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
-import Image from "next/image";
+import { LibraryIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
+import Profile from "../Profile";
 import { SidebarProps } from "./types";
 
+export const sidebarIcons = [
+  // <HomeIcon key="home-icon" />,
+  <LibraryIcon key="library-icon" />,
+  // <BriefcaseIcon key="briefcase-icon" />,
+  // <MegaphoneIcon key="megaphone-icon" />,
+  <UsersIcon key="users-icon" />,
+];
+
 export default function DesktopSidebar({ user }: SidebarProps) {
-  const { name, email, avatarImageURL } = user;
+  if (sidebarIcons.length !== sidebarLinks.length)
+    throw new Error("Sidebar icons and links must be the same length");
+
   return (
-    <aside className="hidden lg:flex flex-col bg-primary-100 overflow-hidden p-8">
-      <div className="flex items-center gap-4">
-        <Image
-          src={avatarImageURL}
-          width={40}
-          height={40}
-          className="rounded-full bg-white"
-          alt=""
-        />
-        <div className="text-sm">
-          <p className="font-bold text-lg">{name}</p>
-          <p>{email}</p>
-        </div>
-      </div>
-      <nav className="flex-1">
-        <ul className="flex flex-col mt-12 gap-8 text-sm">
-          {sidebarLinks.map(({ href, title }) => (
+    <aside className="hidden lg:flex flex-col bg-primary-200 overflow-hidden p-8 shadow-xl">
+       <Profile {...user} />
+      <nav className="flex-1 mt-8">
+        <ul className="flex flex-col text-sm">
+          {sidebarLinks.map(({ href, title }, index) => (
             <li key={href}>
               <Link
-                className="bg-white shadow-sm rounded-md p-3 block hover:bg-white/70"
                 href={href}
+                className="flex gap-4 items-center py-6 px-4 hover:bg-white hover:translate-x-4 duration-200 rounded-md"
               >
-                {title}
+                {sidebarIcons[index]}
+                <span>{title}</span>
               </Link>
             </li>
           ))}
         </ul>
       </nav>
-      <div>
-        <LogoutButton type="admin" />
-      </div>
     </aside>
   );
 }
