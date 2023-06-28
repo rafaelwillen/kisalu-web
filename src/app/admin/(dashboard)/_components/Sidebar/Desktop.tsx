@@ -1,20 +1,14 @@
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
-import {
-  BriefcaseIcon,
-  HomeIcon,
-  LibraryIcon,
-  MegaphoneIcon,
-  UsersIcon,
-} from "lucide-react";
+import { LibraryIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
 import Profile from "../Profile";
 import { SidebarProps } from "./types";
 
 export const sidebarIcons = [
-  <HomeIcon key="home-icon" />,
+  // <HomeIcon key="home-icon" />,
   <LibraryIcon key="library-icon" />,
-  <BriefcaseIcon key="briefcase-icon" />,
-  <MegaphoneIcon key="megaphone-icon" />,
+  // <BriefcaseIcon key="briefcase-icon" />,
+  // <MegaphoneIcon key="megaphone-icon" />,
   <UsersIcon key="users-icon" />,
 ];
 
