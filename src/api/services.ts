@@ -21,12 +21,10 @@ export async function createService(
     });
   } catch (error) {
     if (error instanceof AxiosError) {
-      switch (error.response?.status) {
-        case HttpStatusCode.BadRequest:
-          throw new Error("Dados inválidos");
-        default:
-          throw new Error("Erro ao criar o serviço");
+      if (error.response?.status === HttpStatusCode.BadRequest) {
+        throw new Error("Dados inválidos");
       }
+      throw new Error("Erro ao criar o serviço");
     }
   }
 }
