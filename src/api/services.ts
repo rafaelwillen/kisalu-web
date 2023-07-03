@@ -1,9 +1,13 @@
 import { AxiosError, HttpStatusCode } from "axios";
 import { api, endpoints } from ".";
 import { CreateServiceRequestBody } from "./types/request";
-import { GetAllServicesFromProvider } from "./types/response";
+import {
+  GetAllServicesFromCategory,
+  GetAllServicesFromProvider,
+} from "./types/response";
 
-const { create, getAllFromProvider } = endpoints.provider.services;
+const { create, getAllFromProvider, getAllFromCategory } =
+  endpoints.provider.services;
 
 export async function createService(
   service: CreateServiceRequestBody,
@@ -45,6 +49,23 @@ export async function getAllServicesFromProvider(
   }
 }
 
+export async function getServicesByCategory(
+  categoryId: string
+): Promise<GetAllServicesFromCategory> {
+  try {
+    const response = await api.get<GetAllServicesFromCategory>(
+      getAllFromCategory(categoryId)
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar os serviços");
+  }
+}
+
 export const servicesQueryKeys = {
   getAllServicesFromProvider: ["services"],
+  getServicesByCategory: (categoryId: string) => [
+    "services/getServicesByCategory",
+    categoryId,
+  ],
 };

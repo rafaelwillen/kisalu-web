@@ -78,6 +78,8 @@ export type GetSingleAdministratorResponseBody = BaseAdministratorType & {
 export type GetAllServicesFromProvider = BaseServiceType[];
 
 export type GetAllProjectsFromClient = BaseProjectType[];
+export type GetAllProjectsFromCategory = Omit<BaseProjectType, "category">[];
+export type GetAllServicesFromCategory = Omit<BaseServiceType, "category">[];
 
 export type GetCategoryFromSearchQueryResponseBody = Pick<
   BaseCategoryType,

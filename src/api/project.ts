@@ -1,8 +1,11 @@
 import { api, endpoints } from ".";
 import { CreateProjectRequestBody } from "./types/request";
-import { GetAllProjectsFromClient } from "./types/response";
+import {
+  GetAllProjectsFromCategory,
+  GetAllProjectsFromClient,
+} from "./types/response";
 
-const { create, getAllFromClient, toggleToAvailable } =
+const { create, getAllFromClient, toggleToAvailable, getAllFromCategory } =
   endpoints.client.projects;
 
 export async function getAllProjectsFromClient(
@@ -36,6 +39,23 @@ export async function createProject(project: CreateProjectRequestBody) {
   }
 }
 
+export async function getProjectsByCategory(
+  categoryId: string
+): Promise<GetAllProjectsFromCategory> {
+  try {
+    const response = await api.get<GetAllProjectsFromCategory>(
+      getAllFromCategory(categoryId)
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar os projectos");
+  }
+}
+
 export const projectsQueryKeys = {
-  getAllProjectsFromClient: ["projects"],
+  getAllProjectsFromClient: ["projects/getAllProjectsFromClient"],
+  getProjectsByCategory: (categoryId: string) => [
+    "projects/getProjectsByCategory",
+    categoryId,
+  ],
 };

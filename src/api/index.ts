@@ -21,6 +21,8 @@ export const endpoints = {
     services: {
       create: "/provider/services",
       getAllFromProvider: "/provider/services",
+      getAllFromCategory: (categoryId: string) =>
+        `/categories/${categoryId}/services`,
     },
   },
   client: {
@@ -30,6 +32,8 @@ export const endpoints = {
       toggleToAvailable: (projectId: string) =>
         `/client/projects/${projectId}/available`,
       create: "/client/projects",
+      getAllFromCategory: (categoryId: string) =>
+        `/categories/${categoryId}/projects`,
     },
   },
   address: {
