@@ -1,8 +1,10 @@
 import Container from "@/components/common/Container";
 import { Metadata } from "next";
-import CommonCategoriesList from "./_components/CommonCategoriesList";
+import { Suspense } from "react";
+import PopularCategories from "./_components/CommonCategoriesList";
 import CoreFeatures from "./_components/CoreFeatures";
 import NewProvidersSection from "./_components/NewProvidersSection";
+import PopularCategoriesLoadingState from "./_components/PopularCategoriesLoadingState";
 import TrendingServicesList from "./_components/TrendingServicesList";
 
 export const metadata: Metadata = {
@@ -15,7 +17,9 @@ export default function HomePage() {
   return (
     <main>
       <Container small>
-        <CommonCategoriesList />
+        <Suspense fallback={<PopularCategoriesLoadingState />}>
+          <PopularCategories />
+        </Suspense>
       </Container>
       <div className="mt-20 bg-primary-50 py-10 lg:py-28">
         <TrendingServicesList />
