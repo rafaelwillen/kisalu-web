@@ -2,6 +2,7 @@ import {
   BaseAdministratorType,
   BaseAuthType,
   BaseCategoryType,
+  BaseServiceType,
   CategoryCreator,
   Gender,
   Role,
@@ -60,3 +61,5 @@ export type GetSingleAdministratorResponseBody = BaseAdministratorType & {
   disputes: readonly any[];
   createdCategories: readonly BaseCategoryType[];
 };
+
+export type GetAllServicesFromProvider = BaseServiceType[];
