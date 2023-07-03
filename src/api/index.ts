@@ -16,6 +16,13 @@ export const nextServerAPI = axios.create({
 });
 
 export const endpoints = {
+  provider: {
+    create: "/provider",
+    services: {
+      create: "/provider/services",
+      getAllFromProvider: "/provider/services",
+    },
+  },
   address: {
     allProvinces: "/address/provinces",
     allCounties: (province: string) => `/address/county/${province}`,
