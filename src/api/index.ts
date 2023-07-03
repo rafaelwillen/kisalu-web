@@ -55,4 +55,9 @@ export const endpoints = {
   upload: {
     categoryImage: "/upload/category",
   },
+  category: {
+    queryByName: "/categories/query",
+    getAll: "/categories",
+    getMostPopular: "/categories/popular-categories",
+  },
 };

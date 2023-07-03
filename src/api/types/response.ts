@@ -9,6 +9,14 @@ import {
   Role,
 } from ".";
 
+type CategoryFromResponseBody = Omit<BaseCategoryType, "bannerImageUrl"> & {
+  totalServices: number;
+  totalProjects: number;
+  availableServices: number;
+  availableProjects: number;
+  createdBy: CategoryCreator;
+};
+
 export type AdminAuthenticationResponseBody = {
   token: string;
   user: {
@@ -40,15 +48,19 @@ export type UploadCategoryImageResponseBody = {
   url: string;
 };
 
-export type GetAllCategoriesResponseBody = (Omit<
+export type GetAllCategoriesResponseBody = CategoryFromResponseBody[];
+
+export type GetAllPublicCategoriesResponseBody = Omit<
+  CategoryFromResponseBody,
+  "createdBy"
+>[];
+
+export type GetMostPopularCategoriesResponseBody = (Pick<
   BaseCategoryType,
-  "bannerImageUrl"
+  "name" | "slug"
 > & {
   totalServices: number;
   totalProjects: number;
-  availableServices: number;
-  availableProjects: number;
-  createdBy: CategoryCreator;
 })[];
 
 export type GetSingleCategoryResponseBodyType = BaseCategoryType;
@@ -66,3 +78,8 @@ export type GetSingleAdministratorResponseBody = BaseAdministratorType & {
 export type GetAllServicesFromProvider = BaseServiceType[];
 
 export type GetAllProjectsFromClient = BaseProjectType[];
+
+export type GetCategoryFromSearchQueryResponseBody = Pick<
+  BaseCategoryType,
+  "id" | "name" | "slug"
+>[];
