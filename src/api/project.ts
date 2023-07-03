@@ -1,6 +1,6 @@
-import { api, endpoints } from "..";
-import { CreateProjectRequestBody } from "../types/request";
-import { GetAllProjectsFromClient } from "../types/response";
+import { api, endpoints } from ".";
+import { CreateProjectRequestBody } from "./types/request";
+import { GetAllProjectsFromClient } from "./types/response";
 
 const { create, getAllFromClient, toggleToAvailable } =
   endpoints.client.projects;
@@ -35,3 +35,7 @@ export async function createProject(project: CreateProjectRequestBody) {
     throw new Error("Erro ao criar o projecto");
   }
 }
+
+export const projectsQueryKeys = {
+  getAllProjectsFromClient: ["projects"],
+};

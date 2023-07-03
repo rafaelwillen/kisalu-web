@@ -1,6 +1,6 @@
 import { AxiosError, HttpStatusCode } from "axios";
-import { api, endpoints } from "..";
-import { CreateUserRequestBody } from "../types/request";
+import { api, endpoints } from ".";
+import { CreateUserRequestBody } from "./types/request";
 
 const { create } = endpoints.client;
 

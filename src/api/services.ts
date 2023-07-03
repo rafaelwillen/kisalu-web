@@ -1,7 +1,7 @@
 import { AxiosError, HttpStatusCode } from "axios";
-import { api, endpoints } from "..";
-import { CreateServiceRequestBody } from "../types/request";
-import { GetAllServicesFromProvider } from "../types/response";
+import { api, endpoints } from ".";
+import { CreateServiceRequestBody } from "./types/request";
+import { GetAllServicesFromProvider } from "./types/response";
 
 const { create, getAllFromProvider } = endpoints.provider.services;
 
@@ -44,3 +44,7 @@ export async function getAllServicesFromProvider(
     throw new Error("Erro ao buscar os serviços");
   }
 }
+
+export const servicesQueryKeys = {
+  getAllServicesFromProvider: ["services"],
+};
