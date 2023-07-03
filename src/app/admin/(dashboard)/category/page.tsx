@@ -1,6 +1,6 @@
 "use client";
 
-import { categoryQueryKeys, getAllCategories } from "@/api/category";
+import { categoryQueryKeys, getAllCategoriesFromAdmin } from "@/api/category";
 import EmptyStatus from "@/components/common/status/EmptyStatus";
 import ErrorStatus from "@/components/common/status/ErrorStatus";
 import Input from "@/components/forms/elements/Input";
@@ -22,7 +22,9 @@ export default function AdminCategoriesPage() {
     isLoading,
     isError,
     error,
-  } = useQuery(categoryQueryKeys.getAllAdmin, () => getAllCategories(token));
+  } = useQuery(categoryQueryKeys.getAllAdmin, () =>
+    getAllCategoriesFromAdmin(token)
+  );
   const { filteredCategories, name, orderBy } = useAdminCategoryFilter(
     categories ?? []
   );

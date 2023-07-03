@@ -1,4 +1,4 @@
-import { getSingleCategoryById } from "@/api/category";
+import { getSingleCategoryByIdFromAdmin } from "@/api/category";
 import { Routes } from "@/utils/constants/routes";
 import { getPlaceholder } from "@/utils/imagePlaceholder";
 import { cookies } from "next/headers";
@@ -15,7 +15,7 @@ type PageProps = {
 
 export default async function AdminCategoryPage({ params: { id } }: PageProps) {
   const token = cookies().get("token")?.value;
-  const category = await getSingleCategoryById(id, token);
+  const category = await getSingleCategoryByIdFromAdmin(id, token);
   if (!category) return notFound();
   const bannerPlaceholder = await getPlaceholder(category.bannerImageURL);
   const mainImagePlaceholder = await getPlaceholder(category.mainImageURL);

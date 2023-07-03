@@ -30,7 +30,7 @@ export async function createCategory(
   }
 }
 
-export async function getAllCategories(token?: string) {
+export async function getAllCategoriesFromAdmin(token?: string) {
   try {
     const response = await api.get<GetAllCategoriesResponseBody>(
       endpoints.admin.category.getAll,
@@ -46,7 +46,10 @@ export async function getAllCategories(token?: string) {
   }
 }
 
-export async function getSingleCategoryById(id: string, token?: string) {
+export async function getSingleCategoryByIdFromAdmin(
+  id: string,
+  token?: string
+) {
   try {
     const response = await api.get<GetSingleCategoryResponseBodyType>(
       endpoints.admin.category.getSingle(id),
