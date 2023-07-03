@@ -1,4 +1,5 @@
 import axios from "axios";
+import { StorageAcceptableParamsType } from "./types";
 
 export const API_URL =
   typeof document === "undefined"
@@ -57,7 +58,9 @@ export const endpoints = {
     loginAdminNext: "/auth/admin",
   },
   upload: {
-    categoryImage: "/upload/category",
+    uploadImage: (storageParams: StorageAcceptableParamsType) =>
+      `/upload/image/${storageParams}`,
+    deleteImage: (url: string) => `/upload/image/${url}`,
   },
   category: {
     queryByName: "/categories/query",

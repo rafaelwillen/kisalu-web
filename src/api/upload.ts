@@ -1,15 +1,17 @@
 import { AxiosError, HttpStatusCode } from "axios";
 import { api, endpoints } from ".";
+import { StorageAcceptableParamsType } from "./types";
 import { UploadCategoryImageResponseBody } from "./types/response";
 
-export async function uploadCategoryImage(
-  image: File
+export async function uploadImage(
+  image: File,
+  storage: StorageAcceptableParamsType
 ): Promise<UploadCategoryImageResponseBody | undefined> {
   const formData = new FormData();
-  formData.append("image", image);
+  formData.append("file", image);
   try {
     const response = await api.post<UploadCategoryImageResponseBody>(
-      endpoints.upload.categoryImage,
+      endpoints.upload.uploadImage(storage),
       formData
     );
     return response.data;
@@ -27,9 +29,9 @@ export async function uploadCategoryImage(
   }
 }
 
-export async function deleteCategoryImage(url: string) {
+export async function deleteImage(url: string) {
   try {
-    await api.delete(`/upload/category/${url}`);
+    await api.delete(endpoints.upload.deleteImage(url));
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.response?.status) {

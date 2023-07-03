@@ -69,3 +69,12 @@ export type BaseProjectType = {
     slug: string;
   };
 };
+
+export const storageAcceptableParams = {
+  category: "category",
+  service: "service",
+  avatar: "avatar",
+  project: "project",
+};
+
+export type StorageAcceptableParamsType = keyof typeof storageAcceptableParams;
