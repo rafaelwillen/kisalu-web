@@ -21,6 +21,7 @@ export type CategoryCreator = {
 
 export type Role = "Administrator" | "Provider" | "Client";
 export type Gender = "Male" | "Female";
+export type State = "Available" | "Draft" | "Unavailable";
 
 export type BaseAdministratorType = {
   id: string;
@@ -36,3 +37,44 @@ export type BaseAuthType = {
   updatedAt: string;
   role: Role;
 };
+
+export type BaseServiceType = {
+  id: string;
+  title: string;
+  description: string;
+  bannerImageURL: string | null;
+  publishedDate: Date | null;
+  createdAt: Date;
+  viewsCount: number;
+  state: State;
+  featuredImagesURL: string[];
+  minimumPrice: number;
+  isHighlighted: boolean;
+};
+
+export type BaseProjectType = {
+  id: string;
+  title: string;
+  description: string;
+  bannerImageURL: string | null;
+  publishedDate?: string | Date;
+  createdAt: string | Date;
+  viewsCount: number;
+  state: State;
+  featuredImagesURL: string[];
+  minimumPrice: number;
+  maximumPrice: number;
+  category: {
+    name: string;
+    slug: string;
+  };
+};
+
+export const storageAcceptableParams = {
+  category: "category",
+  service: "service",
+  avatar: "avatar",
+  project: "project",
+};
+
+export type StorageAcceptableParamsType = keyof typeof storageAcceptableParams;

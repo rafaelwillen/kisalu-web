@@ -1,6 +1,6 @@
 import { createAdministrator } from "@/api/admin";
 import { CreateAdminRequestBody } from "@/api/types/request";
-import { deleteCategoryImage, uploadCategoryImage } from "@/api/upload";
+import { deleteImage, uploadImage } from "@/api/upload";
 import { useAuth } from "@/context/AuthContext";
 import { decodeObjectURL } from "@/utils";
 import { useMutation } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 export default function useCreateAdminMutation() {
   const { token } = useAuth();
   const uploadFileMutation = useMutation((file: File) =>
-    uploadCategoryImage(file)
+    uploadImage(file, "avatar")
   );
   const createAdminMutation = useMutation(
     (admin: CreateAdminRequestBody) => createAdministrator(admin, token),
@@ -20,9 +20,7 @@ export default function useCreateAdminMutation() {
       },
     }
   );
-  const fileDeletionMutation = useMutation((url: string) =>
-    deleteCategoryImage(url)
-  );
+  const fileDeletionMutation = useMutation((url: string) => deleteImage(url));
 
   async function deleteImages(avatarImageURL: string) {
     const fileName = decodeObjectURL(avatarImageURL).split("/").pop();

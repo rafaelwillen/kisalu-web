@@ -1,4 +1,5 @@
 import axios from "axios";
+import { StorageAcceptableParamsType } from "./types";
 
 export const API_URL =
   typeof document === "undefined"
@@ -16,6 +17,26 @@ export const nextServerAPI = axios.create({
 });
 
 export const endpoints = {
+  provider: {
+    create: "/provider",
+    services: {
+      create: "/provider/services",
+      getAllFromProvider: "/provider/services",
+      getAllFromCategory: (categoryId: string) =>
+        `/categories/${categoryId}/services`,
+    },
+  },
+  client: {
+    create: "/client",
+    projects: {
+      getAllFromClient: "/client/projects",
+      toggleToAvailable: (projectId: string) =>
+        `/client/projects/${projectId}/available`,
+      create: "/client/projects",
+      getAllFromCategory: (categoryId: string) =>
+        `/categories/${categoryId}/projects`,
+    },
+  },
   address: {
     allProvinces: "/address/provinces",
     allCounties: (province: string) => `/address/county/${province}`,
@@ -37,6 +58,13 @@ export const endpoints = {
     loginAdminNext: "/auth/admin",
   },
   upload: {
-    categoryImage: "/upload/category",
+    uploadImage: (storageParams: StorageAcceptableParamsType) =>
+      `/upload/image/${storageParams}`,
+    deleteImage: (url: string) => `/upload/image/${url}`,
+  },
+  category: {
+    queryByName: "/categories/query",
+    getAll: "/categories",
+    getMostPopular: "/categories/popular-categories",
   },
 };

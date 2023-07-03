@@ -2,10 +2,20 @@ import {
   BaseAdministratorType,
   BaseAuthType,
   BaseCategoryType,
+  BaseProjectType,
+  BaseServiceType,
   CategoryCreator,
   Gender,
   Role,
 } from ".";
+
+type CategoryFromResponseBody = Omit<BaseCategoryType, "bannerImageUrl"> & {
+  totalServices: number;
+  totalProjects: number;
+  availableServices: number;
+  availableProjects: number;
+  createdBy: CategoryCreator;
+};
 
 export type AdminAuthenticationResponseBody = {
   token: string;
@@ -38,15 +48,19 @@ export type UploadCategoryImageResponseBody = {
   url: string;
 };
 
-export type GetAllCategoriesResponseBody = (Omit<
+export type GetAllCategoriesResponseBody = CategoryFromResponseBody[];
+
+export type GetAllPublicCategoriesResponseBody = Omit<
+  CategoryFromResponseBody,
+  "createdBy"
+>[];
+
+export type GetMostPopularCategoriesResponseBody = (Pick<
   BaseCategoryType,
-  "bannerImageUrl"
+  "name" | "slug"
 > & {
   totalServices: number;
   totalProjects: number;
-  availableServices: number;
-  availableProjects: number;
-  createdBy: CategoryCreator;
 })[];
 
 export type GetSingleCategoryResponseBodyType = BaseCategoryType;
@@ -60,3 +74,14 @@ export type GetSingleAdministratorResponseBody = BaseAdministratorType & {
   disputes: readonly any[];
   createdCategories: readonly BaseCategoryType[];
 };
+
+export type GetAllServicesFromProvider = BaseServiceType[];
+
+export type GetAllProjectsFromClient = BaseProjectType[];
+export type GetAllProjectsFromCategory = Omit<BaseProjectType, "category">[];
+export type GetAllServicesFromCategory = Omit<BaseServiceType, "category">[];
+
+export type GetCategoryFromSearchQueryResponseBody = Pick<
+  BaseCategoryType,
+  "id" | "name" | "slug"
+>[];
