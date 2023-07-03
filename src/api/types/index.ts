@@ -51,3 +51,21 @@ export type BaseServiceType = {
   minimumPrice: number;
   isHighlighted: boolean;
 };
+
+export type BaseProjectType = {
+  id: string;
+  title: string;
+  description: string;
+  bannerImageURL: string | null;
+  publishedDate?: string | Date;
+  createdAt: string | Date;
+  viewsCount: number;
+  state: State;
+  featuredImagesURL: string[];
+  minimumPrice: number;
+  maximumPrice: number;
+  category: {
+    name: string;
+    slug: string;
+  };
+};

@@ -1,12 +1,12 @@
 import { AxiosError, HttpStatusCode } from "axios";
 import { api, endpoints } from "..";
-import { CreateServiceType } from "../types/request";
+import { CreateServiceRequestBody } from "../types/request";
 import { GetAllServicesFromProvider } from "../types/response";
 
 const { create, getAllFromProvider } = endpoints.provider.services;
 
 export async function createService(
-  service: CreateServiceType,
+  service: CreateServiceRequestBody,
   token?: string
 ) {
   try {

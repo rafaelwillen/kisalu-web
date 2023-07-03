@@ -2,6 +2,7 @@ import {
   BaseAdministratorType,
   BaseAuthType,
   BaseCategoryType,
+  BaseProjectType,
   BaseServiceType,
   CategoryCreator,
   Gender,
@@ -63,3 +64,5 @@ export type GetSingleAdministratorResponseBody = BaseAdministratorType & {
 };
 
 export type GetAllServicesFromProvider = BaseServiceType[];
+
+export type GetAllProjectsFromClient = BaseProjectType[];

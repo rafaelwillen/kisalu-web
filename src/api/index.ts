@@ -23,6 +23,15 @@ export const endpoints = {
       getAllFromProvider: "/provider/services",
     },
   },
+  client: {
+    create: "/client",
+    projects: {
+      getAllFromClient: "/client/projects",
+      toggleToAvailable: (projectId: string) =>
+        `/client/projects/${projectId}/available`,
+      create: "/client/projects",
+    },
+  },
   address: {
     allProvinces: "/address/provinces",
     allCounties: (province: string) => `/address/county/${province}`,

@@ -32,12 +32,22 @@ export type CreateUserRequestBody = {
   phoneNumber: string;
 };
 
-export type CreateServiceType = {
+export type CreateServiceRequestBody = {
   title: string;
   description: string;
   bannerImageURL?: string;
   featuredIImagesURL?: string[];
   minimumPrice: number;
   isHighlighted: boolean;
+  categoryName: string;
+};
+
+export type CreateProjectRequestBody = {
+  title: string;
+  description: string;
+  bannerImageURL?: string;
+  featuredImagesURL?: string[];
+  minimumPrice: number;
+  maximumPrice: number;
   categoryName: string;
 };
