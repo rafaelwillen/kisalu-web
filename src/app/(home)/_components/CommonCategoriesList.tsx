@@ -1,17 +1,16 @@
-import { homeBrowseByCategory } from "@/mock/category";
+import { getMostPopularCategories } from "@/api/category";
 import { Routes } from "@/utils/constants/routes";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CommonCategoryCard from "./CommonCategoryCard";
 
-// TODO: Fetch the most popular categories from the API
-
-export default function CommonCategoriesList() {
+export default async function PopularCategories() {
+  const categories = await getMostPopularCategories();
   return (
     <section className="mt-10 lg:mt-28">
       <div className="lg:flex items-center justify-between lg:mb-20">
         <h2 className="text-3xl font-bold mb-14 lg:mb-0">
-          Procurar prestadores por categoria
+          Categorias Mais Populares
         </h2>
         <Link
           href={Routes.categories}
@@ -22,8 +21,8 @@ export default function CommonCategoriesList() {
         </Link>
       </div>
       <article className="mt-5 flex overflow-auto gap-2 lg:grid grid-cols-4 lg:gap-7 lg:mt-0 lg:py-4 lg:overflow-hidden">
-        {homeBrowseByCategory.map((category) => (
-          <CommonCategoryCard {...category} key={category.id} />
+        {categories.map((category) => (
+          <CommonCategoryCard category={category} key={category.slug} />
         ))}
       </article>
     </section>
