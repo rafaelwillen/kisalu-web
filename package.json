@@ -28,7 +28,7 @@
     "date-fns": "^2.30.0",
     "keen-slider": "^6.8.5",
     "lucide-react": "^0.258.0",
-    "next": "13.4.2",
+    "next": "13.4.8",
     "plaiceholder": "^3.0.0",
     "postcss": "8.4.21",
     "react": "18.2.0",
