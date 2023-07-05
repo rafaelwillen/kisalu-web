@@ -22,18 +22,6 @@ body:has(aside[data-is-active="true"]) {
   outline: 1px dashed #f00;
 }
 
-.header-bg::after {
-  content: "";
-  background: linear-gradient(
-      0deg,
-      rgba(34, 34, 34, 0.3) 0%,
-      rgba(34, 34, 34, 0.8) 100%
-    ),
-    url("../assets/images/hero-background.jpg") no-repeat;
-  height: 100%;
-  @apply absolute inset-x-0 top-0 -z-10 bg-cover bg-center;
-}
-
 a.animated-underline {
   position: relative;
 }
