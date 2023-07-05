@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/api/client";
+import { createProvider } from "@/api/provider";
 import { CreateUserRequestBody } from "@/api/types/request";
 import {
   ADULT_DATE_OF_BIRTH,
@@ -25,7 +26,12 @@ import Input from "./elements/Input";
 import SecureInput from "./elements/SecureInput";
 import Select from "./elements/Select";
 
-export default function ClientRegisterForm() {
+type Props = {
+  userType: "client" | "provider";
+  redirectTo?: string;
+};
+
+export default function UserRegisterForm({ userType, redirectTo }: Props) {
   const {
     register,
     handleSubmit,
@@ -38,7 +44,8 @@ export default function ClientRegisterForm() {
     },
   });
   const { mutateAsync, isLoading } = useMutation(
-    (data: CreateUserRequestBody) => createClient(data),
+    (data: CreateUserRequestBody) =>
+      userType === "client" ? createClient(data) : createProvider(data),
     {
       onError: (err) => {
         if (err instanceof Error) {
@@ -60,7 +67,7 @@ export default function ClientRegisterForm() {
       ),
     });
     toast.success("Conta criada com sucesso!");
-    router.replace(Routes.home);
+    router.replace(redirectTo ?? Routes.home);
   }
   return (
     <form
@@ -69,8 +76,17 @@ export default function ClientRegisterForm() {
       className="bg-white rounded p-10"
     >
       <p className="text-center text-sm mb-4 md:text-left md:text-base">
-        Crie uma conta como <strong>cliente</strong> para começar a requisitar
-        serviços.
+        {userType === "client" ? (
+          <>
+            Crie uma conta como <strong>cliente</strong> para começar a
+            requisitar serviços.
+          </>
+        ) : (
+          <>
+            Crie uma conta como <strong>prestador</strong> para começar a
+            prestar serviços
+          </>
+        )}
       </p>
       <div className="space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

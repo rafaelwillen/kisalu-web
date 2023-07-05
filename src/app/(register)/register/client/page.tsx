@@ -1,5 +1,5 @@
 import Container from "@/components/common/Container";
-import ClientRegisterForm from "@/components/forms/ClientRegisterForm";
+import UserRegisterForm from "@/components/forms/UserRegisterForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function ClientRegisterPage() {
               rápido e fácil.
             </p>
           </div>
-          <ClientRegisterForm />
+          <UserRegisterForm userType="client" />
           {/* TODO: Replace with other providers: google and facebook */}
         </section>
       </Container>
