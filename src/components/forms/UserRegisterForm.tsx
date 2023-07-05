@@ -67,7 +67,7 @@ export default function UserRegisterForm({ userType, redirectTo }: Props) {
       ),
     });
     toast.success("Conta criada com sucesso!");
-    router.replace(redirectTo || Routes.home);
+    router.replace(redirectTo ?? Routes.home);
   }
   return (
     <form
