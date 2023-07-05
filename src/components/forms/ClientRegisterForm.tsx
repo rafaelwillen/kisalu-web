@@ -1,6 +1,7 @@
 "use client";
 
 import { Routes } from "@/utils/constants/routes";
+import { genderSelectOptions } from "@/utils/constants/selectOptions";
 import {
   RegisterFormType,
   registerSchema,
@@ -8,15 +9,17 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import PrimaryButton from "../buttons/PrimaryButton";
 import Input from "./elements/Input";
 import SecureInput from "./elements/SecureInput";
+import Select from "./elements/Select";
 
 export default function ClientRegisterForm() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<RegisterFormType>({
     resolver: zodResolver(registerSchema),
@@ -24,19 +27,18 @@ export default function ClientRegisterForm() {
 
   function handleFormSubmit(data: RegisterFormType) {
     console.log(data);
-    alert("Haha, you can't create an account yet! :D");
   }
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit, (err) => console.log(err))}
       noValidate
-      className="bg-white rounded p-12"
+      className="bg-white rounded p-10"
     >
       <p className="text-center text-sm mb-4 md:text-left md:text-base">
         Crie uma conta como <strong>cliente</strong> para começar a requisitar
         serviços.
       </p>
-      <div className="space-y-4">
+      <div className="space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <Input
             required
@@ -68,6 +70,23 @@ export default function ClientRegisterForm() {
           icon={<Mail className="text-text-200" size={20} />}
           {...register("email")}
           errorMessage={errors.email?.message}
+        />
+        <Controller
+          control={control}
+          name="gender"
+          render={({
+            field: { onChange, value, ...rest },
+            fieldState: { error },
+          }) => (
+            <Select
+              options={genderSelectOptions}
+              label="Género"
+              selectedValue={value}
+              onValueSelect={onChange}
+              {...rest}
+              errorMessage={error?.message}
+            />
+          )}
         />
         <div className="my-3" />
         <SecureInput

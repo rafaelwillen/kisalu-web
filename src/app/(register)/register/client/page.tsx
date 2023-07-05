@@ -10,7 +10,7 @@ export default function ClientRegisterPage() {
   return (
     <main className="bg-secondary-100 py-10">
       <Container>
-        <section className="mx-auto max-w-2xl space-y-14">
+        <section className="mx-auto max-w-2xl space-y-8">
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-bold">Registrar</h1>
             <p>

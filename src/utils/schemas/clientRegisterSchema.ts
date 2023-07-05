@@ -27,6 +27,7 @@ export const registerSchema = z
       .nonempty("Campo obrigatório")
       .regex(angolanPhoneNumberRegex, "Número de telefone inválido")
       .transform((value) => value.replaceAll(" ", "")),
+    gender: z.enum(["Male", "Female"], { required_error: "Campo obrigatório" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords não coincidem",
