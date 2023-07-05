@@ -26,7 +26,10 @@ export function AuthProvider({
 }: PropsWithChildren<ProviderProps>) {
   const { data: user, isLoading } = useQuery(
     authenticationQueryKeys.currentUser,
-    () => getAuthenticatedUser(token!)
+    () => getAuthenticatedUser(token!),
+    {
+      refetchOnWindowFocus: false,
+    }
   );
 
   const contextValue: AuthContextData = {
