@@ -20,9 +20,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerInputProps>(
             id={name}
             className="border-0 w-full focus:ring-0"
             value={selectedDate?.toISOString().split("T")[0]}
-            onChange={(e) =>
-              onDateChange && onDateChange(new Date(e.target.value))
-            }
+            onChange={(e) => onDateChange?.(new Date(e.target.value))}
           />
         </div>
         {errorMessage && <ErrorMessage message={errorMessage} />}
