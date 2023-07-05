@@ -1,5 +1,11 @@
 "use client";
 
+import { createClient } from "@/api/client";
+import { CreateUserRequestBody } from "@/api/types/request";
+import {
+  ADULT_DATE_OF_BIRTH,
+  DEFAULT_USER_AVATAR_API_URL,
+} from "@/utils/constants";
 import { Routes } from "@/utils/constants/routes";
 import { genderSelectOptions } from "@/utils/constants/selectOptions";
 import {
@@ -7,10 +13,14 @@ import {
   registerSchema,
 } from "@/utils/schemas/clientRegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
+import DatePicker from "./elements/DatePicker";
 import Input from "./elements/Input";
 import SecureInput from "./elements/SecureInput";
 import Select from "./elements/Select";
@@ -23,10 +33,34 @@ export default function ClientRegisterForm() {
     formState: { errors },
   } = useForm<RegisterFormType>({
     resolver: zodResolver(registerSchema),
+    defaultValues: {
+      birthDate: ADULT_DATE_OF_BIRTH,
+    },
   });
+  const { mutateAsync, isLoading } = useMutation(
+    (data: CreateUserRequestBody) => createClient(data),
+    {
+      onError: (err) => {
+        if (err instanceof Error) {
+          toast.error(err.message);
+        }
+      },
+    }
+  );
+  const router = useRouter();
 
-  function handleFormSubmit(data: RegisterFormType) {
-    console.log(data);
+  async function handleFormSubmit({
+    confirmPassword,
+    ...data
+  }: RegisterFormType) {
+    await mutateAsync({
+      ...data,
+      avatarImageURL: DEFAULT_USER_AVATAR_API_URL.concat(
+        `/seed=${data.firstName}${data.lastName}`
+      ),
+    });
+    toast.success("Conta criada com sucesso!");
+    router.replace(Routes.home);
   }
   return (
     <form
@@ -59,8 +93,8 @@ export default function ClientRegisterForm() {
           label="Número de Telefone"
           placeholder="+244 999 999 999"
           icon={<Phone className="text-text-200" size={20} />}
-          {...register("phone")}
-          errorMessage={errors.phone?.message}
+          {...register("phoneNumber")}
+          errorMessage={errors.phoneNumber?.message}
         />
         <Input
           required
@@ -70,6 +104,22 @@ export default function ClientRegisterForm() {
           icon={<Mail className="text-text-200" size={20} />}
           {...register("email")}
           errorMessage={errors.email?.message}
+        />
+        <Controller
+          control={control}
+          name="birthDate"
+          render={({
+            field: { onChange, value, ...rest },
+            fieldState: { error },
+          }) => (
+            <DatePicker
+              {...rest}
+              onDateChange={onChange}
+              selectedDate={value}
+              label="Data de Nascimento"
+              errorMessage={error?.message}
+            />
+          )}
         />
         <Controller
           control={control}
@@ -112,8 +162,8 @@ export default function ClientRegisterForm() {
         </Link>
       </p>
       <small className="text-sm text-text-100">* - Campos obrigatórios</small>
-      <PrimaryButton>
-        Entrar <ArrowUpRight size={24} />
+      <PrimaryButton isLoading={isLoading}>
+        Registrar <ArrowUpRight size={24} />
       </PrimaryButton>
     </form>
   );
