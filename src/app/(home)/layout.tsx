@@ -10,12 +10,14 @@ import Hero from "./_components/Hero";
 export default function HomePageLayout({ children }: PropsWithChildren) {
   return (
     <>
-      <header className="relative text-white pb-16 h-screen">
+      <header className="relative text-white pb-16 h-screen shadow-2xl">
         <Image
           src={HeroImage}
-          className="h-full brightness-75 -z-10 object-cover object-center"
+          className="h-full brightness-[.4] -z-10 object-cover object-center"
           fill
           alt=""
+          placeholder="blur"
+          priority
         />
         <Navbar />
         <Hero />
