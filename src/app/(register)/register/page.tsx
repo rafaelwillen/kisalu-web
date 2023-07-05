@@ -87,9 +87,11 @@ export default function RegisterPage() {
                 : Routes.providerRegister
             }
           >
-            <PrimaryButton disabled={!selectedUserType}>
-              {buttonText}
-            </PrimaryButton>
+            <div className="mt-8 md:w-1/2 mx-auto">
+              <PrimaryButton disabled={!selectedUserType}>
+                {buttonText}
+              </PrimaryButton>
+            </div>
           </Link>
           <p className="text-center mt-4">
             Já tem uma conta?{" "}
