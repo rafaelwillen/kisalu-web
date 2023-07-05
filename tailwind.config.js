@@ -68,6 +68,9 @@ module.exports = {
       main: ["var(--font-main)"],
     },
     extend: {
+      gridTemplateColumns: {
+        "profile-dialog": "150px 1fr",
+      },
       backgroundImage: {
         providerGradient: "linear-gradient(180deg, #032751 0%, #114c50 60%)",
       },
@@ -96,6 +99,14 @@ module.exports = {
           from: { opacity: 0, transform: "translateX(2px)" },
           to: { opacity: 1, transform: "translateX(0)" },
         },
+        overlayShow: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        contentShow: {
+          from: { opacity: 0, transform: "translate(-50%, -48%) scale(0.96)" },
+          to: { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
+        },
       },
       animation: {
         slideDown: "slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)",
@@ -107,6 +118,8 @@ module.exports = {
           "slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
         slideLeftAndFade:
           "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        overlayShow: "overlayShow 300ms cubic-bezier(0.16, 1, 0.3, 1)",
+        contentShow: "contentShow 300ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

@@ -6,8 +6,8 @@ import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import HamburgerMenuButton from "../buttons/HamburgerMenuButton";
 import AsideMenu from "./AsideMenu";
+import ClientProfileButton from "./ClientProfileButton";
 import Container from "./Container";
 
 type Props = {
@@ -81,7 +81,7 @@ export default function Navbar({ whiteBackground }: Props) {
             </Link>
           </li>
           <li className="flex items-center gap-7 py-1">
-            <Link
+            {/* <Link
               href={Routes.register}
               className={classNames(
                 "text-sm hidden lg:inline animated-underline",
@@ -105,7 +105,8 @@ export default function Navbar({ whiteBackground }: Props) {
               darkBackground={!showSidebarMenu && !whiteBackground}
               toggle={toggleSideMenu}
               isChecked={showSidebarMenu}
-            />
+            /> */}
+            <ClientProfileButton whiteBackground={whiteBackground} />
           </li>
         </ul>
         <AsideMenu visible={showSidebarMenu} />
