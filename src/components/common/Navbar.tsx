@@ -11,6 +11,7 @@ import HamburgerMenuButton from "../buttons/HamburgerMenuButton";
 import AsideMenu from "./AsideMenu";
 import ClientProfileButton from "./ClientProfileButton";
 import Container from "./Container";
+import ProviderProfileLink from "./ProviderProfileLink";
 
 type Props = {
   whiteBackground?: boolean;
@@ -86,11 +87,19 @@ export default function Navbar({ whiteBackground }: Props) {
           </li>
           <li className="flex items-center gap-7 py-1">
             {token && !isAdmin && user ? (
-              <ClientProfileButton
-                whiteBackground={whiteBackground}
-                avatarImageURL={user.avatarImageURL}
-                name={`${user.firstName} ${user.lastName}`}
-              />
+              user.role === "Client" ? (
+                <ClientProfileButton
+                  whiteBackground={whiteBackground}
+                  avatarImageURL={user.avatarImageURL}
+                  name={`${user.firstName} ${user.lastName}`}
+                />
+              ) : (
+                <ProviderProfileLink
+                  whiteBackground={whiteBackground}
+                  avatarImageURL={user.avatarImageURL}
+                  name={`${user.firstName} ${user.lastName}`}
+                />
+              )
             ) : (
               <>
                 <Link

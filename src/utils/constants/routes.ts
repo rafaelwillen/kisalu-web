@@ -22,4 +22,5 @@ export const Routes = {
   createAdmin: "/admin/user/new",
   logout: "/logout",
   logoutAdmin: "/admin/logout",
-};
+  providerDashboard: "/provider-dashboard",
+} as const;
