@@ -1,6 +1,8 @@
 "use client";
 
-import useCreateUserMutation from "@/hooks/mutations/useCreateUserMutation";
+import { createClient } from "@/api/client";
+import { createProvider } from "@/api/provider";
+import { CreateUserRequestBody } from "@/api/types/request";
 import {
   ADULT_DATE_OF_BIRTH,
   DEFAULT_USER_AVATAR_API_URL,
@@ -12,9 +14,12 @@ import {
   registerSchema,
 } from "@/utils/schemas/clientRegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
 import DatePicker from "./elements/DatePicker";
 import Input from "./elements/Input";
@@ -38,20 +43,32 @@ export default function UserRegisterForm({ userType, redirectTo }: Props) {
       birthDate: ADULT_DATE_OF_BIRTH,
     },
   });
-  const { createUser, isLoading } = useCreateUserMutation(userType, redirectTo);
+  const { mutateAsync, isLoading } = useMutation(
+    (data: CreateUserRequestBody) =>
+      userType === "client" ? createClient(data) : createProvider(data),
+    {
+      onError: (err) => {
+        if (err instanceof Error) {
+          toast.error(err.message);
+        }
+      },
+    }
+  );
+  const router = useRouter();
 
   async function handleFormSubmit({
     confirmPassword,
     ...data
   }: RegisterFormType) {
-    createUser({
+    await mutateAsync({
       ...data,
       avatarImageURL: DEFAULT_USER_AVATAR_API_URL.concat(
         `/seed=${data.firstName}${data.lastName}`
       ),
     });
+    toast.success("Conta criada com sucesso!");
+    router.replace(redirectTo ?? Routes.home);
   }
-
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit, (err) => console.log(err))}
