@@ -8,6 +8,8 @@ export async function middleware(request: NextRequest) {
   if (pathname === Routes.logout) return await signOut(request, false);
   if (pathname.startsWith("/admin") && !pathname.includes("/admin/login"))
     return await ensureAdminAuthenticated(request);
+  if (pathname.startsWith(Routes.providerDashboard))
+    return await ensureProviderAuthenticated(request);
   return NextResponse.next();
 }
 
@@ -31,4 +33,14 @@ async function signOut(request: NextRequest, isAdmin: boolean) {
       "Set-Cookie": `token=; Path=/; HttpOnly; Expires=Thu, 01 Jan 1970 00:00:00 GMT`,
     },
   });
+}
+
+async function ensureProviderAuthenticated(request: NextRequest) {
+  const loginRedirectURL = new URL(Routes.login, request.nextUrl.origin);
+  const token = request.cookies.get("token")?.value;
+  if (!token) return NextResponse.redirect(loginRedirectURL);
+  const userPayload = await getAuthenticatedUser(token);
+  if (!userPayload || userPayload.role !== "Provider")
+    return NextResponse.redirect(loginRedirectURL);
+  return NextResponse.next();
 }
