@@ -1,4 +1,4 @@
-import { authenticateAdministrator } from "@/api/authentication";
+import { authenticateUser } from "@/api/authentication";
 import { generateJWTCookie } from "@/utils";
 import { loginSchema } from "@/utils/schemas/loginSchema";
 import { AxiosError } from "axios";
@@ -8,7 +8,7 @@ import { ZodError } from "zod";
 export async function POST(request: NextRequest) {
   try {
     const body = loginSchema.parse(await request.json());
-    const { token, user } = await authenticateAdministrator(body);
+    const { token, user } = await authenticateUser(body);
     return NextResponse.json(user, {
       headers: {
         "Set-Cookie": generateJWTCookie(token),

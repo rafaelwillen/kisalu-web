@@ -56,6 +56,8 @@ export const endpoints = {
     currentUser: "/auth/me",
     loginAdmin: "/auth/login/admin",
     loginAdminNext: "/auth/admin",
+    loginUser: "/auth/login",
+    loginUserNext: "/auth/user",
   },
   upload: {
     uploadImage: (storageParams: StorageAcceptableParamsType) =>

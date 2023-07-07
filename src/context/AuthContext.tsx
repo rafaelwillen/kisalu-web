@@ -16,6 +16,7 @@ type AuthContextData = {
   user: UserAuthenticationResponseBody | undefined;
   token?: string;
   isLoading: boolean;
+  isAdmin: boolean;
 };
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -31,11 +32,13 @@ export function AuthProvider({
       refetchOnWindowFocus: false,
     }
   );
+  const isAdmin = user?.role === "Administrator";
 
   const contextValue: AuthContextData = {
     user,
     token,
     isLoading,
+    isAdmin,
   };
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

@@ -1,11 +1,15 @@
 "use client";
 
+import { authenticateUserNextServer } from "@/api/authentication";
 import { Routes } from "@/utils/constants/routes";
 import { LoginFormType, loginSchema } from "@/utils/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { ArrowUpRight, Mail } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
 import Input from "./elements/Input";
 import SecureInput from "./elements/SecureInput";
@@ -18,10 +22,21 @@ export default function LoginForm() {
   } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
   });
+  const { mutateAsync, isLoading } = useMutation(
+    (data: LoginFormType) => authenticateUserNextServer(data),
+    {
+      onError: (error) => {
+        if (error instanceof Error) toast.error(error.message);
+      },
+    }
+  );
+  const router = useRouter();
 
-  function handleFormSubmission(data: LoginFormType) {
-    console.log(data);
-    alert("Haha, you can't login yet! :D");
+  async function handleFormSubmission(data: LoginFormType) {
+    await mutateAsync(data);
+    toast.success("Sessão iniciada com sucesso");
+    router.replace(Routes.home);
+    router.refresh();
   }
 
   return (
@@ -56,7 +71,7 @@ export default function LoginForm() {
         </Link>
       </p>
       <small className="text-sm text-text-100">* - Campos obrigatórios</small>
-      <PrimaryButton>
+      <PrimaryButton isLoading={isLoading}>
         Entrar <ArrowUpRight size={24} />
       </PrimaryButton>
     </form>
