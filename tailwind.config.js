@@ -70,6 +70,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         "profile-dialog": "150px 1fr",
+        "provider-dashboard": "auto 1fr",
       },
       backgroundImage: {
         providerGradient: "linear-gradient(180deg, #032751 0%, #114c50 60%)",

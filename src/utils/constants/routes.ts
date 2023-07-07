@@ -23,4 +23,6 @@ export const Routes = {
   logout: "/logout",
   logoutAdmin: "/admin/logout",
   providerDashboard: "/provider-dashboard",
+  providerProposals: "/provider-dashboard/proposals",
+  providerProfile: "/provider-dashboard/profile",
 } as const;
