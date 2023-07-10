@@ -16,6 +16,7 @@
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-progress": "^1.0.2",
     "@radix-ui/react-select": "^1.2.1",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@tanstack/react-query": "^4.29.7",
     "@tanstack/react-query-devtools": "^4.29.7",
     "@types/node": "18.15.11",
