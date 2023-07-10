@@ -1,12 +1,12 @@
 import {
-  BaseAdministratorType,
-  BaseAuthType,
-  BaseCategoryType,
-  BaseProjectType,
-  BaseServiceType,
-  CategoryCreator,
-  Gender,
-  Role,
+    BaseAdministratorType,
+    BaseAuthType,
+    BaseCategoryType,
+    BaseProjectType,
+    BaseServiceType,
+    CategoryCreator,
+    Gender,
+    Role,
 } from ".";
 
 type CategoryFromResponseBody = Omit<BaseCategoryType, "bannerImageUrl"> & {
