@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function Header() {
   const token = cookies().get("token")?.value;
-  const { avatarImageURL } = await getAuthenticatedUser(token!);
+  const { avatarImageURL } = await getAuthenticatedUser(token as string);
   return (
     <header className="flex justify-between px-7 py-5">
       <Link

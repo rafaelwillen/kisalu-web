@@ -21,6 +21,53 @@ export default function Navbar({ whiteBackground }: Props) {
   const { isOpen: showSidebarMenu, toggle: toggleSideMenu } = useToggle();
   const { isAdmin, token, user } = useAuth();
 
+  function renderTheUserProfile() {
+    if (!token || isAdmin || !user)
+      return (
+        <>
+          <Link
+            href={Routes.register}
+            className={classNames(
+              "text-sm hidden lg:inline animated-underline",
+              whiteBackground ? "text-text-200 dark" : "text-white"
+            )}
+          >
+            Criar Conta
+          </Link>
+          <Link
+            href={Routes.login}
+            className={classNames(
+              "lg:px-7 lg:py-2 lg:rounded  duration-300 mr-16 lg:mr-0",
+              whiteBackground
+                ? "lg:bg-primary-600 lg:hover:bg-primary-500 text-text-200 lg:text-white"
+                : "text-white text-sm lg:bg-white lg:text-text-200 lg:hover:bg-neutral-300"
+            )}
+          >
+            Entrar
+          </Link>
+          <HamburgerMenuButton
+            darkBackground={!showSidebarMenu && !whiteBackground}
+            toggle={toggleSideMenu}
+            isChecked={showSidebarMenu}
+          />
+        </>
+      );
+
+    return user.role === "Client" ? (
+      <ClientProfileButton
+        whiteBackground={whiteBackground}
+        avatarImageURL={user.avatarImageURL}
+        name={`${user.firstName} ${user.lastName}`}
+      />
+    ) : (
+      <ProviderProfileLink
+        whiteBackground={whiteBackground}
+        avatarImageURL={user.avatarImageURL}
+        name={`${user.firstName} ${user.lastName}`}
+      />
+    );
+  }
+
   return (
     <nav
       className={classNames(
@@ -86,49 +133,7 @@ export default function Navbar({ whiteBackground }: Props) {
             </Link>
           </li>
           <li className="flex items-center gap-7 py-1">
-            {token && !isAdmin && user ? (
-              user.role === "Client" ? (
-                <ClientProfileButton
-                  whiteBackground={whiteBackground}
-                  avatarImageURL={user.avatarImageURL}
-                  name={`${user.firstName} ${user.lastName}`}
-                />
-              ) : (
-                <ProviderProfileLink
-                  whiteBackground={whiteBackground}
-                  avatarImageURL={user.avatarImageURL}
-                  name={`${user.firstName} ${user.lastName}`}
-                />
-              )
-            ) : (
-              <>
-                <Link
-                  href={Routes.register}
-                  className={classNames(
-                    "text-sm hidden lg:inline animated-underline",
-                    whiteBackground ? "text-text-200 dark" : "text-white"
-                  )}
-                >
-                  Criar Conta
-                </Link>
-                <Link
-                  href={Routes.login}
-                  className={classNames(
-                    "lg:px-7 lg:py-2 lg:rounded  duration-300 mr-16 lg:mr-0",
-                    whiteBackground
-                      ? "lg:bg-primary-600 lg:hover:bg-primary-500 text-text-200 lg:text-white"
-                      : "text-white text-sm lg:bg-white lg:text-text-200 lg:hover:bg-neutral-300"
-                  )}
-                >
-                  Entrar
-                </Link>
-                <HamburgerMenuButton
-                  darkBackground={!showSidebarMenu && !whiteBackground}
-                  toggle={toggleSideMenu}
-                  isChecked={showSidebarMenu}
-                />
-              </>
-            )}
+            {renderTheUserProfile()}
           </li>
         </ul>
         <AsideMenu visible={showSidebarMenu} />
