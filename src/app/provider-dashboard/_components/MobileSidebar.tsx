@@ -12,7 +12,7 @@ export default function MobileSidebar({ show, onClose }: Props) {
   return (
     <aside
       className={classNames(
-        "absolute inset-0 min-h-screen overflow-hidden z-10 border-b p-8 flex flex-col gap-4 lg:hidden transition-transform ease-in-out duration-300 bg-white",
+        "absolute inset-0 min-h-screen overflow-hidden z-30 border-b p-8 flex flex-col gap-4 lg:hidden transition-transform ease-in-out duration-300 bg-white",
         show ? "-translate-x-0" : "-translate-x-full"
       )}
     >
