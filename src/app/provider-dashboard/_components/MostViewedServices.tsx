@@ -37,31 +37,6 @@ export default function MostViewedServices() {
             </div>
           </div>
         </li>
-        <li className="flex justify-between items-center gap-4 last:border-b-0">
-          <Image
-            src="https://placehold.co/244x182.png"
-            className="rounded max-sm:hidden"
-            alt=""
-            width={122}
-            height={90}
-          />
-          <div className="flex-1 space-y-2">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
-              iure! Voluptatibus modi enim commodi.
-            </p>
-            <div className="flex justify-between">
-              <div className="flex gap-2 items-center">
-                <ReviewStarIcon />
-                <span>4.5</span>
-              </div>
-              <p className="text-text-100 text-sm">
-                Começando em{" "}
-                <span className="text-text-200 font-bold">100.000kzs</span>
-              </p>
-            </div>
-          </div>
-        </li>
       </ul>
     </div>
   );
