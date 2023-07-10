@@ -1,12 +1,12 @@
 import Container from "@/components/common/Container";
-import ProviderRegisterForm from "@/components/forms/ProviderRegisterForm";
+import UserRegisterForm from "@/components/forms/UserRegisterForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cadastro como Prestador",
 };
 
-export default function page() {
+export default function ProviderRegisterPage() {
   return (
     <main className="bg-accent-100 py-10">
       <Container>
@@ -18,7 +18,7 @@ export default function page() {
               fácil.
             </p>
           </div>
-          <ProviderRegisterForm />
+          <UserRegisterForm userType="provider" />
           {/* TODO: Replace with other providers: google and facebook */}
         </section>
       </Container>

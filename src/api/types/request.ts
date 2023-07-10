@@ -19,3 +19,35 @@ export type CreateAdminRequestBody = {
   email: string;
   password: string;
 };
+
+export type CreateUserRequestBody = {
+  firstName: string;
+  lastName: string;
+  avatarImageURL: string;
+  gender: Gender;
+  email: string;
+  password: string;
+  biography?: string;
+  birthday?: Date;
+  phoneNumber: string;
+};
+
+export type CreateServiceRequestBody = {
+  title: string;
+  description: string;
+  bannerImageURL?: string;
+  featuredIImagesURL?: string[];
+  minimumPrice: number;
+  isHighlighted: boolean;
+  categoryName: string;
+};
+
+export type CreateProjectRequestBody = {
+  title: string;
+  description: string;
+  bannerImageURL?: string;
+  featuredImagesURL?: string[];
+  minimumPrice: number;
+  maximumPrice: number;
+  categoryName: string;
+};

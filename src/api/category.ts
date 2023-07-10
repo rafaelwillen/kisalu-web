@@ -3,6 +3,9 @@ import { api, endpoints } from ".";
 import { CreateCategoryRequestBody } from "./types/request";
 import {
   GetAllCategoriesResponseBody,
+  GetAllPublicCategoriesResponseBody,
+  GetCategoryFromSearchQueryResponseBody,
+  GetMostPopularCategoriesResponseBody,
   GetSingleCategoryResponseBodyType,
 } from "./types/response";
 
@@ -30,7 +33,7 @@ export async function createCategory(
   }
 }
 
-export async function getAllCategories(token?: string) {
+export async function getAllCategoriesFromAdmin(token?: string) {
   try {
     const response = await api.get<GetAllCategoriesResponseBody>(
       endpoints.admin.category.getAll,
@@ -46,7 +49,10 @@ export async function getAllCategories(token?: string) {
   }
 }
 
-export async function getSingleCategoryById(id: string, token?: string) {
+export async function getSingleCategoryByIdFromAdmin(
+  id: string,
+  token?: string
+) {
   try {
     const response = await api.get<GetSingleCategoryResponseBodyType>(
       endpoints.admin.category.getSingle(id),
@@ -92,10 +98,51 @@ export async function deleteCategory(id: string, token?: string) {
   }
 }
 
+export async function queryCategoryByName(
+  name: string
+): Promise<GetCategoryFromSearchQueryResponseBody> {
+  try {
+    const response = await api.get<GetCategoryFromSearchQueryResponseBody>(
+      endpoints.category.queryByName,
+      {
+        params: { name },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar categorias");
+  }
+}
+
+export async function getAllPublicCategories(): Promise<GetAllPublicCategoriesResponseBody> {
+  try {
+    const response = await api.get<GetAllPublicCategoriesResponseBody>(
+      endpoints.category.getAll
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar categorias");
+  }
+}
+
+export async function getMostPopularCategories(): Promise<GetMostPopularCategoriesResponseBody> {
+  try {
+    const response = await api.get<GetMostPopularCategoriesResponseBody>(
+      endpoints.category.getMostPopular
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar categorias");
+  }
+}
+
 export const categoryQueryKeys = {
   getAllAdmin: ["admin/category/getAll"],
   getSingleAdmin: (categoryId: string) => [
     "admin/category/getSingle",
     categoryId,
   ],
+  queryCategoryByName: (name: string) => ["category/queryByName", name],
+  getAllPublicCategories: ["category/getAllPublicCategories"],
+  getMostPopularCategories: ["category/getMostPopularCategories"],
 };

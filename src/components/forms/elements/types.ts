@@ -85,3 +85,10 @@ export interface ImageInputProps extends CustomInputProps {
   width?: number;
   height?: number;
 }
+
+export interface DatePickerInputProps extends CustomInputProps {
+  onDateChange?: (date: Date) => void;
+  label: string;
+  errorMessage?: string;
+  selectedDate?: Date;
+}

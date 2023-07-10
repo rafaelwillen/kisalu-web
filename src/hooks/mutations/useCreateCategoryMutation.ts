@@ -1,6 +1,6 @@
 import { createCategory } from "@/api/category";
 import { CreateCategoryRequestBody } from "@/api/types/request";
-import { deleteCategoryImage, uploadCategoryImage } from "@/api/upload";
+import { deleteImage, uploadImage } from "@/api/upload";
 import { useAuth } from "@/context/AuthContext";
 import { decodeObjectURL } from "@/utils";
 import { useMutation } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 export default function useCreateCategoryMutation() {
   const { token } = useAuth();
   const uploadFileMutation = useMutation((file: File) =>
-    uploadCategoryImage(file)
+    uploadImage(file, "category")
   );
   const createCategoryMutation = useMutation(
     (category: CreateCategoryRequestBody) => createCategory(category, token),
@@ -21,9 +21,7 @@ export default function useCreateCategoryMutation() {
     }
   );
 
-  const fileDeletionMutation = useMutation((url: string) =>
-    deleteCategoryImage(url)
-  );
+  const fileDeletionMutation = useMutation((url: string) => deleteImage(url));
 
   async function deleteImages(imagesURLs: string[]) {
     const [bannerImageFileName, mainImageFileName] = imagesURLs.map((url) =>
