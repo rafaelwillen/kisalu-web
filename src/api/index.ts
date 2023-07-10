@@ -19,6 +19,7 @@ export const nextServerAPI = axios.create({
 export const endpoints = {
   provider: {
     create: "/provider",
+    updateAvatarImage: "/provider/avatar",
     services: {
       create: "/provider/services",
       getAllFromProvider: "/provider/services",
@@ -69,4 +70,4 @@ export const endpoints = {
     getAll: "/categories",
     getMostPopular: "/categories/popular-categories",
   },
-};
+} as const;

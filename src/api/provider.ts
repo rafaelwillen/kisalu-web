@@ -24,3 +24,24 @@ export async function createProvider(provider: CreateUserRequestBody) {
     }
   }
 }
+
+export async function updateProviderAvatarImage(url: string, token?: string) {
+  try {
+    await api.put(
+      endpoints.provider.updateAvatarImage,
+      { url },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.response?.status) {
+        case HttpStatusCode.BadRequest:
+          throw new Error("Dados inválidos");
+        case HttpStatusCode.Unauthorized:
+          throw new Error("Não autorizado");
+        default:
+          throw new Error("Erro ao atualizar avatar");
+      }
+    }
+  }
+}
