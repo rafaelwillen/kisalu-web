@@ -12,7 +12,7 @@ export default function ProviderDashboardLayout({
       <Header />
       <div className="grid lg:grid-cols-provider-dashboard flex-1">
         <Sidebar />
-        <main className="bg-accent-100 rounded-md  py-4 px-2 lg:p-14">
+        <main className="bg-accent-100 rounded-md @container  py-4 px-2 lg:p-14">
           {children}
         </main>
       </div>

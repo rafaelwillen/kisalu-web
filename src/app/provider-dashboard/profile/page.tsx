@@ -2,6 +2,7 @@ import { getAuthenticatedUser } from "@/api/authentication";
 import { cookies } from "next/headers";
 import PageHeader from "../_components/PageHeader";
 import AvatarImage from "./_components/AvatarImage";
+import ProfileDetails from "./_components/ProfileDetails";
 
 export default async function ProviderProfilePage() {
   const token = cookies().get("token")?.value;
@@ -22,6 +23,13 @@ export default async function ProviderProfilePage() {
             token={token}
           />
         </div>
+        {user.isActive && (
+          <p className="text-danger text-sm mt-4 lg:mt-9">
+            A sua conta não está activada. Para activar deve inserir o endereço.{" "}
+            <button className="underline">Clique aqui para inserir.</button>
+          </p>
+        )}
+        <ProfileDetails user={user} />
       </section>
     </>
   );
