@@ -2,10 +2,12 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import classNames from "classnames";
-import { XIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import ClientProfile from "../dialog/ClientProfile";
+import DialogClose from "./dialog/DialogClose";
+import DialogContainer from "./dialog/DialogContainer";
+import DialogOverlay from "./dialog/DialogOverlay";
 
 type Props = {
   whiteBackground?: boolean;
@@ -40,15 +42,11 @@ function ClientProfileButton({ whiteBackground, avatarImageURL, name }: Props) {
         />
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.DialogOverlay className="z-10 bg-black/60 data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-1/2 left-1/2 max-h-screen w-[90vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-10 shadow-xl focus:outline-none">
+        <DialogOverlay />
+        <DialogContainer>
           <ClientProfile onClose={() => setOpen(false)} />
-          <Dialog.Close asChild>
-            <button className="absolute top-4 right-4" aria-label="Close">
-              <XIcon />
-            </button>
-          </Dialog.Close>
-        </Dialog.Content>
+          <DialogClose />
+        </DialogContainer>
       </Dialog.Portal>
     </Dialog.Root>
   );

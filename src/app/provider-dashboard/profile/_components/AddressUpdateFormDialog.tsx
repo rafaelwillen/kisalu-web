@@ -2,6 +2,10 @@
 
 import { updateProviderAddress } from "@/api/provider";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import DialogClose from "@/components/common/dialog/DialogClose";
+import DialogContainer from "@/components/common/dialog/DialogContainer";
+import DialogOverlay from "@/components/common/dialog/DialogOverlay";
+import DialogTitle from "@/components/common/dialog/DialogTitle";
 import Input from "@/components/forms/elements/Input";
 import Select from "@/components/forms/elements/Select";
 import { useAuth } from "@/context/AuthContext";
@@ -13,7 +17,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMutation } from "@tanstack/react-query";
-import { XIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -56,12 +59,10 @@ export default function AddressUpdateFormDialog() {
         <button className="underline">Clique aqui para inserir.</button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="z-10 bg-black/60 data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-1/2 left-1/2 max-h-screen w-[90vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-10 shadow-xl focus:outline-none">
+        <DialogOverlay />
+        <DialogContainer>
           <section>
-            <Dialog.Title className="text-lg  font-medium pb-2 lg:pb-5 border-b border-b-neutral-200">
-              Adicionar Endereço
-            </Dialog.Title>
+            <DialogTitle title="Adicionar Endereço" />
             <form
               onSubmit={handleSubmit(formSubmissionHandler)}
               className="grid grid-cols-1 md:grid-cols-2 mt-6 lg:mt-9 gap-4"
@@ -115,12 +116,8 @@ export default function AddressUpdateFormDialog() {
               </div>
             </form>
           </section>
-          <Dialog.Close asChild>
-            <button className="absolute top-4 right-4" aria-label="Close">
-              <XIcon />
-            </button>
-          </Dialog.Close>
-        </Dialog.Content>
+          <DialogClose />
+        </DialogContainer>
       </Dialog.Portal>
     </Dialog.Root>
   );
