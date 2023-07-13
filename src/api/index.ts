@@ -19,6 +19,8 @@ export const nextServerAPI = axios.create({
 export const endpoints = {
   provider: {
     create: "/provider",
+    updateAvatarImage: "/provider/avatar",
+    updateAddress: "/provider/address",
     services: {
       create: "/provider/services",
       getAllFromProvider: "/provider/services",
@@ -38,7 +40,7 @@ export const endpoints = {
     },
   },
   address: {
-    allProvinces: "/address/provinces",
+    allProvinces: "/address/province",
     allCounties: (province: string) => `/address/county/${province}`,
   },
   admin: {
@@ -69,4 +71,4 @@ export const endpoints = {
     getAll: "/categories",
     getMostPopular: "/categories/popular-categories",
   },
-};
+} as const;

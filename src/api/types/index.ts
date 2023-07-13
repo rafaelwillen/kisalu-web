@@ -70,6 +70,13 @@ export type BaseProjectType = {
   };
 };
 
+export type BaseAddressType = {
+  id: string;
+  addressLine: string;
+  county: string;
+  province: string;
+};
+
 export const storageAcceptableParams = {
   category: "category",
   service: "service",
