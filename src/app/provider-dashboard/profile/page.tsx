@@ -27,7 +27,7 @@ export default async function ProviderProfilePage() {
             token={token}
           />
         </div>
-        {user.isActive && (
+        {!user.isActive && (
           <p className="text-danger text-sm mt-4 lg:mt-9">
             A sua conta não está activada. Para activar deve inserir o endereço.{" "}
             <AddressUpdateFormDialog />
