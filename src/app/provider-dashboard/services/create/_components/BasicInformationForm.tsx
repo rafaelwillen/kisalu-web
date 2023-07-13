@@ -1,11 +1,13 @@
 "use client";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import LoadingStatus from "@/components/common/status/LoadingStatus";
 import Checkbox from "@/components/forms/elements/Checkbox";
 import ImageInput from "@/components/forms/elements/ImageInput";
 import Input from "@/components/forms/elements/Input";
 import Select from "@/components/forms/elements/Select";
 import TextArea from "@/components/forms/elements/TextArea";
+import useCategoriesSelectOptions from "@/hooks/query/useCategoriesSelectOptions";
 import {
   ServiceBasicInformationCreationFormType,
   serviceBasicInformationCreationSchema,
@@ -15,6 +17,8 @@ import { MessageSquareDashedIcon } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function BasicInformationForm() {
+  const { categoryOptions, isLoading: isLoadingTheCategories } =
+    useCategoriesSelectOptions();
   const {
     control,
     register,
@@ -30,7 +34,9 @@ export default function BasicInformationForm() {
     console.log(data);
   }
 
-  return (
+  return isLoadingTheCategories ? (
+    <LoadingStatus message="Carregando o formulário" />
+  ) : (
     <form
       onSubmit={handleSubmit(formSubmissionHandler)}
       noValidate
@@ -70,7 +76,7 @@ export default function BasicInformationForm() {
           <Select
             required
             label="Categoria"
-            options={[]}
+            options={categoryOptions}
             selectedValue={value}
             onValueSelect={onChange}
             {...field}
