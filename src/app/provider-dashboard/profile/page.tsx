@@ -1,6 +1,7 @@
 import { getAuthenticatedUser } from "@/api/authentication";
 import { cookies } from "next/headers";
 import PageHeader from "../_components/PageHeader";
+import AddressUpdateFormDialog from "./_components/AddressUpdateFormDialog";
 import AvatarImage from "./_components/AvatarImage";
 import EducationDetails from "./_components/EducationDetails";
 import PasswordChangeForm from "./_components/PasswordChangeForm";
@@ -29,7 +30,7 @@ export default async function ProviderProfilePage() {
         {user.isActive && (
           <p className="text-danger text-sm mt-4 lg:mt-9">
             A sua conta não está activada. Para activar deve inserir o endereço.{" "}
-            <button className="underline">Clique aqui para inserir.</button>
+            <AddressUpdateFormDialog />
           </p>
         )}
         <ProfileDetails user={user} />
