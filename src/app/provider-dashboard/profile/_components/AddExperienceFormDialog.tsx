@@ -17,7 +17,11 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { PlusIcon } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 
-export default function AddEducationFormDialog() {
+type Props = {
+  experienceType: "education" | "work";
+};
+
+export default function AddExperienceFormDialog({ experienceType }: Props) {
   const {
     control,
     register,
@@ -45,7 +49,11 @@ export default function AddEducationFormDialog() {
       <Dialog.DialogPortal>
         <DialogOverlay />
         <DialogContainer>
-          <DialogTitle title="Adicionar informação sobre educação" />
+          <DialogTitle
+            title={`Adicionar experiência ${
+              experienceType === "education" ? "académica" : "profissional"
+            }`}
+          />
           <form
             noValidate
             onSubmit={handleSubmit(formSubmissionHandler)}
