@@ -1,9 +1,6 @@
 import { z } from "zod";
-import {
-  IMAGE_MIME_TYPES,
-  MAX_IMAGE_FILE as MAX_IMAGE_SIZE,
-} from "../constants";
 import { noSymbolRegex } from "../constants/regex";
+import { fileSchema } from "./commonSchema";
 
 export const newCategorySchema = z.object({
   name: z
@@ -17,30 +14,8 @@ export const newCategorySchema = z.object({
     .nonempty("Campo obrigatório")
     .min(3, "Campo obrigatório")
     .max(255, "Valor demasiado grande"),
-  banner: z
-    .custom<File>((file) => file instanceof File, {
-      message: "Campo obrigatório",
-    })
-    .refine(
-      (file) => file.size < MAX_IMAGE_SIZE,
-      "Ficheiro demasiado grande. Deve ser inferior a 5MB"
-    )
-    .refine(
-      (file) => IMAGE_MIME_TYPES.includes(file.type),
-      "Deve ser uma imagem nos seguintes formatos (png, jpg, jpeg, webp)"
-    ),
-  card: z
-    .custom<File>((file) => file instanceof File, {
-      message: "Campo obrigatório",
-    })
-    .refine(
-      (file) => file.size < MAX_IMAGE_SIZE,
-      "Ficheiro demasiado grande. Deve ser inferior a 5MB"
-    )
-    .refine(
-      (file) => IMAGE_MIME_TYPES.includes(file.type),
-      "Deve ser uma imagem nos seguintes formatos (png, jpg, jpeg, webp)"
-    ),
+  banner: fileSchema,
+  card: fileSchema,
 });
 
 export type NewCategoryFormType = z.infer<typeof newCategorySchema>;

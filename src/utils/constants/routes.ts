@@ -25,4 +25,6 @@ export const Routes = {
   providerDashboard: "/provider-dashboard",
   providerProposals: "/provider-dashboard/proposals",
   providerProfile: "/provider-dashboard/profile",
+  providerServiceCreation: "/provider-dashboard/services/create",
+  providerServices: "/provider-dashboard/services",
 } as const;

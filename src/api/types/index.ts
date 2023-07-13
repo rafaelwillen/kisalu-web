@@ -82,6 +82,6 @@ export const storageAcceptableParams = {
   service: "service",
   avatar: "avatar",
   project: "project",
-};
+} as const;
 
 export type StorageAcceptableParamsType = keyof typeof storageAcceptableParams;
