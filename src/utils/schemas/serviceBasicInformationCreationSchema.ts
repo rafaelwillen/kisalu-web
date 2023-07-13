@@ -10,7 +10,7 @@ export const serviceBasicInformationCreationSchema = z.object({
   description: z.string().min(3, "Campo obrigatório"),
   minimumPrice: z.number().min(0, "Campo obrigatório"),
   isHighlighted: z.boolean().optional().default(false),
-  category: z.string({ required_error: "Campo obrigatório" }),
+  categoryName: z.string({ required_error: "Campo obrigatório" }),
 });
 
 export type ServiceBasicInformationCreationFormType = z.infer<

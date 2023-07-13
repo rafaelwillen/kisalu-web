@@ -1,5 +1,6 @@
 "use client";
 
+import { CreateServiceRequestBody } from "@/api/types/request";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import LoadingStatus from "@/components/common/status/LoadingStatus";
 import Checkbox from "@/components/forms/elements/Checkbox";
@@ -7,18 +8,25 @@ import ImageInput from "@/components/forms/elements/ImageInput";
 import Input from "@/components/forms/elements/Input";
 import Select from "@/components/forms/elements/Select";
 import TextArea from "@/components/forms/elements/TextArea";
+import useCreateServiceMutation from "@/hooks/mutations/useCreateServiceMutation";
 import useCategoriesSelectOptions from "@/hooks/query/useCategoriesSelectOptions";
+import { Routes } from "@/utils/constants/routes";
 import {
   ServiceBasicInformationCreationFormType,
   serviceBasicInformationCreationSchema,
 } from "@/utils/schemas/serviceBasicInformationCreationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessageSquareDashedIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 export default function BasicInformationForm() {
+  const router = useRouter();
   const { categoryOptions, isLoading: isLoadingTheCategories } =
     useCategoriesSelectOptions();
+  const { createService, isLoading, uploadBannerImage } =
+    useCreateServiceMutation();
   const {
     control,
     register,
@@ -28,10 +36,25 @@ export default function BasicInformationForm() {
     resolver: zodResolver(serviceBasicInformationCreationSchema),
   });
 
-  function formSubmissionHandler(
+  async function formSubmissionHandler(
     data: ServiceBasicInformationCreationFormType
   ) {
-    console.log(data);
+    const { bannerImage, ...serviceTextData } = data;
+    let bannerImageURL: string | undefined;
+    if (bannerImage) {
+      bannerImageURL = (await uploadBannerImage(bannerImage))?.url;
+      if (!bannerImageURL) {
+        toast.error("Ocorreu um erro ao criar o serviço");
+        return;
+      }
+    }
+    const service: CreateServiceRequestBody = {
+      ...serviceTextData,
+      bannerImageURL,
+    };
+    await createService(service);
+    toast.success("Serviço criado com sucesso");
+    router.replace(Routes.providerServices);
   }
 
   return isLoadingTheCategories ? (
@@ -71,7 +94,7 @@ export default function BasicInformationForm() {
       />
       <Controller
         control={control}
-        name="category"
+        name="categoryName"
         render={({ field: { onChange, value, ...field }, fieldState }) => (
           <Select
             required
@@ -105,7 +128,7 @@ export default function BasicInformationForm() {
         />
       </div>
       <div className="col-span-full">
-        <PrimaryButton fitContent>
+        <PrimaryButton fitContent isLoading={isLoading}>
           Salvar <MessageSquareDashedIcon />
         </PrimaryButton>
       </div>

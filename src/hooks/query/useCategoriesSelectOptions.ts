@@ -12,8 +12,8 @@ export default function useCategoriesSelectOptions() {
     }
   );
 
-  const categoryOptions: SelectOption[] = data.map(({ id, name }) => ({
-    value: id,
+  const categoryOptions: SelectOption[] = data.map(({ name }) => ({
+    value: name,
     label: name,
   }));
 
