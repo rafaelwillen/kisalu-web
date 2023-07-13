@@ -2,7 +2,10 @@ import { getAuthenticatedUser } from "@/api/authentication";
 import { cookies } from "next/headers";
 import PageHeader from "../_components/PageHeader";
 import AvatarImage from "./_components/AvatarImage";
+import EducationDetails from "./_components/EducationDetails";
+import PasswordChangeForm from "./_components/PasswordChangeForm";
 import ProfileDetails from "./_components/ProfileDetails";
+import WorkAndExperienceDetails from "./_components/WorkAndExperienceDetails";
 
 export default async function ProviderProfilePage() {
   const token = cookies().get("token")?.value;
@@ -31,6 +34,9 @@ export default async function ProviderProfilePage() {
         )}
         <ProfileDetails user={user} />
       </section>
+      <EducationDetails />
+      <WorkAndExperienceDetails />
+      <PasswordChangeForm />
     </>
   );
 }
