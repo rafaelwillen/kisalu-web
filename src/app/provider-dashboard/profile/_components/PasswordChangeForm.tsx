@@ -1,25 +1,47 @@
 "use client";
 
+import { resetUserPassword } from "@/api/authentication";
+import { UserPasswordResetRequestBody } from "@/api/types/request";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecureInput from "@/components/forms/elements/SecureInput";
+import { useAuth } from "@/context/AuthContext";
 import {
   UserPasswordChangeFormType,
   userPasswordChangeSchema,
 } from "@/utils/schemas/userPasswordChangeSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 export default function PasswordChangeForm() {
+  const { token } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<UserPasswordChangeFormType>({
     resolver: zodResolver(userPasswordChangeSchema),
   });
+  const { isLoading, mutateAsync } = useMutation(
+    (data: UserPasswordResetRequestBody) => resetUserPassword(data, token),
+    {
+      onError: (error) => {
+      if (error instanceof Error) toast.error(error.message, {duration: 5000, position: "bottom-left"});
+      },
+      onSuccess: () => {
+        toast.success("Password alterada com sucesso",  {duration: 5000, position: "bottom-left"});
+        reset();
+      },
+    }
+  );
 
-  function formSubmissionHandler(data: UserPasswordChangeFormType) {
-    console.log(data);
+  async function formSubmissionHandler({
+    newPassword,
+    oldPassword,
+  }: UserPasswordChangeFormType) {
+    await mutateAsync({ newPassword, oldPassword });
   }
 
   return (
@@ -47,7 +69,7 @@ export default function PasswordChangeForm() {
             errorMessage={errors.newPasswordConfirmation?.message}
             {...register("newPasswordConfirmation")}
           />
-          <PrimaryButton type="submit" fitContent>
+          <PrimaryButton type="submit" fitContent isLoading={isLoading}>
             Alterar
           </PrimaryButton>
         </div>
