@@ -148,7 +148,7 @@ export default function UserRegisterForm({ userType, redirectTo }: Props) {
               options={genderSelectOptions}
               label="Género"
               selectedValue={value}
-              onValueSelect={onChange}
+              onValueSelect={(value) => onChange(value as never)}
               {...rest}
               errorMessage={error?.message}
             />
