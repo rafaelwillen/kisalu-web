@@ -1,4 +1,5 @@
 import { getAuthenticatedUser } from "@/api/authentication";
+import { getAllExperiencesFromProvider } from "@/api/experienceInfo";
 import { cookies } from "next/headers";
 import PageHeader from "../_components/PageHeader";
 import AddressUpdateFormDialog from "./_components/AddressUpdateFormDialog";
@@ -13,6 +14,14 @@ export default async function ProviderProfilePage() {
   if (!token) throw new Error("No authorization token found");
 
   const user = await getAuthenticatedUser(token);
+  const experiences = await getAllExperiencesFromProvider(token);
+
+  const educationExperiences = experiences.filter(
+    (experience) => experience.type === "Education"
+  );
+  const workExperiences = experiences.filter(
+    (experience) => experience.type === "Work"
+  );
 
   return (
     <>
@@ -35,8 +44,8 @@ export default async function ProviderProfilePage() {
         )}
         <ProfileDetails user={user} />
       </section>
-      <EducationDetails />
-      <WorkAndExperienceDetails />
+      <EducationDetails experiences={educationExperiences} />
+      <WorkAndExperienceDetails experiences={workExperiences} />
       <PasswordChangeForm />
     </>
   );
