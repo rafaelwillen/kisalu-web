@@ -1,7 +1,10 @@
 import HTTPError from "@/utils/HTTPError";
 import { AxiosError, HttpStatusCode } from "axios";
 import { API_URL, api, endpoints, nextServerAPI } from ".";
-import { AuthenticationRequestBody } from "./types/request";
+import {
+  AuthenticationRequestBody,
+  UserPasswordResetRequestBody,
+} from "./types/request";
 import {
   AdminAuthenticationResponseBody,
   UserAuthenticationResponseBody,
@@ -69,6 +72,30 @@ export async function getAuthenticatedUser(token: string) {
     console.log(error);
     if (error instanceof HTTPError) throw error;
     throw new HTTPError(HttpStatusCode.InternalServerError, "Erro no servidor");
+  }
+}
+
+export async function resetUserPassword(
+  data: UserPasswordResetRequestBody,
+  token?: string
+) {
+  try {
+    await api.put(endpoints.authentication.changeUserPassword, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      switch (error.response?.status) {
+        case HttpStatusCode.BadRequest:
+          throw new Error("Dados inválidos");
+        case HttpStatusCode.Unauthorized:
+          throw new Error("Password antiga inválida");
+        case HttpStatusCode.NotFound:
+          throw new Error("Credenciais inválidas");
+        default:
+          throw new Error("Erro no servidor");
+      }
+    }
   }
 }
 

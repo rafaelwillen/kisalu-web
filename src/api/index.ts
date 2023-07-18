@@ -60,6 +60,7 @@ export const endpoints = {
     loginAdminNext: "/auth/admin",
     loginUser: "/auth/login",
     loginUserNext: "/auth/user",
+    changeUserPassword: "/auth/password-reset/user",
   },
   upload: {
     uploadImage: (storageParams: StorageAcceptableParamsType) =>

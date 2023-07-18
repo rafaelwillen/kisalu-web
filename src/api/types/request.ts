@@ -51,3 +51,8 @@ export type CreateProjectRequestBody = {
   maximumPrice: number;
   categoryName: string;
 };
+
+export type UserPasswordResetRequestBody = {
+  oldPassword: string;
+  newPassword: string;
+};
