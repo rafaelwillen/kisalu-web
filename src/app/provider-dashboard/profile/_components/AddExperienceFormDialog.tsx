@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMutation } from "@tanstack/react-query";
 import { PlusIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -28,6 +29,7 @@ type Props = {
 
 export default function AddExperienceFormDialog({ experienceType }: Props) {
   const { token } = useAuth();
+  const router = useRouter();
   const [openDialog, setOpenDialog] = useState(false);
   const {
     control,
@@ -51,6 +53,7 @@ export default function AddExperienceFormDialog({ experienceType }: Props) {
   async function formSubmissionHandler(data: ProviderExperienceFormType) {
     await mutateAsync(data);
     setOpenDialog(false);
+    router.refresh();
   }
 
   return (

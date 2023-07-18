@@ -1,5 +1,7 @@
 import { ExperienceInfo } from "@/api/experienceInfo";
+import classNames from "classnames";
 import AddExperienceFormDialog from "./AddExperienceFormDialog";
+import ExperienceInfoItem from "./ExperienceInfoItem";
 
 type Props = {
   experiences: ExperienceInfo[];
@@ -12,10 +14,21 @@ export default async function EducationDetails({ experiences }: Props) {
         <h2 className="text-lg font-medium">Educação</h2>
         <AddExperienceFormDialog experienceType="Education" />
       </div>
-      <article className="py-20">
+      <article
+        className={classNames(
+          experiences.length === 0 ? "py-20" : "space-y-3 py-7"
+        )}
+      >
         {experiences.length === 0 && (
           <p className="text-center">Não há nada para apresentar...</p>
         )}
+        {experiences.map((experience, index) => (
+          <ExperienceInfoItem
+            experience={experience}
+            key={experience.id}
+            index={index}
+          />
+        ))}
       </article>
     </section>
   );
