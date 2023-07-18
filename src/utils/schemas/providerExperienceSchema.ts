@@ -13,6 +13,10 @@ export const providerExperienceSchema = z
       .max(new Date(), "Data não pode ser depois de hoje")
       .optional(),
     description: z.string().min(3, "Campo obrigatório"),
+    type: z.enum(["Work", "Education"], {
+      required_error: "Campo obrigatório",
+      invalid_type_error: "Tipo inválido",
+    }),
   })
   .refine(
     ({ startDate, endDate }) => {
