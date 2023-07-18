@@ -98,7 +98,7 @@ export default function Sidebar() {
           <ul>
             <li>
               <Link
-                href="#"
+                href={Routes.providerServices}
                 className={classNames(
                   "flex gap-4 items-center pl-8 py-4 rounded-r-md duration-300 hover:bg-accent-200",
                   pathname === "" &&
