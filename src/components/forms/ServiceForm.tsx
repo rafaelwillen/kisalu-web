@@ -127,12 +127,14 @@ export default function ServiceForm() {
               />
             )}
           />
-          <TextArea
-            required
-            label="Descrição"
-            {...register("description")}
-            errorMessage={errors.description?.message}
-          />
+          <div className="col-span-full">
+            <TextArea
+              required
+              label="Descrição"
+              {...register("description")}
+              errorMessage={errors.description?.message}
+            />
+          </div>
           <div className="col-span-full">
             <Controller
               control={control}
