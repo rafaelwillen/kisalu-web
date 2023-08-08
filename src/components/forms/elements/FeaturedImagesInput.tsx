@@ -19,9 +19,10 @@ export default function FeaturedImagesInput() {
   const removeImage = (index: number) => remove(index);
 
   function addImage(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.item(0);
-    if (!file) return;
-    append({ file });
+    for (let index = 0; index < e.target.files!.length; index++) {
+      const file = e.target.files?.item(index);
+      if (file) append({ file });
+    }
   }
 
   return (
@@ -51,6 +52,7 @@ export default function FeaturedImagesInput() {
         <div className="w-48 h-full">
           <input
             onChange={addImage}
+            multiple
             type="file"
             name="featuredImage"
             id="featuredImage"
