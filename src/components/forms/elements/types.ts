@@ -28,6 +28,14 @@ export interface InputProps extends CustomInputProps {
   type?: "email" | "text" | "search" | "tel" | "url";
 }
 
+export interface NumberInputProps
+  extends Omit<InputProps, "type" | "value" | "defaultValue"> {
+  value: number;
+  defaultValue?: number;
+  allowLeadingZeros?: boolean;
+  thousandSeparator?: boolean | string;
+}
+
 export interface SecureInputProps extends Omit<InputProps, "type" | "icon"> {}
 
 export type RatingProps = {

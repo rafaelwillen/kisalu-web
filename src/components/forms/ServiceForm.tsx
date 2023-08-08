@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import FeaturedImagesInput from "./elements/FeaturedImagesInput";
+import NumberInput from "./elements/NumberInput";
 
 export default function ServiceForm() {
   const router = useRouter();
@@ -106,11 +107,17 @@ export default function ServiceForm() {
             {...register("title")}
             errorMessage={errors.title?.message}
           />
-          <Input
-            required
-            label="Preço Mínimo"
-            {...register("minimumPrice")}
-            errorMessage={errors.minimumPrice?.message}
+          <Controller
+            control={control}
+            name="minimumPrice"
+            render={({ field, fieldState: { error } }) => (
+              <NumberInput
+                {...field}
+                label="Preço Mínimo"
+                required
+                errorMessage={error?.message}
+              />
+            )}
           />
           <Controller
             control={control}
