@@ -15,26 +15,33 @@ export default function useCreateServiceMutation() {
   const createServiceMutation = useMutation(
     (service: CreateServiceRequestBody) => createService(service, token),
     {
-      onError: async (error, { bannerImageURL }) => {
+      onError: async (error, { bannerImageURL, featuredImagesURL }) => {
         toast.error((error as Error).message);
-        if (bannerImageURL) await deleteImages([bannerImageURL]);
+        if (bannerImageURL)
+          await deleteImages([bannerImageURL, ...featuredImagesURL]);
+        else await deleteImages(featuredImagesURL);
       },
     }
   );
+
   async function deleteImages(imagesURLs: string[]) {
-    const [bannerImageFilename] = imagesURLs.map((url) =>
+    const imageURLs = imagesURLs.map((url) =>
       decodeObjectURL(url).split("/").pop()
     );
-    if (!bannerImageFilename) return;
-    await deleteImageMutation.mutateAsync(bannerImageFilename);
+    await Promise.all(
+      imageURLs
+        .filter((url) => url !== undefined)
+        .map((url) => deleteImage(url!))
+    );
   }
+
   const isLoading =
     uploadImageMutation.isLoading ||
     deleteImageMutation.isLoading ||
     createServiceMutation.isLoading;
   return {
     isLoading,
-    uploadBannerImage: uploadImageMutation.mutateAsync,
+    uploadImage: uploadImageMutation.mutateAsync,
     createService: createServiceMutation.mutateAsync,
   };
 }

@@ -11,6 +11,11 @@ export const serviceBasicInformationCreationSchema = z.object({
   minimumPrice: z.number().min(0, "Campo obrigatório"),
   isHighlighted: z.boolean().optional().default(false),
   categoryName: z.string({ required_error: "Campo obrigatório" }),
+  featuredImages: z.array(
+    z.object({
+      file: fileSchema,
+    })
+  ),
 });
 
 export type ServiceBasicInformationCreationFormType = z.infer<
