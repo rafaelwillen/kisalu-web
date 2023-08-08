@@ -20,6 +20,7 @@ import { MessageSquareDashedIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import FeaturedImagesInput from "./elements/FeaturedImagesInput";
 
 export default function ServiceForm() {
   const router = useRouter();
@@ -35,6 +36,10 @@ export default function ServiceForm() {
   } = useForm<ServiceBasicInformationCreationFormType>({
     resolver: zodResolver(serviceBasicInformationCreationSchema),
   });
+
+  const imagesURLs = [
+    "https://images.unsplash.com/photo-1566807387450-b74aea0e727e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
+  ];
 
   async function formSubmissionHandler(
     data: ServiceBasicInformationCreationFormType
@@ -60,78 +65,81 @@ export default function ServiceForm() {
   return isLoadingTheCategories ? (
     <LoadingStatus message="Carregando o formulário" />
   ) : (
-    <form
-      onSubmit={handleSubmit(formSubmissionHandler)}
-      noValidate
-      className="mt-6 grid gap-4 grid-cols-1 md:grid-cols-2"
-    >
-      <div className="col-span-full">
-        <Controller
-          control={control}
-          name="bannerImage"
-          render={({ field: { onChange, value, ...field }, fieldState }) => (
-            <ImageInput
-              label="Banner do Serviço"
-              selectedImage={value}
-              onImageSelect={onChange}
-              {...field}
-              errorMessage={fieldState.error?.message}
-            />
-          )}
-        />
-      </div>
-      <Input
-        required
-        label="Título do Serviço"
-        {...register("title")}
-        errorMessage={errors.title?.message}
-      />
-      <Input
-        required
-        label="Preço Mínimo"
-        {...register("minimumPrice")}
-        errorMessage={errors.minimumPrice?.message}
-      />
-      <Controller
-        control={control}
-        name="categoryName"
-        render={({ field: { onChange, value, ...field }, fieldState }) => (
-          <Select
-            required
-            label="Categoria"
-            options={categoryOptions}
-            selectedValue={value}
-            onValueSelect={onChange}
-            {...field}
-            errorMessage={fieldState.error?.message}
+    <form onSubmit={handleSubmit(formSubmissionHandler)} noValidate>
+      <h2 className="text-lg  font-medium pb-2 lg:pb-5 border-b border-b-neutral-200 ">
+        Informações Básicas
+      </h2>
+      <div className="my-6 grid gap-4 grid-cols-1 md:grid-cols-2">
+        <div className="col-span-full">
+          <Controller
+            control={control}
+            name="bannerImage"
+            render={({ field: { onChange, value, ...field }, fieldState }) => (
+              <ImageInput
+                label="Banner do Serviço"
+                selectedImage={value}
+                onImageSelect={onChange}
+                {...field}
+                errorMessage={fieldState.error?.message}
+              />
+            )}
           />
-        )}
-      />
-      <TextArea
-        required
-        label="Descrição"
-        {...register("description")}
-        errorMessage={errors.description?.message}
-      />
-      <div className="col-span-full">
+        </div>
+        <Input
+          required
+          label="Título do Serviço"
+          {...register("title")}
+          errorMessage={errors.title?.message}
+        />
+        <Input
+          required
+          label="Preço Mínimo"
+          {...register("minimumPrice")}
+          errorMessage={errors.minimumPrice?.message}
+        />
         <Controller
           control={control}
-          name="isHighlighted"
-          defaultValue={false}
-          render={({ field, fieldState }) => (
-            <Checkbox
+          name="categoryName"
+          render={({ field: { onChange, value, ...field }, fieldState }) => (
+            <Select
+              required
+              label="Categoria"
+              options={categoryOptions}
+              selectedValue={value}
+              onValueSelect={onChange}
               {...field}
               errorMessage={fieldState.error?.message}
-              label="Colocar em destaque no seu perfil"
             />
           )}
         />
+        <TextArea
+          required
+          label="Descrição"
+          {...register("description")}
+          errorMessage={errors.description?.message}
+        />
+        <div className="col-span-full">
+          <Controller
+            control={control}
+            name="isHighlighted"
+            defaultValue={false}
+            render={({ field, fieldState }) => (
+              <Checkbox
+                {...field}
+                errorMessage={fieldState.error?.message}
+                label="Colocar em destaque no seu perfil"
+              />
+            )}
+          />
+        </div>
       </div>
-      <div className="col-span-full">
-        <PrimaryButton fitContent isLoading={isLoading}>
-          Salvar <MessageSquareDashedIcon />
-        </PrimaryButton>
-      </div>
+      <h2 className="text-lg font-medium pb-2 lg:pb-5 border-b border-b-neutral-200">
+        Imagens em Destaque
+      </h2>
+      <FeaturedImagesInput />
+      <PrimaryButton fitContent isLoading={isLoading}>
+        Salvar <MessageSquareDashedIcon />
+      </PrimaryButton>
     </form>
   );
 }
