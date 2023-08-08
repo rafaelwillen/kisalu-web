@@ -21,7 +21,7 @@ import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-export default function BasicInformationForm() {
+export default function ServiceForm() {
   const router = useRouter();
   const { categoryOptions, isLoading: isLoadingTheCategories } =
     useCategoriesSelectOptions();
@@ -82,7 +82,7 @@ export default function BasicInformationForm() {
       </div>
       <Input
         required
-        label="Titulo do Serviço"
+        label="Título do Serviço"
         {...register("title")}
         errorMessage={errors.title?.message}
       />
