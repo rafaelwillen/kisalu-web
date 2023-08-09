@@ -36,7 +36,7 @@ export type CreateServiceRequestBody = {
   title: string;
   description: string;
   bannerImageURL?: string;
-  featuredIImagesURL?: string[];
+  featuredImagesURL: string[];
   minimumPrice: number;
   isHighlighted: boolean;
   categoryName: string;
