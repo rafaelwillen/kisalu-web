@@ -19,6 +19,7 @@ export const serviceBasicInformationCreationSchema = z.object({
       file: fileSchema,
     })
   ),
+  deliveryTime: z.string().nonempty("Campo obrigatório"),
 });
 
 export type ServiceBasicInformationCreationFormType = z.infer<

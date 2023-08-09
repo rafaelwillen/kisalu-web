@@ -134,6 +134,12 @@ export default function ServiceForm() {
               />
             )}
           />
+          <Input
+            {...register("deliveryTime")}
+            label="Tempo de Entrega"
+            required
+            errorMessage={errors.deliveryTime?.message}
+          />
           <div className="col-span-full">
             <TextArea
               required
