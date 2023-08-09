@@ -2,11 +2,10 @@
 
 import { State } from "@/api/types";
 import ConfirmationDialog from "@/components/dialog/ConfirmationDialog";
+import useServiceActionsMutation from "@/hooks/mutations/useServiceActionsMutation";
 import * as Popover from "@radix-ui/react-popover";
-import { useMutation } from "@tanstack/react-query";
 import { MoreVerticalIcon } from "lucide-react";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
 
 type Props = {
   serviceId: string;
@@ -19,37 +18,8 @@ export default function ActionPopover({ serviceId, state }: Props) {
   const [openDeleteConfirmationModal, setOpenDeleteConfirmationModal] =
     useState(false);
 
-  const { mutateAsync } = useMutation((action: ActionName) => {
-    switch (action) {
-      case "delete":
-        return new Promise((resolve) => setTimeout(resolve, 1000));
-      case "changeState":
-        return new Promise((resolve) => setTimeout(resolve, 1000));
-      default:
-        throw new Error("Invalid action");
-    }
-  });
-
-  const editService = () =>
-    toast.promise(mutateAsync("edit"), {
-      loading: "A editar serviço...",
-      success: "Serviço editado com sucesso",
-      error: "Ocorreu um erro ao editar o serviço",
-    });
-  const changeServiceState = () =>
-    toast.promise(mutateAsync("changeState"), {
-      loading: "A mudar o estado do serviço...",
-      success: "Estado alterado com sucesso",
-      error: "Ocorreu um erro ao alterar o estado",
-    });
-  function deleteService() {
-    setOpenDeleteConfirmationModal(false);
-    return toast.promise(mutateAsync("delete"), {
-      loading: "A eliminar serviço...",
-      success: "Serviço eliminado com sucesso",
-      error: "Ocorreu um erro ao eliminar o serviço",
-    });
-  }
+  const { changeServiceState, deleteService, editService } =
+    useServiceActionsMutation(serviceId);
 
   return (
     <Popover.Root>
@@ -98,7 +68,10 @@ export default function ActionPopover({ serviceId, state }: Props) {
         <Popover.Arrow fill="white" />
         <ConfirmationDialog
           onCancel={() => setOpenDeleteConfirmationModal(false)}
-          onConfirm={deleteService}
+          onConfirm={() => {
+            setOpenDeleteConfirmationModal(false);
+            deleteService();
+          }}
           open={openDeleteConfirmationModal}
           title="Eliminar serviço"
           description="Tem a certeza que pretende eliminar este serviço? Esta ação é irreversível."
