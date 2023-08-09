@@ -4,6 +4,7 @@ import { GetAllServicesFromProvider } from "@/api/types/response";
 import Select from "@/components/forms/elements/Select";
 import { servicesStatusSelectOptions } from "@/utils/constants/selectOptions";
 import { useMemo, useState } from "react";
+import MobileServiceListItem from "./MobileServiceListItem";
 
 type Props = {
   services: GetAllServicesFromProvider;
@@ -33,7 +34,11 @@ export default function MobileServicesList({ services }: Props) {
           Não existem serviços com o estado selecionado
         </p>
       )}
-      <div></div>
+      <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {filteredServices.map((service) => (
+          <MobileServiceListItem key={service.id} service={service} />
+        ))}
+      </ul>
     </div>
   );
 }

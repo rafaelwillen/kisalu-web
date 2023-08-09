@@ -45,9 +45,11 @@ export function formatToCurrency(value: number): string {
   const formatter = new Intl.NumberFormat(LOCALE, {
     style: "currency",
     currency: "AOA",
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
   });
 
-  return formatter.format(value);
+  return formatter.format(value / 100);
 }
 
 export function formatToNumber(value: number) {
