@@ -1,10 +1,9 @@
 "use client";
 
-import { authenticateUserNextServer } from "@/api/authentication";
+import { useAuth } from "@/context/AuthContext";
 import { Routes } from "@/utils/constants/routes";
 import { LoginFormType, loginSchema } from "@/utils/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { ArrowUpRight, Mail } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,21 +21,16 @@ export default function LoginForm() {
   } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
   });
-  const { mutateAsync, isLoading } = useMutation(
-    (data: LoginFormType) => authenticateUserNextServer(data),
-    {
-      onError: (error) => {
-        if (error instanceof Error) toast.error(error.message);
-      },
-    }
-  );
+  const { login, isLoading } = useAuth();
   const router = useRouter();
 
   async function handleFormSubmission(data: LoginFormType) {
-    await mutateAsync(data);
+    login({
+      data,
+      userType: "User",
+    });
     toast.success("Sessão iniciada com sucesso");
     router.replace(Routes.home);
-    router.refresh();
   }
 
   return (

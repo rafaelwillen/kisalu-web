@@ -32,9 +32,10 @@ export async function authenticateAdministratorNextServer(
   body: AuthenticationRequestBody
 ) {
   try {
-    const response = await nextServerAPI.post<
-      Pick<AdminAuthenticationResponseBody, "user">
-    >(endpoints.authentication.loginAdminNext, body);
+    const response = await nextServerAPI.post<AdminAuthenticationResponseBody>(
+      endpoints.authentication.loginAdminNext,
+      body
+    );
     return response.data;
   } catch (error) {
     throw handleNextAuthenticationError(error);
@@ -45,9 +46,10 @@ export async function authenticateUserNextServer(
   body: AuthenticationRequestBody
 ) {
   try {
-    const response = await nextServerAPI.post<
-      Pick<AdminAuthenticationResponseBody, "user">
-    >(endpoints.authentication.loginUserNext, body);
+    const response = await nextServerAPI.post<AdminAuthenticationResponseBody>(
+      endpoints.authentication.loginUserNext,
+      body
+    );
     return response.data;
   } catch (error) {
     throw handleNextAuthenticationError(error);
@@ -100,7 +102,7 @@ export async function resetUserPassword(
 }
 
 export const authenticationQueryKeys = {
-  currentUser: ["currentUser"],
+  currentUser: (token: string) => [endpoints.authentication.currentUser, token],
 };
 
 function handleNextAuthenticationError(error: unknown) {

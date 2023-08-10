@@ -8,10 +8,10 @@ import { ZodError } from "zod";
 export async function POST(request: NextRequest) {
   try {
     const body = loginSchema.parse(await request.json());
-    const { token, user } = await authenticateUser(body);
-    return NextResponse.json(user, {
+    const userCredentials = await authenticateUser(body);
+    return NextResponse.json(userCredentials, {
       headers: {
-        "Set-Cookie": generateJWTCookie(token),
+        "Set-Cookie": generateJWTCookie(userCredentials.token),
       },
     });
   } catch (error) {

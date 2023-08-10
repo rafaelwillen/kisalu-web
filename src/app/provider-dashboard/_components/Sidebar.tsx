@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import useToggle from "@/hooks/useToggle";
 import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
@@ -14,13 +15,13 @@ import {
   User2Icon,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import MobileSidebar from "./MobileSidebar";
 import ShowSidebarMenu from "./ShowSidebarMenu";
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const router = useRouter();
+  const { logout } = useAuth();
   const { toggle, isOpen } = useToggle();
   const mobileSidebarController = useToggle();
 
@@ -153,7 +154,7 @@ export default function Sidebar() {
             </li>
             <li>
               <button
-                onClick={() => router.replace(Routes.logout)}
+                onClick={() => logout("User")}
                 className={classNames(
                   "flex gap-4 items-center pl-8 py-4 rounded-r-md duration-300 hover:bg-danger hover:text-white",
                   sidebarSizeClassName

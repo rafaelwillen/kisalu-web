@@ -1,20 +1,14 @@
 "use client";
 
-import Image from "next/image";
-
-import { Routes } from "@/utils/constants/routes";
+import { useAuth } from "@/context/AuthContext";
 import * as Popover from "@radix-ui/react-popover";
 import { LogOutIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-type Props = {
-  avatarImageURL: string;
-  name: string;
-  email: string;
-};
-
-export default function Profile({ avatarImageURL, email, name }: Props) {
-  const router = useRouter();
+export default function Profile() {
+  const { logout, user } = useAuth();
+  const { avatarImageURL, email, firstName, lastName } = user!;
+  const name = `${firstName} ${lastName}`;
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
@@ -42,7 +36,7 @@ export default function Profile({ avatarImageURL, email, name }: Props) {
         <>
           <button
             type="button"
-            onClick={() => router.replace(Routes.logoutAdmin)}
+            onClick={() => logout("Administrator")}
             className="bg-white p-4 rounded-md shadow-lg flex items-center gap-4 hover:text-danger duration-300"
           >
             <LogOutIcon /> Finalizar sessão

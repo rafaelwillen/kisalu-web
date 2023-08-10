@@ -2,20 +2,19 @@
 
 import HamburgerMenuButton from "@/components/buttons/HamburgerMenuButton";
 import Container from "@/components/common/Container";
+import { useAuth } from "@/context/AuthContext";
 import useToggle from "@/hooks/useToggle";
 import sidebarLinks from "@/utils/constants/adminSidebarLinks";
-import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import { LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { SidebarProps } from "./types";
 
-export default function MobileSidebar({ user }: SidebarProps) {
-  const { email, name, avatarImageURL } = user;
+export default function MobileSidebar() {
+  const { user, logout } = useAuth();
+  const { email, firstName, lastName, avatarImageURL } = user!;
   const { isOpen, toggle, close } = useToggle();
-  const router = useRouter();
+  const name = `${firstName} ${lastName}`;
   return (
     <>
       <Container>
@@ -57,7 +56,7 @@ export default function MobileSidebar({ user }: SidebarProps) {
           </nav>
           <button
             type="button"
-            onClick={() => router.replace(Routes.logoutAdmin)}
+            onClick={() => logout("Administrator")}
             className="text-center self-center flex items-center gap-4 text-danger hover:underline"
           >
             <LogOutIcon /> Finalizar sessão

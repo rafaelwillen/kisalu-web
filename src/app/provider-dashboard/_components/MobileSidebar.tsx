@@ -1,8 +1,8 @@
+import { useAuth } from "@/context/AuthContext";
 import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import { XIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 type Props = {
   show: boolean;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function MobileSidebar({ show, onClose }: Props) {
-  const router = useRouter();
+  const { logout } = useAuth();
   return (
     <aside
       className={classNames(
@@ -63,7 +63,7 @@ export default function MobileSidebar({ show, onClose }: Props) {
           <li>
             <button
               className="block text-danger"
-              onClick={() => router.replace(Routes.logout)}
+              onClick={() => logout("User")}
             >
               Finalizar Sessão
             </button>
