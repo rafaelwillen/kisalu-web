@@ -1,19 +1,30 @@
+import {
+  changeServiceState as changeServiceStateAPI,
+  deleteService as deleteServiceAPI,
+} from "@/api/services";
+import { useAuth } from "@/context/AuthContext";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 type ActionName = "edit" | "delete" | "changeState";
 
 export default function useServiceActionsMutation(serviceId: string) {
-  const { mutateAsync } = useMutation((action: ActionName) => {
-    switch (action) {
-      case "delete":
-        return new Promise((resolve) => setTimeout(resolve, 1000));
-      case "changeState":
-        return new Promise((resolve) => setTimeout(resolve, 1000));
-      default:
-        throw new Error("Invalid action");
-    }
-  });
+  const { token } = useAuth();
+  const router = useRouter();
+  const { mutateAsync } = useMutation(
+    (action: ActionName) => {
+      switch (action) {
+        case "delete":
+          return deleteServiceAPI(serviceId, token);
+        case "changeState":
+          return changeServiceStateAPI(serviceId, token);
+        default:
+          throw new Error("Invalid action");
+      }
+    },
+    { onSuccess: () => router.refresh() }
+  );
 
   const editService = () =>
     toast.promise(mutateAsync("edit"), {

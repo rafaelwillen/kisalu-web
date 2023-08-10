@@ -26,6 +26,8 @@ export const endpoints = {
       getAllFromProvider: "/provider/services",
       getAllFromCategory: (categoryId: string) =>
         `/categories/${categoryId}/services`,
+      deleteService: (id: string) => `/provider/services/${id}`,
+      changeServiceState: (id: string) => `/provider/services/state/${id}`,
     },
   },
   client: {

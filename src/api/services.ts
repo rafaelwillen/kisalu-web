@@ -6,8 +6,12 @@ import {
   GetAllServicesFromProvider,
 } from "./types/response";
 
-const { create, getAllFromProvider, getAllFromCategory } =
-  endpoints.provider.services;
+const {
+  create,
+  getAllFromProvider,
+  getAllFromCategory,
+  changeServiceState: changeState,
+} = endpoints.provider.services;
 
 export async function createService(
   service: CreateServiceRequestBody,
@@ -57,6 +61,40 @@ export async function getServicesByCategory(
     return response.data;
   } catch (error) {
     throw new Error("Erro ao buscar os serviços");
+  }
+}
+
+export async function deleteService(serviceId: string, token?: string) {
+  try {
+    await api.delete(endpoints.provider.services.deleteService(serviceId), {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (error.response?.status === HttpStatusCode.Unauthorized) {
+        throw new Error("Credenciais Inválidas");
+      }
+      throw new Error("Erro ao deletar o serviço");
+    }
+  }
+}
+
+export async function changeServiceState(serviceId: string, token?: string) {
+  try {
+    await api.put(
+      changeState(serviceId),
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (error.response?.status === HttpStatusCode.Unauthorized) {
+        throw new Error("Credenciais Inválidas");
+      }
+      throw new Error("Erro ao alterar o estado do serviço");
+    }
   }
 }
 
