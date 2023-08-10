@@ -1,9 +1,7 @@
 import { useAuth } from "@/context/AuthContext";
-import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import { LogOutIcon, SettingsIcon, User } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import DangerButton from "../buttons/DangerButton";
 
@@ -29,11 +27,9 @@ export default function ClientProfile({ onClose }: Props) {
     .join("");
   const formatDate = (date: string) =>
     new Date(date).toLocaleDateString("pt-AO");
-  const router = useRouter();
 
   function logout() {
-    router.replace(Routes.logout);
-    router.refresh();
+    auth.logout("User");
     onClose();
   }
 
