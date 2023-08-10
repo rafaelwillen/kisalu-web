@@ -1,8 +1,12 @@
 "use client";
 
 import { GetAllServicesFromProvider } from "@/api/types/response";
+import Input from "@/components/forms/elements/Input";
 import { servicesStatusSelectOptions } from "@/utils/constants/selectOptions";
 import classNames from "classnames";
+import { SearchIcon } from "lucide-react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import DesktopServiceListItem from "./DesktopServiceListItem";
 
@@ -11,36 +15,49 @@ type Props = {
 };
 
 export default function DesktopServicesList({ services }: Props) {
-
-
-  const [selectedStatus, setSelectedStatus] = useState(
-    servicesStatusSelectOptions[0].value
-  );
-
+  const searchParams = useSearchParams();
+  const status =
+    searchParams.get("status") ?? servicesStatusSelectOptions[0].value;
+  const [searchValue, setSearchValue] = useState("");
   const filteredServices = useMemo(
-    () => services.filter(({ state }) => state === selectedStatus),
-    [services, selectedStatus]
+    () =>
+      services
+        .filter(({ state }) => state === status)
+        .filter(({ title }) =>
+          title.toLowerCase().includes(searchValue.toLowerCase())
+        ),
+    [services, status, searchValue]
   );
 
   const isEmpty = filteredServices.length === 0;
 
   return (
     <div className="max-lg:hidden">
-      <div>
+      <Input
+        label=""
+        type="search"
+        placeholder="Pesquisar por titulo..."
+        onChange={(e) => setSearchValue(e.target.value)}
+        value={searchValue}
+        icon={<SearchIcon size={14} />}
+      />
+      <div className="mt-4">
         <ul className="flex">
           {servicesStatusSelectOptions.map(({ label, value }) => (
             <li key={value}>
-              <button
-                onClick={() => setSelectedStatus(value)}
+              <Link
+                href={{
+                  query: {
+                    status: value,
+                  },
+                }}
                 className={classNames(
-                  "px-4 pb-2 border-b",
-                  selectedStatus === value
-                    ? "border-black"
-                    : "border-neutral-100"
+                  "px-4 pb-2 border-b block",
+                  status === value ? "border-black" : "border-neutral-100"
                 )}
               >
                 {label}
-              </button>
+              </Link>
             </li>
           ))}
           <li className="px-4 pb-2 border-b border-neutral-100 flex-1"></li>
