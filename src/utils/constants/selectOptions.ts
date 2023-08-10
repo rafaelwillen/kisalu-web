@@ -56,3 +56,18 @@ export const genderSelectOptions: SelectOption[] = [
     label: "Feminino",
   },
 ];
+
+export const servicesStatusSelectOptions: SelectOption[] = [
+  {
+    value: "Available",
+    label: "Disponível",
+  },
+  {
+    value: "Draft",
+    label: "Rascunho",
+  },
+  {
+    value: "Unavailable",
+    label: "Indisponível",
+  },
+];

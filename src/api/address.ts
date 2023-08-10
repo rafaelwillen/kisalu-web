@@ -9,7 +9,7 @@ export async function getAllCountiesFromProvince(
     const response = await api.get<string[]>(allCounties(province));
     return response.data;
   } catch (error) {
-    throw new Error("Erro ao buscar distritos");
+    return [];
   }
 }
 

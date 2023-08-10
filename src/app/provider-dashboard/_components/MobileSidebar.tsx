@@ -40,7 +40,11 @@ export default function MobileSidebar({ show, onClose }: Props) {
             </Link>
           </li>
           <li>
-            <Link className="block" onClick={() => onClose()} href="#">
+            <Link
+              className="block"
+              onClick={() => onClose()}
+              href={Routes.providerServices}
+            >
               Gerir Serviços
             </Link>
           </li>

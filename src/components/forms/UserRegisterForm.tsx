@@ -4,14 +4,14 @@ import { createClient } from "@/api/client";
 import { createProvider } from "@/api/provider";
 import { CreateUserRequestBody } from "@/api/types/request";
 import {
-  ADULT_DATE_OF_BIRTH,
-  DEFAULT_USER_AVATAR_API_URL,
+    ADULT_DATE_OF_BIRTH,
+    DEFAULT_USER_AVATAR_API_URL,
 } from "@/utils/constants";
 import { Routes } from "@/utils/constants/routes";
 import { genderSelectOptions } from "@/utils/constants/selectOptions";
 import {
-  RegisterFormType,
-  registerSchema,
+    RegisterFormType,
+    registerSchema,
 } from "@/utils/schemas/clientRegisterSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -148,7 +148,7 @@ export default function UserRegisterForm({ userType, redirectTo }: Props) {
               options={genderSelectOptions}
               label="Género"
               selectedValue={value}
-              onValueSelect={onChange}
+              onValueSelect={(value) => onChange(value as never)}
               {...rest}
               errorMessage={error?.message}
             />

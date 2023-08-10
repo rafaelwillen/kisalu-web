@@ -48,8 +48,10 @@ export type BaseServiceType = {
   viewsCount: number;
   state: State;
   featuredImagesURL: string[];
+  deliveryTime: string;
   minimumPrice: number;
   isHighlighted: boolean;
+  category: string;
 };
 
 export type BaseProjectType = {
@@ -70,11 +72,18 @@ export type BaseProjectType = {
   };
 };
 
+export type BaseAddressType = {
+  id: string;
+  addressLine: string;
+  county: string;
+  province: string;
+};
+
 export const storageAcceptableParams = {
   category: "category",
   service: "service",
   avatar: "avatar",
   project: "project",
-};
+} as const;
 
 export type StorageAcceptableParamsType = keyof typeof storageAcceptableParams;

@@ -90,7 +90,7 @@ export default function NewAdminForm() {
         }) => (
           <Select
             label="Género"
-            onValueSelect={onChange}
+            onValueSelect={(value) => onChange(value as never)}
             selectedValue={value}
             {...options}
             options={genderSelectOptions}

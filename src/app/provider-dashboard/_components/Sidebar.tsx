@@ -4,14 +4,14 @@ import useToggle from "@/hooks/useToggle";
 import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import {
-  FileStackIcon,
-  FolderKanbanIcon,
-  GanttChartSquareIcon,
-  HomeIcon,
-  LogOutIcon,
-  PanelLeftOpenIcon,
-  PanelRightOpenIcon,
-  User2Icon,
+    FileStackIcon,
+    FolderKanbanIcon,
+    GanttChartSquareIcon,
+    HomeIcon,
+    LogOutIcon,
+    PanelLeftOpenIcon,
+    PanelRightOpenIcon,
+    User2Icon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -98,7 +98,7 @@ export default function Sidebar() {
           <ul>
             <li>
               <Link
-                href="#"
+                href={Routes.providerServices}
                 className={classNames(
                   "flex gap-4 items-center pl-8 py-4 rounded-r-md duration-300 hover:bg-accent-200",
                   pathname === "" &&

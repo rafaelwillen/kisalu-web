@@ -1,4 +1,5 @@
 import {
+    BaseAddressType,
     BaseAdministratorType,
     BaseAuthType,
     BaseCategoryType,
@@ -42,6 +43,7 @@ export type UserAuthenticationResponseBody = {
   birthDate?: string;
   email: string;
   gender: Gender;
+  address?: Omit<BaseAddressType, "id">;
 };
 
 export type UploadCategoryImageResponseBody = {

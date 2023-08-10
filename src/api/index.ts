@@ -19,11 +19,15 @@ export const nextServerAPI = axios.create({
 export const endpoints = {
   provider: {
     create: "/provider",
+    updateAvatarImage: "/provider/avatar",
+    updateAddress: "/provider/address",
     services: {
       create: "/provider/services",
       getAllFromProvider: "/provider/services",
       getAllFromCategory: (categoryId: string) =>
         `/categories/${categoryId}/services`,
+      deleteService: (id: string) => `/provider/services/${id}`,
+      changeServiceState: (id: string) => `/provider/services/state/${id}`,
     },
   },
   client: {
@@ -38,7 +42,7 @@ export const endpoints = {
     },
   },
   address: {
-    allProvinces: "/address/provinces",
+    allProvinces: "/address/province",
     allCounties: (province: string) => `/address/county/${province}`,
   },
   admin: {
@@ -58,6 +62,7 @@ export const endpoints = {
     loginAdminNext: "/auth/admin",
     loginUser: "/auth/login",
     loginUserNext: "/auth/user",
+    changeUserPassword: "/auth/password-reset/user",
   },
   upload: {
     uploadImage: (storageParams: StorageAcceptableParamsType) =>
@@ -69,4 +74,4 @@ export const endpoints = {
     getAll: "/categories",
     getMostPopular: "/categories/popular-categories",
   },
-};
+} as const;
