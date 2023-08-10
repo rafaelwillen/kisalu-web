@@ -4,22 +4,23 @@ import useToggle from "@/hooks/useToggle";
 import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import {
-    FileStackIcon,
-    FolderKanbanIcon,
-    GanttChartSquareIcon,
-    HomeIcon,
-    LogOutIcon,
-    PanelLeftOpenIcon,
-    PanelRightOpenIcon,
-    User2Icon,
+  FileStackIcon,
+  FolderKanbanIcon,
+  GanttChartSquareIcon,
+  HomeIcon,
+  LogOutIcon,
+  PanelLeftOpenIcon,
+  PanelRightOpenIcon,
+  User2Icon,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import MobileSidebar from "./MobileSidebar";
 import ShowSidebarMenu from "./ShowSidebarMenu";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { toggle, isOpen } = useToggle();
   const mobileSidebarController = useToggle();
 
@@ -151,8 +152,8 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link
-                href={Routes.logout}
+              <button
+                onClick={() => router.replace(Routes.logout)}
                 className={classNames(
                   "flex gap-4 items-center pl-8 py-4 rounded-r-md duration-300 hover:bg-danger hover:text-white",
                   sidebarSizeClassName
@@ -160,7 +161,7 @@ export default function Sidebar() {
               >
                 <LogOutIcon size={20} />
                 {isOpen && "Finalizar Sessão"}
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>

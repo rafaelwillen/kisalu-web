@@ -2,6 +2,7 @@ import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import { XIcon } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {
   show: boolean;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export default function MobileSidebar({ show, onClose }: Props) {
+  const router = useRouter();
   return (
     <aside
       className={classNames(
@@ -59,13 +61,12 @@ export default function MobileSidebar({ show, onClose }: Props) {
             </Link>
           </li>
           <li>
-            <Link
+            <button
               className="block text-danger"
-              onClick={() => onClose()}
-              href={Routes.logout}
+              onClick={() => router.replace(Routes.logout)}
             >
               Finalizar Sessão
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>
