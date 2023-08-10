@@ -48,8 +48,10 @@ export type BaseServiceType = {
   viewsCount: number;
   state: State;
   featuredImagesURL: string[];
+  deliveryTime: string;
   minimumPrice: number;
   isHighlighted: boolean;
+  category: string;
 };
 
 export type BaseProjectType = {
