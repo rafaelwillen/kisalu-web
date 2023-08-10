@@ -2,12 +2,11 @@
 
 import { GetAllServicesFromProvider } from "@/api/types/response";
 import Input from "@/components/forms/elements/Input";
+import useServiceFilter from "@/hooks/filtering/useServiceFilter";
 import { servicesStatusSelectOptions } from "@/utils/constants/selectOptions";
 import classNames from "classnames";
 import { SearchIcon } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
 import MobileServiceListItem from "./MobileServiceListItem";
 
 type Props = {
@@ -15,21 +14,13 @@ type Props = {
 };
 
 export default function MobileServicesList({ services }: Props) {
-  const searchParams = useSearchParams();
-  const status =
-    searchParams.get("status") ?? servicesStatusSelectOptions[0].value;
-  const [searchValue, setSearchValue] = useState("");
-
-  const filteredServices = useMemo(
-    () =>
-      services
-        .filter(({ state }) => state === status)
-        .filter(({ title }) =>
-          title.toLowerCase().includes(searchValue.toLowerCase())
-        ),
-    [services, status, searchValue]
-  );
-  const emptyServices = filteredServices.length === 0;
+  const {
+    emptyServices,
+    filteredServices,
+    searchValue,
+    setSearchValue,
+    status,
+  } = useServiceFilter(services);
 
   return (
     <div className="lg:hidden">
