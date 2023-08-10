@@ -5,10 +5,10 @@ import KisaluLogo from "./logo.png";
 import NoServiceBanner from "./no-service-banner.png";
 
 export {
-  BusinessImage,
-  HeroImage,
-  KisaluLogo,
-  KisaluLogoDark,
-  NoServiceBanner,
+    BusinessImage,
+    HeroImage,
+    KisaluLogo,
+    KisaluLogoDark,
+    NoServiceBanner
 };
 

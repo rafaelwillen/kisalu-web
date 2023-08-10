@@ -4,14 +4,14 @@ import useToggle from "@/hooks/useToggle";
 import { Routes } from "@/utils/constants/routes";
 import classNames from "classnames";
 import {
-  FileStackIcon,
-  FolderKanbanIcon,
-  GanttChartSquareIcon,
-  HomeIcon,
-  LogOutIcon,
-  PanelLeftOpenIcon,
-  PanelRightOpenIcon,
-  User2Icon,
+    FileStackIcon,
+    FolderKanbanIcon,
+    GanttChartSquareIcon,
+    HomeIcon,
+    LogOutIcon,
+    PanelLeftOpenIcon,
+    PanelRightOpenIcon,
+    User2Icon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
