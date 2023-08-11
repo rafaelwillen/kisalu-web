@@ -1,5 +1,5 @@
+import { getAllPublicCategories } from "@/api/category";
 import Container from "@/components/common/Container";
-import { categoriesPageResult } from "@/mock/category";
 import { Metadata } from "next";
 import CategoryCard from "./_components/CategoryCard";
 
@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   title: "Categorias",
 };
 
-export default function CategoryPage() {
+export default async function CategoryPage() {
+  const categories = await getAllPublicCategories();
+
   return (
     <main className="py-10 lg:py-32">
       <section className="mb-10">
@@ -23,14 +25,11 @@ export default function CategoryPage() {
         </Container>
       </section>
       <Container small>
-        <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-5 lg:gap-7 mb-5">
-          {/* TODO: Add data from API */}
-          {categoriesPageResult.map((category) => (
-            <CategoryCard key={category.name} {...category} />
+        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-7 mb-5">
+          {categories.map((category) => (
+            <CategoryCard key={category.id} {...category} />
           ))}
         </section>
-        {/* TODO: Implement the pagination */}
-        {/* <Pagination /> */}
       </Container>
     </main>
   );
