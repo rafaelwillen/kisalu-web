@@ -15,7 +15,6 @@ export default async function CategoryCard({
   name,
 }: Props) {
   const blurredImageData = await getPlaceholder(mainImageURL);
-
   return (
     <Link
       href={Routes.singleCategory(slug)}
