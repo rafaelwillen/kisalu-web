@@ -3,6 +3,10 @@ import { formatToCompactNumber } from "@/utils/intl";
 import { HelpCircle, Laptop, ScrollText, Shield } from "lucide-react";
 
 export default function CoreFeatures() {
+  const numberOfProviders = 0;
+  const numberOfPositiveRecommendations = 0;
+  const numberOfServicesCreated = 0;
+  const numberOfProjectsCompleted = 0;
   return (
     <section className="mt-10 lg:mt-32">
       <h2 className="font-bold text-2xl text-center mb-12 lg:mb-20 lg:text-3xl">
@@ -55,25 +59,25 @@ export default function CoreFeatures() {
           <article className="py-10 grid grid-cols-2 gap-4 lg:flex justify-between">
             <div>
               <p className="font-bold text-4xl mb-1 lg:text-center">
-                {formatToCompactNumber(2_000)}
+                {formatToCompactNumber(numberOfProviders)}
               </p>
               <p className="leading-7">Total de Prestadores</p>
             </div>
             <div>
               <p className="font-bold text-4xl mb-1 lg:text-center">
-                {formatToCompactNumber(800)}
+                {formatToCompactNumber(numberOfPositiveRecommendations)}
               </p>
               <p className="leading-7">Recomendações Positivas</p>
             </div>
             <div>
               <p className="font-bold text-4xl mb-1 lg:text-center">
-                {formatToCompactNumber(900)}
+                {formatToCompactNumber(numberOfServicesCreated)}
               </p>
               <p className="leading-7">Serviços Criados</p>
             </div>
             <div>
               <p className="font-bold text-4xl mb-1 lg:text-center">
-                {formatToCompactNumber(700)}
+                {formatToCompactNumber(numberOfProjectsCompleted)}
               </p>
               <p className="leading-7">Projetos Completados</p>
             </div>
