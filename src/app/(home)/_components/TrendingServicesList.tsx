@@ -1,11 +1,8 @@
 import Container from "@/components/common/Container";
-import { trendingService } from "@/mock/projects";
-import { randomUUID } from "node:crypto";
 import TrendingServiceCard from "./TrendingServiceCard";
 
-// TODO: Fetch data from the API
-
 export default function TrendingServicesList() {
+  const featuredServices: any[] = [];
   return (
     <section>
       <Container small>
@@ -16,9 +13,14 @@ export default function TrendingServicesList() {
           </div>
         </div>
       </Container>
-      <article className="mt-7 flex overflow-auto gap-2 pb-4 lg:px-5 lg:gap-7 max-lg:snap-x max-lg:snap-mandatory">
-        {trendingService.map((service) => (
-          <TrendingServiceCard key={randomUUID()} {...service} />
+      <article className="mt-7 flex  overflow-auto gap-2 pb-4 lg:px-5 lg:gap-7 max-lg:snap-x max-lg:snap-mandatory">
+        {featuredServices.length === 0 && (
+          <p className="text-center w-full text-lg">
+            Não há serviços em destaque no momento
+          </p>
+        )}
+        {featuredServices.map((service, index) => (
+          <TrendingServiceCard key={index} {...service} />
         ))}
       </article>
     </section>
