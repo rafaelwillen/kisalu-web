@@ -1,5 +1,8 @@
 import Container from "@/components/common/Container";
+import { Routes } from "@/utils/constants/routes";
+import { getAuthenticationToken } from "@/utils/server";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 import ProviderCard from "./_components/ProviderCard";
 
 export const metadata: Metadata = {
@@ -7,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function ProvidersPage() {
+  const token = getAuthenticationToken();
+  if (!token) redirect(Routes.login);
   return (
     <main className="py-10 lg:py-32">
       <Container small>

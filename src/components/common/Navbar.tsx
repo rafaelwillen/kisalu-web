@@ -98,40 +98,42 @@ export default function Navbar({ whiteBackground }: Props) {
               </span>
             </Link>
           </li>
-          <li
-            className={classNames(
-              "hidden lg:flex gap-7 items-center text-sm font-regular",
-              whiteBackground ? "text-text-200" : "text-white"
-            )}
-          >
-            <Link
-              href={Routes.categories}
+          {token && (
+            <li
               className={classNames(
-                "animated-underline",
-                whiteBackground && "dark"
+                "hidden lg:flex gap-7 items-center text-sm font-regular",
+                whiteBackground ? "text-text-200" : "text-white"
               )}
             >
-              Categorias
-            </Link>
-            <Link
-              href={Routes.providers}
-              className={classNames(
-                "animated-underline",
-                whiteBackground && "dark"
-              )}
-            >
-              Prestadores
-            </Link>
-            <Link
-              href={Routes.projects}
-              className={classNames(
-                "animated-underline",
-                whiteBackground && "dark"
-              )}
-            >
-              Projectos
-            </Link>
-          </li>
+              <Link
+                href={Routes.categories}
+                className={classNames(
+                  "animated-underline",
+                  whiteBackground && "dark"
+                )}
+              >
+                Categorias
+              </Link>
+              <Link
+                href={Routes.providers}
+                className={classNames(
+                  "animated-underline",
+                  whiteBackground && "dark"
+                )}
+              >
+                Prestadores
+              </Link>
+              <Link
+                href={Routes.projects}
+                className={classNames(
+                  "animated-underline",
+                  whiteBackground && "dark"
+                )}
+              >
+                Projectos
+              </Link>
+            </li>
+          )}
           <li className="flex items-center gap-7 py-1">
             {renderTheUserProfile()}
           </li>

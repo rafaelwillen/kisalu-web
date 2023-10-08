@@ -1,9 +1,11 @@
 import Container from "@/components/common/Container";
 import UserReviews from "@/components/common/UserReviews";
 import { Routes } from "@/utils/constants/routes";
+import { getAuthenticationToken } from "@/utils/server";
 import { Info } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import LocationAndDurationInfo from "./_components/LocationAndDurationInfo";
 import ProviderQuickInfo from "./_components/ProductQuickInfo";
 import ServicePrice from "./_components/ServicePrice";
@@ -16,6 +18,8 @@ export const metadata: Metadata = {
 };
 
 export default function ServicePage() {
+  const token = getAuthenticationToken();
+  if (!token) redirect(Routes.login);
   return (
     <main className="py-10 lg:pt-0">
       <Container small>

@@ -1,9 +1,15 @@
 import Container from "@/components/common/Container";
+import { Routes } from "@/utils/constants/routes";
+import { getAuthenticationToken } from "@/utils/server";
+import { redirect } from "next/navigation";
 import { v4 as uuid } from "uuid";
 
 const skeletonData = Array.from({ length: 20 }, (_, index) => uuid());
 
 export default function CategoriesLoadingPage() {
+  const token = getAuthenticationToken();
+  if (!token) redirect(Routes.login);
+
   return (
     <main className="py-10 lg:py-32">
       <section className="mb-10">
