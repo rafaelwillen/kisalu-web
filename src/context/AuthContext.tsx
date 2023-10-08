@@ -6,7 +6,10 @@ import {
   authenticationQueryKeys,
   getAuthenticatedUser,
 } from "@/api/authentication";
-import { UserAuthenticationResponseBody } from "@/api/types/response";
+import {
+  AdminAuthenticationResponseBody,
+  UserAuthenticationResponseBody,
+} from "@/api/types/response";
 import { Routes } from "@/utils/constants/routes";
 import { LoginFormType } from "@/utils/schemas/loginSchema";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -23,7 +26,7 @@ type AuthContextData = {
   token?: string;
   isLoading: boolean;
   isAdmin: boolean;
-  login: (args: LoginMutationArgs) => Promise<void>;
+  login: (args: LoginMutationArgs) => Promise<AdminAuthenticationResponseBody>;
   logout: (userType: "Administrator" | "User") => void;
 };
 
@@ -52,6 +55,7 @@ export function AuthProvider({
       },
     }
   );
+
   const { data: user } = useQuery(
     authenticationQueryKeys.currentUser(token!),
     () => getAuthenticatedUser(token!),
