@@ -23,7 +23,7 @@ type AuthContextData = {
   token?: string;
   isLoading: boolean;
   isAdmin: boolean;
-  login: (args: LoginMutationArgs) => void;
+  login: (args: LoginMutationArgs) => Promise<void>;
   logout: (userType: "Administrator" | "User") => void;
 };
 
