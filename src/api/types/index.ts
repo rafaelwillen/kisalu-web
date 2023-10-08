@@ -71,6 +71,11 @@ export type BaseProjectType = {
   attachments: unknown[];
   minimumPrice: number;
   maximumPrice: number;
+  User: {
+    avatarImageURL: string;
+    firstName: string;
+    lastName: string;
+  };
 };
 
 export type BaseAddressType = {

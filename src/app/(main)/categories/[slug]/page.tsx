@@ -7,6 +7,7 @@ import { Routes } from "@/utils/constants/routes";
 import { getAuthenticationToken } from "@/utils/server";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import ProjectCard from "./_components/ProjectCard";
 
 type PageProps = {
   params: {
@@ -63,7 +64,9 @@ export default async function SingleCategoryPage({
             ? category.services.map((service) => (
                 <ServiceCard key={service.id} {...service} />
               ))
-            : category.projects.map((project) => <></>)}
+            : category.projects.map((project) => (
+                <ProjectCard key={project.id} {...project} />
+              ))}
         </section>
       </Container>
     </main>

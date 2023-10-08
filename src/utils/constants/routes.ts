@@ -8,6 +8,7 @@ export const Routes = {
   providerRegister: "/register/provider",
   singleCategory: (slug: string) => `/categories/${slug}`,
   singleService: (id: string) => `/service/${id}`,
+  singleProject: (id: string) => `/project/${id}`,
   providers: "/providers",
   singleProvider: (username: string) => `/providers/${username}`,
   adminLogin: "/admin/login",
