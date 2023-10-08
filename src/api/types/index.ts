@@ -1,3 +1,8 @@
+export type ISODateString = string;
+export type Role = "Administrator" | "Provider" | "Client";
+export type Gender = "Male" | "Female";
+export type State = "Available" | "Draft" | "Unavailable";
+
 export type BaseCategoryType = {
   id: string;
   name: string;
@@ -6,8 +11,8 @@ export type BaseCategoryType = {
   slug: string;
   description: string;
   createdAt: string;
-  services: unknown[];
-  projects: unknown[];
+  services: BaseServiceType[];
+  projects: BaseProjectType[];
   admin: CategoryCreator;
 };
 
@@ -18,10 +23,6 @@ export type CategoryCreator = {
   avatarImageURL: string;
   gender: Role;
 };
-
-export type Role = "Administrator" | "Provider" | "Client";
-export type Gender = "Male" | "Female";
-export type State = "Available" | "Draft" | "Unavailable";
 
 export type BaseAdministratorType = {
   id: string;
@@ -42,34 +43,34 @@ export type BaseServiceType = {
   id: string;
   title: string;
   description: string;
-  bannerImageURL: string | null;
-  publishedDate: Date | null;
-  createdAt: Date;
+  bannerImageURL?: string;
+  publishedDate?: ISODateString;
+  createdAt: ISODateString;
   viewsCount: number;
   state: State;
   featuredImagesURL: string[];
-  deliveryTime: string;
   minimumPrice: number;
+  deliveryTime: ISODateString;
   isHighlighted: boolean;
-  category: string;
+  User: {
+    avatarImageURL: string;
+    firstName: string;
+    lastName: string;
+  };
 };
 
 export type BaseProjectType = {
   id: string;
   title: string;
   description: string;
-  bannerImageURL: string | null;
-  publishedDate?: string | Date;
-  createdAt: string | Date;
+  bannerImageURL?: string;
+  publishedDate?: ISODateString;
+  createdAt: ISODateString;
   viewsCount: number;
   state: State;
-  featuredImagesURL: string[];
+  attachments: unknown[];
   minimumPrice: number;
   maximumPrice: number;
-  category: {
-    name: string;
-    slug: string;
-  };
 };
 
 export type BaseAddressType = {

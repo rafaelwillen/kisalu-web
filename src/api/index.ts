@@ -73,5 +73,6 @@ export const endpoints = {
     queryByName: "/categories/query",
     getAll: "/categories",
     getMostPopular: "/categories/popular-categories",
+    getBySlug: (slug: string) => `/categories/${slug}`,
   },
 } as const;

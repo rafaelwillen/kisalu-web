@@ -1,3 +1,6 @@
+import { ISODateString } from "@/api/types";
+import { format } from "date-fns";
+
 type RelativeTimeFormatUnit =
   | "year"
   | "years"
@@ -70,4 +73,9 @@ export function formatToRelativeDate(date: Date) {
     }
     duration /= division.amount;
   }
+}
+
+export function formatCompactDate(date: ISODateString | Date) {
+  const newDate = new Date(date);
+  return format(newDate, "dd/MM/yyyy");
 }
