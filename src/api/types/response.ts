@@ -1,13 +1,13 @@
 import {
-    BaseAddressType,
-    BaseAdministratorType,
-    BaseAuthType,
-    BaseCategoryType,
-    BaseProjectType,
-    BaseServiceType,
-    CategoryCreator,
-    Gender,
-    Role,
+  BaseAddressType,
+  BaseAdministratorType,
+  BaseAuthType,
+  BaseCategoryType,
+  BaseProjectType,
+  BaseServiceType,
+  CategoryCreator,
+  Gender,
+  Role,
 } from ".";
 
 type CategoryFromResponseBody = Omit<BaseCategoryType, "bannerImageUrl"> & {
@@ -82,6 +82,10 @@ export type GetAllServicesFromProvider = BaseServiceType[];
 export type GetAllProjectsFromClient = BaseProjectType[];
 export type GetAllProjectsFromCategory = Omit<BaseProjectType, "category">[];
 export type GetAllServicesFromCategory = Omit<BaseServiceType, "category">[];
+export type GetCategoryBySlug = Omit<
+  GetSingleCategoryResponseBodyType,
+  "admin"
+>;
 
 export type GetCategoryFromSearchQueryResponseBody = Pick<
   BaseCategoryType,

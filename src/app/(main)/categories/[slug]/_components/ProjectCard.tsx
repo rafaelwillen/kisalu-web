@@ -1,10 +1,10 @@
-import { BaseServiceType } from "@/api/types";
+import { BaseProjectType } from "@/api/types";
 import { Routes } from "@/utils/constants/routes";
 import { formatCompactDate, formatToCurrency } from "@/utils/intl";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ServiceCard({
+export default function ProjectCard({
   title,
   bannerImageURL,
   id,
@@ -13,12 +13,12 @@ export default function ServiceCard({
   publishedDate,
   createdAt,
 }: Omit<
-  BaseServiceType,
+  BaseProjectType,
   "state" | "isHighlighted" | "featuredImagesURL" | "description"
 >) {
   return (
     <Link
-      href={Routes.singleService(id)}
+      href={Routes.singleProject(id)}
       className="space-y-5 border-b border-neutral-200 lg:flex-col lg:border-0 lg:shadow-lg rounded lg:py-2 group duration-700 ease-in-out hover:-translate-y-2"
     >
       <div className="flex gap-4 lg:flex-col">

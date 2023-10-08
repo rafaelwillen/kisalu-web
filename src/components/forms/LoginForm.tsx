@@ -25,12 +25,12 @@ export default function LoginForm() {
   const router = useRouter();
 
   async function handleFormSubmission(data: LoginFormType) {
-    login({
-      data,
-      userType: "User",
-    });
-    toast.success("Sessão iniciada com sucesso");
-    router.replace(Routes.home);
+     await login({
+       data,
+       userType: "User",
+     });
+     toast.success("Sessão iniciada com sucesso");
+     router.replace(Routes.home);
   }
 
   return (

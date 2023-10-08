@@ -11,7 +11,7 @@ export default async function CategoryPage() {
   const categories = await getAllPublicCategories();
 
   return (
-    <main className="py-10 lg:py-32">
+    <main className="py-10">
       <section className="mb-10">
         <Container small>
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
