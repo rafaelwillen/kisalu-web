@@ -25,7 +25,7 @@ export default function CommonCategoryCard({ category }: Props) {
           {formatToNumber(totalProjects)} projectos
         </p>
         <p className="text-neutral-500 min-w-[200px] text-sm">
-          {formatToNumber(totalServices)} projectos
+          {formatToNumber(totalServices)} serviços
         </p>
       </div>
     </Link>
