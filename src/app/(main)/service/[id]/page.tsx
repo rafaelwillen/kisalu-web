@@ -1,15 +1,13 @@
+import { getServiceById } from "@/api/services";
 import Container from "@/components/common/Container";
 import UserReviews from "@/components/common/UserReviews";
 import { Routes } from "@/utils/constants/routes";
-import { getAuthenticationToken } from "@/utils/server";
-import { Info } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import LocationAndDurationInfo from "./_components/LocationAndDurationInfo";
+import { notFound } from "next/navigation";
+import Info from "./_components/Info";
 import ProviderQuickInfo from "./_components/ProductQuickInfo";
 import ServicePrice from "./_components/ServicePrice";
-import ServiceProductBanner from "./_components/ServiceProductBanner";
 import ServiceImagesSlider from "./_components/ServicesImagesSlider";
 
 // TODO: Add dynamic metadata
@@ -17,9 +15,17 @@ export const metadata: Metadata = {
   title: "",
 };
 
-export default function ServicePage() {
-  const token = getAuthenticationToken();
-  if (!token) redirect(Routes.login);
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function ServicePage({
+  params: { id: serviceId },
+}: PageProps) {
+  const service = await getServiceById(serviceId);
+  if (!service) notFound();
   return (
     <main className="py-10 lg:pt-0">
       <Container small>
@@ -34,57 +40,56 @@ export default function ServicePage() {
           <span>/</span>
           <Link
             className="animated-underline dark"
-            href={Routes.singleCategory("web-development")}
+            href={Routes.singleCategory(service.category.slug)}
           >
-            Categoria aleatória
+            {service.category.name}
           </Link>
           <span>/</span>
           <Link className="animated-underline dark text-text-200" href="#">
-            Lorem, ipsum dolor.
+            {service.title}
           </Link>
         </section>
       </Container>
       <Container small>
-        <ServiceProductBanner />
         {/* MOBILE ONLY */}
         <div className="block xl:hidden">
-          <LocationAndDurationInfo />
           <div className="md:flex items-start gap-4 mt-7">
-            <ServiceImagesSlider
-              imagesUrl={[
-                "https://placehold.co/896x665.png?text=1",
-                "https://placehold.co/896x665.png?text=2",
-                "https://placehold.co/896x665.png?text=3",
-                "https://placehold.co/896x665.png?text=4",
-                "https://placehold.co/896x665.png?text=5",
-                "https://placehold.co/896x665.png?text=6",
-              ]}
+            <ServiceImagesSlider imagesUrl={service.featuredImagesURL} />
+            <ProviderQuickInfo
+              avatarImageURL={service.User.avatarImageURL}
+              firstName={service.User.firstName}
+              lastName={service.User.lastName}
+              id={service.User.id}
+              successRate={0}
+              address={service.User.address}
             />
-            <ProviderQuickInfo />
           </div>
-          <Info />
-          <ServicePrice />
-          <UserReviews />
+          <Info {...service} />
+          <ServicePrice
+            serviceId={service.id}
+            minimumPrice={service.minimumPrice}
+          />
+          <UserReviews reviews={[]} />
         </div>
-        <div className="hidden xl:grid grid-cols-2 pl-20">
+        <div className="hidden xl:grid grid-cols-2 pl-20 mt-12 relative">
           <div>
-            <LocationAndDurationInfo />
-            <ServiceImagesSlider
-              imagesUrl={[
-                "https://placehold.co/150x111.png?text=1",
-                "https://placehold.co/150x111.png?text=2",
-                "https://placehold.co/150x111.png?text=3",
-                "https://placehold.co/150x111.png?text=4",
-                "https://placehold.co/150x111.png?text=5",
-                "https://placehold.co/150x111.png?text=6",
-              ]}
-            />
-            <Info />
-            <UserReviews />
+            <ServiceImagesSlider imagesUrl={service.featuredImagesURL} />
+            <Info {...service} />
+            <UserReviews reviews={[]} />
           </div>
-          <aside className="-mt-16 z-20">
-            <ProviderQuickInfo />
-            <ServicePrice />
+          <aside className="sticky top-0">
+            <ProviderQuickInfo
+              avatarImageURL={service.User.avatarImageURL}
+              firstName={service.User.firstName}
+              lastName={service.User.lastName}
+              id={service.User.id}
+              successRate={0}
+              address={service.User.address}
+            />
+            <ServicePrice
+              serviceId={service.id}
+              minimumPrice={service.minimumPrice}
+            />
           </aside>
         </div>
       </Container>
