@@ -1,3 +1,5 @@
+import { ExperienceInfo } from "../experienceInfo";
+
 export type ISODateString = string;
 export type Role = "Administrator" | "Provider" | "Client";
 export type Gender = "Male" | "Female";
@@ -90,13 +92,16 @@ export type BaseProviderType = {
   firstName: string;
   lastName: string;
   avatarImageURL: string;
-  biography: any;
+  biography?: string;
   birthDate: ISODateString;
   gender: Gender;
-  experienceInfo: Array<unknown>;
+  experienceInfo: Array<ExperienceInfo>;
   portfolio: Array<unknown>;
   reviews: Array<BaseReviewType>;
   providerActivities: Array<unknown>;
+  auth: {
+    createdAt: ISODateString;
+  };
   services: Array<{
     id: string;
     title: string;
