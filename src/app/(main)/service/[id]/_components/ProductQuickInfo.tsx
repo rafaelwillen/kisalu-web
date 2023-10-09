@@ -1,45 +1,61 @@
+import { BaseAddressType } from "@/api/types";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import ReviewStarIcon from "@/components/common/ReviewStarIcon";
 import { Routes } from "@/utils/constants/routes";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 // TODO: Add props
+type Props = {
+  firstName: string;
+  lastName: string;
+  address?: BaseAddressType;
+  successRate: number;
+  id: string;
+  avatarImageURL: string;
+};
 
-export default function ProviderQuickInfo() {
+export default function ProviderQuickInfo({
+  address,
+  firstName,
+  id,
+  lastName,
+  successRate = 0,
+  avatarImageURL,
+}: Props) {
+  const fullName = `${firstName} ${lastName}`;
   return (
     <section className="border border-neutral-200 rounded-lg bg-white shadow-lg p-8 mt-7 md:flex-1 md:mt-0 xl:w-1/2 xl:mx-auto">
       <h2 className="font-medium text-xl">Sobre o prestador</h2>
       <article className="flex gap-5 items-center mt-8">
         <Image
-          src="https://placehold.co/90.png"
-          alt="User"
+          src={avatarImageURL}
+          alt={fullName}
           width={90}
           height={90}
           className="rounded-full"
         />
         <div className="flex-1">
-          <p className="text-lg font-medium">Robert Fox</p>
-          <div className="flex gap-1 text-sm">
-            <ReviewStarIcon />
-            <p className="font-medium">4.9</p>
-            <p className="text-text-100">(595 notas)</p>
-          </div>
+          <p className="text-lg font-medium">{fullName}</p>
         </div>
       </article>
-      <article className="flex justify-between items-center mt-5 pt-5 border-t border-neutral-200">
+      <article className="flex justify-between items-center my-5 pt-5 border-t border-neutral-200">
         <div className="space-y-1">
           <p className="font-medium">Localização</p>
-          <p>Luanda, Rangel</p>
+          {address ? (
+            <p>
+              {address?.province}, {address?.county}
+            </p>
+          ) : (
+            <p>Não definido</p>
+          )}
         </div>
         <div className="space-y-1">
           <p className="font-medium">Taxa de Sucesso</p>
-          <p>98%</p>
+          <p>{successRate * 100}%</p>
         </div>
       </article>
-      {/* TODO: Go to provider page */}
-      <Link href={Routes.singleProvider("lorem 2")} legacyBehavior>
+      <Link href={Routes.singleProvider(id)} legacyBehavior>
         <PrimaryButton variant="outline">
           Contactar-me
           <ArrowUpRight />

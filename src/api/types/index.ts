@@ -85,6 +85,17 @@ export type BaseAddressType = {
   province: string;
 };
 
+export type BaseReviewType = {
+  id: string;
+  rating: number;
+  commentary: string;
+  client: {
+    avatarImageURL: string;
+    firstName: string;
+    lastName: string;
+  };
+};
+
 export const storageAcceptableParams = {
   category: "category",
   service: "service",

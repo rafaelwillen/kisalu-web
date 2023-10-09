@@ -64,6 +64,9 @@ export const endpoints = {
     loginUserNext: "/auth/user",
     changeUserPassword: "/auth/password-reset/user",
   },
+  service: {
+    getServiceById: (id: string) => `/service/${id}`,
+  },
   upload: {
     uploadImage: (storageParams: StorageAcceptableParamsType) =>
       `/upload/image/${storageParams}`,
