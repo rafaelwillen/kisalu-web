@@ -21,6 +21,8 @@ export const endpoints = {
     create: "/provider",
     updateAvatarImage: "/provider/avatar",
     updateAddress: "/provider/address",
+    getAll: "/provider",
+    getSingle: (id: string) => `/provider/${id}`,
     services: {
       create: "/provider/services",
       getAllFromProvider: "/provider/services",

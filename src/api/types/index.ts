@@ -1,3 +1,5 @@
+import { ExperienceInfo } from "../experienceInfo";
+
 export type ISODateString = string;
 export type Role = "Administrator" | "Provider" | "Client";
 export type Gender = "Male" | "Female";
@@ -83,6 +85,39 @@ export type BaseAddressType = {
   addressLine: string;
   county: string;
   province: string;
+};
+
+export type BaseProviderType = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatarImageURL: string;
+  biography?: string;
+  birthDate: ISODateString;
+  gender: Gender;
+  experienceInfo: Array<ExperienceInfo>;
+  portfolio: Array<unknown>;
+  reviews: Array<BaseReviewType>;
+  providerActivities: Array<unknown>;
+  auth: {
+    createdAt: ISODateString;
+  };
+  services: Array<{
+    id: string;
+    title: string;
+    description: string;
+    bannerImageURL: string;
+    publishedDate: any;
+    createdAt: string;
+    viewsCount: number;
+    state: string;
+    featuredImagesURL: Array<any>;
+    minimumPrice: number;
+    isHighlighted: boolean;
+    deliveryTime: string;
+    categoryId: string;
+  }>;
+  address: BaseAddressType;
 };
 
 export type BaseReviewType = {

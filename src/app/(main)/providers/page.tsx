@@ -1,46 +1,22 @@
+import { getAllProviders } from "@/api/provider";
 import Container from "@/components/common/Container";
-import { Routes } from "@/utils/constants/routes";
-import { getAuthenticationToken } from "@/utils/server";
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 import ProviderCard from "./_components/ProviderCard";
 
 export const metadata: Metadata = {
   title: "Os Nossos Prestadores",
 };
 
-export default function ProvidersPage() {
-  const token = getAuthenticationToken();
-  if (!token) redirect(Routes.login);
+export default async function ProvidersPage() {
+  const providers = await getAllProviders();
+
   return (
-    <main className="py-10 lg:py-32">
+    <main className="py-10 lg:py-28">
       <Container small>
-        {/*TODO: Filtering  */}
-        <section className="bg-neutral-400 flex items-center justify-center h-12">
-          WIP
-        </section>
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-5 lg:gap-7 mt-5 mb-7">
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-        </section>
-        {/* TODO: Pagination */}
-        <section className="bg-neutral-400 flex items-center justify-center h-20 max-w-lg mx-auto">
-          WIP
+          {providers.map((provider) => (
+            <ProviderCard key={provider.id} provider={provider} />
+          ))}
         </section>
       </Container>
     </main>

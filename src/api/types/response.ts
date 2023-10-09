@@ -4,6 +4,7 @@ import {
   BaseAuthType,
   BaseCategoryType,
   BaseProjectType,
+  BaseProviderType,
   BaseReviewType,
   BaseServiceType,
   CategoryCreator,
@@ -93,6 +94,8 @@ export type GetCategoryFromSearchQueryResponseBody = Pick<
   "id" | "name" | "slug"
 >[];
 
+export type GetAllProviderResponseBody = BaseProviderType[];
+export type GetProviderByIdResponseBody = BaseProviderType;
 export type GetSingleServiceByIDResponseBody = BaseServiceType & {
   category: {
     name: string;
