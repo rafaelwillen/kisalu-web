@@ -85,6 +85,36 @@ export type BaseAddressType = {
   province: string;
 };
 
+export type BaseProviderType = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatarImageURL: string;
+  biography: any;
+  birthDate: ISODateString;
+  gender: Gender;
+  experienceInfo: Array<unknown>;
+  portfolio: Array<unknown>;
+  reviews: Array<unknown>;
+  providerActivities: Array<unknown>;
+  services: Array<{
+    id: string;
+    title: string;
+    description: string;
+    bannerImageURL: string;
+    publishedDate: any;
+    createdAt: string;
+    viewsCount: number;
+    state: string;
+    featuredImagesURL: Array<any>;
+    minimumPrice: number;
+    isHighlighted: boolean;
+    deliveryTime: string;
+    categoryId: string;
+  }>;
+  address?: BaseAddressType;
+};
+
 export const storageAcceptableParams = {
   category: "category",
   service: "service",
