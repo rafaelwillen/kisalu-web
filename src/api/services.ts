@@ -4,6 +4,7 @@ import { CreateServiceRequestBody } from "./types/request";
 import {
   GetAllServicesFromCategory,
   GetAllServicesFromProvider,
+  GetSingleServiceByIDResponseBody,
 } from "./types/response";
 
 const {
@@ -95,6 +96,20 @@ export async function changeServiceState(serviceId: string, token?: string) {
       }
       throw new Error("Erro ao alterar o estado do serviço");
     }
+  }
+}
+
+export async function getServiceById(serviceId: string) {
+  try {
+    const response = await api.get<GetSingleServiceByIDResponseBody>(
+      endpoints.service.getServiceById(serviceId)
+    );
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (error.response?.status === HttpStatusCode.NotFound) return undefined;
+    }
+    throw new Error("Erro ao obter informações do serviço");
   }
 }
 

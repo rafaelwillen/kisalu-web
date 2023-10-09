@@ -5,6 +5,7 @@ import {
   BaseCategoryType,
   BaseProjectType,
   BaseProviderType,
+  BaseReviewType,
   BaseServiceType,
   CategoryCreator,
   Gender,
@@ -95,3 +96,16 @@ export type GetCategoryFromSearchQueryResponseBody = Pick<
 
 export type GetAllProviderResponseBody = BaseProviderType[];
 export type GetProviderByIdResponseBody = BaseProviderType;
+export type GetSingleServiceByIDResponseBody = BaseServiceType & {
+  category: {
+    name: string;
+    slug: string;
+  };
+  User: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    address?: BaseAddressType;
+    reviews: BaseReviewType[];
+  };
+};

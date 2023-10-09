@@ -95,7 +95,7 @@ export type BaseProviderType = {
   gender: Gender;
   experienceInfo: Array<unknown>;
   portfolio: Array<unknown>;
-  reviews: Array<unknown>;
+  reviews: Array<BaseReviewType>;
   providerActivities: Array<unknown>;
   services: Array<{
     id: string;
@@ -113,6 +113,17 @@ export type BaseProviderType = {
     categoryId: string;
   }>;
   address?: BaseAddressType;
+}
+
+export type BaseReviewType = {
+  id: string;
+  rating: number;
+  commentary: string;
+  client: {
+    avatarImageURL: string;
+    firstName: string;
+    lastName: string;
+  };
 };
 
 export const storageAcceptableParams = {

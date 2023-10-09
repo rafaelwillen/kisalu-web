@@ -1,6 +1,9 @@
 import { getAllPublicCategories } from "@/api/category";
 import Container from "@/components/common/Container";
+import { Routes } from "@/utils/constants/routes";
+import { getAuthenticationToken } from "@/utils/server";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 import CategoryCard from "./_components/CategoryCard";
 
 export const metadata: Metadata = {
@@ -8,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default async function CategoryPage() {
+  const token = getAuthenticationToken();
+  if (!token) redirect(Routes.login);
   const categories = await getAllPublicCategories();
 
   return (
