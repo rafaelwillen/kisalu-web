@@ -112,8 +112,8 @@ export type BaseProviderType = {
     deliveryTime: string;
     categoryId: string;
   }>;
-  address?: BaseAddressType;
-}
+  address: BaseAddressType;
+};
 
 export type BaseReviewType = {
   id: string;

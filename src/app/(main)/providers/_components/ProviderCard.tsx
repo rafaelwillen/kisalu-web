@@ -13,7 +13,9 @@ type Props = {
 
 export default function ProviderCard({ provider }: Props) {
   const fullName = `${provider.firstName} ${provider.lastName}`;
-  // const meanReview = provider.reviews.reduce((acc, curr) => acc + curr.)
+  const meanReview =
+    provider.reviews.reduce((acc, curr) => acc + curr.rating, 0) /
+    provider.reviews.length;
   return (
     <article className="py-4 px-0 border-b border-neutral-200 rounded lg:border lg:px-16">
       <div className="flex-col flex items-center">
@@ -27,20 +29,20 @@ export default function ProviderCard({ provider }: Props) {
         <p className="text-lg font-medium">{fullName}</p>
         <div className="flex gap-1 text-sm items-center">
           <ReviewStarIcon />
-          <p className="font-medium">{}</p>
+          <p className="font-medium">{isNaN(meanReview) ? 0 : meanReview}</p>
           <p className="text-text-100">
-            ({formatToCompactNumber(595)} avaliações)
+            ({formatToCompactNumber(provider.reviews.length)} avaliações)
           </p>
         </div>
       </div>
       <div className="flex justify-between items-center text-sm mt-2 mb-4">
         <div className="flex flex-col items-center">
           <p className="font-medium">Localização</p>
-          <p>{provider.address?.province}</p>
+          <p>{provider.address.province}</p>
         </div>
         <div className="flex flex-col items-center">
           <p className="font-medium">Taxa de Sucesso</p>
-          <p>{0}</p>
+          <p>{0}%</p>
         </div>
       </div>
       <Link legacyBehavior href={Routes.singleProvider(provider.id)}>
