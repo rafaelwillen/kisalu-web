@@ -4,6 +4,13 @@ export type ISODateString = string;
 export type Role = "Administrator" | "Provider" | "Client";
 export type Gender = "Male" | "Female";
 export type State = "Available" | "Draft" | "Unavailable";
+export type ActivityState =
+  | "Active"
+  | "OnHold"
+  | "OnDispute"
+  | "Finished"
+  | "Cancelled"
+  | "OnRevision";
 
 export type BaseCategoryType = {
   id: string;
@@ -136,12 +143,51 @@ export type BaseReviewType = {
 export type BaseActivityType = {
   id: string;
   agreedValue: number;
-  state: string;
+  state: ActivityState;
   startDate: ISODateString;
   finishedDate?: ISODateString;
   createdAt: ISODateString;
-  activityDetails: string;
+  activityDetails?: string;
+  service: {
+    id: string;
+    title: string;
+    description: string;
+    bannerImageURL: string;
+    publishedDate: any;
+    createdAt: string;
+    viewsCount: number;
+    state: string;
+    featuredImagesURL: Array<any>;
+    minimumPrice: number;
+    isHighlighted: boolean;
+    deliveryTime: string;
+    categoryId: string;
+    userId: string;
+  };
+  client: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    avatarImageURL: string;
+    biography: any;
+    birthDate: string;
+    gender: string;
+    loginId: string;
+  };
+  provider: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    avatarImageURL: string;
+    biography: any;
+    birthDate: string;
+    gender: string;
+    loginId: string;
+  };
 };
+
+
+
 
 export const storageAcceptableParams = {
   category: "category",

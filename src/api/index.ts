@@ -82,5 +82,6 @@ export const endpoints = {
   },
   activity: {
     create: "/activity",
+    getAll: "/activity",
   },
 } as const;

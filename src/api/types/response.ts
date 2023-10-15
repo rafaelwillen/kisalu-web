@@ -1,4 +1,5 @@
 import {
+  BaseActivityType,
   BaseAddressType,
   BaseAdministratorType,
   BaseAuthType,
@@ -109,3 +110,5 @@ export type GetSingleServiceByIDResponseBody = BaseServiceType & {
     reviews: BaseReviewType[];
   };
 };
+
+export type getAllActivitiesResponseBody = BaseActivityType[];

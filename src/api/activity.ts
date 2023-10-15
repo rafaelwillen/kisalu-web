@@ -1,8 +1,9 @@
 import { AxiosError } from "axios";
 import { api, endpoints } from ".";
 import { CreateActivityRequestBody } from "./types/request";
+import { getAllActivitiesResponseBody as GetAllActivitiesResponseBody } from "./types/response";
 
-const { create } = endpoints.activity;
+const { create, getAll } = endpoints.activity;
 
 export async function createActivity(
   data: CreateActivityRequestBody,
@@ -19,5 +20,14 @@ export async function createActivity(
       }
       throw new Error("Erro ao criar a atividade");
     }
+  }
+}
+
+export async function getAllActivities() {
+  try {
+    const response = await api.get<GetAllActivitiesResponseBody>(getAll);
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar atividades");
   }
 }
