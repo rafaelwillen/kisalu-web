@@ -5,7 +5,7 @@ import {
   MessageCircleIcon,
 } from "lucide-react";
 
-export default function DashboardTopAnalytics() {
+export default async function DashboardTopAnalytics() {
   return (
     <div className="grid  md:grid-cols-2 lg:grid-cols-4 gap-7 ">
       <div className="px-7 py-8 bg-white rounded flex items-center">

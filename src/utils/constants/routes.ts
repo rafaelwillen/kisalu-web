@@ -32,4 +32,5 @@ export const Routes = {
   serviceHiring: (id: string) => `/service/${id}/hire`,
   serviceHiringConfirmation: (id: string) => `/service/${id}/hire/confirmation`,
   activityPayment: (id: string) => `/activity/${id}/payment`,
+  singleActivity: (id: string) => `provider-dashboard/activities/${id}`,
 } as const;

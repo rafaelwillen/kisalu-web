@@ -83,5 +83,8 @@ export const endpoints = {
   activity: {
     create: "/activity",
     getAll: "/activity",
+    getAllFromUser: (userId: string) => `/activity/user/${userId}`,
+    getById: (id: string) => `/activity/${id}`,
+    changeState: (id: string) => `/activity/state/${id}`,
   },
 } as const;

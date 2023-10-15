@@ -34,6 +34,7 @@ export type AdminAuthenticationResponseBody = {
 };
 
 export type UserAuthenticationResponseBody = {
+  id: string;
   isActive: boolean;
   phoneNumber?: string;
   role: Role;
