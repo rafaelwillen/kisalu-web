@@ -1,6 +1,7 @@
 "use client";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { Routes } from "@/utils/constants/routes";
 import { formatToCurrency } from "@/utils/intl";
 import { useRouter } from "next/navigation";
 
@@ -18,7 +19,9 @@ export default function ServicePrice({ minimumPrice, serviceId }: Props) {
       <p className="font-bold text-2xl text-center my-5">
         {formatToCurrency(minimumPrice * 100)}
       </p>
-      <PrimaryButton onClick={() => console.log(serviceId)}>
+      <PrimaryButton
+        onClick={() => router.push(Routes.serviceHiring(serviceId))}
+      >
         Contratar
       </PrimaryButton>
     </section>

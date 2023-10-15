@@ -29,4 +29,6 @@ export const Routes = {
   providerProfile: "/provider-dashboard/profile",
   providerServiceCreation: "/provider-dashboard/services/create",
   providerServices: "/provider-dashboard/services",
+  serviceHiring: (id: string) => `/service/${id}/hire`,
+  serviceHiringConfirmation: (id: string) => `/service/${id}/hire/confirmation`,
 } as const;

@@ -101,6 +101,8 @@ export type BaseProviderType = {
   providerActivities: Array<unknown>;
   auth: {
     createdAt: ISODateString;
+    email: string;
+    phoneNumber: string;
   };
   services: Array<{
     id: string;

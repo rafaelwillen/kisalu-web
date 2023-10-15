@@ -30,7 +30,7 @@ export interface InputProps extends CustomInputProps {
 
 export interface NumberInputProps
   extends Omit<InputProps, "type" | "value" | "defaultValue"> {
-  value: number;
+  value?: number;
   defaultValue?: number;
   allowLeadingZeros?: boolean;
   thousandSeparator?: boolean | string;
