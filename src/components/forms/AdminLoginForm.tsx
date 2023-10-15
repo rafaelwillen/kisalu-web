@@ -1,26 +1,21 @@
 "use client";
 
-import { authenticateAdministratorNextServer } from "@/api/authentication";
+import { useAuth } from "@/context/AuthContext";
 import { Routes } from "@/utils/constants/routes";
 import {
   AdminLoginFormType,
   adminLoginSchema,
 } from "@/utils/schemas/adminLoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import PrimaryButton from "../buttons/PrimaryButton";
 import Input from "./elements/Input";
 import SecureInput from "./elements/SecureInput";
 
 export default function AdminLoginForm() {
   const router = useRouter();
-  const { isLoading, isError, mutateAsync, error } = useMutation(
-    (formData: AdminLoginFormType) =>
-      authenticateAdministratorNextServer(formData)
-  );
+  const { login, isLoading } = useAuth();
 
   const {
     register,
@@ -31,8 +26,7 @@ export default function AdminLoginForm() {
   });
 
   async function handleFormSubmit(formData: AdminLoginFormType) {
-    await mutateAsync(formData);
-    toast.success("Login efetuado com sucesso!");
+    await login({ data: formData, userType: "Administrator" });
     router.push(Routes.adminCategories);
   }
 
@@ -58,11 +52,6 @@ export default function AdminLoginForm() {
       <PrimaryButton disabled={!isValid} isLoading={isLoading} type="submit">
         Login
       </PrimaryButton>
-      {isError && (
-        <p className="text-center text-danger capitalize">
-          {(error as Error).message}
-        </p>
-      )}
     </form>
   );
 }

@@ -4,6 +4,7 @@ import { CreateCategoryRequestBody } from "./types/request";
 import {
   GetAllCategoriesResponseBody,
   GetAllPublicCategoriesResponseBody,
+  GetCategoryBySlug,
   GetCategoryFromSearchQueryResponseBody,
   GetMostPopularCategoriesResponseBody,
   GetSingleCategoryResponseBodyType,
@@ -133,6 +134,20 @@ export async function getMostPopularCategories(): Promise<GetMostPopularCategori
     return response.data;
   } catch (error) {
     throw new Error("Erro ao buscar categorias");
+  }
+}
+
+export async function getCategoryBySlug(slug: string) {
+  try {
+    const response = await api.get<GetCategoryBySlug>(
+      endpoints.category.getBySlug(slug)
+    );
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (error.response?.status === HttpStatusCode.NotFound) return undefined;
+      throw new Error("Erro ao buscar categoria");
+    }
   }
 }
 

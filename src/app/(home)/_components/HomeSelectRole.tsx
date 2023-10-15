@@ -2,9 +2,14 @@ import { homeSearchSelectRole } from "@/utils/constants/selectOptions";
 import * as Select from "@radix-ui/react-select";
 import { Check, ChevronDown } from "lucide-react";
 
-export default function HomeSelectRole() {
+type Props = {
+  onValueChange?: (value: string) => void;
+  value?: string;
+};
+
+export default function HomeSelectRole(props: Props) {
   return (
-    <Select.Root>
+    <Select.Root {...props}>
       <Select.Trigger className="flex items-center justify-between w-full outline-none bg-white text-text-200 max-lg:px-4 max-lg:py-4 max-lg:rounded-b max-lg:border-t border-neutral-200">
         <Select.Value placeholder="Selecione uma opção" />
         <Select.Icon>

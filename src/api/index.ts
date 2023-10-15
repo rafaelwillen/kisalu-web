@@ -21,6 +21,8 @@ export const endpoints = {
     create: "/provider",
     updateAvatarImage: "/provider/avatar",
     updateAddress: "/provider/address",
+    getAll: "/provider",
+    getSingle: (id: string) => `/provider/${id}`,
     services: {
       create: "/provider/services",
       getAllFromProvider: "/provider/services",
@@ -64,6 +66,9 @@ export const endpoints = {
     loginUserNext: "/auth/user",
     changeUserPassword: "/auth/password-reset/user",
   },
+  service: {
+    getServiceById: (id: string) => `/service/${id}`,
+  },
   upload: {
     uploadImage: (storageParams: StorageAcceptableParamsType) =>
       `/upload/image/${storageParams}`,
@@ -73,5 +78,6 @@ export const endpoints = {
     queryByName: "/categories/query",
     getAll: "/categories",
     getMostPopular: "/categories/popular-categories",
+    getBySlug: (slug: string) => `/categories/${slug}`,
   },
 } as const;
