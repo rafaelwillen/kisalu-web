@@ -21,7 +21,7 @@ export default function MobileServiceListItem({ service }: Props) {
       />
       <div className="mt-1 text-center">
         <h3 className="font-bold leading-relaxed text-lg">{service.title}</h3>
-        <p className="text-accent-600 mb-2">{service.category}</p>
+        {/* <p className="text-accent-600 mb-2">{service.category}</p> */}
         <p title="Preço mínimo/tempo de entrega">
           {formatToCurrency(service.minimumPrice)} em {service.deliveryTime}
         </p>

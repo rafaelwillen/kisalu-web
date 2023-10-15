@@ -35,7 +35,7 @@ export default function DesktopServiceListItem({ service }: Props) {
           <p>{truncateLongText(service.description)}</p>
         </div>
       </div>
-      <p>{service.category}</p>
+      {/* <p>{service.category}</p> */}
       <p>
         {formatToCurrency(service.minimumPrice)} em {service.deliveryTime}
       </p>
