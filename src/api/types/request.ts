@@ -52,6 +52,18 @@ export type CreateProjectRequestBody = {
   categoryName: string;
 };
 
+export type CreateActivityRequestBody = {
+  agreedValue: number;
+  startDate: Date;
+  serviceId: string;
+  activityDetails?: string;
+  address: {
+    county: string;
+    addressLine: string;
+    province: string;
+  };
+};
+
 export type UserPasswordResetRequestBody = {
   oldPassword: string;
   newPassword: string;

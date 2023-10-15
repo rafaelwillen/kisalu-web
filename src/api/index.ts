@@ -80,4 +80,7 @@ export const endpoints = {
     getMostPopular: "/categories/popular-categories",
     getBySlug: (slug: string) => `/categories/${slug}`,
   },
+  activity: {
+    create: "/activity",
+  },
 } as const;

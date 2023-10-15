@@ -113,7 +113,7 @@ export type BaseProviderType = {
     createdAt: string;
     viewsCount: number;
     state: string;
-    featuredImagesURL: Array<any>;
+    featuredImagesURL: Array<string>;
     minimumPrice: number;
     isHighlighted: boolean;
     deliveryTime: string;
@@ -131,6 +131,16 @@ export type BaseReviewType = {
     firstName: string;
     lastName: string;
   };
+};
+
+export type BaseActivityType = {
+  id: string;
+  agreedValue: number;
+  state: string;
+  startDate: ISODateString;
+  finishedDate?: ISODateString;
+  createdAt: ISODateString;
+  activityDetails: string;
 };
 
 export const storageAcceptableParams = {

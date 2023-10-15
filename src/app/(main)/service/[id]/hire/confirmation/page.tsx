@@ -34,7 +34,7 @@ export default async function ServiceHireConfirmationPage({
           <ProviderDetails provider={provider} />
         </div>
         <ServiceDetails service={service} />
-        <Confirm serviceId={serviceId} />
+        <Confirm />
       </main>
     </Container>
   );
