@@ -66,10 +66,10 @@ export function AuthProvider({
   const isAdmin = user?.role === "Administrator";
 
   function logout(userType: "Administrator" | "User") {
-    setToken(undefined);
-    return userType === "Administrator"
+    userType === "Administrator"
       ? router.replace(Routes.logoutAdmin)
       : router.replace(Routes.logout);
+    setToken(undefined);
   }
 
   const contextValue: AuthContextData = {
