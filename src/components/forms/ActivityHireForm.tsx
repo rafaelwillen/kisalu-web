@@ -35,10 +35,12 @@ export default function ActivityHireForm({ serviceId, minimumPrice }: Props) {
   } = useForm<ServiceHireFormType>({
     resolver: zodResolver(serviceHireSchema),
     defaultValues: {
-      agreedValue: minimumPrice,
+      agreedValue: minimumPrice / 100,
     },
   });
   const province = watch("address.province");
+  console.log(watch("agreedValue"));
+
   const { countiesSelectOptions, provincesSelectOptions } =
     useProvincesAndCountiesQuery(province);
 

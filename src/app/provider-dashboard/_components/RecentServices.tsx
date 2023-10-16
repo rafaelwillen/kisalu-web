@@ -54,7 +54,7 @@ export default async function RecentServices({ filter, title }: Props) {
                   })}
                 </p>
                 <p className="text-text-200 font-medium">
-                  {formatToCurrency(activity.agreedValue * 100)}
+                  {formatToCurrency(activity.agreedValue)}
                 </p>
               </div>
             </Link>

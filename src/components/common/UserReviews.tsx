@@ -51,10 +51,7 @@ export default function UserReviews({
               className="grid grid-cols-[20%,auto,10%] gap-2 items-center"
             >
               <p className="font-medium text-sm">{value} estrelas</p>
-              <ProgressBar
-                progress={(count / groupReviews.length) * 100}
-                max={100}
-              />
+              <ProgressBar progress={count / groupReviews.length} max={100} />
               <p className="text-sm">{formatToCompactNumber(count)}</p>
             </div>
           ))}

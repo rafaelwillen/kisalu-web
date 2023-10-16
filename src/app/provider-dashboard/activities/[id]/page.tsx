@@ -76,11 +76,11 @@ export default async function SingleActivityPage({ params }: PageProps) {
           </div>
           <div className="border bg-accent-600 text-white rounded p-2 ">
             <p className="font-bold">Cliente irá pagar</p>
-            <p>{formatToCurrency(activity.agreedValue * 100)}</p>
+            <p>{formatToCurrency(activity.agreedValue)}</p>
           </div>
           <div className="border border-neutral-100 rounded p-2 ">
             <p className="font-bold">O preço mínimo do seu serviço é</p>
-            <p>{formatToCurrency(activity.service.minimumPrice * 100)}</p>
+            <p>{formatToCurrency(activity.service.minimumPrice)}</p>
           </div>
           <div className="border border-neutral-100 rounded p-2 col-span-2">
             <p className="font-bold text-center">

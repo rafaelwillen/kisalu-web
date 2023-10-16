@@ -43,7 +43,7 @@ function ClientActivitiesInfo() {
             className="grid grid-cols-5 gap-2 py-2 border-b border-neutral-200"
           >
             <h2 className="font-bold">{activity.service.title}</h2>
-            <p>{formatToCurrency(activity.agreedValue * 100)}</p>
+            <p>{formatToCurrency(activity.agreedValue)}</p>
             <p>{new Date(activity.startDate).toLocaleDateString("pt-AO")}</p>
             <p>{getStatus(activity.state)}</p>
             {activity.state === "Active" && (

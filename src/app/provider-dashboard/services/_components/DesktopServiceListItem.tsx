@@ -36,7 +36,7 @@ export default function DesktopServiceListItem({ service }: Props) {
         </div>
       </div>
       {/* <p>{service.category}</p> */}
-      <p>{formatToCurrency(service.minimumPrice * 100)}</p>
+      <p>{formatToCurrency(service.minimumPrice)}</p>
       <div className="flex gap-2 justify-center items-center flex-wrap">
         <button
           onClick={changeServiceState}

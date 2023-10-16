@@ -1,7 +1,11 @@
 import { z } from "zod";
 
 export const serviceHireSchema = z.object({
-  agreedValue: z.number().min(100),
+  agreedValue: z.preprocess((val) => {
+    if (!val) return -1;
+    if (typeof val === "number") return val;
+    return Number((val as string).replace(/[^0-9]/g, ""));
+  }, z.number().min(0, "Campo obrigatório")),
   startDate: z
     .date()
     .min(new Date())

@@ -52,7 +52,7 @@ export default function ProviderQuickInfo({
         </div>
         <div className="space-y-1">
           <p className="font-medium">Taxa de Sucesso</p>
-          <p>{successRate * 100}%</p>
+          <p>{successRate}%</p>
         </div>
       </article>
       <Link href={Routes.singleProvider(id)} legacyBehavior>

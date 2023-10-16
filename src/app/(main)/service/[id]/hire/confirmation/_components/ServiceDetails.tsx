@@ -24,14 +24,13 @@ export default function ServiceDetails({ service }: Props) {
     }
   }, []);
 
-  console.log(service, serviceHireData);
 
   return (
     <div>
       <div className="border border-neutral-200 rounded-lg shadow-lg p-8 mt-7 max-w-xl mx-auto xl:w-1/2">
         <h2 className="font-medium text-xl text-center">Preço do Serviço</h2>
         <p className="font-bold text-xl text-center my-5">
-          {formatToCurrency(serviceHireData?.agreedValue! * 100)}
+          {formatToCurrency(serviceHireData?.agreedValue!)}
         </p>
         <p className="font-bold text-xl text-center my-5">
           Endereço <br />

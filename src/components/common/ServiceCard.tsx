@@ -52,7 +52,7 @@ export default function ServiceCard({
         <p className="text-sm text-text-100">
           Começando em <br />
           <span className="text-text-200 font-medium text-base">
-            {formatToCurrency(minimumPrice * 100)}
+            {formatToCurrency(minimumPrice)}
           </span>
         </p>
       </div>
