@@ -3,9 +3,10 @@ import Image from "next/image";
 
 type Props = {
   provider: GetProviderByIdResponseBody;
+  showBank?: boolean;
 };
 
-export default function ProviderDetails({ provider }: Props) {
+export default function ProviderDetails({ provider, showBank = false }: Props) {
   const {
     firstName,
     lastName,

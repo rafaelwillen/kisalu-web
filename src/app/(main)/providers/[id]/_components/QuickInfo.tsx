@@ -21,7 +21,7 @@ export default function QuickInfo({
             <div className="absolute w-4/5 h-4/5 rounded-full -z-10 -bottom-2 -right-2 bg-accent-200/40" />
           </div>
           <p className="font-medium">Taxa de Sucesso</p>
-          <p>{successRate * 100}%</p>
+          <p>{successRate}%</p>
         </li>
         <li className="flex flex-col items-center">
           <div className="relative mb-3">

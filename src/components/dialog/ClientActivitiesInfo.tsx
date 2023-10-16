@@ -46,7 +46,7 @@ function ClientActivitiesInfo() {
             <p>{formatToCurrency(activity.agreedValue * 100)}</p>
             <p>{new Date(activity.startDate).toLocaleDateString("pt-AO")}</p>
             <p>{getStatus(activity.state)}</p>
-            {activity.state === "OnRevision" && (
+            {activity.state === "Active" && (
               <Link
                 title="Pagamento"
                 href={Routes.activityPayment(activity.id)}

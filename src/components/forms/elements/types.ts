@@ -93,6 +93,19 @@ export interface ImageInputProps extends CustomInputProps {
   width?: number;
   height?: number;
 }
+export interface FileInputProps
+  extends Omit<
+    ImageInputProps,
+    | "selectedImage"
+    | "onImageSelect"
+    | "width"
+    | "height"
+    | "value"
+    | "onChange"
+  > {
+  value?: File;
+  onChange?: (file: File) => void;
+}
 
 export interface DatePickerInputProps extends CustomInputProps {
   onDateChange?: (date: Date) => void;

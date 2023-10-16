@@ -1,6 +1,7 @@
 import { subYears } from "date-fns";
 
 export const MAX_IMAGE_FILE = 5 * 1024 * 1024; // 5MB
+export const MAX_PDF_FILE = 10 * 1024 * 1024; // 10MB
 
 export const IMAGE_MIME_TYPES = [
   "image/png",
